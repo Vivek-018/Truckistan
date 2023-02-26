@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import { useNavigate } from "react-router-dom";
 
 import "react-phone-number-input/style.css";
 import backimg from "../images/Logo.png";
 import logo from "../images/Logo.png";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -19,22 +21,62 @@ const Login = () => {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        const {username, email, password,type} = values
-        const data = await fetch(`http://localhost:5000/user/signup`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username: username,
-                email: email,
-                password:password,
-                phone: phone,
-                type: type,
+        const { username, email, password, type, Rpassword } = values
+        if (username === "") {
+            toast("Please Enter the Name", {
+                autoClose: 1000,
             })
-        });
-        const res = await data.json();
-        console.log(res)
+        } else if (email === "") {
+            toast("Please Enter the email", {
+                autoClose: 1000,
+            })
+        } else if (password === "") {
+            toast("Please Enter your password", {
+                autoClose: 1000,
+            })
+        } else if (password.length < 4) {
+            toast("Password must be 6 char", {
+                autoClose: 1000,
+            })
+        } else if (Rpassword === '' ) {
+            toast("Password must be 6 char", {
+                autoClose: 1000,
+            })
+        } else if (password !== Rpassword) {
+            toast("Password do not Match", {
+                autoClose: 1000,
+            })
+        } else {
+            const data = await fetch(`http://localhost:5000/user/signup`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password,
+                    phone: phone,
+                    type: type,
+                })
+            });
+            const res = await data.json();
+            console.log(res)
+            if (res.status === 201) {
+                localStorage.setItem("token", res.token);
+                localStorage.setItem("user", JSON.stringify(res.user));
+                localStorage.setItem("type", res.user.type);
+            } 
+            if (localStorage.getItem("token")) {
+                if (localStorage.getItem("type") === "user") {
+                    navigate("/user");
+                }
+                else if (localStorage.getItem("type") === "Driver") {
+                    navigate("/driver");
+                }
+            }
+            else { navigate("/"); }
+        }
     };
 
     return (
@@ -42,7 +84,7 @@ const Login = () => {
             <div className="login-container row">
                 <div className="left-side col-5">
                     <div className="top-left d-flex align-items-center">
-                        <i onClick={() => { navigate("/"); }} class="fa-sharp fa-solid fa-arrow-left"></i>
+                        <i onClick={() => { navigate("/"); }} className="fa-sharp fa-solid fa-arrow-left"></i>
                         <p className="px-3 m-0">Signup</p>
                     </div>
                     <img className="login-img w-100 " src={backimg} alt="" />
@@ -91,7 +133,7 @@ const Login = () => {
                             className="form-control my-2"
                             label="Password"
                             onChange={(event) => {
-                                setValues((prev) => ({ ...prev,  password: event.target.value }));
+                                setValues((prev) => ({ ...prev, password: event.target.value }));
                             }}
                         />
                         <input
@@ -110,13 +152,13 @@ const Login = () => {
                             defaultCountry=""
                         />
                         <div style={{ position: "relative", display: "flex" }}>
-                            <select className="form-control my-2" 
-                            // name="type"
-                            //   value={values.type}
-                            onChange={(event) => {
-                                setValues((prev) => ({ ...prev, type: event.target.value }));
-                            }}
-                             >
+                            <select className="form-control my-2"
+                                // name="type"
+                                //   value={values.type}
+                                onChange={(event) => {
+                                    setValues((prev) => ({ ...prev, type: event.target.value }));
+                                }}
+                            >
                                 <option value="Driver" >Driver</option>
                                 <option value="user">User</option>
                             </select>
@@ -149,6 +191,8 @@ const Login = () => {
                     <div id="recaptcha-container"></div>
                 </div>
             </div>
+
+            <ToastContainer />
         </>
     );
 };

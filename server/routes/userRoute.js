@@ -31,9 +31,13 @@ router.post('/signup', async (req, res) => {
                 }
             }
             // generate token using userid and secret key
-            let token = jwt.sign(userdata, keysecret);
+            let token = jwt.sign(userdata, keysecret)
             // return the backend status to frontend
-            res.status(201).json({ status: 201, token, user })
+            if(token && user){
+                res.status(201).json({ status: 201, token, user })
+            }else{
+                res.status(401).send("Some error occured")
+            }
         }
     } catch (error) {
         console.error(error.message);

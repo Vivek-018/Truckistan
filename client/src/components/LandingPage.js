@@ -5,20 +5,6 @@ import "../style/landingPage.css";
 import logo from "../images/Logo.png";
 
 const Login = () => {
-    const navigate = useNavigate();
-    // useEffect(() => {
-    //     if (localStorage.getItem("login")) {
-    //         if(localStorage.getItem("type") === "user"){
-
-    //             navigate("/talentdashboard");
-    //         }
-    //         else{
-
-    //             navigate("/seekerdashboard");
-    //         }
-    //     }
-    //     else { navigate("/"); }
-    // }, [])
     return (
         <>
             <div className="web1">

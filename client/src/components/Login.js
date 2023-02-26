@@ -16,7 +16,7 @@ const Login = () => {
             <div className="login-container row">
                 <div className="left-side col-5">
                     <div className="top-left d-flex align-items-center">
-                         <i onClick={() => { navigate("/"); }} class="fa-sharp fa-solid fa-arrow-left"></i>
+                         <i onClick={() => { navigate("/"); }} className="fa-sharp fa-solid fa-arrow-left"></i>
                         <p className="px-3 m-0">Login</p>
                     </div>
                     <img className="login-img" src={backimg} alt="" />

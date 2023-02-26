@@ -15,7 +15,7 @@ const Navbar = () => {
                             <a className='des' href='' >Home</a>
                             <a className='des' href='' >about</a>
                             <a className='des' href='' >login</a>
-                            <span className='ManuIcon' ><i class="fa fa-bars"></i></span>
+                            <span className='ManuIcon' ><i className="fa fa-bars"></i></span>
                         </div>
                     </div>
                 </div>
