@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Cabin+Condensed&family=Catamaran:wght@100&family=Courgette&family=Fira+Sans&family=Fredoka+One&family=Inter:wght@400;600;700&family=Leckerli+One&family=Montez&family=Pacifico&family=Philosopher&family=Poppins:wght@500&family=Roboto+Condensed&family=Roboto:ital@0;1&family=Rubik&family=Signika+Negative:wght@300&family=Source+Sans+Pro&family=Ubuntu:wght@300;400&family=Varela+Round&family=Yanone+Kaffeesatz&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.Navbar {
+    box-shadow: 0px -4px 10px 0px;
+}
+
+.durgesh {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.durgesh .navRight a {
+    padding: .4rem;
+    font-size: .7rem;
+    text-decoration: none;
+    color: black;
+}
+
+.durgesh .navRight .ManuIcon {
+    display: none;
+}
+
+@media screen and (max-width:800px) {
+    .durgesh .navRight .des {
+        display: none;
+    }
+
+    .durgesh .navRight .ManuIcon {
+        display: block;
+    }
+}
