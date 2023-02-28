@@ -3,13 +3,56 @@ import "../style/login.css";
 import backimg from "../images/Logo.png";
 import logo from "../images/Logo.png";
 import { useNavigate, Link } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
     const navigate = useNavigate();
     const [values, setValues] = useState({
         email: "",
-        pass: "",
+        password: "",
     });
+
+    const handlelogin = async (e) => {
+        e.preventDefault();
+        const {email, password } = values;
+        if (email === "") {
+            toast("Please Enter the email", {
+                autoClose: 1000,
+            })
+        } else if (password === "") {
+            toast("Please Enter your password", {
+                autoClose: 1000,
+            })
+        } else {
+            const data = await fetch(`http://localhost:5000/user/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: email,
+                    password: password,
+                })
+            });
+            const res = await data.json();
+            console.log(res)
+            if (res.status === 201) {
+                localStorage.setItem("token", res.token);
+                localStorage.setItem("user", JSON.stringify(res.user));
+                localStorage.setItem("type", res.user.type);
+            } 
+            if (localStorage.getItem("token")) {
+                if (localStorage.getItem("type") === "user") {
+                    navigate("/user");
+                }
+                else if (localStorage.getItem("type") === "Driver") {
+                    navigate("/driver");
+                }
+            }
+            else { navigate("/"); }
+        }
+    };
 
     return (
         <>
@@ -37,7 +80,8 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="right-side col-7 d-flex align-items-center justify-content-center">
-                    <form
+                    <form 
+                        onSubmit={handlelogin}
                         action=""
                         className="form-container">
                         <div className=" logotext d-flex justify-content-center" style={{ alignItems: "center" }} >
@@ -59,7 +103,7 @@ const Login = () => {
                             className="form-control my-2"
                             required
                             onChange={(event) => {
-                                setValues((prev) => ({ ...prev, pass: event.target.value }));
+                                setValues((prev) => ({ ...prev,  password: event.target.value }));
                             }}
                         />
 
@@ -87,6 +131,8 @@ const Login = () => {
                     </form>
                 </div>
             </div>
+
+            <ToastContainer/>
         </>
     );
 };

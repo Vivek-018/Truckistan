@@ -21,11 +21,11 @@ router.post('/signup', async (req, res) => {
             res.status(404).json({ error: "This Email is Already Exist" });
         } else {
             // else condition me save the userdata
-            const data = new User({username, email, password: pass, type,phone})
+            const data = new User({ username, email, password: pass, type, phone })
             // save user data using .save method
             const user = await data.save()
-             // create token using secret key
-             const userdata = {
+            // create token using secret key
+            const userdata = {
                 user: {
                     id: user.id
                 }
@@ -33,9 +33,9 @@ router.post('/signup', async (req, res) => {
             // generate token using userid and secret key
             let token = jwt.sign(userdata, keysecret)
             // return the backend status to frontend
-            if(token && user){
+            if (token && user) {
                 res.status(201).json({ status: 201, token, user })
-            }else{
+            } else {
                 res.status(401).send("Some error occured")
             }
         }
@@ -45,5 +45,31 @@ router.post('/signup', async (req, res) => {
     }
 })
 
+router.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+    try {
+        //  check entered eamil is valid or not
+        const user = await User.findOne({ email: email });
+        if (user) {
+            // after validation email check for password compare password with users entered password
+            const Ismatch = await bcrypt.compare(password, user.password);
+
+            if(!Ismatch){
+                res.status(422).json({ error: "invalid details" })
+            }else{
+                const data = {
+                    user: {
+                        id: user.id
+                    }
+                }
+                let token = jwt.sign(data, keysecret);
+                res.status(201).json({ status: 201, user,token })
+            }
+        }
+    } catch (error) {
+        console.error(error.message);
+        res.status(401).send("Some error occured")
+    }
+})
 
 module.exports = router;
