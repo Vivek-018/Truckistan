@@ -4,6 +4,7 @@ const router = express.Router();
 const jwt = require("jsonwebtoken");
 const keysecret = "durgeshchaudharydurgeshchaudhary"
 const bcrypt = require('bcryptjs');
+const fetchuser = require('../middleware/fetchuser');
 
 // signup API path /user/signup
 
@@ -66,6 +67,17 @@ router.post('/login', async (req, res) => {
                 res.status(201).json({ status: 201, user,token })
             }
         }
+    } catch (error) {
+        console.error(error.message);
+        res.status(401).send("Some error occured")
+    }
+})
+
+router.get('/getUserData',fetchuser , async(req, res)=>{
+    const user = req.user;
+    try {
+        const data = await User.findOne({_id: user.id});
+        res.json(data)
     } catch (error) {
         console.error(error.message);
         res.status(401).send("Some error occured")
