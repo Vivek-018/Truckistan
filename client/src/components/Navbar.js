@@ -29,7 +29,7 @@ const Navbar = () => {
                 <div className='container'>
                     <div className='durgesh' >
                         <div className='navLeft'>
-                            <span>LoadKro</span>
+                            <span>Transt</span>
                         </div>
                         <div className='navRight'>
                             <a className='des' href='' >Home</a>
@@ -42,6 +42,10 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+       
+       
+
+            
         </>
     )
 }

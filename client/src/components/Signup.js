@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import { useNavigate } from "react-router-dom";
-
+import validator from 'validator';
 import "react-phone-number-input/style.css";
 import backimg from "../images/Logo.png";
 import logo from "../images/Logo.png";
@@ -38,12 +38,16 @@ const Login = () => {
             toast("Password must be 6 char", {
                 autoClose: 1000,
             })
-        } else if (Rpassword === '' ) {
+        } else if (Rpassword === '') {
             toast("Password must be 6 char", {
                 autoClose: 1000,
             })
         } else if (password !== Rpassword) {
             toast("Password do not Match", {
+                autoClose: 1000,
+            })
+        }  else if (phone.length <= 12) {
+            toast("Plz Enter correct phone number ", {
                 autoClose: 1000,
             })
         } else {
@@ -61,12 +65,12 @@ const Login = () => {
                 })
             });
             const res = await data.json();
-            console.log(res)
+            // console.log(res)
             if (res.status === 201) {
                 localStorage.setItem("token", res.token);
                 localStorage.setItem("user", JSON.stringify(res.user));
                 localStorage.setItem("type", res.user.type);
-            } 
+            }
             if (localStorage.getItem("token")) {
                 if (localStorage.getItem("type") === "user") {
                     navigate("/user");
@@ -159,6 +163,7 @@ const Login = () => {
                                     setValues((prev) => ({ ...prev, type: event.target.value }));
                                 }}
                             >
+                                <option value="" selected >Type</option>
                                 <option value="Driver" >Driver</option>
                                 <option value="user">User</option>
                             </select>

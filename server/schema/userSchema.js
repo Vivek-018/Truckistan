@@ -29,7 +29,7 @@ let schema = new mongoose.Schema({
         type: String,
         enum: ["Driver","user"],
         required: true,
-    },
+    }
 })
 
 module.exports = mongoose.model("User", schema);

@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from "react";
+import { Link,  } from "react-router-dom";
 
 import "../style/landingPage.css";
 import logo from "../images/Logo.png";
-
+import pic from "../images/durgesh.jpeg";
 const Login = () => {
     return (
         <>
@@ -46,14 +46,14 @@ const Login = () => {
                             <div className="grid-container">
                                 <div className="column">
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/2106037/pexels-photo-2106037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630" />
+                                        <img src={logo}/>
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+                                        <img src={pic} />
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>
