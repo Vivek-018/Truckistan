@@ -3,6 +3,21 @@ import { Link, useNavigate } from "react-router-dom";
 
 import "../style/landingPage.css";
 import logo from "../images/Logo.png";
+import a1 from "../images/A1.jpg";
+import a2 from "../images/A2.jpeg";
+import a3 from "../images/A3.jpeg";
+import a4 from "../images/A4.jpeg";
+import a5 from "../images/A5.png";
+import a6 from "../images/A6.jpeg";
+import a7 from "../images/A7.jpg";
+import a8 from "../images/A8.jpeg";
+import a9 from "../images/A9.jpeg";
+import a10 from "../images/A10.png";
+import a11 from "../images/A11.jpeg";
+import a12 from "../images/A12.jpeg";
+import a13 from "../images/A13.jpeg";
+import a14 from "../images/A14.jpeg";
+
 
 const Login = () => {
     return (
@@ -46,52 +61,21 @@ const Login = () => {
                             <div className="grid-container">
                                 <div className="column">
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/2106037/pexels-photo-2106037.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=375&w=630" />
+                                        <img src={a1} />
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/1083822/pexels-photo-1083822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+                                        <img src={a2} />
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/772571/pexels-photo-772571.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
-                                        <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="column">
-                                    <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/3629537/pexels-photo-3629537.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
-                                        <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
-                                        </div>
-                                    </div>
-                                    <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
-                                        <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
-                                        </div>
-                                    </div>
-                                    <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/3673762/pexels-photo-3673762.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
-                                        <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
-                                        </div>
-                                    </div>
-                                    <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/3338497/pexels-photo-3338497.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
+                                        <img src={a3} />
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>
@@ -101,21 +85,28 @@ const Login = () => {
 
                                 <div className="column">
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/4000421/pexels-photo-4000421.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
+                                        <img src={a4} />
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/4230630/pexels-photo-4230630.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
+                                        <img src={a5} />
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/4197439/pexels-photo-4197439.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
+                                        <img src={a6} />
+                                        <div className="image_overlay">
+                                            <div className="overlay-name">Rachel Zayne</div>
+                                            <div className="overlay-profession">Actress</div>
+                                        </div>
+                                    </div>
+                                    <div className="web1-image">
+                                        <img src={a7} />
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>
@@ -125,28 +116,52 @@ const Login = () => {
 
                                 <div className="column">
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/2248516/pexels-photo-2248516.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
+                                        <img src={a8} />
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/4555468/pexels-photo-4555468.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
+                                        <img src={a9} />
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/2899100/pexels-photo-2899100.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
+                                        <img src={a10} />
+                                        <div className="image_overlay">
+                                            <div className="overlay-name">Rachel Zayne</div>
+                                            <div className="overlay-profession">Actress</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="column">
+                                    <div className="web1-image">
+                                        <img src={a11} />
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
-                                        <img src="https://images.pexels.com/photos/3726314/pexels-photo-3726314.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" />
+                                        <img src={a12} />
+                                        <div className="image_overlay">
+                                            <div className="overlay-name">Rachel Zayne</div>
+                                            <div className="overlay-profession">Actress</div>
+                                        </div>
+                                    </div>
+                                    <div className="web1-image">
+                                        <img src={a13} />
+                                        <div className="image_overlay">
+                                            <div className="overlay-name">Rachel Zayne</div>
+                                            <div className="overlay-profession">Actress</div>
+                                        </div>
+                                    </div>
+                                    <div className="web1-image">
+                                        <img src={a14} />
                                         <div className="image_overlay">
                                             <div className="overlay-name">Rachel Zayne</div>
                                             <div className="overlay-profession">Actress</div>

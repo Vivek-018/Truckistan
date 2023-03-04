@@ -1,4 +1,7 @@
 import React from 'react'
+
+import '../style/driver.css'
+
 import Navbar from './Navbar'
 
 const DriverPage = () => {
