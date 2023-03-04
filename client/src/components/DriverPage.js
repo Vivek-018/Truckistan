@@ -1,4 +1,7 @@
 import React from 'react'
+
+import '../style/driver.css'
+
 import Navbar from './Navbar'
 import Search from './Search'
 import pic from '../images/Logo.png'
