@@ -9,25 +9,51 @@ body {
 }
 
 .durgesh {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    align-items: center;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
+.durgesh .navLeft span {
+    font-size: 1.4rem;
+      color: var(--color_p2);
+}
+
 .durgesh .navRight a {
-    padding: .4rem;
-    font-size: .7rem;
+    padding: .6rem;
+    font-size: 1rem;
     text-decoration: none;
     color: black;
 }
 
-.durgesh .navRight a img{
-  width: 1.5rem;
+.durgesh .navRight .name {
+    font-size: .8rem;
+    cursor: pointer;
+}
+
+.durgesh .navRight .des .formDrop {
+    font-size: 1.1rem;
+}
+
+.durgesh .navRight span {
+    padding: .4rem;
+    font-size: 1.5rem;
+    color: var(--color_p2);
+}
+
+.durgesh .navRight a span {
+    color: var(--color_p2)
+}
+
+.durgesh .navRight a img {
+    width: 1.5rem;
 }
 
 .durgesh .navRight .ManuIcon {
+    cursor: pointer;
     display: none;
 }
 
@@ -39,4 +65,102 @@ body {
     .durgesh .navRight .ManuIcon {
         display: block;
     }
+}
+
+/* ============= sidenav ================= */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: var(--color_p2);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    display: none;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .sidenav {
+        display: block;
+    }
+}
+
+/* =============== dropdown css ============ */
+.profile-options {
+    position: absolute;
+    right: 4.5rem;
+    top: 79px;
+    width: 200px;
+    max-height: fit-content;
+    box-shadow: 0 8px 9px 0 rgba(160, 160, 160, 0.5);
+    background-color: #fff;
+    height: 0px;
+    overflow-y: hidden;
+    transition: all 0.5s ease-in;
+}
+
+.profile-options>ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: inherit;
+    height: inherit;
+}
+
+.profile-options>ul>li {
+    height: 47px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 11px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #8443e5;
+}
+
+.profile-options>ul>li:last-child {
+    border-bottom: none;
+}
+
+.profile-options ul li a {
+    display: block;
+    padding: 18px 0px 0px 34px;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-options ul li a:hover {
+    background-color: #f2edf8;
 }

@@ -1,0 +1,44 @@
+.driver {
+    background-color: var(--color_p1);
+    width: 300px;
+    min-height: 100vh;
+    position: absolute;
+    text-align: center;
+    padding-top: 2rem;
+    color: #8443e5;
+}
+
+.driver .pav {
+    padding-top: .8rem;
+    cursor: pointer;
+}
+
+.driver .pav span{
+    border-bottom: 3px solid #8443e5;
+}
+
+.subpages {
+    left: 35%;
+    top: 15%;
+    position: absolute;
+}
+
+/* ======== profile =========   */
+
+.profileDriver h6{
+    color: #8443e5;
+}
+
+.profileDriver small{
+    opacity: .3;
+}
+
+.profileDriver form .form-group{
+     padding-top: 1rem;
+}
+
+.profileDriver form .btn-profile {
+    background-color: #8443e5;
+    color: white;
+    padding: .5rem 3rem;
+}

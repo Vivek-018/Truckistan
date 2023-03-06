@@ -5,6 +5,7 @@ import Signup from './components/Signup'
 import UserPage from './components/UserPage';
 import DriverPage from './components/DriverPage';
 import AdminPage from './components/AdminPage';
+import DriverIntro from './components/DriverIntro';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
            <Route path='/user' element={<UserPage/>}/>
            <Route path='/driver' element={<DriverPage/>} />
            <Route path='/admin' element={<AdminPage/>} />
+           <Route path='/driverintro' element={<DriverIntro/>} />
          </Routes> 
        </BrowserRouter>
     </>

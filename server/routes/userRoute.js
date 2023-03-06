@@ -5,6 +5,17 @@ const jwt = require("jsonwebtoken");
 const keysecret = "durgeshchaudharydurgeshchaudhary"
 const bcrypt = require('bcryptjs');
 const fetchuser = require('../middleware/fetchuser');
+const nodemailer = require('nodemailer');
+
+
+// email config
+const trasporter = nodemailer.createTransport({
+    service:'gmail',
+    auth:{
+        user:"durgeshchaudhary020401@gmail.com",
+        pass:"lqfxwpogsaocehjc"
+    }
+})
 
 // signup API path /user/signup
 
@@ -14,7 +25,7 @@ router.post('/signup', async (req, res) => {
     try {
         // hash the password using salt of 10
         const salt = await bcrypt.genSalt(10);
-        const pass = await bcrypt.hash(password, salt);
+        const  pass = await bcrypt.hash(password, salt);
         // check data is present 
         const savedEmail = await User.findOne({ email: email })
         // if data exist than return error 
@@ -27,15 +38,17 @@ router.post('/signup', async (req, res) => {
             const user = await data.save()
             // create token using secret key
             const userdata = {
-                user: {
+                user: { 
                     id: user.id
                 }
             }
             // generate token using userid and secret key
             let token = jwt.sign(userdata, keysecret)
+            const setToken = await User({token:token})
+            const Savetoken = await setToken.save()
             // return the backend status to frontend
             if (token && user) {
-                res.status(201).json({ status: 201, token, user })
+                res.status(201).json({ status: 201, token:Savetoken, user })
             } else {
                 res.status(401).send("Some error occured")
             }
@@ -73,7 +86,7 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.get('/getUserData',fetchuser , async(req, res)=>{
+router.get('/getUserData',fetchuser, async(req, res)=>{
     const user = req.user;
     try {
         const data = await User.findOne({_id: user.id});
