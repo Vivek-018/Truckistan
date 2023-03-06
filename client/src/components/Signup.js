@@ -157,8 +157,6 @@ const Login = () => {
                         />
                         <div style={{ position: "relative", display: "flex" }}>
                             <select className="form-control my-2"
-                                // name="type"
-                                //   value={values.type}
                                 onChange={(event) => {
                                     setValues((prev) => ({ ...prev, type: event.target.value }));
                                 }}

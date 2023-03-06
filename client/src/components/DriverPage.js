@@ -1,7 +1,5 @@
 import React from 'react'
-
 import '../style/driver.css'
-
 import Navbar from './Navbar'
 import Search from './Search'
 import pic from '../images/Logo.png'
@@ -13,6 +11,7 @@ const DriverPage = () => {
             <Navbar />
             <div className='container my-2 '>
                 <Search/>
+                <h6>Added Details </h6>
                 <div className="card w-25 ">
                     <div className="card-body">
                         <img className='w-75' src={pic} alt='img'/>
@@ -21,6 +20,7 @@ const DriverPage = () => {
                     </div>
                 </div>
             </div>
+            
         </>
     )
 }
