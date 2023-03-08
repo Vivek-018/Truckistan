@@ -14,6 +14,8 @@ const Navbar = () => {
     const [dropdown, setdropdown] = useState(false);
     const navigate = useNavigate()
 
+// ======================= fetching data according users ==================
+
     const handlelogin = async (e) => {
         const data = await fetch(`http://localhost:5000/user/getUserData`, {
             method: "GET",
@@ -52,7 +54,7 @@ const Navbar = () => {
         modal.style.display = "block";
     }
 
-    function handleOpen(){
+    function handleOpen() {
         modal.style.display = "none";
     }
 
@@ -113,8 +115,35 @@ const Navbar = () => {
 
             <div id="myModal" class="modal">
                 <div class="modal-content">
-                    <p>Some text in the Modal..</p>
-                <button onClick={handleOpen} className='btn ' >close</button>
+                    <div className='text-center proDetails '>
+                        <span>Profile Deatils  </span>
+                    </div>
+
+                    <div className='infoProfile' >
+                        <div className='num mx-4 ' >
+                            <h6>Total Vehicles</h6>
+                            <span> 8 </span>
+                        </div>
+
+                        <div className='mx-4' >
+                            <h6>Name </h6>
+                            <span>{name?.username? name?.username :"Not Available"}</span>
+                        </div>
+
+                        <div className='my-4 mx-4 ' >
+                            <h6>Phone Number </h6>
+                            <span>{name?.phone?name?.phone:"+91 xxxxxxxxxx" }</span>
+                        </div>
+
+                        <div className='my-4 mx-4'>
+                            <h6>Email</h6>
+                            <span>{name?.email?name?.email:"Not Availble"}</span>
+                        </div>
+                    </div>
+
+                    <div className='text-center my-2' >
+                        <button onClick={handleOpen} className=' myprofile-btn ' >close</button>
+                    </div>
                 </div>
             </div>
 
