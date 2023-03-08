@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom'
 
 const ViewDetails = () => {
     const location = useLocation()
-    console.log(location.state?.DLImage)
     return (
         <>
 
