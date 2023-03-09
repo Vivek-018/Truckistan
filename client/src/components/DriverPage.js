@@ -50,8 +50,8 @@ const DriverPage = () => {
                                             </div>
 
                                             <div className='buttons text-center d-flex justify-content-between my-2 ' >
-                                                <button className=' btn-card' >Edit</button>
-                                                <NavLink to={'/viewdetails'} state={item} className=' btn-card' exact >View</NavLink>
+                                                <NavLink to={'/editdetails'}  state={item} className=' btn-card' exact >Edit</NavLink>
+                                                <NavLink to={'/viewdetails'} state={item} className=' btn-card' exact>View</NavLink>
                                             </div>
                                         </div>
                                     </div>

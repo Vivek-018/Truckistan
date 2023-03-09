@@ -8,6 +8,7 @@ import AdminPage from './components/AdminPage';
 import DriverIntro from './components/DriverIntro';
 import ViewDetails from './components/ViewDetails';
 import DriversData from './components/useContext/DriversData';
+import EditDetails from './components/EditDetails';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path='/admin' element={<AdminPage />} />
             <Route path='/driverintro' element={<DriverIntro />} />
             <Route path='/viewdetails' element={<ViewDetails />} />
+            <Route path='/editdetails' element={<EditDetails/>} />
           </Routes>
         </BrowserRouter>
       </DriversData>

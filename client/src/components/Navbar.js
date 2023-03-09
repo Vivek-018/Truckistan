@@ -92,7 +92,7 @@ const Navbar = () => {
             <div className="profile-options" id="profileOption">
                 <ul>
                     <li>
-                        <a to="/profiledetails" onClick={handleModal} >My Profile</a>
+                        <a style={{cursor:"pointer"}} to="/profiledetails" onClick={handleModal} >My Profile</a>
                     </li>
                     <li>
                         <a to="/help">FAQ's & Help</a>
