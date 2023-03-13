@@ -8,13 +8,18 @@
     color: #8443e5;
 }
 
+.driver .topProfile{
+    font-weight: 100;
+    font-size: 1.2rem;
+}
+
 .driver .pav {
     padding-top: .8rem;
     cursor: pointer;
 }
 
-.driver .pav span{
-    border-bottom: 3px solid #8443e5;
+.driver .pav span:hover{
+   color: white;
 }
 
 .subpages {
@@ -41,4 +46,107 @@
     background-color: #8443e5;
     color: white;
     padding: .5rem 3rem;
+}
+
+/* =========== card css ============ */
+
+.vehicleInfo{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card{
+    margin: auto;
+    align-items: center;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 5px rgba(228, 228, 228, 0.5);
+    background-color: #fff;
+    width: 65%;
+    text-align: center;
+}
+
+.card img{
+    border-radius: .4rem;
+    margin-top: .5rem;
+    width: 8rem;
+} 
+
+.card:hover{
+   background-color: #efe4ff;
+}
+
+.card .card-body{
+    margin: auto;
+}
+
+.card .card-body .TransName{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}
+
+.card .card-body .TransName small{
+    color: #8443e5;
+}
+
+.card .card-body small{
+    font-size: .7rem;
+}
+
+.buttons .btn-card{
+   margin-top: 1rem;
+   background-color: #8443e5;
+   color: white;
+   border: none;
+   border-radius: .2rem;
+   padding: .2rem 1rem;
+   font-size: .8rem;
+}
+
+/* ========= upload doc page =========== */
+
+.doc{
+    padding-top: 2rem;
+}
+
+.doc h6 {
+    color: #8443e5;
+    font-size: 1.1rem;
+}
+
+.doc small{
+    opacity: .4;
+}
+.uploadtab{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 1rem;
+}
+
+.doc .btn-profile{
+    background-color: #8443e5;
+    color: white;
+    padding: .5rem 3rem;
+}
+
+
+/* =========== view details page css ============== */
+
+.Alldetails{
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+.Alldetails h6{
+    border-bottom: 1px solid black;
+    color: #8443e5;
+}
+
+.showprofile{
+    display: grid;
+    margin: auto;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.showprofile div small, a{
+    color: #8443e5;
 }

@@ -3,15 +3,18 @@ import '../style/navbar.css'
 import navpic from '../images/user_web-1598433228.svg'
 import { IoIosArrowDown } from 'react-icons/io';
 import { BsCartFill } from 'react-icons/bs';
-import { AiFillHome } from 'react-icons/ai';
+import { AiOutlineHome } from 'react-icons/ai';
 import { RiTruckLine } from 'react-icons/ri';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
     const [name, setname] = useState();
     const [Nav, setNav] = useState(false);
     const [dropdown, setdropdown] = useState(false);
+    const navigate = useNavigate()
+
+// ======================= fetching data according users ==================
 
     const handlelogin = async (e) => {
         const data = await fetch(`http://localhost:5000/user/getUserData`, {
@@ -40,10 +43,24 @@ const Navbar = () => {
             document.getElementById("profileOption").style.height = "fit-content";
             setdropdown(true);
         } else {
-          document.getElementById("profileOption").style.height = "0px";
-          setdropdown(false);
+            document.getElementById("profileOption").style.height = "0px";
+            setdropdown(false);
         }
-      }
+    }
+
+
+    var modal = document.getElementById("myModal");
+    function handleModal() {
+        modal.style.display = "block";
+    }
+
+    function handleOpen() {
+        modal.style.display = "none";
+    }
+
+    const handleClear = () => {
+        localStorage.clear();
+    }
 
     useEffect(() => {
         handlelogin();
@@ -57,12 +74,15 @@ const Navbar = () => {
                         <div className='navLeft'>
                             <span>Transt</span>
                         </div>
+
                         <div className='navRight'>
-                            <span className='des'> <AiFillHome /></span>
                             {
-                                (name?.type === 'user') ? <Link className='des' to='/'> <span><BsCartFill /> </span></Link> : ( <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine/> </span></Link>)
+                                (name?.type === 'user') ? <Link to='' className='des home '> <AiOutlineHome /></Link> : (<Link to='/driver' className='des home '> <AiOutlineHome /></Link>)
                             }
-                            <a className='des  name' onClick={handledropdown} ><img src={navpic}></img> {name?.username? name?.username:"Not Available " }<span className='formDrop' ><IoIosArrowDown /></span></a>
+                            {
+                                (name?.type === 'user') ? <Link className='des' to=''> <span><BsCartFill /> </span></Link> : (<Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>)
+                            }
+                            <a className='des  name' onClick={handledropdown} ><img src={navpic}></img> {name?.username ? name?.username : "Not Available "}<span className='formDrop' ><IoIosArrowDown /></span></a>
                             <span className='ManuIcon' onClick={handleSideNav} ><i className="fa fa-bars"></i></span>
                         </div>
                     </div>
@@ -72,27 +92,61 @@ const Navbar = () => {
             <div className="profile-options" id="profileOption">
                 <ul>
                     <li>
-                        <a to="/profiledetails">My Profile</a>
-                    </li>
-                    <li>
-                        <a to="/setting">Account Settings</a>
+                        <a style={{cursor:"pointer"}} to="/profiledetails" onClick={handleModal} >My Profile</a>
                     </li>
                     <li>
                         <a to="/help">FAQ's & Help</a>
                     </li>
                     <li >
-                        <a>Logout</a>
+                        <Link to="/login" onClick={handleClear} >Logout</Link>
                     </li>
                 </ul>
             </div>
 
             <div className='sidenav' id="mySidenav">
                 <a className='des'><img src={navpic}></img> {name?.username}</a>
-                <span className='des' href=''><AiFillHome /></span>
+                <span className='des' href=''><AiOutlineHome /></span>
                 {
                     (name?.type === 'user') ? <a className='des' href=''> <span><BsCartFill /> </span></a> : ("")
                 }
             </div>
+
+            {/* ==================== my profile modal ============================= */}
+
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <div className='text-center proDetails '>
+                        <span>Profile Deatils  </span>
+                    </div>
+
+                    <div className='infoProfile' >
+                        <div className='num mx-4 ' >
+                            <h6>Total Vehicles</h6>
+                            <span> 8 </span>
+                        </div>
+
+                        <div className='mx-4' >
+                            <h6>Name </h6>
+                            <span>{name?.username? name?.username :"Not Available"}</span>
+                        </div>
+
+                        <div className='my-4 mx-4 ' >
+                            <h6>Phone Number </h6>
+                            <span>{name?.phone?name?.phone:"+91 xxxxxxxxxx" }</span>
+                        </div>
+
+                        <div className='my-4 mx-4'>
+                            <h6>Email</h6>
+                            <span>{name?.email?name?.email:"Not Availble"}</span>
+                        </div>
+                    </div>
+
+                    <div className='text-center my-2' >
+                        <button onClick={handleOpen} className=' myprofile-btn ' >close</button>
+                    </div>
+                </div>
+            </div>
+
         </>
     )
 }
