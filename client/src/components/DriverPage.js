@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import '../style/driver.css'
 import Navbar from './Navbar'
 import Search from './Search'
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import driverContext from './useContext/driverContext'
 
@@ -25,7 +25,7 @@ const DriverPage = () => {
                         data.data?.map((item, index) => {
                             return (
                                 <>
-                                    <div key={index} className="card my-4 ">
+                                    <div key={index} className="card my-2 ">
                                         <div className="card-body">
                                             <img src={item.VehicleImage} alt='img' />
                                             <div className='TransName' >
@@ -50,7 +50,7 @@ const DriverPage = () => {
                                             </div>
 
                                             <div className='buttons text-center d-flex justify-content-between my-2 ' >
-                                                <NavLink to={'/editdetails'}  state={item} className=' btn-card' exact >Edit</NavLink>
+                                                <NavLink to={'/editdetails'} state={item} className=' btn-card' exact >Edit</NavLink>
                                                 <NavLink to={'/viewdetails'} state={item} className=' btn-card' exact>View</NavLink>
                                             </div>
                                         </div>

@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
+import { useContext } from 'react';
+import driverContext from './useContext/driverContext';
+
 
 const EditDetails = () => {
+
+  const context = useContext(driverContext);
+  const { editData } = context;
+
+  const [profile, setProfile] = useState(true);
+  const [Vaddress, setAddress] = useState(false);
+  const [vehicle, setVehicle] = useState(false);
+  const [uploaddoc, setUploaddoc] = useState(false);
   const location = useLocation();
   const item = location.state;
+  const id = item._id
 
   const useInputs = (initialValue) => {
     const [value, setValue] = useState(initialValue);
@@ -48,13 +60,15 @@ const EditDetails = () => {
   const DLImage = useInputs('')
   const RCImage = useInputs('')
 
+  // console.log(lodingCapacity)
+
   useEffect(() => {
     name.onSet(item.name)
     lname.onSet(item.lname)
     gender.onSet(item.gender)
     DOB.onSet(item.DOB)
     email.onSet(item.email)
-    phone.onSet(item.onSet)
+    phone.onSet(item.phone)
     PanCardNumber.onSet(item.PanCardNumber);
     address.onSet(item.address)
     city.onSet(item.city)
@@ -75,13 +89,45 @@ const EditDetails = () => {
     RCImage.onSet(RCImage)
   }, [])
 
-  const fun = (e) => {
-    // e.preventDefault()
-    // if (data.basefare === '' || data.lodingCapacity === '' || data.transName === '' || data.Vnamber === "" || data.RCnumber === "") {
-    //   alert("fill all details")
-    // } else {
-    //   alert("Your Data Save successfully")
-    // }
+  const handlesetPage = (e) => {
+    e.preventDefault();
+    setProfile(true);
+    setAddress(false);
+    setVehicle(false);
+    setUploaddoc(false);
+  }
+
+  const handlesetProfile = (e) => {
+    e.preventDefault();
+    setProfile(false);
+    setAddress(true);
+    setVehicle(false);
+    setUploaddoc(false);
+  }
+
+  const handleVehicle = (e) => {
+    e.preventDefault();
+    setProfile(false);
+    setAddress(false);
+    setVehicle(true);
+    setUploaddoc(false);
+  }
+
+  const handleDocument = (e) => {
+    setProfile(false);
+    setAddress(false);
+    setVehicle(false);
+    setUploaddoc(true);
+  }
+
+  const handlesave = (e) => {
+    e.preventDefault()
+    editData(id, name.value, lname.value, gender.value, DOB.value, email.value, phone.value,
+      PanCardNumber.value, address.value, city.value, state.value, pincode.value, Vnamber.value,
+      country.value, basefare.value, bodysize.value, lodingCapacity.value, transName.value,
+      RCnumber.value, DLnumber.value, PolutionCertificate.value, driverImage.value,
+      VehicleImage.value, DLImage.value, RCImage.value)
+    console.log("ghfd")
   }
 
 
@@ -89,173 +135,185 @@ const EditDetails = () => {
     <>
 
       <Navbar />
-      <div className='profileDriver' >
-        <h6>Profile Details </h6>
-        <small>Let us know about you to suggest the best for you.</small>
-
-        <form>
-          <div class="form-group">
-            <input type="name" class="form-control" id="name" name='name' value={name.value} aria-describedby="emailHelp" placeholder="First Name" onChange={name.onChange} required />
-          </div>
-          <div class="form-group">
-            <input type="lname" name='lname' value={lname.value} class="form-control" id="lname" placeholder="Last Name" onChange={lname.onChange} />
-          </div>
-
-          <div class="form-group ">
-            <select id="inputState" name='gender' value={gender.value} class="form-control" onChange={gender.onChange} >
-              <option selected>Gender</option>
-              <option>Male</option>
-              <option>Female</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <input type="DOB" name='DOB' value={DOB.value} class="form-control" id="email" aria-describedby="emailHelp" placeholder="Date of Brith" onChange={DOB.onChange} />
-          </div>
-
-          <div class="form-group">
-            <input type="email" name='email' value={email.value} class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" onChange={email.onChange} />
-          </div>
-          <div class="form-group">
-            <input type="phone" name='phone' value={phone.value} class="form-control" id="phone" placeholder="Phone Number" onChange={phone.onChange} />
-          </div>
-
-          <div class="form-group">
-            {/* <input type="AdharNumber" name='AdharNumber' value={AdharNumber.value} class="form-control" id="AdharNumber" aria-describedby="emailHelp" placeholder="Adhar Card Number" onChange={setVal} /> */}
-          </div>
-          <div class="form-group">
-            <input type="pcNumber" name='PanCardNumber' value={PanCardNumber.value} class="form-control" id="PanCardNumber" placeholder="Pan Card Number" onChange={PanCardNumber.onChange} />
-          </div>
-
-          <div>
-            <button type="submit" class="btn btn-profile mx-2 my-3" >Cancel</button>
-            <button type="submit" class="btn btn-profile my-3" onClick={fun}>Save</button>
-          </div>
-        </form>
-
-      </div>
-
-
-      <div className='profileDriver' >
-        <h6>Address Details </h6>
-        <small>Let us know about you to suggest the best for you.</small>
-
-        <form>
-          <div class="form-group">
-            <textarea type="address" name='address' value={address.value} class="form-control" id="adress" aria-describedby="emailHelp" placeholder="Address" onChange={address.onChange} />
-          </div>
-          <div class="form-group">
-            <input type="city" name='city' value={city.value} class="form-control" id="city" placeholder="City" onChange={city.onChange} />
-          </div>
-
-
-          <div class="form-group">
-            <input type="state" name='state' value={state.value} class="form-control" id="state" aria-describedby="emailHelp" placeholder="State" onChange={state.onChange} />
-          </div>
-
-          <div class="form-group">
-            <input type="pincode" name='pincode' value={pincode.value} class="form-control" id="pincode" aria-describedby="emailHelp" placeholder="Pin Code" onChange={pincode.onChange} />
-          </div>
-          <div class="form-group">
-            <input type="country" name='country' value={country.value} class="form-control" id="country" placeholder="Country" onChange={country.onChange} />
-          </div>
-
-          <div>
-            <button type="submit" class="btn btn-profile mx-2 my-3">Cancel</button>
-            <button type="submit" class="btn btn-profile my-3 " onClick={fun} >Save</button>
-          </div>
-        </form>
-
-      </div>
-
-
-      <div className='profileDriver' >
-        <h6>Vehicle Details </h6>
-        <small>Let us know about you to suggest the best for you.</small>
-
-        <form>
-          <div class="form-group">
-            <input type="basefare" name='basefare' value={basefare.value} class="form-control" id="basefare" aria-describedby="emailHelp" placeholder="Base Fare(Rent)" onChange={basefare.onChange} />
-          </div>
-          <div class="form-group">
-            <input type="lodingCapacity" name='lodingCapacity' value={lodingCapacity.value} class="form-control" id="lodingCapacity" placeholder="Loding Capacity" onChange={lodingCapacity.onChange} />
-          </div>
-
-          <div class="form-group">
-            <input type="bodysize" name='bodysize' value={bodysize.value} class="form-control" id="email" aria-describedby="emailHelp" placeholder="Load Body Size" onChange={bodysize.onChange} />
-          </div>
-          <div class="form-group">
-            <input type="tarnsName" name='transName' value={transName.value} class="form-control" id="tarnsName" placeholder="Your Transportation Name" onChange={transName.onChange} />
-          </div>
-
-          <div class="form-group">
-            <input type="vNumber" name='Vnamber' value={Vnamber.value} class="form-control" id="vNumber" aria-describedby="emailHelp" placeholder="Vehile Number" onChange={Vnamber.onChange} />
-          </div>
-          <div class="form-group">
-            <input type="DLnumber" name='DLnumber' value={DLnumber.value} class="form-control" id="DLnumber" placeholder="Driving License Number" onChange={DLnumber.onChange} />
-          </div>
-
-          <div class="form-group">
-            <input type="Rcnumber" name='RCnumber' value={RCnumber.value} class="form-control" id="Rcnumber" placeholder="RC Number" onChange={RCnumber.onChange} />
-          </div>
-
-          <div className='my-2' >
-            <label class="form-check-label" for="flexRadioDefault1">You have Polution Certificate</label>
-            <div class="form-check">
-              <input class="form-check-input" name='Polutioncertificate' value={PolutionCertificate.value} type="radio" id="1" onChange={PolutionCertificate.onChange} />
-              <label class="form-check-label" for="flexRadioDefault1">
-                Yes
-              </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name='Polutioncertificate' value={PolutionCertificate.value} id="2" checked onChange={PolutionCertificate.onChange} />
-              <label class="form-check-label" for="flexRadioDefault2">
-                No
-              </label>
+      <div className='container'>
+        <div className='ManageBoth' >
+          <div className='vehicleimg' >
+            <img src={`${location.state?.VehicleImage}`} alt="img" /><br />
+            <div className='imagesText'>
+              <span >Your Information is secrued <br /> not public thanks for your Trust</span>
             </div>
           </div>
+          <div className='Alldetails' >
+            <div className='transName'>
+              <span>TransName</span>
+            </div>
+            <div className='smallnav'>
+              <small className='my-4' onClick={handlesetPage} >Profile Details</small>
+              <small className='my-4' onClick={handlesetProfile} >Address Details</small>
+              <small onClick={handleVehicle} className='my-4' >Vehicle Details</small>
+              <small className='my-4' onClick={handleDocument} >Documents Details</small>
+            </div>
 
-          <div>
-            <button type="submit" class="btn btn-profile mx-2 my-3">Cancel</button>
-            <button type="submit" class="btn btn-profile my-3" onClick={fun} >Save</button>
+            {
+              profile === true ? (
+                <div className='showprofile' >
+                  <h6 className='my-4' >Personal Details</h6>
+                  <div className='personal' >
+                    <div class="form-group">
+                      <input type="name" class="form-control" id="name" name='name' value={name.value} aria-describedby="emailHelp" placeholder="First Name" onChange={name.onChange} required />
+                    </div>
+                    <div class="form-group">
+                      <input type="lname" name='lname' value={lname.value} class="form-control mx-2" id="lname" placeholder="Last Name" onChange={lname.onChange} />
+                    </div>
+
+                    <div class="form-group ">
+                      <select id="inputState" name='gender' value={gender.value} class=" mx-3 form-control" onChange={gender.onChange} >
+                        <option selected>Gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                      </select>
+                    </div>
+
+                  </div>
+
+                  <div className='my-2 gender ' >
+                    <div class="form-group">
+                      <input type="DOB" name='DOB' value={DOB.value} class=" form-control" id="email" aria-describedby="emailHelp" placeholder="Date of Brith" onChange={DOB.onChange} />
+                    </div>
+                  </div>
+
+                  <h6 className='my-4' >Contect Details</h6>
+                  <div className='contect' >
+                    <div class="form-group">
+                      <input type="email" name='email' value={email.value} class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" onChange={email.onChange} />
+                    </div>
+                    <div class="form-group">
+                      <input type="phone" name='phone' value={phone.value} class="form-control mx-2 " id="phone" placeholder="Phone Number" onChange={phone.onChange} />
+                    </div>
+                  </div>
+                </div>
+              ) : ("")
+            }
+
+            {
+              Vaddress === true ? (
+                <div className='addressSection'>
+
+                  <div class="form-group">
+                    <textarea type="address" name='address' value={address.value} class="form-control" id="adress" aria-describedby="emailHelp" placeholder="Address" onChange={address.onChange} />
+                  </div>
+
+                  <div className='locationDetails' >
+                    <div class="form-group">
+                      <input type="city" name='city' value={city.value} class="form-control" id="city" placeholder="City" onChange={city.onChange} />
+                    </div>
+
+                    <div class="form-group">
+                      <input type="state" name='state' value={state.value} class="mx-2 form-control" id="state" aria-describedby="emailHelp" placeholder="State" onChange={state.onChange} />
+                    </div>
+
+                    <div class="form-group">
+                      <input type="pincode" name='pincode' value={pincode.value} class="form-control mx-3 " id="pincode" aria-describedby="emailHelp" placeholder="Pin Code" onChange={pincode.onChange} />
+                    </div>
+
+                  </div>
+
+                  <div class="form-group">
+                    <input type="country" name='country' value={country.value} class="form-control my-4 " id="country" placeholder="Country" onChange={country.onChange} />
+                  </div>
+                </div>
+              ) : ('')
+            }
+
+            {
+              vehicle === true ? (
+                <div className='Vehicle' >
+
+                  <div class="form-group">
+                    <input type="basefare" name='basefare' value={basefare.value} class="form-control" id="basefare" aria-describedby="emailHelp" placeholder="Base Fare(Rent)" onChange={basefare.onChange} />
+                  </div>
+                  <div class="form-group">
+                    <input type="lodingCapacity" name='lodingCapacity' value={lodingCapacity.value} class="form-control" id="lodingCapacity" placeholder="Loding Capacity" onChange={lodingCapacity.onChange} />
+                  </div>
+
+                  <div class="form-group">
+                    <input type="bodysize" name='bodysize' value={bodysize.value} class="form-control" id="email" aria-describedby="emailHelp" placeholder="Load Body Size" onChange={bodysize.onChange} />
+                  </div>
+                  <div class="form-group">
+                    <input type="tarnsName" name='transName' value={transName.value} class="form-control" id="tarnsName" placeholder="Your Transportation Name" onChange={transName.onChange} />
+                  </div>
+
+                  <div class="form-group">
+                    <input type="vNumber" name='Vnamber' value={Vnamber.value} class="form-control" id="vNumber" aria-describedby="emailHelp" placeholder="Vehile Number" onChange={Vnamber.onChange} />
+                  </div>
+                  <div class="form-group">
+                    <input type="DLnumber" name='DLnumber' value={DLnumber.value} class="form-control" id="DLnumber" placeholder="Driving License Number" onChange={DLnumber.onChange} />
+                  </div>
+
+                  <div class="form-group">
+                    <input type="Rcnumber" name='RCnumber' value={RCnumber.value} class="form-control" id="Rcnumber" placeholder="RC Number" onChange={RCnumber.onChange} />
+                  </div>
+
+                  <div className='my-2' >
+                    <label class="form-check-label" for="flexRadioDefault1">You have Polution Certificate</label>
+                    <div class="form-check">
+                      <input class="form-check-input" name='Polutioncertificate' value={PolutionCertificate.value} type="radio" id="1" onChange={PolutionCertificate.onChange} />
+                      <label class="form-check-label" for="flexRadioDefault1">
+                        Yes
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name='Polutioncertificate' value={PolutionCertificate.value} id="2" checked onChange={PolutionCertificate.onChange} />
+                      <label class="form-check-label" for="flexRadioDefault2">
+                        No
+                      </label>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span>Polution Certificate</span><br />
+                    <small>{location.state?.PolutionCertificate ? "Yes" : "No"}</small>
+                  </div>
+                </div>
+              ) : ("")
+            }
+
+
+            {
+              uploaddoc === true ? (
+                <>
+                  <div className='ImagesUpload'>
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">Driver Image</label>
+                      <input class="form-control" type="file" id="formFile" />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">Vehicle Image</label>
+                      <input class="form-control" type="file" id="formFile" />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">DL Image/PDF</label>
+                      <input class="form-control" type="file" id="formFile" />
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="formFile" class="form-label">RC Image/PDF</label>
+                      <input class="form-control" type="file" id="formFile" />
+                    </div>
+                  </div>
+
+                  <div className='my-4 text-center ' >
+                    <button onClick={handlesave} className='save-btn ' >Save</button>
+                  </div>
+                </>
+              ) : ('')
+            }
+
           </div>
-        </form>
-
+        </div>
       </div>
-
-
-      {/* <div className='doc' >
-        <h6>Upload Documents </h6>
-        <small>Let us know about you to suggest the best for you.</small>
-
-        <div className='uploadtab' >
-
-          <div className='w-75 my-4 '>
-            <label class="form-label" for="customFile">Vehicle Driver Photo </label>
-            <input class="form-control" type="file" id="formFile" name='driverImage' value={driverImage.value} onChange={driverImage.onChange} />
-          </div>
-
-          <div className='w-75 my-4 ' >
-            <label class="form-label" for="customFile">Vehicle Image </label>
-            <input class="form-control" type="file" id="formFile" name='VehicleImage' value={VehicleImage.value} onChange={VehicleImage.onChange} />
-          </div>
-
-          <div className='w-75 my-4'>
-            <label class="form-label" for="customFile">Driving License</label>
-            <input class="form-control" type="file" id="formFile" name='DLImage' value={DLImage.value} onChange={DLImage.onChange} />
-          </div>
-
-          <div className='w-75 my-4'>
-            <label class="form-label" for="customFile">RC Document </label>
-            <input class="form-control" type="file" id="formFile" name='RCImage' value={RCImage.value} onChange={RCImage.onChange} />
-          </div>
-        </div>
-
-        <div>
-          <button type="submit" class="btn btn-profile mx-2 my-3">Cancel</button>
-          <button type="submit" class="btn btn-profile my-3" onClick={fun} >Save</button>
-        </div>
-      </div> */}
     </>
   )
 }

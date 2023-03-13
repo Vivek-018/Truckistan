@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import "../style/login.css";
 import backimg from "../images/Logo.png";
 import logo from "../images/Logo.png";
@@ -15,7 +15,7 @@ const Login = () => {
 
     const handlelogin = async (e) => {
         e.preventDefault();
-        const {email, password } = values;
+        const { email, password } = values;
         if (email === "") {
             toast("Please Enter the email", {
                 autoClose: 1000,
@@ -40,13 +40,15 @@ const Login = () => {
                 localStorage.setItem("token", res.token);
                 localStorage.setItem("user", JSON.stringify(res.user));
                 localStorage.setItem("type", res.user.type);
-            } 
+            }
             if (localStorage.getItem("token")) {
                 if (localStorage.getItem("type") === "user") {
                     navigate("/user");
                 }
                 else if (localStorage.getItem("type") === "Driver") {
                     navigate("/driver");
+                } else if (localStorage.getItem("type") === "admin") {
+                    navigate("/admin");
                 }
             }
             else { navigate("/"); }
@@ -58,7 +60,7 @@ const Login = () => {
             <div className="login-container row">
                 <div className="left-side col-5">
                     <div className="top-left d-flex align-items-center">
-                         <i onClick={() => { navigate("/"); }} className="fa-sharp fa-solid fa-arrow-left"></i>
+                        <i onClick={() => { navigate("/"); }} className="fa-sharp fa-solid fa-arrow-left"></i>
                         <p className="px-3 m-0">Login</p>
                     </div>
                     <img className="login-img" src={backimg} alt="" />
@@ -79,7 +81,7 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="right-side col-7 d-flex align-items-center justify-content-center">
-                    <form 
+                    <form
                         onSubmit={handlelogin}
                         action=""
                         className="form-container">
@@ -102,7 +104,7 @@ const Login = () => {
                             className="form-control my-2"
                             required
                             onChange={(event) => {
-                                setValues((prev) => ({ ...prev,  password: event.target.value }));
+                                setValues((prev) => ({ ...prev, password: event.target.value }));
                             }}
                         />
 
@@ -131,7 +133,7 @@ const Login = () => {
                 </div>
             </div>
 
-            <ToastContainer/>
+            <ToastContainer />
         </>
     );
 };

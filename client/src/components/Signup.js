@@ -77,6 +77,8 @@ const Login = () => {
                 }
                 else if (localStorage.getItem("type") === "Driver") {
                     navigate("/driver");
+                }else if (localStorage.getItem("type") === "admin") {
+                    navigate("/admin");
                 }
             }
             else { navigate("/"); }

@@ -210,15 +210,17 @@ body {
 }
 
 .proDetails {
-    padding-top: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    font-size:2rem;
 }
 
 .proDetails span {
     color: #8443e5;
+    border-bottom: 1px solid black;
 }
 
 .infoProfile{
-    margin: auto;
     padding-top: 2rem;
     padding-bottom: 2rem;
     display: grid;
@@ -234,8 +236,14 @@ body {
 
 .myprofile-btn {
     background-color: #8443e5;
-    padding: .3rem 1.5rem;
+    padding: .4rem 1.8rem;
     border: none;
     color: white;
     border-radius: .3rem;
+}
+
+.uploadImg{
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }
