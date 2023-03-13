@@ -39,8 +39,6 @@ const Address = ({ data, setData, setAddress, setVehicle }) => {
                     <div class="form-group">
                         <input type="city" name='city' value={data.city} class="form-control" id="city" placeholder="City" onChange={setVal} />
                     </div>
-
-
                     <div class="form-group">
                         <input type="state" name='state' value={data.state} class="form-control" id="state" aria-describedby="emailHelp" placeholder="State" onChange={setVal} />
                     </div>

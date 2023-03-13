@@ -8,7 +8,7 @@
     color: #8443e5;
 }
 
-.driver .topProfile{
+.driver .topProfile {
     font-weight: 100;
     font-size: 1.2rem;
 }
@@ -18,8 +18,8 @@
     cursor: pointer;
 }
 
-.driver .pav span:hover{
-   color: white;
+.driver .pav span:hover {
+    color: white;
 }
 
 .subpages {
@@ -30,16 +30,16 @@
 
 /* ======== profile =========   */
 
-.profileDriver h6{
+.profileDriver h6 {
     color: #8443e5;
 }
 
-.profileDriver small{
+.profileDriver small {
     opacity: .3;
 }
 
-.profileDriver form .form-group{
-     padding-top: 1rem;
+.profileDriver form .form-group {
+    padding-top: 1rem;
 }
 
 .profileDriver form .btn-profile {
@@ -50,61 +50,63 @@
 
 /* =========== card css ============ */
 
-.vehicleInfo{
+.vehicleInfo {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
-.card{
+.card {
     margin: auto;
     align-items: center;
     border-radius: 8px;
     box-shadow: 0 0 15px 5px rgba(228, 228, 228, 0.5);
     background-color: #fff;
-    width: 65%;
+    width: 85%;
     text-align: center;
 }
 
-.card img{
+.card img {
     border-radius: .4rem;
     margin-top: .5rem;
-    width: 8rem;
-} 
-
-.card:hover{
-   background-color: #efe4ff;
+    width: 10rem;
 }
 
-.card .card-body{
+.card:hover {
+    background-color: #efe4ff;
+}
+
+.card .card-body {
     margin: auto;
 }
 
-.card .card-body .TransName{
+.card .card-body .TransName {
     padding-top: .5rem;
     padding-bottom: .5rem;
 }
 
-.card .card-body .TransName small{
+.card .card-body .TransName small {
     color: #8443e5;
 }
 
-.card .card-body small{
+.card .card-body small {
     font-size: .7rem;
 }
 
-.buttons .btn-card{
-   margin-top: 1rem;
-   background-color: #8443e5;
-   color: white;
-   border: none;
-   border-radius: .2rem;
-   padding: .2rem 1rem;
-   font-size: .8rem;
+.buttons .btn-card {
+    margin-top: 1rem;
+    background-color: #8443e5;
+    color: white;
+    border: none;
+    border-radius: .2rem;
+    padding: .2rem 1rem;
+    font-size: .8rem;
 }
 
 /* ========= upload doc page =========== */
 
-.doc{
+.doc {
     padding-top: 2rem;
 }
 
@@ -113,16 +115,17 @@
     font-size: 1.1rem;
 }
 
-.doc small{
+.doc small {
     opacity: .4;
 }
-.uploadtab{
+
+.uploadtab {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding-top: 1rem;
 }
 
-.doc .btn-profile{
+.doc .btn-profile {
     background-color: #8443e5;
     color: white;
     padding: .5rem 3rem;
@@ -131,22 +134,117 @@
 
 /* =========== view details page css ============== */
 
-.Alldetails{
-    padding-top: 2rem;
-    padding-bottom: 4rem;
+.ManageBoth {
+    padding-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: .5rem;
 }
 
-.Alldetails h6{
-    border-bottom: 1px solid black;
-    color: #8443e5;
+.Alldetails {
+    height: 82vh;
+    width: 150vh;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 1rem;
+    box-shadow: 0 0 15px 5px rgba(228, 228, 228, 0.5);
 }
 
-.showprofile{
-    display: grid;
+.showprofile {
     margin: auto;
-    grid-template-columns: repeat(5, 1fr);
 }
 
-.showprofile div small, a{
+.showprofile div small,
+a {
     color: #8443e5;
+}
+
+.vehicleimg {
+    background-color: white;
+    box-shadow: 0 0 15px 5px rgba(228, 228, 228, 0.5);
+}
+
+.vehicleimg img {
+    width: 20rem;
+}
+
+.imagesText {
+    text-align: center;
+    opacity: .7;
+    padding-top: 3rem;
+    font-size: .8rem;
+}
+
+.transName {
+    padding-top: 1rem;
+}
+
+.smallnav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 8vh;
+    border-bottom: 2px solid rgba(109, 108, 108, 0.5);
+    color: #8443e5;
+}
+
+.smallnav small {
+    cursor: pointer;
+}
+
+.personal {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.contect {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.addressSection {
+    padding-top: 3rem;
+}
+
+.addressSection div small {
+    color: #8443e5;
+}
+
+.addressSection .locationDetails {
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.Vehicle {
+    display: grid;
+    padding-top: 3rem;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.Vehicle small {
+    color: #8443e5;
+}
+
+.ImagesItem{
+    display: grid;
+    padding-top: 3rem;
+    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.ImagesUpload{
+    gap: 1rem;
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.save-btn{
+    border: none;
+    border-radius: .3rem;
+    background-color: #8443e5;
+    color: white;
+    padding: .5rem 3rem;
 }

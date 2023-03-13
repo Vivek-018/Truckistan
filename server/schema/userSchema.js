@@ -29,6 +29,10 @@ let schema = new mongoose.Schema({
         type: String,
         enum: ["Driver","user"],
         required: true,
+    },
+    link:{
+        type:String,
+        required:false
     }
 })
 

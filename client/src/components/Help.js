@@ -1,15 +1,19 @@
 import React from 'react'
 import Navbar from './Navbar'
+import Footer from "./Footer"
 
-const AdminPage = () => {
+const Help = () => {
     return (
         <>
-            <Navbar/>
+            <Navbar />
+
             <div className='text-center my-4 ' >
-                <h1>hii this is admin page </h1>
+                <h1>Hii this is help section</h1>
             </div>
+
+            <Footer />
         </>
     )
 }
 
-export default AdminPage
+export default Help
