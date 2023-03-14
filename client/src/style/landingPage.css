@@ -385,3 +385,9 @@ a:hover {
   display: none;
 }
 
+
+@media screen and (max-width: 900px) {
+  .web1-images{
+      display: none;
+  }
+}

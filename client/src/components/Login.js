@@ -1,17 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../style/login.css";
 import backimg from "../images/Logo.png";
 import logo from "../images/Logo.png";
 import { useNavigate, Link } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import driverContext from "./useContext/driverContext";
 
 const Login = () => {
+    const context = useContext(driverContext)
+    const { generateOTP, UpcomingOtp } = context;
     const navigate = useNavigate();
+    const [check, setCheck] = useState(false)
+    const [enterOTP, setEnterOTP] = useState(false)
+    const [Otp, setotp] = useState({ otp: "" });
     const [values, setValues] = useState({
         email: "",
         password: "",
     });
+
+    localStorage.setItem("code", UpcomingOtp?.code)
+    localStorage.setItem("_id", UpcomingOtp?.user?._id)
+
+    const handleState = () => {
+        setCheck(true)
+    }
 
     const handlelogin = async (e) => {
         e.preventDefault();
@@ -55,6 +68,27 @@ const Login = () => {
         }
     };
 
+
+    const SendOtp = (e) => {
+        e.preventDefault();
+        const { email } = values;
+        generateOTP(email)
+        setEnterOTP(true)
+    }
+
+    const checkOtp = (e) => {
+        e.preventDefault();
+        const { otp } = Otp;
+        const code = localStorage.getItem('code');
+        if (code === otp) {
+            navigate('/resetPassword')
+            localStorage.setItem("user", JSON.stringify(UpcomingOtp.user));
+            localStorage.setItem("type", UpcomingOtp.user.type);
+        } else {
+            console.log("no")
+        }
+    }
+
     return (
         <>
             <div className="login-container row">
@@ -82,38 +116,86 @@ const Login = () => {
                 </div>
                 <div className="right-side col-7 d-flex align-items-center justify-content-center">
                     <form
-                        onSubmit={handlelogin}
                         action=""
                         className="form-container">
                         <div className=" logotext d-flex justify-content-center" style={{ alignItems: "center" }} >
                             <img src={logo} alt="" className="form-logo web1-logo" />
                             <span>Loadkro</span>
                         </div>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            className="form-control my-2"
-                            required
-                            onChange={(event) => {
-                                setValues((prev) => ({ ...prev, email: event.target.value }));
-                            }}
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            className="form-control my-2"
-                            required
-                            onChange={(event) => {
-                                setValues((prev) => ({ ...prev, password: event.target.value }));
-                            }}
-                        />
 
-                        <button
-                            type="submit"
-                            className="submit-btn btn btn-lg btn-block my-4"
-                        >
-                            Login
-                        </button>
+                        {
+                            (!enterOTP) ? (
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    className="form-control my-2"
+                                    required
+                                    onChange={(event) => {
+                                        setValues((prev) => ({ ...prev, email: event.target.value }));
+                                    }}
+                                />) : (
+                                <input
+                                    type="password"
+                                    placeholder="Enter Your OTP"
+                                    className="form-control my-2"
+                                    required
+                                    onChange={(event) => {
+                                        setotp((prev) => ({ ...prev, otp: event.target.value }));
+                                    }}
+                                />
+                            )
+                        }
+
+
+                        {(!check) ?
+                            <>
+                                <input
+                                    type="password"
+                                    placeholder="Password"
+                                    className="form-control my-2"
+                                    required
+                                    onChange={(event) => {
+                                        setValues((prev) => ({ ...prev, password: event.target.value }));
+                                    }}
+                                />
+
+                                <button
+                                    type="submit"
+                                    onClick={handlelogin}
+                                    className="submit-btn btn btn-lg btn-block my-4"
+                                >
+                                    Login
+                                </button>
+                            </> : (
+
+                                (!enterOTP) ?
+                                    <button
+                                        type="submit"
+                                        className="submit-btn btn btn-lg btn-block my-4"
+                                        onClick={SendOtp}
+                                    >
+                                        Send OTP
+                                    </button> : (
+                                        <button
+                                            type="submit"
+                                            className="submit-btn btn btn-lg btn-block my-4"
+                                            onClick={checkOtp}
+                                        >
+                                            Submit OTP
+                                        </button>
+                                    )
+                            )
+                        }
+
+
+                        {(!check) ? (
+                            <div className="text-center" >
+                                <Link onClick={handleState} > Reset Your Password </Link>
+                            </div>
+                        ) : ""
+                        }
+
+
                         <div className="alternate-option text-center">
                             Don’t have an account{" "}
                             <div className="web1-buttons d-flex flex-column mt-3">
