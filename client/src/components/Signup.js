@@ -7,10 +7,12 @@ import backimg from "../images/Logo.png";
 import logo from "../images/Logo.png";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import generateOtp from 'rv-otp-generator';
 
 const Login = () => {
     const navigate = useNavigate();
     const [phone, setPhone] = useState("+911234567890");
+    const temp = []
     const [values, setValues] = useState({
         username: "",
         email: "",
@@ -18,6 +20,11 @@ const Login = () => {
         Rpassword: "",
         type: ""
     });
+    const [OTP,setOTP]=useState(true);
+    const [newPass,setNewPass]=useState(false);
+
+    const [getOtp, setGetOtp]=useState('');
+    const [otp,setotp]=useState(0);
 
     const handleSignup = async (e) => {
         e.preventDefault();
@@ -46,7 +53,7 @@ const Login = () => {
             toast("Password do not Match", {
                 autoClose: 1000,
             })
-        }  else if (phone.length <= 12) {
+        } else if (phone.length <= 12) {
             toast("Plz Enter correct phone number ", {
                 autoClose: 1000,
             })
@@ -65,23 +72,41 @@ const Login = () => {
                 })
             });
             const res = await data.json();
-            // console.log(res)
             if (res.status === 201) {
                 localStorage.setItem("token", res.token);
                 localStorage.setItem("user", JSON.stringify(res.user));
                 localStorage.setItem("type", res.user.type);
+                
+                setOTP(false)
+                const otp = generateOtp(4)
+                setotp(otp);
+                console.log(otp)
+                temp.push({ "email": email, "otp": otp })
+                console.log(temp)
+                setGetOtp('');
+
+                console.log("opt is ", getOtp)
+                window.Email.send({
+                    Host: "smtp.elasticemail.com",
+                    Username: "anshu.verma62074@gmail.com",
+                    Password: "B4B14856EDDCC0A25DAF23492E8D4A7E356B",
+                    To: email,
+                    From: "durgeshchaudhary020401@gmail.com",
+                    Subject: "This is the otp to reset password for JOB HUNT",
+                    Body: otp
+                })
             }
-            if (localStorage.getItem("token")) {
-                if (localStorage.getItem("type") === "user") {
-                    navigate("/user");
-                }
-                else if (localStorage.getItem("type") === "Driver") {
-                    navigate("/driver");
-                }else if (localStorage.getItem("type") === "admin") {
-                    navigate("/admin");
-                }
-            }
-            else { navigate("/"); }
+            // if (localStorage.getItem("token")) {
+            //     if (localStorage.getItem("type") === "user") {
+            //         navigate("/user");
+            //     }
+            //     else if (localStorage.getItem("type") === "Driver") {
+            //         navigate("/driver");
+            //     } else if (localStorage.getItem("type") === "admin") {
+            //         navigate("/admin");
+            //     }
+            // }
+            // else { navigate("/"); }
         }
     };
 

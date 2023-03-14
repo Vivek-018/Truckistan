@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import driverContext from './driverContext'
+import axios from 'axios'
 
 const DriversData = (props) => {
 
   const host = "http://localhost:5000/driver"
+  const Userhost = "http://localhost:5000/user"
   const [data, setData] = useState([]);
   const [alldata, setAllData] = useState([]);
+  const [UpcomingOtp, setOtp] = useState();
 
   const getData = async () => {
     const response = await fetch(`${host}/vehiclesData`, {
@@ -52,8 +55,50 @@ const DriversData = (props) => {
     console.log(json)
   }
 
+
+  const editUserProfiledata = async (id, username, email, phone, link) => {
+    const response = await fetch(`${Userhost}/editUserProfiledata/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username, email, phone, link
+      })
+    })
+    const json = await response.json();
+  }
+
+  const generateOTP = async (email) => {
+    const response = await fetch(`${Userhost}/generateOTP`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({email})
+    })
+    const json = await response.json();
+    setOtp(json)
+    if (json.code) {
+      let text = ` Your Password OTP is ${json.code} . Verify and recover your password.`;
+      await axios.post(`${Userhost}/sendMail`, { email, text, subject: "Password Reset" })
+      return Promise.resolve(json.code);
+    } else {
+      return Promise.reject("error")
+    }
+  }
+
+  const resetPassword = async (email, password) => {
+    try {
+      const { data, status } = await axios.put(`${Userhost}/resetPassword`, { email, password })
+      return Promise.resolve({ data, status })
+    } catch (error) {
+      return Promise.reject({ error })
+    }
+  }
+
   return (
-    <driverContext.Provider value={{ data, alldata, getData, getallData, editData }} >
+    <driverContext.Provider value={{ UpcomingOtp, data, alldata, getData, getallData, editData, generateOTP, resetPassword, editUserProfiledata }} >
       {props.children}
     </driverContext.Provider>
   )
