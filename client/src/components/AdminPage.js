@@ -1,12 +1,13 @@
 import React from 'react'
 import Navbar from './Navbar'
+import '../style/admin.css'
 
 const AdminPage = () => {
     return (
         <>
             <Navbar/>
             <div className='text-center my-4 ' >
-                <h1>hii this is admin page </h1>
+               <p>ok</p>
             </div>
         </>
     )
