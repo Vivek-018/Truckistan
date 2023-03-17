@@ -11,6 +11,7 @@ const AdminPage = () => {
                <p>archana uniyal </p>
                <h> i am good girl </h>
                <h1> i am good girl </h1>
+               <h2> i am good girl </h2>
             </div>
         </>
     )
