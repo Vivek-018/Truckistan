@@ -7,7 +7,6 @@ const bcrypt = require('bcryptjs');
 const fetchuser = require('../middleware/fetchuser');
 const nodemailer = require('nodemailer');
 const otpGenerator = require('otp-generator')
-const localVariables = require("../middleware/fetchuser")
 const Mailgen = require("mailgen");
 
 
@@ -55,10 +54,6 @@ router.post('/signup', async (req, res) => {
             }
             // generate token using userid and secret key
             let token = jwt.sign(userdata, keysecret)
-            console.log(user)
-            // const oken = await User({token:token})
-            // const Savetoken = await setToken.save()
-            // return the backend status to frontend
             if (token && user) {
                 res.status(201).json({ status: 201, token, user })
             } else {
@@ -99,15 +94,15 @@ router.post('/login', async (req, res) => {
 })
 
 
-router.post('/generateOTP',async (req, res) => {
+router.post('/generateOTP', async (req, res) => {
     const { email } = req.body
     const user = await User.findOne({ email: email });
-    if(user){
+    if (user) {
         req.app.locals.OTP = await otpGenerator.generate(6, { lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false })
         console.log(req.app.locals.OTP)
         res.status(201).send({ code: req.app.locals.OTP, user })
-    }else{
-        return res.status(400).send({ error: "Email does not exist"})
+    } else {
+        return res.status(400).send({ error: "Email does not exist" })
     }
 })
 
@@ -121,7 +116,6 @@ router.post("/sendMail", async (req, res) => {
             outro: 'Need help, or have questio? Just reply to this email'
         }
     }
-
     var emailBody = MailGenerator.generate(Useremail);
     let message = {
         from: " durgeshchaudhary020401@gmail.com",
@@ -129,56 +123,27 @@ router.post("/sendMail", async (req, res) => {
         subject: subject || "Signup successful",
         html: emailBody
     }
-
     transporter.sendMail(message)
         .then(() => {
             return res.status(200).send({ msg: "You should receive an email from us. " })
         })
-    //    .catch(err=>res.status(404).send({err}))
 })
 
-
-router.get('/createResetSession', async (req, res) => {
-    if (req.app.locals.resetSession) {
-        req.app.locals.resetSession = false;
-        return res.status(201).send({ msg: "access granted!" })
-    }
-    return res.status(404).send({ error: "Session expired " })
-})
-
-router.put('/resetPassword', fetchuser, async (req, res) => {
+router.put('/resetPasword', async (req, res) => {
+    const { email, password } = req.body;
     try {
-
-        if (!req.app.locals.resetSession) {
-            return res.status(404).send({ error: "Session expired " })
-        }
-        const { email, password } = req.body;
-        try {
-            User.findOne({ email })
-                .then(user => {
-                    bcrypt.hash(password, 10)
-                        .then(hashedPassword => {
-                            User.updateOne({ email: user.email },
-                                { password: hashedPassword }, function (err, data) {
-                                    if (err) throw err;
-                                    req.app.locals.resetSession = false
-                                    return res.status(201).send({ msg: "Record Updated" })
-                                });
-                        })
-                        .catch(e => {
-                            return res.status(500).send({
-                                error: "Enable to hashed Password"
-                            })
-                        })
-                })
-                .catch((error) => {
-                    return res.status(404).send({ error: "email is not found" })
-                })
-        } catch (error) {
-            return res.status(404).send({ error: "Some error occured" })
+        const find = await User.findOne({ email: email });
+        const salt = await bcrypt.genSalt(10);
+        const pass = await bcrypt.hash(password, salt);
+        if (find) {
+            const data = await User.findOneAndUpdate({ email: email }, { $set: { password: pass } }, { new: true })
+            res.status(201).send({ data })
+            console.log(data)
+        }else{
+            res.status(404).send({msg:"Email is not found"})
         }
     } catch (error) {
-        return res.status(404).send({ error: "Some error occured" })
+        res.status(404).send({ msg: "Some error occured" })
     }
 })
 
@@ -186,7 +151,7 @@ router.get('/getUserData', fetchuser, async (req, res) => {
     const user = req.user;
     try {
         const data = await User.findOne({ _id: user.id });
-        res.json(data)
+        res.json({data})
     } catch (error) {
         console.error(error.message);
         res.status(401).send("Some error occured")

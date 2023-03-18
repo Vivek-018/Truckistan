@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "../style/login.css";
 import backimg from "../images/Logo.png";
 import logo from "../images/Logo.png";
@@ -9,85 +9,29 @@ import driverContext from "./useContext/driverContext";
 
 const Login = () => {
     const context = useContext(driverContext)
-    // const { generateOTP, UpcomingOtp } = context;
+    const { resetPassword } = context;
+    const email = JSON.parse(localStorage.getItem("user"));
     const navigate = useNavigate();
-    const [check, setCheck] = useState(false)
-    // const [enterOTP, setEnterOTP] = useState(false)
-    // const [Otp, setotp] = useState({ otp: "" });
     const [values, setValues] = useState({
-        email: "",
         password: "",
+        Rpassword: "",
     });
 
-    // localStorage.setItem("code", UpcomingOtp?.code)
-    // localStorage.setItem("_id", UpcomingOtp?.user?._id)
-
-    const handleState = () => {
-        setCheck(true)
-    }
-
-    const handlelogin = async (e) => {
+    const handleReset = (e) => {
         e.preventDefault();
-        const { email, password } = values;
-        if (email === "") {
-            toast("Please Enter the email", {
-                autoClose: 1000,
-            })
-        } else if (password === "") {
-            toast("Please Enter your password", {
-                autoClose: 1000,
-            })
+        const { password, Rpassword } = values;
+        if (password === null) {
+            alert("Password is not blank");
+        } else if (password !== Rpassword) {
+            alert("Password Not match");
+        } else if (Rpassword === null) {
+            alert("Confirm Password is not blank");
         } else {
-            const data = await fetch(`http://localhost:5000/user/login`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: email,
-                    password: password,
-                })
-            });
-            const res = await data.json();
-            if (res.status === 201) {
-                localStorage.setItem("token", res.token);
-                localStorage.setItem("user", JSON.stringify(res.user));
-                localStorage.setItem("type", res.user.type);
-            }
-            if (localStorage.getItem("token")) {
-                if (localStorage.getItem("type") === "user") {
-                    navigate("/user");
-                }
-                else if (localStorage.getItem("type") === "Driver") {
-                    navigate("/driver");
-                } else if (localStorage.getItem("type") === "admin") {
-                    navigate("/admin");
-                }
-            }
-            else { navigate("/"); }
+            resetPassword(email.email, password)
+            alert("Password Updated successfully");
+            navigate('/login')
         }
     };
-
-
-    // const SendOtp = (e) => {
-    //     e.preventDefault();
-    //     const { email } = values;
-    //     generateOTP(email)
-    //     setEnterOTP(true)
-    // }
-
-    // const checkOtp = (e) => {
-    //     e.preventDefault();
-    //     const { otp } = Otp;
-    //     const code = localStorage.getItem('code');
-    //     if (code === otp) {
-    //         navigate('/resetPassword')
-    //         localStorage.setItem("user", JSON.stringify(UpcomingOtp.user));
-    //         localStorage.setItem("type", UpcomingOtp.user.type);
-    //     } else {
-    //         console.log("no")
-    //     }
-    // }
 
     return (
         <>
@@ -122,105 +66,27 @@ const Login = () => {
                             <img src={logo} alt="" className="form-logo web1-logo" />
                             <span>Loadkro</span>
                         </div>
-{/* 
-                        {
-                            (!enterOTP) ? (
-                                <input
-                                    type="email"
-                                    placeholder="Email"
-                                    className="form-control my-2"
-                                    required
-                                    onChange={(event) => {
-                                        setValues((prev) => ({ ...prev, email: event.target.value }));
-                                    }}
-                                />) : (
-                                <input
-                                    type="password"
-                                    placeholder="Enter Your OTP"
-                                    className="form-control my-2"
-                                    required
-                                    onChange={(event) => {
-                                        setotp((prev) => ({ ...prev, otp: event.target.value }));
-                                    }}
-                                />
-                            )
-                        }
 
+                        <div className='Details' >
+                            <form>
+                                <div className="form-group">
+                                    <input type="password" value={values.password}
+                                        className="form-control" id="password" name='password' aria-describedby="emailHelp" placeholder="New Password"
+                                        onChange={(e) => { setValues((prev) => ({ ...prev, password: e.target.value })) }}
+                                    />
+                                </div>
 
-                        {(!check) ?
-                            <>
-                                <input
-                                    type="password"
-                                    placeholder="Password"
-                                    className="form-control my-2"
-                                    required
-                                    onChange={(event) => {
-                                        setValues((prev) => ({ ...prev, password: event.target.value }));
-                                    }}
-                                />
+                                <div class="form-group">
+                                    <input type="Rpassword" value={values.Rpassword} name='Rpassword' className="form-control my-2 " id="lname" placeholder="Confirm Password"
+                                        onChange={(e) => { setValues((prev) => ({ ...prev, Rpassword: e.target.value })) }}
+                                    />
+                                </div>
 
-                                <button
-                                    type="submit"
-                                    onClick={handlelogin}
-                                    className="submit-btn btn btn-lg btn-block my-4"
-                                >
-                                    Login
-                                </button>
-                            </> : (
-
-                                (!enterOTP) ?
-                                    <button
-                                        type="submit"
-                                        className="submit-btn btn btn-lg btn-block my-4"
-                                        onClick={SendOtp}
-                                    >
-                                        Send OTP
-                                    </button> : (
-                                        <button
-                                            type="submit"
-                                            className="submit-btn btn btn-lg btn-block my-4"
-                                            onClick={checkOtp}
-                                        >
-                                            Submit OTP
-                                        </button>
-                                    )
-                            )
-                        }
-
-
-                        {(!check) ? (
-                            <div className="text-center" >
-                                <Link onClick={handleState} > Reset Your Password </Link>
-                            </div>
-                        ) : ""
-                        }
-  */}
-              <div className='Details' >
-                <form>
-                    <div className="form-group">
-                        <input type="name" className="form-control" id="name" name='name'  aria-describedby="emailHelp" placeholder="New Password"  />
-                    </div>
-
-                    <div class="form-group">
-                        <input type="lname" name='lname'  className="form-control my-2 " id="lname" placeholder="Confirm Password"  />
-                    </div>
-
-                    <div className="web1-buttons d-flex flex-column mt-3">
-                                
-                                <button
-                                    type="submit"
-                                    className="submit-btn btn btn-lg btn-block my-4"
-                                >
-                                    Save
-                                </button>
-                                
-                                
-                            </div>
-
-                    
-                </form>
-               </div>
-
+                                <div className="web1-buttons d-flex flex-column mt-3">
+                                    <button type="submit" className="submit-btn btn btn-lg btn-block my-4" onClick={handleReset}>Save </button>
+                                </div>
+                            </form>
+                        </div>
 
                         <div className="alternate-option text-center">
                             Don’t have an account{" "}
