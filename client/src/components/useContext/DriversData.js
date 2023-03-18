@@ -68,6 +68,26 @@ const DriversData = (props) => {
     const json = await response.json();
   }
 
+  const generateOTPAtSignup = async (email) => {
+    const response = await fetch(`${Userhost}/generateOTPAtSignup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({email})
+    })
+    const json = await response.json();
+    console.log(json, "res")
+    setOtp(json)
+    if (json.code) {
+      let text = ` Your Password OTP is ${json.code} . Verify and recover your password.`;
+      await axios.post(`${Userhost}/sendMail`, { email, text, subject: "Password Reset" })
+      return Promise.resolve(json.code);
+    } else {
+      return Promise.reject("error")
+    }
+  }
+
   const generateOTP = async (email) => {
     const response = await fetch(`${Userhost}/generateOTP`, {
       method: "POST",
@@ -77,6 +97,7 @@ const DriversData = (props) => {
       body: JSON.stringify({email})
     })
     const json = await response.json();
+    console.log(json, "res")
     setOtp(json)
     if (json.code) {
       let text = ` Your Password OTP is ${json.code} . Verify and recover your password.`;
@@ -97,7 +118,7 @@ const DriversData = (props) => {
   }
   
   return (
-    <driverContext.Provider value={{ UpcomingOtp, data, alldata, getData, getallData, editData, generateOTP, resetPassword, editUserProfiledata }} >
+    <driverContext.Provider value={{ UpcomingOtp, data,generateOTPAtSignup ,alldata, getData, getallData, editData, generateOTP, resetPassword, editUserProfiledata }} >
       {props.children}
     </driverContext.Provider>
   )
