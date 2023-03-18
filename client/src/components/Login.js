@@ -74,6 +74,7 @@ const Login = () => {
         const { email } = values;
         generateOTP(email)
         setEnterOTP(true)
+        // setValues({...values, password:""})
     }
 
     const checkOtp = (e) => {
@@ -135,7 +136,7 @@ const Login = () => {
                                     }}
                                 />) : (
                                 <input
-                                    type="password"
+                                    type="number"
                                     placeholder="Enter Your OTP"
                                     className="form-control my-2"
                                     required
@@ -154,8 +155,7 @@ const Login = () => {
                                     placeholder="Password"
                                     className="form-control my-2"
                                     required
-                                    onChange={(event) => {
-                                        setValues((prev) => ({ ...prev, password: event.target.value }));
+                                    onChange={(event) => {setValues((prev) => ({ ...prev, password: event.target.value }));
                                     }}
                                 />
 

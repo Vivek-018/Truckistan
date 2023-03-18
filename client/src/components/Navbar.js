@@ -97,11 +97,12 @@ const Navbar = () => {
             }
         });
         const res = await data.json();
+        console.log(res.data, "res")
         if(res !== null){
-            setname(res);
-            username.onSet(res?.username)
-            email.onSet(res?.email)
-            phone.onSet(res?.phone)
+            setname(res.data);
+            username.onSet(res.data?.username)
+            email.onSet(res.data?.email)
+            phone.onSet(res.data?.phone)
         }
     };
 

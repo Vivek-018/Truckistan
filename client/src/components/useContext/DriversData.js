@@ -52,7 +52,6 @@ const DriversData = (props) => {
       })
     })
     const json = await response.json();
-    console.log(json)
   }
 
 
@@ -90,13 +89,13 @@ const DriversData = (props) => {
 
   const resetPassword = async (email, password) => {
     try {
-      const { data, status } = await axios.put(`${Userhost}/resetPassword`, { email, password })
+      const { data, status } = await axios.put(`${Userhost}/resetPasword`, { email, password })
       return Promise.resolve({ data, status })
     } catch (error) {
       return Promise.reject({ error })
     }
   }
-
+  
   return (
     <driverContext.Provider value={{ UpcomingOtp, data, alldata, getData, getallData, editData, generateOTP, resetPassword, editUserProfiledata }} >
       {props.children}
