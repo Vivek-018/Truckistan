@@ -93,6 +93,16 @@ router.post('/login', async (req, res) => {
     }
 })
 
+router.post('/generateOTPAtSignup', async (req, res) => {
+    const { email } = req.body
+    if (email) {
+        req.app.locals.OTP = await otpGenerator.generate(6, { lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false })
+        console.log(req.app.locals.OTP)
+        res.status(201).send({ code: req.app.locals.OTP})
+    } else {
+        return res.status(400).send({ error: "Email does not exist" })
+    }
+})
 
 router.post('/generateOTP', async (req, res) => {
     const { email } = req.body

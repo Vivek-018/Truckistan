@@ -74,7 +74,6 @@ const Login = () => {
         const { email } = values;
         generateOTP(email)
         setEnterOTP(true)
-        // setValues({...values, password:""})
     }
 
     const checkOtp = (e) => {

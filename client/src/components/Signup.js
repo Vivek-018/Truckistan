@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import { useNavigate } from "react-router-dom";
-import validator from 'validator';
 import "react-phone-number-input/style.css";
 import backimg from "../images/Logo.png";
 import logo from "../images/Logo.png";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import driverContext from "./useContext/driverContext";
+import TextField from '@material-ui/core/TextField';
 
 const Login = () => {
     const navigate = useNavigate();
+    const context = useContext(driverContext);
+    const { generateOTPAtSignup, UpcomingOtp } = context;
+    const [Otp, setotp] = useState({ otp: "" });
+    const [check, setcheck] = useState(false);
     const [phone, setPhone] = useState("+911234567890");
     const [values, setValues] = useState({
         username: "",
@@ -18,6 +23,8 @@ const Login = () => {
         Rpassword: "",
         type: ""
     });
+
+    localStorage.setItem("code", UpcomingOtp?.code)
 
     const handleSignup = async (e) => {
         e.preventDefault();
@@ -51,36 +58,48 @@ const Login = () => {
                 autoClose: 1000,
             })
         } else {
-            const data = await fetch(`http://localhost:5000/user/signup`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    username: username,
-                    email: email,
-                    password: password,
-                    phone: phone,
-                    type: type,
-                })
-            });
-            const res = await data.json();
-            if (res.status === 201) {
-                localStorage.setItem("token", res.token);
-                localStorage.setItem("user", JSON.stringify(res.user));
-                localStorage.setItem("type", res.user.type);
-            }
-            if (localStorage.getItem("token")) {
-                if (localStorage.getItem("type") === "user") {
-                    navigate("/user");
+            setcheck(true)
+            generateOTPAtSignup(email);
+            console.log(email, email)
+            const { otp } = Otp;
+            const code = localStorage.getItem('code');
+            if (code === otp) {
+                const data = await fetch(`http://localhost:5000/user/signup`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        email: email,
+                        password: password,
+                        phone: phone,
+                        type: type,
+                    })
+                });
+                const res = await data.json();
+                if (res.status === 201) {
+                    localStorage.setItem("token", res.token);
+                    localStorage.setItem("user", JSON.stringify(res.user));
+                    localStorage.setItem("type", res.user.type);
                 }
-                else if (localStorage.getItem("type") === "Driver") {
-                    navigate("/driver");
-                } else if (localStorage.getItem("type") === "admin") {
-                    navigate("/admin");
+                if (localStorage.getItem("token")) {
+                    if (localStorage.getItem("type") === "user") {
+                        navigate("/user");
+                    }
+                    else if (localStorage.getItem("type") === "Driver") {
+                        navigate("/driver");
+                    } else if (localStorage.getItem("type") === "admin") {
+                        navigate("/admin");
+                    }
                 }
+                else { navigate("/"); }
+                // navigate('/resetPassword')
+                // localStorage.setItem("user", JSON.stringify(UpcomingOtp.user));
+                // localStorage.setItem("type", UpcomingOtp.user.type);
+            } else {
+                console.log("no")
             }
-            else { navigate("/"); }
         }
     };
 
@@ -114,75 +133,96 @@ const Login = () => {
                             <img src={logo} alt="" className="form-logo web1-logo" />
                             <span>Loadkro</span>
                         </div>
-                        <input
-                            type="text"
-                            placeholder="Enter Full Name"
-                            className="form-control my-2"
-                            label="Name"
-                            onChange={(event) => {
-                                setValues((prev) => ({ ...prev, username: event.target.value }));
-                            }}
-                        />
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            className="form-control my-2"
-                            label="Email"
-                            onChange={(event) => {
-                                setValues((prev) => ({ ...prev, email: event.target.value }));
-                            }}
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            className="form-control my-2"
-                            label="Password"
-                            onChange={(event) => {
-                                setValues((prev) => ({ ...prev, password: event.target.value }));
-                            }}
-                        />
-                        <input
-                            type="password"
-                            placeholder="Re-enter Password"
-                            className="form-control my-2"
-                            onChange={(event) => {
-                                setValues((prev) => ({ ...prev, Rpassword: event.target.value }));
-                            }}
-                        />
-                        <PhoneInput
-                            className="form-control"
-                            placeholder="Enter phone number"
-                            value={phone}
-                            onChange={setPhone}
-                            defaultCountry=""
-                        />
-                        <div style={{ position: "relative", display: "flex" }}>
-                            <select className="form-control my-2"
-                                onChange={(event) => {
-                                    setValues((prev) => ({ ...prev, type: event.target.value }));
-                                }}
-                            >
-                                <option value="" selected >Type</option>
-                                <option value="Driver" >Driver</option>
-                                <option value="user">User</option>
-                            </select>
-                            <div
-                                style={{
-                                    position: "absolute",
-                                    right: "15px",
-                                    top: "0",
-                                    bottom: "0",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    color: "lightgrey",
-                                }}
-                            >
-                                <i className="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <b>{''}</b>
-                        <input type="submit" className="submit-btn btn btn-lg btn-block my-2" value="Signup" />
 
+                        {
+                            (!check) ? (
+                                <>
+
+                                    <input
+                                        type="text"
+                                        placeholder="Enter Full Name"
+                                        className="form-control my-2"
+                                        label="Name"
+                                        onChange={(event) => {
+                                            setValues((prev) => ({ ...prev, username: event.target.value }));
+                                        }}
+                                    />
+                                    <input
+                                        type="email"
+                                        placeholder="Email"
+                                        className="form-control my-2"
+                                        label="Email"
+                                        onChange={(event) => {
+                                            setValues((prev) => ({ ...prev, email: event.target.value }));
+                                        }}
+                                    />
+                                    <input
+                                        type="password"
+                                        placeholder="Password"
+                                        className="form-control my-2"
+                                        label="Password"
+                                        onChange={(event) => {
+                                            setValues((prev) => ({ ...prev, password: event.target.value }));
+                                        }}
+                                    />
+                                    <input
+                                        type="password"
+                                        placeholder="Re-enter Password"
+                                        className="form-control my-2"
+                                        onChange={(event) => {
+                                            setValues((prev) => ({ ...prev, Rpassword: event.target.value }));
+                                        }}
+                                    />
+                                    <PhoneInput
+                                        className="form-control"
+                                        placeholder="Enter phone number"
+                                        value={phone}
+                                        onChange={setPhone}
+                                        defaultCountry=""
+                                    />
+                                    <div style={{ position: "relative", display: "flex" }}>
+                                        <select className="form-control my-2"
+                                            onChange={(event) => {
+                                                setValues((prev) => ({ ...prev, type: event.target.value }));
+                                            }}
+                                        >
+                                            <option value="" selected >Type</option>
+                                            <option value="Driver" >Driver</option>
+                                            <option value="user">User</option>
+                                        </select>
+                                        <div
+                                            style={{
+                                                position: "absolute",
+                                                right: "15px",
+                                                top: "0",
+                                                bottom: "0",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                color: "lightgrey",
+                                            }}
+                                        >
+                                            <i className="fa-solid fa-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <input type="submit" className="submit-btn btn btn-lg btn-block my-2" value="Signup" />
+                                </>
+
+                            ) : (
+                                <>
+                                    <TextField
+                                        id="standard-password-input"
+                                        label="OTP"
+                                        type="password"
+                                        autoComplete="current-password"
+                                        variant="standard"
+                                        value={Otp.otp}
+                                        name="otp"
+                                        onChange={(e) => { setotp((prev) => ({ ...prev, otp: e.target.value })) }}
+                                    />
+                                    <input type="submit" className="submit-btn btn btn-lg btn-block my-2" value="Verify Email" />
+                                </>
+                            )
+                        }
                         <div className="alternate-option my-3 text-center">
                             Already have an account{" "}
                             <a href="login">
