@@ -8,7 +8,7 @@ const BottomNav = () => {
   return (
     <>
          <div className="Main_page-bottomNav">
-            <h2>Vahak</h2>
+            <h2>Loadkro</h2>
             <ul className='nav_item-list'>
                <li><a href='#'>Home</a></li>
                <li><a href='#about'>About</a></li>

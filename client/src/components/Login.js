@@ -64,7 +64,11 @@ const Login = () => {
                     navigate("/admin");
                 }
             }
-            else { navigate("/"); }
+            else {
+                toast("Your Password is Incorrect", {
+                    autoClose: 1000,
+                })
+            }
         }
     };
 
@@ -85,7 +89,9 @@ const Login = () => {
             localStorage.setItem("user", JSON.stringify(UpcomingOtp.user));
             localStorage.setItem("type", UpcomingOtp.user.type);
         } else {
-            console.log("no")
+            toast("OTP is Invalid", {
+                autoClose: 1500,
+            })
         }
     }
 
@@ -105,7 +111,7 @@ const Login = () => {
                         className="form-container">
                         <div className=" logotext d-flex justify-content-center" style={{ alignItems: "center" }} >
                             <img src={logo} alt="" className="form-logo web1-logo" />
-                            <span>Vahak</span>
+                            <span>Loadkro</span>
                         </div>
                         {
                             (!enterOTP) ? (
@@ -138,7 +144,8 @@ const Login = () => {
                                     placeholder="Password"
                                     className="form-control my-2"
                                     required
-                                    onChange={(event) => {setValues((prev) => ({ ...prev, password: event.target.value }));
+                                    onChange={(event) => {
+                                        setValues((prev) => ({ ...prev, password: event.target.value }));
                                     }}
                                 />
 
@@ -171,16 +178,14 @@ const Login = () => {
                         }
 
 
-                        {(!check) ? (
-                            <div className="text-center" >
-                                <Link onClick={handleState} > Reset Your Password </Link>
-                            </div>
-                        ) : ""
-                        }
-
 
                         <div className="alternate-option text-center">
-                            Don’t have an account{" "}
+                            {(!check) ? (
+                                <div className="text-center" >
+                                    <Link onClick={handleState} > Reset Your Password </Link>
+                                </div>
+                            ) : ""
+                            }
                             <div className="web1-buttons d-flex flex-column mt-3">
                                 <Link to="/signup" state={{ talent: true }}>
                                     <button className="btn btn-talents">

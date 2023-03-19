@@ -6,7 +6,7 @@ const AdminPage = () => {
         <>
             <Navbar/>
             <div className='text-center my-4 ' >
-                <h1>hii this is admin page </h1>
+                <h1>Hii this is Admin Page </h1>
             </div>
         </>
     )

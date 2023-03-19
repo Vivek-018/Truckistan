@@ -124,7 +124,6 @@ const Login = () => {
                         {
                             (!check) ? (
                                 <>
-
                                     <input
                                         type="text"
                                         placeholder="Enter Full Name"

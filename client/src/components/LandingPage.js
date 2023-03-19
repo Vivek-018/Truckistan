@@ -35,14 +35,14 @@ const Login = () => {
                                 <img
                                     src={logo}
                                     alt="" className="web1-logo" />
-                                <span>Vahak</span>
+                                <span>Loadkro</span>
                             </div>
-                            <div className="web1-tagline">Providing easy and efficient access to transportation services</div>
+                            <div className="web1-tagline my-4">Providing easy and efficient access to transportation services</div>
                             <div className="web1-buttons d-flex flex-column my-4 ">
-                                <Link to="/signup" state={{ talent: true }} >
+                                <Link to="/signup"  >
                                     <button className="btn btn-talents">Sign up as Driver</button>
                                 </Link>
-                                <Link to="/signup" state={{ talent: false }}>
+                                <Link to="/signup">
                                     <button className="btn btn-seekers">Sign up as User</button>
                                 </Link>
                             </div>

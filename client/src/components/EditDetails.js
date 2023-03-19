@@ -302,7 +302,7 @@ const EditDetails = () => {
                   </div>
 
                   <div className='my-4 text-center ' >
-                    <button onClick={handlesave} className='save-btn ' >Save</button>
+                    <button onClick={handlesave} className='save-btn'>Save</button>
                   </div>
                 </>
               ) : ('')
