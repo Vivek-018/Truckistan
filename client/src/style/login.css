@@ -43,7 +43,8 @@
   }
   
   .login-img {
-    width: 100%;
+    padding-top: 8rem;
+    width: 150%;
     height: 100vh;
     object-fit: cover;
     object-position: center -90px;

@@ -112,19 +112,6 @@ const Login = () => {
                         <p className="px-3 m-0">Signup</p>
                     </div>
                     <img className="login-img w-100 " src={backimg} alt="" />
-                    <div className="login-footer">
-                        <div className="open-quote">“</div>
-                        <div className="quote">
-                            I’m a 21st century man. I don’t belive in magic. I belive in sweat, tears, life and death.
-                        </div>
-                        <div className="author">kamal haasan</div>
-                        <div className="close-quote">”</div>
-                        <div className="three-dots">
-                            <i className="fa-solid fa-circle mx-1"></i>
-                            <i className="fa-regular fa-circle mx-1"></i>
-                            <i className="fa-regular fa-circle mx-1"></i>
-                        </div>
-                    </div>
                 </div>
                 <div className="right-side col-7 d-flex align-items-center justify-content-center">
                     {/* Signup Form */}

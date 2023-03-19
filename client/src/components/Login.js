@@ -98,21 +98,6 @@ const Login = () => {
                         <p className="px-3 m-0">Login</p>
                     </div>
                     <img className="login-img" src={backimg} alt="" />
-                    <div className="login-footer">
-                        <div className="open-quote">“</div>
-                        <div className="quote">
-                            Acting is the least mysterious of all crafts. Whenever we want
-                            something from somebody or when we want to hide something or
-                            pretend, we're acting. Most people do it all day long.
-                        </div>
-                        <div className="author">marlon brando</div>
-                        <div className="close-quote">”</div>
-                        <div className="three-dots">
-                            <i className="fa-solid fa-circle mx-1"></i>
-                            <i className="fa-regular fa-circle mx-1"></i>
-                            <i className="fa-regular fa-circle mx-1"></i>
-                        </div>
-                    </div>
                 </div>
                 <div className="right-side col-7 d-flex align-items-center justify-content-center">
                     <form
@@ -120,9 +105,8 @@ const Login = () => {
                         className="form-container">
                         <div className=" logotext d-flex justify-content-center" style={{ alignItems: "center" }} >
                             <img src={logo} alt="" className="form-logo web1-logo" />
-                            <span>Loadkro</span>
+                            <span>Vahak</span>
                         </div>
-
                         {
                             (!enterOTP) ? (
                                 <input

@@ -25,20 +25,20 @@ const Login = () => {
             <div className="web1">
                 <div className="row">
                     <div className="col-4 col">
-                        <div className="web1-signin d-flex flex-column justify-content-between">
+                        <div className="web1-signin">
                             <div className="menu">
                                 <div className="Rectangle-1"></div>
                                 <div className="Rectangle-2"></div>
                                 <div className="Rectangle-3"></div>
                             </div>
-                            <div className=" logotext text-center d-flex justify-content-center " style={{ alignItems: "center" }} >
+                            <div className=" logotext">
                                 <img
                                     src={logo}
                                     alt="" className="web1-logo" />
-                                <span>Loadkro</span>
+                                <span>Vahak</span>
                             </div>
-                            <div className="web1-tagline">One Place for Both Talent and Talent Seeker</div>
-                            <div className="web1-buttons d-flex flex-column">
+                            <div className="web1-tagline">Providing easy and efficient access to transportation services</div>
+                            <div className="web1-buttons d-flex flex-column my-4 ">
                                 <Link to="/signup" state={{ talent: true }} >
                                     <button className="btn btn-talents">Sign up as Driver</button>
                                 </Link>
