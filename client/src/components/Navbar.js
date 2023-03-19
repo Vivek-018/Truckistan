@@ -7,11 +7,10 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { RiTruckLine } from 'react-icons/ri';
 import { AiFillSetting } from 'react-icons/ai';
 import { Link} from 'react-router-dom';
-import TextField from '@mui/material/TextField';
 import driverContext from './useContext/driverContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-
+import TextField from '@material-ui/core/TextField';
 
 const Navbar = () => {
     const context = useContext(driverContext)
@@ -97,11 +96,12 @@ const Navbar = () => {
             }
         });
         const res = await data.json();
+        console.log(res.data, "res")
         if(res !== null){
-            setname(res);
-            username.onSet(res?.username)
-            email.onSet(res?.email)
-            phone.onSet(res?.phone)
+            setname(res.data);
+            username.onSet(res.data?.username)
+            email.onSet(res.data?.email)
+            phone.onSet(res.data?.phone)
         }
     };
 
@@ -115,7 +115,7 @@ const Navbar = () => {
                 <div className='container'>
                     <div className='durgesh' >
                         <div className='navLeft'>
-                            <span>Transt</span>
+                            <span>Loadkro</span>
                         </div>
 
                         <div className='navRight'>

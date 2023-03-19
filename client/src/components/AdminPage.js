@@ -6,12 +6,8 @@ const AdminPage = () => {
     return (
         <>
             <Navbar/>
-            <div className='text-center my-4 ' >
-               <p>ok</p>
-               <p>archana uniyal </p>
-               <h> i am good girl </h>
-               <h1> i am good girl </h1>
-               <h2> i am good girl </h2>
+            <div className='text-center my-4'>
+                <h1>Hii this is Admin Page</h1>
             </div>
         </>
     )
