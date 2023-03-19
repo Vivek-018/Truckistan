@@ -115,7 +115,7 @@ const Navbar = () => {
                 <div className='container'>
                     <div className='durgesh' >
                         <div className='navLeft'>
-                            <span>Transt</span>
+                            <span>Loadkro</span>
                         </div>
 
                         <div className='navRight'>

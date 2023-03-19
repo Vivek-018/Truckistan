@@ -64,7 +64,11 @@ const Login = () => {
                     navigate("/admin");
                 }
             }
-            else { navigate("/"); }
+            else {
+                toast("Your Password is Incorrect", {
+                    autoClose: 1000,
+                })
+            }
         }
     };
 
@@ -85,7 +89,9 @@ const Login = () => {
             localStorage.setItem("user", JSON.stringify(UpcomingOtp.user));
             localStorage.setItem("type", UpcomingOtp.user.type);
         } else {
-            console.log("no")
+            toast("OTP is Invalid", {
+                autoClose: 1500,
+            })
         }
     }
 
@@ -98,21 +104,6 @@ const Login = () => {
                         <p className="px-3 m-0">Login</p>
                     </div>
                     <img className="login-img" src={backimg} alt="" />
-                    <div className="login-footer">
-                        <div className="open-quote">“</div>
-                        <div className="quote">
-                            Acting is the least mysterious of all crafts. Whenever we want
-                            something from somebody or when we want to hide something or
-                            pretend, we're acting. Most people do it all day long.
-                        </div>
-                        <div className="author">marlon brando</div>
-                        <div className="close-quote">”</div>
-                        <div className="three-dots">
-                            <i className="fa-solid fa-circle mx-1"></i>
-                            <i className="fa-regular fa-circle mx-1"></i>
-                            <i className="fa-regular fa-circle mx-1"></i>
-                        </div>
-                    </div>
                 </div>
                 <div className="right-side col-7 d-flex align-items-center justify-content-center">
                     <form
@@ -122,7 +113,6 @@ const Login = () => {
                             <img src={logo} alt="" className="form-logo web1-logo" />
                             <span>Loadkro</span>
                         </div>
-
                         {
                             (!enterOTP) ? (
                                 <input
@@ -154,7 +144,8 @@ const Login = () => {
                                     placeholder="Password"
                                     className="form-control my-2"
                                     required
-                                    onChange={(event) => {setValues((prev) => ({ ...prev, password: event.target.value }));
+                                    onChange={(event) => {
+                                        setValues((prev) => ({ ...prev, password: event.target.value }));
                                     }}
                                 />
 
@@ -187,16 +178,14 @@ const Login = () => {
                         }
 
 
-                        {(!check) ? (
-                            <div className="text-center" >
-                                <Link onClick={handleState} > Reset Your Password </Link>
-                            </div>
-                        ) : ""
-                        }
-
 
                         <div className="alternate-option text-center">
-                            Don’t have an account{" "}
+                            {(!check) ? (
+                                <div className="text-center" >
+                                    <Link onClick={handleState} > Reset Your Password </Link>
+                                </div>
+                            ) : ""
+                            }
                             <div className="web1-buttons d-flex flex-column mt-3">
                                 <Link to="/signup" state={{ talent: true }}>
                                     <button className="btn btn-talents">
