@@ -10,7 +10,7 @@ const otpGenerator = require('otp-generator')
 const Mailgen = require("mailgen");
 
 
-// email config
+//========== email config==================
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -27,7 +27,7 @@ let MailGenerator = new Mailgen({
     }
 })
 
-// signup API path /user/signup
+//======== signup API path /user/signup =====================
 
 router.post('/signup', async (req, res) => {
     // destructure the value of name, email, password form frontend(req.body)
@@ -66,6 +66,8 @@ router.post('/signup', async (req, res) => {
     }
 })
 
+//========= login API  using post  ===========
+
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -93,6 +95,8 @@ router.post('/login', async (req, res) => {
     }
 })
 
+// ============ using post generate otp at signup time API =====================
+
 router.post('/generateOTPAtSignup', async (req, res) => {
     const { email } = req.body
     if (email) {
@@ -103,6 +107,9 @@ router.post('/generateOTPAtSignup', async (req, res) => {
         return res.status(400).send({ error: "Email does not exist" })
     }
 })
+
+
+// ============ using post generate otp at Reset Password time API ================
 
 router.post('/generateOTP', async (req, res) => {
     const { email } = req.body
@@ -116,6 +123,7 @@ router.post('/generateOTP', async (req, res) => {
     }
 })
 
+// ============ After generating otp send mail API =====================
 
 router.post("/sendMail", async (req, res) => {
     const { email, text, subject } = req.body;
@@ -139,6 +147,8 @@ router.post("/sendMail", async (req, res) => {
         })
 })
 
+//============ reset password using put =====================
+
 router.put('/resetPasword', async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -157,6 +167,8 @@ router.put('/resetPasword', async (req, res) => {
     }
 })
 
+// =======  fetch users data according to logged users API ===============
+
 router.get('/getUserData', fetchuser, async (req, res) => {
     const user = req.user;
     try {
@@ -167,6 +179,8 @@ router.get('/getUserData', fetchuser, async (req, res) => {
         res.status(401).send("Some error occured")
     }
 })
+
+//============== edit users profiles API ==================
 
 router.put("/editUserProfiledata/:id", async (req, res) => {
     const { username, link, email, phone } = req.body;
