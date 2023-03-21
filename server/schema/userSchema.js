@@ -27,13 +27,18 @@ let schema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ["Driver","user"],
+        enum: ["Driver", "user"],
         required: true,
     },
-    link:{
-        type:String,
-        required:false
-    }
+    link: {
+        type: String,
+        required: false
+    },
+    date: {
+        type: Date,
+        default: Date.now,
+        requird: true
+    },
 })
 
 module.exports = mongoose.model("User", schema);

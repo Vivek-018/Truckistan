@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "../style/login.css";
 import backimg from "../images/Logo.png";
 import logo from "../images/Logo.png";
@@ -202,7 +202,6 @@ const Login = () => {
                     </form>
                 </div>
             </div>
-
             <ToastContainer />
         </>
     );
