@@ -1,0 +1,48 @@
+ .firsttable table, th, td {
+    border: none;
+    padding: 30px;
+    margin-left: 500px;
+    margin-right: 300px;
+    justify-content: center;
+}
+.firsttable{
+     margin-left: 25% !important;
+   
+}
+.button{
+text-align: right;
+padding-left: 20px;
+}
+.btn{
+    margin-left: 20px !important;
+    border: 1px solid black;
+    margin-top: 5px;
+}
+.btn:hover{
+    background-color: black;
+    color: antiquewhite;
+    cursor: pointer;
+}
+.searchbar{
+    display: flex;
+   
+}
+.form-control{
+    padding: 10px;
+    margin-left: 20px ;
+}
+  
+.inputbtn{
+    margin-left: 20px !important;
+    border: 1px solid black;
+    margin-top: 5px;
+}
+.inputbtn:hover{
+    background-color: black;
+    color: antiquewhite;
+    cursor: pointer;
+}
+.class1{
+    width: 100%;
+    height: auto;
+}
