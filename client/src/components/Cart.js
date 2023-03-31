@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 const Cart = () => {
     return (
         <>
-                <Navbar/>
+            <Navbar />
         </>
     )
 }

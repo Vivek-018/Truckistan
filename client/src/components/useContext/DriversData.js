@@ -33,7 +33,8 @@ const DriversData = (props) => {
     setAllData(json.data);
   }
 
-  const editData = async (id, name, lname, gender, DOB, email, phone,
+  const editData = async (id, name, lname, gender, DOB, email,
+    phone,
     PanCardNumber, address, city, state, pincode, Vnamber,
     country, basefare, bodysize, lodingCapacity, transName,
     RCnumber, DLnumber, PolutionCertificate, driverImage,
@@ -74,7 +75,7 @@ const DriversData = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({email})
+      body: JSON.stringify({ email })
     })
     const json = await response.json();
     console.log(json, "res")
@@ -94,10 +95,10 @@ const DriversData = (props) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({email})
+      body: JSON.stringify({ email })
     })
     const json = await response.json();
-    console.log(json, "res")
+
     setOtp(json)
     if (json.code) {
       let text = ` Your Password OTP is ${json.code} . Verify and recover your password.`;
@@ -116,9 +117,14 @@ const DriversData = (props) => {
       return Promise.reject({ error })
     }
   }
-  
+
   return (
-    <driverContext.Provider value={{ UpcomingOtp, data,generateOTPAtSignup ,alldata, getData, getallData, editData, generateOTP, resetPassword, editUserProfiledata }} >
+    <driverContext.Provider value={{
+      UpcomingOtp, data, generateOTPAtSignup,
+      alldata, getData, getallData, editData,
+      generateOTP, resetPassword,
+      editUserProfiledata
+    }} >
       {props.children}
     </driverContext.Provider>
   )
