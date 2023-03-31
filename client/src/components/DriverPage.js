@@ -61,7 +61,6 @@ const DriverPage = () => {
                     }
                 </div>
             </div>
-
         </>
     )
 }

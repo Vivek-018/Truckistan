@@ -125,7 +125,7 @@ const Navbar = () => {
                                         {
                                             name?.type === 'Driver' ? (
                                                 <Link to='/driver' className='des home '> <AiOutlineHome /></Link>
-                                            ) : ('')
+                                            ) : (<Link to='/driver' className='des home '> <AiOutlineHome /></Link>)
                                         }
                                     </>
                                 )
