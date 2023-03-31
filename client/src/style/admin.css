@@ -1,0 +1,9 @@
+ .firsttable table, th, td {
+    border: 1px solid;
+    width: 46%;
+}
+.button{
+text-align: right;
+}
+
+  
