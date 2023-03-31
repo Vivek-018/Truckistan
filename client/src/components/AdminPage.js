@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import '../style/admin.css'
 import driverContext from './useContext/driverContext'
 import { NavLink } from 'react-router-dom'
+import Search from './Search'
 
 
 const AdminPage = () => {
@@ -19,11 +20,8 @@ const AdminPage = () => {
     return (
         <>
             <Navbar />
-            <div className='text-center my-4'>
-                <h1>Hii this is Admin Page</h1>
-            </div>
-
             <div className='container' >
+                <Search/>
                 {
                     length === 0 ? (
                         <div class="loader my-4 "></div>

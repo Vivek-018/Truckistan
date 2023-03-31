@@ -12,6 +12,7 @@ import EditDetails from './components/EditDetails';
 import Help from './components/Help';
 import Cart from './components/Cart';
 import ResetPassword from './components/ResetPassword';
+import Verified from './components/Verified';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path='/help' element={<Help/>} />
             <Route path='/cart' element={<Cart/>} />
             <Route path='/resetPassword' element={<ResetPassword/>} />
+            <Route path='/verified' element = {<Verified/>} />
           </Routes>
         </BrowserRouter>
       </DriversData>
