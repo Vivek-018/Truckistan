@@ -1,9 +1,37 @@
  .firsttable table, th, td {
-    border: 1px solid;
-    width: 46%;
+    border: none;
+    padding: 15px;
 }
 .button{
 text-align: right;
+padding-left: 20px;
 }
-
+.btn{
+    margin-left: 20px !important;
+    border: 1px solid black;
+    margin-top: 5px;
+}
+.btn:hover{
+    background-color: black;
+    color: antiquewhite;
+    cursor: pointer;
+}
+.searchbar{
+    display: flex;
+   
+}
+.form-control{
+    padding: 10px;
+    margin-left: 20px ;
+}
   
+.inputbtn{
+    margin-left: 20px !important;
+    border: 1px solid black;
+    margin-top: 5px;
+}
+.inputbtn:hover{
+    background-color: black;
+    color: antiquewhite;
+    cursor: pointer;
+}

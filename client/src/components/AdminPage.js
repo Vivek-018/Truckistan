@@ -11,34 +11,34 @@ const AdminPage = () => {
         <div className="searchbar">
           <div className="search-input">
             <input type="text" className="form-control" placeholder="Search..." />
-            <button className="btn">Search</button>
-
-            <div className='button'>
-              <input type="button" value="submit"></input>
-            </div>
+          </div>
+          <div className='button'>
+            <button className='btn'>search</button>
+            <button className='btn'>submit</button>
           </div>
         </div>
-
         <table className='firsttable'>
           <tr>
-            <th>Company</th>
-            <th>Contact</th>
-            <th>Country</th>
+            <th>S.NO</th>
+            <th>DRIVER NAME</th>
+            <th>VECHILE NUMBER</th>
+            <th><input className='inputbtn' type="button" value="view"></input></th>
+            <th><input  className='inputbtn' type="button" value="verified"></input></th>
           </tr>
           <tr>
-            <td>Alfreds Futterkiste</td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </table>
-
       </div>
-
     </>
   )
 }
