@@ -38,7 +38,7 @@ const AdminPage = () => {
             <td></td>
           </tr>
         </table>
-      </div>
+        </div>
     </>
   )
 }
