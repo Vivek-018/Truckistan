@@ -40,7 +40,6 @@ const EditDetails = () => {
   const DOB = useInputs('');
   const email = useInputs('');
   const phone = useInputs('');
-  // const  = useInputs('');
   const PanCardNumber = useInputs('');
   const address = useInputs('');
   const city = useInputs('');
@@ -59,8 +58,6 @@ const EditDetails = () => {
   const VehicleImage = useInputs('')
   const DLImage = useInputs('')
   const RCImage = useInputs('')
-
-  // console.log(lodingCapacity)
 
   useEffect(() => {
     name.onSet(item.name)
@@ -305,7 +302,7 @@ const EditDetails = () => {
                   </div>
 
                   <div className='my-4 text-center ' >
-                    <button onClick={handlesave} className='save-btn ' >Save</button>
+                    <button onClick={handlesave} className='save-btn'>Save</button>
                   </div>
                 </>
               ) : ('')

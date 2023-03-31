@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import { useNavigate } from "react-router-dom";
-import validator from 'validator';
 import "react-phone-number-input/style.css";
 import backimg from "../images/Logo.png";
 import logo from "../images/Logo.png";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-import generateOtp from 'rv-otp-generator';
+import driverContext from "./useContext/driverContext";
+import TextField from '@material-ui/core/TextField';
 
 const Login = () => {
     const navigate = useNavigate();
+    const context = useContext(driverContext);
+    const { generateOTPAtSignup, UpcomingOtp } = context;
+    const [Otp, setotp] = useState({ otp: "" });
+    const [check, setcheck] = useState(false);
     const [phone, setPhone] = useState("+911234567890");
-    const temp = []
     const [values, setValues] = useState({
         username: "",
         email: "",
@@ -20,11 +23,8 @@ const Login = () => {
         Rpassword: "",
         type: ""
     });
-    const [OTP,setOTP]=useState(true);
-    const [newPass,setNewPass]=useState(false);
 
-    const [getOtp, setGetOtp]=useState('');
-    const [otp,setotp]=useState(0);
+    localStorage.setItem("code", UpcomingOtp?.code)
 
     const handleSignup = async (e) => {
         e.preventDefault();
@@ -58,55 +58,48 @@ const Login = () => {
                 autoClose: 1000,
             })
         } else {
-            const data = await fetch(`http://localhost:5000/user/signup`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    username: username,
-                    email: email,
-                    password: password,
-                    phone: phone,
-                    type: type,
-                })
-            });
-            const res = await data.json();
-            if (res.status === 201) {
-                localStorage.setItem("token", res.token);
-                localStorage.setItem("user", JSON.stringify(res.user));
-                localStorage.setItem("type", res.user.type);
-                
-                setOTP(false)
-                const otp = generateOtp(4)
-                setotp(otp);
-                console.log(otp)
-                temp.push({ "email": email, "otp": otp })
-                console.log(temp)
-                setGetOtp('');
-
-                console.log("opt is ", getOtp)
-                window.Email.send({
-                    Host: "smtp.elasticemail.com",
-                    Username: "anshu.verma62074@gmail.com",
-                    Password: "B4B14856EDDCC0A25DAF23492E8D4A7E356B",
-                    To: email,
-                    From: "durgeshchaudhary020401@gmail.com",
-                    Subject: "This is the otp to reset password for JOB HUNT",
-                    Body: otp
-                })
+            setcheck(true)
+            generateOTPAtSignup(email);
+            console.log(email, email)
+            const { otp } = Otp;
+            const code = localStorage.getItem('code');
+            if (code === otp) {
+                const data = await fetch(`http://localhost:5000/user/signup`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        email: email,
+                        password: password,
+                        phone: phone,
+                        type: type,
+                    })
+                });
+                const res = await data.json();
+                if (res.status === 201) {
+                    localStorage.setItem("token", res.token);
+                    localStorage.setItem("user", JSON.stringify(res.user));
+                    localStorage.setItem("type", res.user.type);
+                }
+                if (localStorage.getItem("token")) {
+                    if (localStorage.getItem("type") === "user") {
+                        navigate("/user");
+                    }
+                    else if (localStorage.getItem("type") === "Driver") {
+                        navigate("/driver");
+                    } else if (localStorage.getItem("type") === "admin") {
+                        navigate("/admin");
+                    }
+                }
+                else { navigate("/"); }
+                // navigate('/resetPassword')
+                // localStorage.setItem("user", JSON.stringify(UpcomingOtp.user));
+                // localStorage.setItem("type", UpcomingOtp.user.type);
+            } else {
+                console.log("no")
             }
-            // if (localStorage.getItem("token")) {
-            //     if (localStorage.getItem("type") === "user") {
-            //         navigate("/user");
-            //     }
-            //     else if (localStorage.getItem("type") === "Driver") {
-            //         navigate("/driver");
-            //     } else if (localStorage.getItem("type") === "admin") {
-            //         navigate("/admin");
-            //     }
-            // }
-            // else { navigate("/"); }
         }
     };
 
@@ -119,19 +112,6 @@ const Login = () => {
                         <p className="px-3 m-0">Signup</p>
                     </div>
                     <img className="login-img w-100 " src={backimg} alt="" />
-                    <div className="login-footer">
-                        <div className="open-quote">“</div>
-                        <div className="quote">
-                            I’m a 21st century man. I don’t belive in magic. I belive in sweat, tears, life and death.
-                        </div>
-                        <div className="author">kamal haasan</div>
-                        <div className="close-quote">”</div>
-                        <div className="three-dots">
-                            <i className="fa-solid fa-circle mx-1"></i>
-                            <i className="fa-regular fa-circle mx-1"></i>
-                            <i className="fa-regular fa-circle mx-1"></i>
-                        </div>
-                    </div>
                 </div>
                 <div className="right-side col-7 d-flex align-items-center justify-content-center">
                     {/* Signup Form */}
@@ -140,75 +120,95 @@ const Login = () => {
                             <img src={logo} alt="" className="form-logo web1-logo" />
                             <span>Loadkro</span>
                         </div>
-                        <input
-                            type="text"
-                            placeholder="Enter Full Name"
-                            className="form-control my-2"
-                            label="Name"
-                            onChange={(event) => {
-                                setValues((prev) => ({ ...prev, username: event.target.value }));
-                            }}
-                        />
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            className="form-control my-2"
-                            label="Email"
-                            onChange={(event) => {
-                                setValues((prev) => ({ ...prev, email: event.target.value }));
-                            }}
-                        />
-                        <input
-                            type="password"
-                            placeholder="Password"
-                            className="form-control my-2"
-                            label="Password"
-                            onChange={(event) => {
-                                setValues((prev) => ({ ...prev, password: event.target.value }));
-                            }}
-                        />
-                        <input
-                            type="password"
-                            placeholder="Re-enter Password"
-                            className="form-control my-2"
-                            onChange={(event) => {
-                                setValues((prev) => ({ ...prev, Rpassword: event.target.value }));
-                            }}
-                        />
-                        <PhoneInput
-                            className="form-control"
-                            placeholder="Enter phone number"
-                            value={phone}
-                            onChange={setPhone}
-                            defaultCountry=""
-                        />
-                        <div style={{ position: "relative", display: "flex" }}>
-                            <select className="form-control my-2"
-                                onChange={(event) => {
-                                    setValues((prev) => ({ ...prev, type: event.target.value }));
-                                }}
-                            >
-                                <option value="" selected >Type</option>
-                                <option value="Driver" >Driver</option>
-                                <option value="user">User</option>
-                            </select>
-                            <div
-                                style={{
-                                    position: "absolute",
-                                    right: "15px",
-                                    top: "0",
-                                    bottom: "0",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    color: "lightgrey",
-                                }}
-                            >
-                                <i className="fa-solid fa-chevron-down"></i>
-                            </div>
-                        </div>
-                        <b>{''}</b>
-                        <input type="submit" className="submit-btn btn btn-lg btn-block my-2" value="Signup" />
 
+                        {
+                            (!check) ? (
+                                <>
+                                    <input
+                                        type="text"
+                                        placeholder="Enter Full Name"
+                                        className="form-control my-2"
+                                        label="Name"
+                                        onChange={(event) => {
+                                            setValues((prev) => ({ ...prev, username: event.target.value }));
+                                        }}
+                                    />
+                                    <input
+                                        type="email"
+                                        placeholder="Email"
+                                        className="form-control my-2"
+                                        label="Email"
+                                        onChange={(event) => {
+                                            setValues((prev) => ({ ...prev, email: event.target.value }));
+                                        }}
+                                    />
+                                    <input
+                                        type="password"
+                                        placeholder="Password"
+                                        className="form-control my-2"
+                                        label="Password"
+                                        onChange={(event) => {
+                                            setValues((prev) => ({ ...prev, password: event.target.value }));
+                                        }}
+                                    />
+                                    <input
+                                        type="password"
+                                        placeholder="Re-enter Password"
+                                        className="form-control my-2"
+                                        onChange={(event) => {
+                                            setValues((prev) => ({ ...prev, Rpassword: event.target.value }));
+                                        }}
+                                    />
+                                    <PhoneInput
+                                        className="form-control"
+                                        placeholder="Enter phone number"
+                                        value={phone}
+                                        onChange={setPhone}
+                                        defaultCountry=""
+                                    />
+                                    <div style={{ position: "relative", display: "flex" }}>
+                                        <select className="form-control my-2"
+                                            onChange={(event) => {
+                                                setValues((prev) => ({ ...prev, type: event.target.value }));
+                                            }}
+                                        >
+                                            <option value="" selected >Type</option>
+                                            <option value="Driver" >Driver</option>
+                                            <option value="user">User</option>
+                                        </select>
+                                        <div
+                                            style={{
+                                                position: "absolute",
+                                                right: "15px",
+                                                top: "0",
+                                                bottom: "0",
+                                                display: "flex",
+                                                alignItems: "center",
+                                                color: "lightgrey",
+                                            }}
+                                        >
+                                            <i className="fa-solid fa-chevron-down"></i>
+                                        </div>
+                                    </div>
+                                    <input type="submit" className="submit-btn btn btn-lg btn-block my-2" value="Signup" />
+                                </>
+
+                            ) : (
+                                <>
+                                    <TextField
+                                        id="standard-password-input"
+                                        label="OTP"
+                                        type="password"
+                                        autoComplete="current-password"
+                                        variant="standard"
+                                        value={Otp.otp}
+                                        name="otp"
+                                        onChange={(e) => { setotp((prev) => ({ ...prev, otp: e.target.value })) }}
+                                    />
+                                    <input type="submit" className="submit-btn btn btn-lg btn-block my-2" value="Verify Email" />
+                                </>
+                            )
+                        }
                         <div className="alternate-option my-3 text-center">
                             Already have an account{" "}
                             <a href="login">
