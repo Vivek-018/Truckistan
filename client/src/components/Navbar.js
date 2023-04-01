@@ -6,7 +6,7 @@ import { BsCartFill } from 'react-icons/bs';
 import { AiOutlineHome } from 'react-icons/ai';
 import { RiTruckLine } from 'react-icons/ri';
 import { AiFillSetting } from 'react-icons/ai';
-import { Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import driverContext from './useContext/driverContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -19,8 +19,8 @@ const Navbar = () => {
     const [Nav, setNav] = useState(false);
     const [dropdown, setdropdown] = useState(false);
     const user = JSON.parse(localStorage.getItem("user"))
-    const [link, setLink] = useState({link:""});
-
+    const [link, setLink] = useState({ link: "" });
+    const userType = localStorage.getItem("type")
 
     const useInput = (initialValue) => {
         const [value, setValues] = useState(initialValue)
@@ -84,7 +84,7 @@ const Navbar = () => {
         localStorage.clear();
     }
 
-    
+
     // ======================= fetching data according users ==================
 
     const handlelogin = async (e) => {
@@ -96,8 +96,7 @@ const Navbar = () => {
             }
         });
         const res = await data.json();
-        console.log(res.data, "res")
-        if(res !== null){
+        if (res !== null) {
             setname(res.data);
             username.onSet(res.data?.username)
             email.onSet(res.data?.email)
@@ -120,29 +119,29 @@ const Navbar = () => {
 
                         <div className='navRight'>
                             {
-                                (name?.type === 'user') ? <Link to='/user' className='des home' > <AiOutlineHome /></Link> : (
+                                (userType === 'user') ? <Link to='/user' className='des home' > <AiOutlineHome /></Link> : (
                                     <>
                                         {
-                                            name?.type === 'Driver' ? (
+                                            userType === 'Driver' ? (
                                                 <Link to='/driver' className='des home '> <AiOutlineHome /></Link>
-                                            ) : (<Link to='/driver' className='des home '> <AiOutlineHome /></Link>)
+                                            ) : (<Link to='/admin' className='des home '> <AiOutlineHome /></Link>)
                                         }
                                     </>
                                 )
                             }
 
                             {
-                                (name?.type === 'user') ? <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> : (
+                                (userType === 'user') ? <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> : (
                                     <>
                                         {
-                                            name?.type === "Driver" ? (
+                                            userType === "Driver" ? (
                                                 <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
-                                            ) : ('')
+                                            ) : (<Link className='des' to='/verified' > <span><RiTruckLine /> </span></Link>)
                                         }
                                     </>
                                 )
                             }
-                            <a className='des  name' onClick={handledropdown} ><img src={navpic}></img> {name?.username ? name?.username : "Not Available "}<span className='formDrop' ><IoIosArrowDown /></span></a>
+                            <a className='des  name' onClick={handledropdown} ><img src={navpic}></img> {user.username ? user.username: "Not Available "}<span className='formDrop' ><IoIosArrowDown /></span></a>
                             <span className='ManuIcon' onClick={handleSideNav} ><i className="fa fa-bars"></i></span>
                         </div>
                     </div>
@@ -182,10 +181,10 @@ const Navbar = () => {
                     <div className='uploadImg' >
                         <div class="w-50 text-center ">
                             <label for="formFile" class="form-label">Upload Image</label>
-                            <input class="form-control" value={link.link} name='link' type="file" id="formFile" 
-                            onChange={(event) => {
-                                setLink((prev) => ({ ...prev, link: event.target.value }));
-                            }} 
+                            <input class="form-control" value={link.link} name='link' type="file" id="formFile"
+                                onChange={(event) => {
+                                    setLink((prev) => ({ ...prev, link: event.target.value }));
+                                }}
                             />
                         </div>
 
@@ -245,8 +244,8 @@ const Navbar = () => {
                 </div>
             </div>
             <ToastContainer />
-            
-            
+
+
         </>
     )
 }

@@ -6,9 +6,11 @@ const DriversData = (props) => {
 
   const host = "http://localhost:5000/driver"
   const Userhost = "http://localhost:5000/user"
+  const adminhost = "http://localhost:5000/admin"
   const [data, setData] = useState([]);
   const [alldata, setAllData] = useState([]);
   const [UpcomingOtp, setOtp] = useState();
+  const [UserName, setUserName] = useState([])
 
   const getData = async () => {
     const response = await fetch(`${host}/vehiclesData`, {
@@ -34,8 +36,7 @@ const DriversData = (props) => {
   }
 
   const editData = async (id, name, lname, gender, DOB, email,
-    phone,
-    PanCardNumber, address, city, state, pincode, Vnamber,
+    phone,PanCardNumber, address, city, state, pincode, Vnamber,
     country, basefare, bodysize, lodingCapacity, transName,
     RCnumber, DLnumber, PolutionCertificate, driverImage,
     VehicleImage, DLImage, RCImage) => {
@@ -78,7 +79,6 @@ const DriversData = (props) => {
       body: JSON.stringify({ email })
     })
     const json = await response.json();
-    console.log(json, "res")
     setOtp(json)
     if (json.code) {
       let text = ` Your Password OTP is ${json.code} . Verify and recover your password.`;
@@ -98,7 +98,6 @@ const DriversData = (props) => {
       body: JSON.stringify({ email })
     })
     const json = await response.json();
-
     setOtp(json)
     if (json.code) {
       let text = ` Your Password OTP is ${json.code} . Verify and recover your password.`;
@@ -118,12 +117,33 @@ const DriversData = (props) => {
     }
   }
 
+  const ChangeIsVerified = async (isVerified, id) => {
+    try {
+      const data = await axios.put(`${adminhost}/changeisVerified/${id}`, {
+        isVerified
+      })
+      return Promise.resolve(data.data)
+    } catch (error) {
+      return Promise.reject({ error })
+    }
+  }
+
+  const UsersDataBYId = async (id) => {
+    try {
+      const res = await axios.get(`${adminhost}/UserDataAtAdmin/${id}`)
+      setUserName(res.data);
+      return Promise.resolve(res);
+    } catch (error) {
+      return Promise.reject({ error })
+    }
+  }
+
   return (
     <driverContext.Provider value={{
       UpcomingOtp, data, generateOTPAtSignup,
       alldata, getData, getallData, editData,
-      generateOTP, resetPassword,
-      editUserProfiledata
+      generateOTP, resetPassword, ChangeIsVerified,
+      editUserProfiledata, UsersDataBYId,UserName
     }} >
       {props.children}
     </driverContext.Provider>

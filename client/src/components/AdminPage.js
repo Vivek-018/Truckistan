@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import '../style/admin.css'
 import driverContext from './useContext/driverContext'
 import { NavLink } from 'react-router-dom'
+import Search from './Search'
 
 
 const AdminPage = () => {
@@ -19,11 +20,8 @@ const AdminPage = () => {
     return (
         <>
             <Navbar />
-            <div className='text-center my-4'>
-                <h1>Hii this is Admin Page</h1>
-            </div>
-
             <div className='container' >
+                <Search />
                 {
                     length === 0 ? (
                         <div class="loader my-4 "></div>
@@ -57,8 +55,9 @@ const AdminPage = () => {
                                                         </div>
                                                     </div>
 
-                                                    <div className='my-2 ' >
-                                                        <NavLink to={'/cart'} state={item} className='btn-user' exact >Book</NavLink>
+                                                    <div className='buttons text-center d-flex justify-content-between my-2 ' >
+                                                        <NavLink to={'/editdetails'} state={item} className=' btn-card' exact >Edit</NavLink>
+                                                        <NavLink to={'/viewdetails'} state={item} className=' btn-card' exact>View</NavLink>
                                                     </div>
                                                 </div>
                                             </div>
