@@ -8,7 +8,8 @@ app.use(cors())
 app.use(express.json())
 app.use('/user', require('./routes/userRoute'));
 app.use('/driver', require('./routes/driverRoute'));
-app.use('/comment', require("./routes/commentsRoute"));
+app.use('/comment', require('./routes/commentsRoute'));
+app.use('/admin', require('./routes/adminRoute'));
 
 app.listen(port, () => {
   console.log(`Listening on port http://localhost:${port}`)

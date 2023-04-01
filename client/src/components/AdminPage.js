@@ -21,7 +21,7 @@ const AdminPage = () => {
         <>
             <Navbar />
             <div className='container' >
-                <Search/>
+                <Search />
                 {
                     length === 0 ? (
                         <div class="loader my-4 "></div>
@@ -55,8 +55,9 @@ const AdminPage = () => {
                                                         </div>
                                                     </div>
 
-                                                    <div className='my-2 ' >
-                                                        <NavLink to={'/cart'} state={item} className='btn-user' exact >Book</NavLink>
+                                                    <div className='buttons text-center d-flex justify-content-between my-2 ' >
+                                                        <NavLink to={'/editdetails'} state={item} className=' btn-card' exact >Edit</NavLink>
+                                                        <NavLink to={'/viewdetails'} state={item} className=' btn-card' exact>View</NavLink>
                                                     </div>
                                                 </div>
                                             </div>

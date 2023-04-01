@@ -20,7 +20,7 @@ const Navbar = () => {
     const [dropdown, setdropdown] = useState(false);
     const user = JSON.parse(localStorage.getItem("user"))
     const [link, setLink] = useState({ link: "" });
-
+    const userType = localStorage.getItem("type")
 
     const useInput = (initialValue) => {
         const [value, setValues] = useState(initialValue)
@@ -96,7 +96,6 @@ const Navbar = () => {
             }
         });
         const res = await data.json();
-        console.log(res.data, "res")
         if (res !== null) {
             setname(res.data);
             username.onSet(res.data?.username)
@@ -120,10 +119,10 @@ const Navbar = () => {
 
                         <div className='navRight'>
                             {
-                                (name?.type === 'user') ? <Link to='/user' className='des home' > <AiOutlineHome /></Link> : (
+                                (userType === 'user') ? <Link to='/user' className='des home' > <AiOutlineHome /></Link> : (
                                     <>
                                         {
-                                            name?.type === 'Driver' ? (
+                                            userType === 'Driver' ? (
                                                 <Link to='/driver' className='des home '> <AiOutlineHome /></Link>
                                             ) : (<Link to='/admin' className='des home '> <AiOutlineHome /></Link>)
                                         }
@@ -132,17 +131,17 @@ const Navbar = () => {
                             }
 
                             {
-                                (name?.type === 'user') ? <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> : (
+                                (userType === 'user') ? <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> : (
                                     <>
                                         {
-                                            name?.type === "Driver" ? (
+                                            userType === "Driver" ? (
                                                 <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
                                             ) : (<Link className='des' to='/verified' > <span><RiTruckLine /> </span></Link>)
                                         }
                                     </>
                                 )
                             }
-                            <a className='des  name' onClick={handledropdown} ><img src={navpic}></img> {name?.username ? name?.username : "Not Available "}<span className='formDrop' ><IoIosArrowDown /></span></a>
+                            <a className='des  name' onClick={handledropdown} ><img src={navpic}></img> {user.username ? user.username: "Not Available "}<span className='formDrop' ><IoIosArrowDown /></span></a>
                             <span className='ManuIcon' onClick={handleSideNav} ><i className="fa fa-bars"></i></span>
                         </div>
                     </div>

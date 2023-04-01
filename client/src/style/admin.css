@@ -44,11 +44,22 @@
   
   /* Modal Content */
   .modal-content {
+    text-align: center;
     background-color: #fefefe;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
     margin: auto;
-    padding: 20px;
     border: 1px solid #888;
     width: 80%;
+  }
+
+  .modal-content span{
+    font-size: 4rem;
+    color: #8443e5;
+  }
+
+  .modal-content h2{
+    color: #8443e5;
   }
   
   /* The Close Button */
