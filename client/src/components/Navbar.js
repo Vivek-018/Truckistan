@@ -136,12 +136,17 @@ const Navbar = () => {
                                         {
                                             userType === "Driver" ? (
                                                 <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
-                                            ) : (<Link className='des' to='/verified' > <span><RiTruckLine /> </span></Link>)
+                                            ) : (
+                                                <>
+                                                    <Link className='des' to='/verified' > <span><RiTruckLine /> </span></Link>
+                                                    <Link className='des' to='/cities' > <span>Cities </span></Link>
+                                                </>
+                                            )
                                         }
                                     </>
                                 )
                             }
-                            <a className='des  name' onClick={handledropdown} ><img src={navpic}></img> {user.username ? user.username: "Not Available "}<span className='formDrop' ><IoIosArrowDown /></span></a>
+                            <a className='des  name' onClick={handledropdown} ><img src={navpic}></img> {user.username ? user.username : "Not Available "}<span className='formDrop' ><IoIosArrowDown /></span></a>
                             <span className='ManuIcon' onClick={handleSideNav} ><i className="fa fa-bars"></i></span>
                         </div>
                     </div>
