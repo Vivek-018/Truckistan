@@ -4,19 +4,19 @@ import { Link,  } from "react-router-dom";
 import "../style/landingPage.css";
 import logo from "../images/Logo.png";
 import a1 from "../images/A1.jpg";
-import a2 from "../images/A2.jpeg";
-import a3 from "../images/A3.jpeg";
-import a4 from "../images/A4.jpeg";
-import a5 from "../images/A5.png";
-import a6 from "../images/A6.jpeg";
+import a2 from "../images/A2.jpg";
+import a3 from "../images/A3.jpg";
+import a4 from "../images/A4.jpg";
+import a5 from "../images/A5.jpg";
+import a6 from "../images/A6.jpg";
 import a7 from "../images/A7.jpg";
-import a8 from "../images/A8.jpeg";
-import a9 from "../images/A9.jpeg";
-import a10 from "../images/A10.png";
-import a11 from "../images/A11.jpeg";
-import a12 from "../images/A12.jpeg";
-import a13 from "../images/A13.jpeg";
-import a14 from "../images/A14.jpeg";
+import a8 from "../images/A8.jpg";
+import a9 from "../images/A9.jpg";
+import a10 from "../images/A10.jpg";
+import a11 from "../images/A11.jpg";
+import a12 from "../images/A12.jpg";
+import a13 from "../images/A13.jpg";
+import a14 from "../images/A14.jpg";
 
 
 const Login = () => {
@@ -63,22 +63,16 @@ const Login = () => {
                                     <div className="web1-image">
                                         <img src={a1} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
                                         <img src={a2} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
                                         <img src={a3} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                 </div>
@@ -87,29 +81,21 @@ const Login = () => {
                                     <div className="web1-image">
                                         <img src={a4} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
                                         <img src={a5} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
                                         <img src={a6} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
                                         <img src={a7} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                 </div>
@@ -118,22 +104,16 @@ const Login = () => {
                                     <div className="web1-image">
                                         <img src={a8} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
                                         <img src={a9} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
                                         <img src={a10} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                 </div>
@@ -142,29 +122,21 @@ const Login = () => {
                                     <div className="web1-image">
                                         <img src={a11} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
                                         <img src={a12} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
                                         <img src={a13} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                     <div className="web1-image">
                                         <img src={a14} />
                                         <div className="image_overlay">
-                                            <div className="overlay-name">Rachel Zayne</div>
-                                            <div className="overlay-profession">Actress</div>
                                         </div>
                                     </div>
                                 </div>

@@ -13,6 +13,7 @@ import Help from './components/Help';
 import Cart from './components/Cart';
 import ResetPassword from './components/ResetPassword';
 import Verified from './components/Verified';
+import Cities from './components/Cities';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path='/cart' element={<Cart/>} />
             <Route path='/resetPassword' element={<ResetPassword/>} />
             <Route path='/verified' element = {<Verified/>} />
+            <Route path='/cities' element = {<Cities/>} />
           </Routes>
         </BrowserRouter>
       </DriversData>
