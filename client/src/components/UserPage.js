@@ -4,6 +4,7 @@ import Navbar from './Navbar'
 import driverContext from './useContext/driverContext'
 import '../style/user.css'
 import Footer from "../components/Footer"
+import Carousal from './Carousal'
 
 const UserPage = () => {
 
@@ -19,6 +20,7 @@ const UserPage = () => {
     return (
         <>
             <Navbar />
+            <Carousal />
             <div className='container' >
                 {
                     length === 0 ? (
