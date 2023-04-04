@@ -1,0 +1,18 @@
+.my-5{
+    height: 25px;
+    width: 25px;
+    margin: 50px;
+    padding:50px;
+}
+.button2{
+    margin: 30px;
+    border: 3px;
+    
+}
+.citiesname{
+    justify-content: center;
+    margin: 25px;
+    height: 25px;
+    padding: 25px;
+    border: 2%;
+}

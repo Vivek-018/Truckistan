@@ -17,7 +17,7 @@ const AdminPage = () => {
         getallData();
     }, [])
 
-    return 
+    return (
         <>
             <Navbar />
             <div className='container' >
