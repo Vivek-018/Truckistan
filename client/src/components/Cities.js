@@ -8,25 +8,11 @@ const Cities = () => {
     <>
       <Navbar/>
       <div className='container2'>
-                      <Search />
-               <div className='table3'>
-                   <table>
-                    <tr className='my-5' >
-                         <th>S.No</th>
-                         <th>cities name</th>
-                    </tr>
-                    <tr>
-                          <td><button>Edit</button></td>
-                          <td><button>Delete</button></td>
-                     </tr> 
-                      <tr>
-                         <td></td>
-                         <td></td>
-                         </tr> 
-                            </table>
-                 </div>
-                       <div className='citiesname'>
-                         <select name="cities">
+        <div className='searchbar'>
+        <input type='searchbar' className='searchinput' placeholder='sreach..'/>
+        <button  className='button3'>search</button>
+        <div className='citiesname2'>
+                         <select name="cities2">
                          <option>Add new cities</option>
                             <option>Jalandhar</option>
                             <option>Ludhiana</option>
@@ -36,6 +22,28 @@ const Cities = () => {
                             <option>Bathinda</option>
                           </select>
                          </div>
+        </div>
+                     
+               <div className='table3'>
+                   <table>
+                    <tr className='my-5' >
+                         <th className='tr'>S.No</th>
+                         <th className='tr2'>cities name</th>
+                         
+                    </tr>
+                    <tr>
+                          <td className='tr'>1</td>
+                          <td className='tr2'>Jalandhar</td>
+                          <td className='btr'><button className='btn-view mx-4 '>Edit</button></td>
+                          <td className='btr'><button className='btn-view mx-4 '>Delete</button></td>
+                     </tr> 
+                      <tr>
+                         <td></td>
+                         <td></td>
+                         </tr> 
+                            </table>
+                 </div>
+                  
                         </div>               
     </>
   )

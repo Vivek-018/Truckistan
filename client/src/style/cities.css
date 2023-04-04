@@ -4,15 +4,58 @@
     margin: 50px;
     padding:50px;
 }
+.table3{
+     margin-left: 150px;
+}
+.tr{
+    padding-top: 40px;
+}
+.tr2{
+    padding-top: 40px;
+    padding-left: 100px;
+}
+.btr{
+    padding-top: 40px;
+    padding-left: 25px;
+}
 .button2{
     margin: 30px;
     border: 3px;
     
 }
-.citiesname{
-    justify-content: center;
-    margin: 25px;
-    height: 25px;
-    padding: 25px;
-    border: 2%;
+.citiesname2{
+    padding: 0px 40px !important;
+    margin: 2px 0;
+    color: #fff;
+    height: 35px;
+    border-radius: 5px;
+}
+.cities2{
+    padding: 0px 40px !important;
+    color: #fff;
+    height: 35px;
+    border-radius: 5px;
+}
+.searchbar{
+ margin: 30px 50px ;
+ width: 100%;
+ display: flex;
+}
+.searchinput{
+    width: 65%;
+    padding: 0.375rem 0.75rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border-color: ghostwhite;
+    margin-left: 45px;
+}
+.button3{
+    background-color: #8443e5;
+    padding: 0px 40px;
+    margin: 2px 0;
+    color: #fff;
+    height: 35px;
+    border-radius: 5px;
 }
