@@ -46,7 +46,8 @@ const Verified = () => {
         <>
             <Navbar />
             <div className='container'>
-                <Search />
+                      <Search />
+                
                 <div className='tableVerified'>
                     <table>
                         <tr className='my-4' >
