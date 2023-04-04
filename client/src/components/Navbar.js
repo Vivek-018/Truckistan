@@ -6,6 +6,8 @@ import { BsCartFill } from 'react-icons/bs';
 import { AiOutlineHome } from 'react-icons/ai';
 import { RiTruckLine } from 'react-icons/ri';
 import { AiFillSetting } from 'react-icons/ai';
+import { MdLocationCity } from 'react-icons/md';
+import { GoVerified } from 'react-icons/go';
 import { Link } from 'react-router-dom';
 import driverContext from './useContext/driverContext';
 import 'react-toastify/dist/ReactToastify.css';
@@ -138,8 +140,8 @@ const Navbar = () => {
                                                 <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
                                             ) : (
                                                 <>
-                                                    <Link className='des' to='/verified' > <span><RiTruckLine /> </span></Link>
-                                                    <Link className='des' to='/cities' > <span>Cities </span></Link>
+                                                    <Link className='des' to='/verified' > <span><GoVerified/> </span></Link>
+                                                    <Link className='des' to='/cities' > <span><MdLocationCity/> </span></Link>
                                                 </>
                                             )
                                         }

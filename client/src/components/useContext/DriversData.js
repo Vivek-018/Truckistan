@@ -7,10 +7,12 @@ const DriversData = (props) => {
   const host = "http://localhost:5000/driver"
   const Userhost = "http://localhost:5000/user"
   const adminhost = "http://localhost:5000/admin"
+  const citieshost = "http://localhost:5000/city"
   const [data, setData] = useState([]);
   const [alldata, setAllData] = useState([]);
   const [UpcomingOtp, setOtp] = useState();
   const [UserName, setUserName] = useState([])
+  const [GetAllCity, setgetAllcity] = useState();
 
   const getData = async () => {
     const response = await fetch(`${host}/vehiclesData`, {
@@ -36,7 +38,7 @@ const DriversData = (props) => {
   }
 
   const editData = async (id, name, lname, gender, DOB, email,
-    phone,PanCardNumber, address, city, state, pincode, Vnamber,
+    phone, PanCardNumber, address, city, state, pincode, Vnamber,
     country, basefare, bodysize, lodingCapacity, transName,
     RCnumber, DLnumber, PolutionCertificate, driverImage,
     VehicleImage, DLImage, RCImage) => {
@@ -119,9 +121,7 @@ const DriversData = (props) => {
 
   const ChangeIsVerified = async (isVerified, id) => {
     try {
-      const data = await axios.put(`${adminhost}/changeisVerified/${id}`, {
-        isVerified
-      })
+      const data = await axios.put(`${adminhost}/changeisVerified/${id}`, {isVerified})
       return Promise.resolve(data.data)
     } catch (error) {
       return Promise.reject({ error })
@@ -138,12 +138,40 @@ const DriversData = (props) => {
     }
   }
 
+  const Addcities = async (city) => {
+    try {
+      const cities = await axios.post(`${citieshost}/cities`, { city })
+      return Promise.resolve(cities);
+    } catch (error) {
+      return Promise.reject({ error })
+    }
+  }
+
+  const Deletecities = async (id) => {
+    try {
+      const cities = await axios.delete(`${citieshost}/OnebyOnecities/${id}`)
+      return Promise.resolve(cities);
+    } catch (error) {
+      return Promise.reject({ error })
+    }
+  }
+
+  const GetAllCities = async () => {
+    try {
+      const allcities = await axios.get(`${citieshost}/allcities`)
+      setgetAllcity(allcities.data)
+      return Promise.resolve(allcities);
+    } catch (error) {
+      return Promise.reject({ error })
+    }
+  }
+
   return (
     <driverContext.Provider value={{
-      UpcomingOtp, data, generateOTPAtSignup,
-      alldata, getData, getallData, editData,
-      generateOTP, resetPassword, ChangeIsVerified,
-      editUserProfiledata, UsersDataBYId,UserName
+      UpcomingOtp, data, generateOTPAtSignup, Deletecities,
+      alldata, getData, getallData, editData, GetAllCities,
+      generateOTP, resetPassword, ChangeIsVerified,GetAllCity,
+      editUserProfiledata, UsersDataBYId, UserName, Addcities
     }} >
       {props.children}
     </driverContext.Provider>
