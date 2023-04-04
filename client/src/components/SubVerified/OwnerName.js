@@ -4,6 +4,7 @@ import driverContext from '../useContext/driverContext'
 const OwnerName = ({ OwnerName }) => {
     const context = useContext(driverContext);
     const { UsersDataBYId, UserName } = context;
+    console.log(OwnerName.driverId, "Ownername");
 
     useEffect(() => {
         UsersDataBYId(OwnerName.driverId);
@@ -14,11 +15,15 @@ const OwnerName = ({ OwnerName }) => {
 
             {
                 UserName?.map((item, i) => {
-                    return (
-                        <span key={i} >
-                            {item.username}
-                        </span>
-                    )
+                     return(
+                        <>
+                       { item._id == OwnerName.driverId ?
+                            <span key={i} >
+                                {item.username}
+                            </span>
+                        : "Not Available"}
+                        </>
+                     )
                 })
             }
         </>

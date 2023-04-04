@@ -35,7 +35,7 @@ const Verified = () => {
     }
 
     const handleDelete = () => {
-
+        document.getElementById("Modal").style.display = "none";
     }
 
     useEffect(() => {
