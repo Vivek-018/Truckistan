@@ -25,6 +25,7 @@ const Carousal = () => {
         <>
             <div className='images' >
                 {items.map((ite, index) => {
+                    console.log(ite, "hhg")
                     return (
                         sec === index ?
                             <img src={ite.src} key={index} /> : ""
