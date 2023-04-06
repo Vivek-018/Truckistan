@@ -1,0 +1,19 @@
+.contactUs h6 {
+    color: #8443e5;
+    margin-top: 20px;
+}
+
+.contactUs small {
+    opacity: .3;
+}
+
+.contactUs form .form-group {
+    padding-top: 1rem;
+}
+
+.contactUs form .btn-profile {
+    background-color: #8443e5;
+    color: white;
+    padding: .5rem 3rem;
+}
+
