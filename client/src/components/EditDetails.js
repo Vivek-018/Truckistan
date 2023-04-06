@@ -9,7 +9,6 @@ const EditDetails = () => {
 
   const context = useContext(driverContext);
   const { editData } = context;
-
   const [profile, setProfile] = useState(true);
   const [Vaddress, setAddress] = useState(false);
   const [vehicle, setVehicle] = useState(false);

@@ -63,15 +63,15 @@
     border-radius: 8px;
     box-shadow: 0 0 15px 5px rgba(228, 228, 228, 0.5);
     background-color: #fff;
-    width: 75%;
-    height: 100%;
+    width: 85%;
+    height: 23rem;
     text-align: center;
 }
 
 .card img {
     border-radius: .4rem;
     margin-top: .5rem;
-    width: 10rem;
+    width: 13rem;
 }
 
 .card:hover {

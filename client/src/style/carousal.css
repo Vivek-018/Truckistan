@@ -1,6 +1,16 @@
 .images {
     display: flex;
     justify-content: center;
-    margin-top: 40px;
-    
+    margin-top: 20px;
+}
+
+.images img{
+    width: 95%;
+    height: 30rem;
+    border-radius: .5rem;
+}
+
+.services{
+    padding-top: 3rem;
+    color: #8443e5;
 }

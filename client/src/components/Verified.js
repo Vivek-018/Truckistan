@@ -4,15 +4,16 @@ import Search from './Search'
 import { FaRegThumbsUp } from 'react-icons/fa';
 import { useContext } from 'react';
 import driverContext from './useContext/driverContext';
-import OwnerName from './SubVerified/OwnerName';
 import { NavLink } from 'react-router-dom';
 
 const Verified = () => {
     const context = useContext(driverContext)
-    const { ChangeIsVerified, alldata, getallData } = context;
+    const { ChangeIsVerified, alldata, getallData, DeleteDrivers } = context;
     const [check, setChecked] = useState(false);
     const [isVerified, setIsVerified] = useState(true);
     const [VerifyId, setVerify] = useState();
+
+    console.log(VerifyId, "verified")
 
     function handleOpenModal(num, id) {
         document.getElementById("Modal").style.display = "block";
@@ -21,6 +22,7 @@ const Verified = () => {
             setVerify(id)
         } else {
             setChecked(true)
+            setVerify(id)
         }
     }
 
@@ -35,7 +37,9 @@ const Verified = () => {
     }
 
     const handleDelete = () => {
+        DeleteDrivers(VerifyId)
         document.getElementById("Modal").style.display = "none";
+        window.location.reload()
     }
 
     useEffect(() => {
@@ -52,7 +56,6 @@ const Verified = () => {
                     <table>
                         <tr className='my-4' >
                             <td>S.No</td>
-                            <td>Owner Name</td>
                             <td>Driver Name</td>
                             <td>Vehicle Number</td>
                         </tr>
@@ -63,7 +66,6 @@ const Verified = () => {
                                     return (
                                         <tr key={index} className='trtd' >
                                             <td>{index + 1}</td>
-                                            <td><OwnerName OwnerName={item} /></td>
                                             <td>{item.name}</td>
                                             <td>{item.Vnamber}</td>
                                             <td><NavLink to={'/viewdetails'} state={item} className='btn-view'>View</NavLink></td>
@@ -72,7 +74,7 @@ const Verified = () => {
                                                     {item.isVerified === true ? "Verifeid" : "Verify"}
                                                 </button>
                                             </td>
-                                            <td><button className='btn-delete' onClick={() => { handleOpenModal(2) }} >Delete</button></td>
+                                            <td><button className='btn-delete' onClick={() => { handleOpenModal(2, item._id) }} >Delete</button></td>
                                         </tr>
                                     )
                                 })

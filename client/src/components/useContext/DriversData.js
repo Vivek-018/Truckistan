@@ -121,7 +121,7 @@ const DriversData = (props) => {
 
   const ChangeIsVerified = async (isVerified, id) => {
     try {
-      const data = await axios.put(`${adminhost}/changeisVerified/${id}`, {isVerified})
+      const data = await axios.put(`${adminhost}/changeisVerified/${id}`, { isVerified })
       return Promise.resolve(data.data)
     } catch (error) {
       return Promise.reject({ error })
@@ -166,11 +166,24 @@ const DriversData = (props) => {
     }
   }
 
+
+  const DeleteDrivers = async (id) => {
+    try {
+      const drivers = await axios.delete(`${adminhost}/driversAndTrucks/${id}`)
+      console.log(drivers, "drivers")
+      return Promise.resolve(drivers);
+    } catch (error) {
+      return Promise.reject({ error })
+    }
+  }
+
+  // const 
+
   return (
     <driverContext.Provider value={{
       UpcomingOtp, data, generateOTPAtSignup, Deletecities,
-      alldata, getData, getallData, editData, GetAllCities,
-      generateOTP, resetPassword, ChangeIsVerified,GetAllCity,
+      alldata, getData, getallData, editData, GetAllCities, DeleteDrivers,
+      generateOTP, resetPassword, ChangeIsVerified, GetAllCity,
       editUserProfiledata, UsersDataBYId, UserName, Addcities
     }} >
       {props.children}

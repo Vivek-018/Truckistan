@@ -21,7 +21,6 @@ const Carousal = () => {
         }
     }, [])
 
-    console.log(sec)
     return (
         <>
             <div className='images' >
@@ -31,6 +30,10 @@ const Carousal = () => {
                             <img src={ite.src} key={index} /> : ""
                     )
                 })}
+            </div>
+
+            <div className='text-center services ' >
+                <h1>Our Goal to Provide Services</h1>
             </div>
         </>
     )
