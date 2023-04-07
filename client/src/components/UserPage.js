@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Navbar from './Navbar'
 import driverContext from './useContext/driverContext'
@@ -8,14 +8,19 @@ import Carousal from './Carousal'
 import { GoVerified } from 'react-icons/go';
 
 const UserPage = () => {
-
     const context = useContext(driverContext);
-    const { alldata, getallData } = context;
+    const { alldata, getallData, getMOVERSTRUCKS,
+        moTrucks, ontruks, gettruksTrans } = context;
 
     const length = alldata.length;
+    const len = moTrucks?.length;
+    const l = ontruks?.length;
+    console.log(len, "len")
 
     useEffect(() => {
         getallData();
+        getMOVERSTRUCKS();
+        gettruksTrans();
     }, [])
 
     return (
@@ -23,13 +28,23 @@ const UserPage = () => {
             <Navbar />
             <Carousal />
             <div className='container' >
+
+                <div className='heads' >
+                    <div>
+                        <span>Transportation</span>
+                    </div>
+                    <div>
+                        <span>Movers Trucks</span>
+                    </div>
+                </div>
+
                 {
-                    length === 0 ? (
+                    len === 0 || len === undefined ? (
                         <div class="loader my-4 "></div>
                     ) : (
                         <div className='vehicleInfo'>
                             {
-                                alldata?.map((item, index) => {
+                                moTrucks?.map((item, index) => {
                                     return (
                                         <>
                                             <div key={index} className="card my-2 ">
@@ -39,13 +54,13 @@ const UserPage = () => {
                                                         <small className="card-title">{item.transName}</small>
                                                     </div>
                                                     <div className='verified' >
-                                                             <small>{item.isVerified === true?
-                                                             <>
-                                                              <GoVerified/> "Verified"
-                                                             </>
-                                                              :
-                                                              "Not Verified" }</small>
-                                                        </div>
+                                                        <small>{item.isVerified === true ?
+                                                            <>
+                                                                <GoVerified /> "Verified"
+                                                            </>
+                                                            :
+                                                            "Not Verified"}</small>
+                                                    </div>
                                                     <div className='loadCapacity d-flex justify-content-between '>
                                                         <div>
                                                             <small href="#" className="card-link">Loading Capacity</small>
@@ -69,6 +84,7 @@ const UserPage = () => {
                                                     </div>
                                                 </div>
                                             </div>
+
                                         </>
                                     )
                                 })
@@ -77,6 +93,72 @@ const UserPage = () => {
                     )
                 }
             </div>
+
+
+            <div className='container' >
+                <div className='heads' >
+                    <div>
+                        <span>Transportation</span>
+                    </div>
+                    <div>
+                        <span>ON ROAD EXPRESS</span>
+                    </div>
+                </div>
+                {l === 0 || l === undefined ? (
+                    <div class="loader my-4 "></div>
+                ) : (
+                    <div className='vehicleUsers'>
+                        {
+                            ontruks?.map((item, index) => {
+                                return (
+                                    <>
+                                        <div key={index} className="card my-2 ">
+                                            <div className="card-body">
+                                                <img src={item.VehicleImage} alt='img' />
+                                                <div className='TransName' >
+                                                    <small className="card-title">{item.transName}</small>
+                                                </div>
+                                                <div className='verified' >
+                                                    <small>{item.isVerified === true ?
+                                                        <>
+                                                            <GoVerified /> "Verified"
+                                                        </>
+                                                        :
+                                                        "Not Verified"}</small>
+                                                </div>
+                                                <div className='loadCapacity d-flex justify-content-between '>
+                                                    <div>
+                                                        <small href="#" className="card-link">Loading Capacity</small>
+                                                    </div>
+                                                    <div>
+                                                        <small href="#" className=" mx-3 ">{item.lodingCapacity} </small>
+                                                    </div>
+                                                </div>
+
+                                                <div className='loadCapacity d-flex justify-content-between'>
+                                                    <div>
+                                                        <small href="#" className="card-link">Base Fare</small>
+                                                    </div>
+                                                    <div>
+                                                        <small href="#" className=" mx-3 ">{item.basefare} Rs/km</small>
+                                                    </div>
+                                                </div>
+
+                                                <div className='my-2 ' >
+                                                    <NavLink to={'/cart'} state={item} className='btn-user' exact >Book</NavLink>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </>
+                                )
+                            })
+                        }
+                    </div>
+                )
+                }
+            </div>
+
             <Footer />
         </>
     )

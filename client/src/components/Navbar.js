@@ -160,6 +160,9 @@ const Navbar = () => {
                     <li>
                         <a style={{ cursor: "pointer" }} to="/profiledetails" onClick={handleModal} >My Profile</a>
                     </li>
+                    <li >
+                        <Link to="/book">Booked Vehicles</Link>
+                    </li>
                     <li>
                         <Link to="/help">FAQ's & Help</Link>
                     </li>
@@ -168,6 +171,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
+
 
             <div className='sidenav' id="mySidenav">
                 <a className='des'><img src={navpic}></img> {name?.username}</a>

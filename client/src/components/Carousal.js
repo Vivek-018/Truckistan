@@ -25,7 +25,7 @@ const Carousal = () => {
         <>
             <div className='images' >
                 {items.map((ite, index) => {
-                    console.log(ite, "hhg")
+                    // console.log(ite, "hhg")
                     return (
                         sec === index ?
                             <img src={ite.src} key={index} /> : ""
@@ -33,9 +33,9 @@ const Carousal = () => {
                 })}
             </div>
 
-            <div className='text-center services ' >
+            {/* <div className='text-center services ' >
                 <h1>Our Goal to Provide Services</h1>
-            </div>
+            </div> */}
         </>
     )
 }

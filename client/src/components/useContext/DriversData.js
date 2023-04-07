@@ -13,6 +13,8 @@ const DriversData = (props) => {
   const [UpcomingOtp, setOtp] = useState();
   const [UserName, setUserName] = useState([])
   const [GetAllCity, setgetAllcity] = useState();
+  const [moTrucks, setmoTrucks] = useState();
+  const [ontruks, setOntrucks] = useState();
 
   const getData = async () => {
     const response = await fetch(`${host}/vehiclesData`, {
@@ -177,14 +179,34 @@ const DriversData = (props) => {
     }
   }
 
-  // const 
+  const getMOVERSTRUCKS = async () => {
+    const response = await fetch(`${host}/VehData`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    const json = await response.json();
+    setmoTrucks(json);
+  }
+
+  const gettruksTrans = async () => {
+    const response = await fetch(`${host}/VehNext`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    const json = await response.json();
+    setOntrucks(json);
+  }
 
   return (
     <driverContext.Provider value={{
-      UpcomingOtp, data, generateOTPAtSignup, Deletecities,
+      UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
       alldata, getData, getallData, editData, GetAllCities, DeleteDrivers,
-      generateOTP, resetPassword, ChangeIsVerified, GetAllCity,
-      editUserProfiledata, UsersDataBYId, UserName, Addcities
+      generateOTP, resetPassword, ChangeIsVerified, GetAllCity, gettruksTrans,
+      editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks
     }} >
       {props.children}
     </driverContext.Provider>

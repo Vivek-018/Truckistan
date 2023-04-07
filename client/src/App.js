@@ -14,6 +14,7 @@ import Cart from './components/Cart';
 import ResetPassword from './components/ResetPassword';
 import Verified from './components/Verified';
 import Cities from './components/Cities';
+import BookedVehicles from './components/BookedVehicles';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             <Route path='/resetPassword' element={<ResetPassword/>} />
             <Route path='/verified' element = {<Verified/>} />
             <Route path='/cities' element = {<Cities/>} />
+            <Route path='/book' element = {<BookedVehicles/>} />
           </Routes>
         </BrowserRouter>
       </DriversData>
