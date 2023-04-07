@@ -15,7 +15,6 @@ const UserPage = () => {
     const length = alldata.length;
     const len = moTrucks?.length;
     const l = ontruks?.length;
-    console.log(len, "len")
 
     useEffect(() => {
         getallData();
@@ -150,6 +149,70 @@ const UserPage = () => {
                                             </div>
                                         </div>
 
+                                    </>
+                                )
+                            })
+                        }
+                    </div>
+                )
+                }
+            </div>
+
+            <div className='container' >
+                <div className='heads' >
+                    <div>
+                        <span>Others</span>
+                    </div>
+                </div>
+                {length === 0 || length === undefined ? (
+                    <div class="loader my-4 "></div>
+                ) : (
+                    <div className='vehicleOthers'>
+                        {
+                            alldata?.map((item, index) => {
+                                return (
+                                    <>
+                                        {
+                                            item.transName === "MOVERS TRUCKS" || item.transName === "ON ROAD EXPRESS" ? "" :
+
+                                                <div key={index} className="card my-2 ">
+                                                    <div className="card-body">
+                                                        <img src={item.VehicleImage} alt='img' />
+                                                        <div className='TransName' >
+                                                            <small className="card-title">{item.transName}</small>
+                                                        </div>
+                                                        <div className='verified' >
+                                                            <small>{item.isVerified === true ?
+                                                                <>
+                                                                    <GoVerified /> "Verified"
+                                                                </>
+                                                                :
+                                                                "Not Verified"}</small>
+                                                        </div>
+                                                        <div className='loadCapacity d-flex justify-content-between '>
+                                                            <div>
+                                                                <small href="#" className="card-link">Loading Capacity</small>
+                                                            </div>
+                                                            <div>
+                                                                <small href="#" className=" mx-3 ">{item.lodingCapacity} </small>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className='loadCapacity d-flex justify-content-between'>
+                                                            <div>
+                                                                <small href="#" className="card-link">Base Fare</small>
+                                                            </div>
+                                                            <div>
+                                                                <small href="#" className=" mx-3 ">{item.basefare} Rs/km</small>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className='my-2 ' >
+                                                            <NavLink to={'/cart'} state={item} className='btn-user' exact >Book</NavLink>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                        }
                                     </>
                                 )
                             })

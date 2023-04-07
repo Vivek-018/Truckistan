@@ -68,14 +68,22 @@
     padding-bottom: 2rem;
 }
 
+.vehicleOthers{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
 .card {
     margin: auto;
     align-items: center;
     border-radius: 8px;
     box-shadow: 0 0 15px 5px rgba(228, 228, 228, 0.5);
     background-color: #fff;
-    width: 17rem;
-    height: 23rem;
+    width: 16rem;
+    height: 21rem;
     text-align: center;
 }
 
