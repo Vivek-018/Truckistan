@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import Navbar from './Navbar'
 import Footer from "./Footer"
 import "../style/help.css";
-import { useRef } from 'react';
-import emailjs from 'emailjs-com'
+// import { useRef } from 'react';
+// import emailjs from 'emailjs-com'
 import { BsInstagram } from 'react-icons/bs'
 import { MdOutlineEmail } from 'react-icons/md'
 
 const Help = () => {
-  const form = useRef();
-  const sendEmail = (e) => {
-    e.preventDefault();
-    emailjs.sendForm('service_fjd2pik', 'template_bxk3iwb', form.current, 'nct4zlPRNBqfUqJZf')
+  // const form = useRef();
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+  //   emailjs.sendForm('service_fjd2pik', 'template_bxk3iwb', form.current, 'nct4zlPRNBqfUqJZf')
 
-  }
+  // }
   return (
     <>
       <Navbar />
@@ -36,12 +36,12 @@ const Help = () => {
             </article>
           </div>
 
-          <form ref={form} onSubmit={sendEmail}>
+          {/* <form ref={form} onSubmit={sendEmail}>
             <input type="text" name='name' placeholder='Your Full Name' required />
             <input type="email" name='email' placeholder='Your Email' required />
             <textarea name='message' rows="7" placeholder='Your Message' required></textarea>
             <button type='submit' className='btn btn-primary'> Send Message</button>
-          </form>
+          </form> */}
         </div>
       </section>
       <Footer />
