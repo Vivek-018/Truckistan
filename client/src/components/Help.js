@@ -2,25 +2,23 @@ import React, { useState } from "react";
 import Navbar from './Navbar'
 import Footer from "./Footer"
 import "../style/help.css";
+import { useRef } from 'react';
+import emailjs from "emailjs-com";
 
-const FORM_ENDPOINT = ""; 
 
 const Help = () => {
-  const [submitted, setSubmitted] = useState(false);
-  const handleSubmit = () => {
-    setTimeout(() => {
-      setSubmitted(true);
-    }, 100);
-  };
+  
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-  if (submitted) {
-    return (
-      <>
-        <div className="text-2xl">Thank you!</div>
-        <div className="text-md">We'll be in touch soon.</div>
-      </>
-    );
-  }
+    emailjs.sendForm('service_n9bvk1h', 'template_piiv417', form.current, 'QzRc0G0XM3lu7xxjZ')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+  };
 
   return (
     <>
@@ -30,7 +28,7 @@ const Help = () => {
                 <h6 className="d-flex align-items-center justify-content-center ">Contact Us </h6>
                 <small className="d-flex align-items-center justify-content-center">For any query, Contact Us now.</small>
     <form
-      action={FORM_ENDPOINT} onSubmit={handleSubmit} method="POST" target="_blank"
+      ref={form} onSubmit={sendEmail}
     >
       <div className="form-group d-flex align-items-center justify-content-center my-2">
         <input 
