@@ -5,6 +5,7 @@ import driverContext from './useContext/driverContext'
 import '../style/user.css'
 import Footer from "../components/Footer"
 import Carousal from './Carousal'
+import { GoVerified } from 'react-icons/go';
 
 const UserPage = () => {
 
@@ -37,6 +38,14 @@ const UserPage = () => {
                                                     <div className='TransName' >
                                                         <small className="card-title">{item.transName}</small>
                                                     </div>
+                                                    <div className='verified' >
+                                                             <small>{item.isVerified === true?
+                                                             <>
+                                                              <GoVerified/> "Verified"
+                                                             </>
+                                                              :
+                                                              "Not Verified" }</small>
+                                                        </div>
                                                     <div className='loadCapacity d-flex justify-content-between '>
                                                         <div>
                                                             <small href="#" className="card-link">Loading Capacity</small>
