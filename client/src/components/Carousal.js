@@ -3,7 +3,6 @@ import imgaes from '../images/Logo.png'
 import "../style/carousal.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { Link } from 'react-router-dom';
 
 const Carousal = () => {
   AOS.init({

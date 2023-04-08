@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import PhoneInput from "react-phone-number-input";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "react-phone-number-input/style.css";
 import backimg from "../images/Logo.png";
 import logo from "../images/Logo.png";
@@ -211,11 +211,8 @@ const Login = () => {
                         }
                         <div className="alternate-option my-3 text-center">
                             Already have an account{" "}
-                            <a href="login">
-                                <b>
-                                    <u>Login</u>
-                                </b>
-                            </a>
+                            <Link to={"/login"}> <b><u>Login</u></b>
+                            </Link>
                         </div>
                     </form>
                     <div id="recaptcha-container"></div>
