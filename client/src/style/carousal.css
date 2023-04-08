@@ -7,6 +7,7 @@ body {
   }
 
   .imgpara {
+    align-items: center;
     display: grid;
     grid-gap: 4.5rem;
     grid-template-columns: repeat(2, 1fr);
@@ -14,13 +15,13 @@ body {
     text-align: center;
     
   }
-  
+
   .Text {
-    padding-top: 12rem;
+    padding-top: 4rem;
   }
-  
+
   .Text .textone span {
-    font-size: 3.0rem;
+    font-size: 3.5rem;
     font-weight: 600;
     color: #232354;
   }
@@ -54,9 +55,23 @@ body {
     opacity: .8;
     font-size: 1.0rem;
   }
-  
+
+  .Text button{
+    background-color: transparent;
+    border: 2px solid #232354;
+    border-radius: .4rem;
+    padding: .4rem 4rem;
+    color: #232354;
+    margin-top: 1rem;
+  }
+
+  .Text button:hover{
+    background-color: #232354;
+    color: white;
+  }
+
   .imgpara .img img {
-    width: 35rem;
+    width: 38rem;
   }
   
   

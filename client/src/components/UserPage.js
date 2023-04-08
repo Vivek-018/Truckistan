@@ -6,8 +6,15 @@ import '../style/user.css'
 import Footer from "../components/Footer"
 import Carousal from './Carousal'
 import { GoVerified } from 'react-icons/go';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const UserPage = () => {
+    AOS.init({
+        offset: 120,
+        delay: 0,
+        duration: 1700,
+    });
     const context = useContext(driverContext);
     const { alldata, getallData, getMOVERSTRUCKS,
         moTrucks, ontruks, setOneData, gettruksTrans } = context;
@@ -30,9 +37,9 @@ const UserPage = () => {
         <>
             <Navbar />
             <Carousal />
-            <div className='container' >
+            <div className='container' data-aos="fade-up" >
 
-                <div className='heads' >
+                <div className='heads'>
                     <div>
                         <span>Transportation</span>
                     </div>
@@ -98,7 +105,7 @@ const UserPage = () => {
             </div>
 
 
-            <div className='container' >
+            <div className='container' data-aos="fade-up" >
                 <div className='heads' >
                     <div>
                         <span>Transportation</span>
@@ -162,7 +169,7 @@ const UserPage = () => {
                 }
             </div>
 
-            <div className='container' >
+            <div className='container' data-aos="fade-up" >
                 <div className='heads' >
                     <div>
                         <span>Others</span>
