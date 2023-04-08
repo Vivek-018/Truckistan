@@ -10,11 +10,15 @@ import { GoVerified } from 'react-icons/go';
 const UserPage = () => {
     const context = useContext(driverContext);
     const { alldata, getallData, getMOVERSTRUCKS,
-        moTrucks, ontruks, gettruksTrans } = context;
+        moTrucks, ontruks, setOneData, gettruksTrans } = context;
 
     const length = alldata.length;
     const len = moTrucks?.length;
     const l = ontruks?.length;
+
+    const handleSetData = (item) => {
+        setOneData(item);
+    }
 
     useEffect(() => {
         getallData();
@@ -208,7 +212,7 @@ const UserPage = () => {
                                                         </div>
 
                                                         <div className='my-2 ' >
-                                                            <NavLink to={'/cart'} state={item} className='btn-user' exact >Book</NavLink>
+                                                            <NavLink to={'/cart'} state={item} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>

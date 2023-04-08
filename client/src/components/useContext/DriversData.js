@@ -15,6 +15,9 @@ const DriversData = (props) => {
   const [GetAllCity, setgetAllcity] = useState();
   const [moTrucks, setmoTrucks] = useState();
   const [ontruks, setOntrucks] = useState();
+  const [OneData, setOneData] = useState();
+ 
+  console.log(OneData, "oneba")
 
   const getData = async () => {
     const response = await fetch(`${host}/vehiclesData`, {
@@ -206,7 +209,8 @@ const DriversData = (props) => {
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
       alldata, getData, getallData, editData, GetAllCities, DeleteDrivers,
       generateOTP, resetPassword, ChangeIsVerified, GetAllCity, gettruksTrans,
-      editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks
+      editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
+      setOneData
     }} >
       {props.children}
     </driverContext.Provider>
