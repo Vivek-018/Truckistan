@@ -83,7 +83,7 @@ const UserPage = () => {
                                                     </div>
 
                                                     <div className='my-2 ' >
-                                                        <NavLink to={'/cart'} state={item} className='btn-user' exact >Book</NavLink>
+                                                        <NavLink to={'/cart'} state={item} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,7 +148,7 @@ const UserPage = () => {
                                                 </div>
 
                                                 <div className='my-2 ' >
-                                                    <NavLink to={'/cart'} state={item} className='btn-user' exact >Book</NavLink>
+                                                    <NavLink to={'/cart'} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
                                                 </div>
                                             </div>
                                         </div>
@@ -212,7 +212,7 @@ const UserPage = () => {
                                                         </div>
 
                                                         <div className='my-2 ' >
-                                                            <NavLink to={'/cart'} state={item} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
+                                                            <NavLink to={'/cart'} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>

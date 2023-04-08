@@ -3,8 +3,19 @@ import { FaHandPointRight } from 'react-icons/fa';
 import { GoVerified } from 'react-icons/go';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const VehicleDetails = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const data = location.state.dat;
+    const Address = location.state.Address
+    const handleDoneBookings = () => {
+        alert("Vehicle Booked Successfully");
+        navigate('/home')
+    }
+
     return (
         <>
             <Navbar />
@@ -13,7 +24,7 @@ const VehicleDetails = () => {
                     <div className='truckbooked' >
                         <div className='userAdd text-center' >
                             <img
-                                //  src={piv} 
+                                src={data?.VehicleImage}
                                 alt='images' />
                         </div>
                         <div className='allDeatils ' >
@@ -30,13 +41,13 @@ const VehicleDetails = () => {
                                 </div>
 
                                 <div className='detailsV' >
-                                    <span className='backend' >durgesh nano chat</span><br /><br />
-                                    <span className='backend' ><GoVerified /> Yes</span><br /><br />
-                                    <span className='backend' >Druesg</span><br /><br />
-                                    <span className='backend' >Kanpur, Nonepur, tejpur</span><br /><br />
-                                    <span className='backend' >10*10*20</span><br /><br />
-                                    <span className='backend' >110 Rs/Km</span><br /><br />
-                                    <span className='backend' >20 Tones</span><br /><br />
+                                    <span className='backend' >{data?.transName}</span><br /><br />
+                                    <span className='backend' ><GoVerified />{data?.isVerified}</span><br /><br />
+                                    <span className='backend' >{data?.name}</span><br /><br />
+                                    <span className='backend' >citiy</span><br /><br />
+                                    <span className='backend' >{data?.bodysize}</span><br /><br />
+                                    <span className='backend' >{data?.basefare}</span><br /><br />
+                                    <span className='backend' >{data?.lodingCapacity}</span><br /><br />
                                 </div>
                             </div>
                         </div>
@@ -63,17 +74,17 @@ const VehicleDetails = () => {
 
                             <div className='detailsV' >
                                 <span className='backend' >{""}</span><br /><br />
-                                <span className='backend' >durgesh nano chat</span><br /><br />
-                                <span className='backend' >Yes</span><br /><br />
-                                <span className='backend' >123456789</span><br /><br />
+                                <span className='backend' >{Address?.pickupAddress}</span><br /><br />
+                                <span className='backend' >{Address?.Pcity}</span><br /><br />
+                                <span className='backend' >{Address?.Ppincode}</span><br /><br />
                                 <span className='backend' >{""}</span><br /><br />
-                                <span className='backend' >Druesg</span><br /><br />
-                                <span className='backend' >Kanpur, Nonepur, tejpur</span><br /><br />
-                                <span className='backend' >123456789</span><br /><br />
+                                <span className='backend' >{Address?.DropOffAddress}</span><br /><br />
+                                <span className='backend' >{Address?.Dcity}</span><br /><br />
+                                <span className='backend' >{Address?.Dpincode}</span><br /><br />
                                 <span className='backend' >{""}</span><br /><br />
-                                <span className='backend' >10*10*20</span><br /><br />
-                                <span className='backend' >110 Rs/Km</span><br /><br />
-                                <span className='backend' >20 Tones</span><br /><br />
+                                <span className='backend' >{Address?.name}</span><br /><br />
+                                <span className='backend' >{Address?.phone}</span><br /><br />
+                                <span className='backend' >{Address?.Req}</span><br /><br />
                             </div>
                         </div>
                     </div>
@@ -81,7 +92,7 @@ const VehicleDetails = () => {
                     <div className='last-btn' >
                         <small className='my-2' > <FaHandPointRight /> <span>Please Read all the details carefully and than click to button </span></small>
                         <div className='text-center' >
-                            <button className='cart-btn'>Book Know</button>
+                            <button className='cart-btn' onClick={handleDoneBookings} >Book Know</button>
                         </div>
                     </div>
 
