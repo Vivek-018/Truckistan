@@ -13,7 +13,7 @@ const VehicleDetails = () => {
     const Address = location.state.Address
     const handleDoneBookings = () => {
         alert("Vehicle Booked Successfully");
-        navigate('/home')
+        navigate('/user')
     }
 
     return (

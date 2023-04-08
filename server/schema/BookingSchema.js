@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const bookingSchema = new mongoose.Schema({
     vehicleId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: false
+        required: true
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,

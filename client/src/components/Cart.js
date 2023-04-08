@@ -63,7 +63,6 @@ const Cart = () => {
             navigate('/vehicledetails', { state: { dat, Address } })
         }
     }
-
     return (
         <>
             <Navbar />
