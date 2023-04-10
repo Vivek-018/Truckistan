@@ -1,4 +1,6 @@
 import React from 'react'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Address = ({ data, setData, setAddress, setVehicle }) => {
 
@@ -16,13 +18,19 @@ const Address = ({ data, setData, setAddress, setVehicle }) => {
     const fun = (e) => {
         e.preventDefault()
         if (data.country === '' || data.address === '' || data.city === '' || data.state === "" || data.pincode === "") {
-            alert("fill all details")
+            // alert("fill all details")
+            toast("fill all details", {
+                autoClose: 1000,
+            })
             setAddress(true);
             setVehicle(false);
         } else {
             setAddress(false);
             setVehicle(true);
-            alert("Your Data Save successfully")
+            // alert("Your Data Save successfully")
+            toast("Your Data Saved successfully", {
+                autoClose: 1000,
+            })
         }
     }
 
@@ -57,6 +65,7 @@ const Address = ({ data, setData, setAddress, setVehicle }) => {
                 </form>
 
             </div>
+        <ToastContainer />
         </>
     )
 }

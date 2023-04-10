@@ -232,6 +232,25 @@ router.post('/BookedAddress', fetchuser, async (req, res) => {
     }
 })
 
+router.put("/ChangeVehicleStatus/:id", (req, res) => {
+    const { Booked } = req.body;
+    Booking.findOneAndUpdate(
+        { vehicleId: req.params.id },
+        {
+            $set:
+            {
+                status: Booked
+            },
+        }
+    )
+        .then((response) => {
+            res.json(response);
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        });
+});
+
 router.get('/bookedVehicles', fetchuser, async (req, res) => {
     try {
         const book = await Booking.find({ userId: req.user.id });

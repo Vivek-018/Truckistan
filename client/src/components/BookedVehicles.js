@@ -29,6 +29,7 @@ const BookedVehicles = () => {
                         </tr>
                         {
                             booked?.map((item, i) => {
+                                console.log(item)
                                 return (
                                     <>
                                         {

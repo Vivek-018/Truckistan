@@ -8,6 +8,7 @@ const DriversData = (props) => {
   const Userhost = "http://localhost:5000/user"
   const adminhost = "http://localhost:5000/admin"
   const citieshost = "http://localhost:5000/city"
+  const commenthost = "http://localhost:5000/comment"
   const [data, setData] = useState([]);
   const [alldata, setAllData] = useState([]);
   const [UpcomingOtp, setOtp] = useState();
@@ -28,7 +29,6 @@ const DriversData = (props) => {
     phone: ""
   });
   const VehicleId = OneData?._id
-
   const [booked, setBooked] = useState();
 
   const getData = async () => {
@@ -183,11 +183,9 @@ const DriversData = (props) => {
     }
   }
 
-
   const DeleteDrivers = async (id) => {
     try {
       const drivers = await axios.delete(`${adminhost}/driversAndTrucks/${id}`)
-      console.log(drivers, "drivers")
       return Promise.resolve(drivers);
     } catch (error) {
       return Promise.reject({ error })
@@ -241,16 +239,39 @@ const DriversData = (props) => {
     })
     const json = await response.json();
     setBooked(json);
-    console.log(json);
+  }
+
+  const SavedComment = async (comment) => {
+    const res = await fetch(`${commenthost}/SavedComments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "token": localStorage.getItem("token")
+      },
+      body: JSON.stringify({ comment })
+    })
+    const data = await res.json();
+  }
+
+  const ChangeBooked = async (Booked, id) => {
+    const res = await fetch(`${Userhost}/ChangeVehicleStatus/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ Booked })
+    })
+    const data = await res.json();
   }
 
   return (
     <driverContext.Provider value={{
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
-      alldata, getData, getallData, editData, GetAllCities, DeleteDrivers,
+      alldata, getData, getallData, editData, GetAllCities, DeleteDrivers, SavedComment,
       generateOTP, resetPassword, ChangeIsVerified, GetAllCity, gettruksTrans,
+      ChangeBooked,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
-      setOneData, Address, setaddress, OneData, AddAddress,getbookedVehicles,booked
+      setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked
     }} >
       {props.children}
     </driverContext.Provider>

@@ -1,4 +1,6 @@
 import React from 'react'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const UploadDoc = ({ data, setData, SaveData }) => {
 
@@ -16,10 +18,16 @@ const UploadDoc = ({ data, setData, SaveData }) => {
     const fun = (e) => {
         e.preventDefault()
         if (data.driverImage === '' || data.VehicleImage === '' || data.DLImage === '' || data.RCImage === "") {
-            alert("fill all details")
+            // alert("fill all details")
+            toast("fill all details", {
+                autoClose: 1000,
+            })
         } else {
             SaveData();
-            alert("Your Data Save successfully")
+            // alert("Your Data Save successfully")
+            toast("Your Data Saved successfully", {
+                autoClose: 1000,
+            })
         }
     }
 
@@ -58,6 +66,7 @@ const UploadDoc = ({ data, setData, SaveData }) => {
                     <button type="submit" class="btn btn-profile my-3" onClick={fun} >Save</button>
                 </div>
             </div>
+        <ToastContainer />
         </>
     )
 }

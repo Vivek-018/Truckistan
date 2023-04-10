@@ -1,19 +1,41 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { FaHandPointRight } from 'react-icons/fa';
 import { GoVerified } from 'react-icons/go';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import driverContext from '../useContext/driverContext';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const VehicleDetails = () => {
+    const context = useContext(driverContext);
+    const [Booked, setBooked] = useState("Booked");
+    const { SavedComment, ChangeBooked } = context;
     const navigate = useNavigate();
     const location = useLocation();
-    const data = location.state.dat;
-    const Address = location.state.Address
+    const [comment, setcomment] = useState();
+
+    const data = location.state?.dat;
+    const Address = location.state?.Address
+
     const handleDoneBookings = () => {
-        alert("Vehicle Booked Successfully");
-        navigate('/user')
+        ChangeBooked(Booked, data?._id)
+        toast("Vehicle Booked Successfully", {
+            autoClose: 1000,
+        })
+    }
+
+    const handleComment = (e) => {
+        e.preventDefault();
+        if (comment === undefined) {
+            alert("Plz write Something")
+        } else {
+            SavedComment(comment);
+            toast("Your Comment Saved Successfully", {
+                autoClose: 1000,
+            })
+        }
     }
 
     return (
@@ -21,14 +43,11 @@ const VehicleDetails = () => {
             <Navbar />
             <div className='container'>
                 <div className='booked' >
+                    <div className='topheading text-center my-4 '>
+                        <h3 >Vehicle Details</h3>
+                    </div>
                     <div className='truckbooked' >
-                        <div className='userAdd text-center' >
-                            <img
-                                src={data?.VehicleImage}
-                                alt='images' />
-                        </div>
                         <div className='allDeatils ' >
-                            <h3 className='my-4' >Vehicle Details</h3>
                             <div className='MoreVehicale' >
                                 <div>
                                     <span className='backend' >Transportation :</span><br /><br />
@@ -51,10 +70,27 @@ const VehicleDetails = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className='userAdd text-center' >
+                            <div>
+                                <img
+                                    src={data?.driverImage}
+                                    alt='images' />
+                                <h6 className='my-2' >Driver</h6>
+                            </div>
+
+                            <div>
+                                <img
+                                    src={data?.VehicleImage}
+                                    alt='images' />
+                                <h6 className='my-2' >Vehicle</h6>
+                            </div>
+
+                        </div>
                     </div>
                     <div className='address'>
                         <div className='text-center' >
-                            <h2>Address Details</h2>
+                            <h2 style={{ color: "#e543c3" }} >Address Details</h2>
+                            <hr></hr>
                         </div>
                         <div className='addressfull' >
                             <div>
@@ -97,14 +133,16 @@ const VehicleDetails = () => {
                     </div>
 
                     <section id="contact">
-                        <div className='text-center' >
+                        <div className='text-center comment '>
                             <h2>Please Comments Something About Our Services </h2>
                         </div>
                         <div className='container contact_conatiner'>
                             <form >
                                 <div className='text-center' >
-                                    <textarea name='message' rows="7" placeholder='Your Comments' required></textarea>
-                                    <button type='submit' className='btn-save'>Save</button>
+                                    <textarea name='comment' rows="7" placeholder='Your Comments' required
+                                        onChange={(e) => { setcomment((prev) => ({ ...prev, comment: e.target.value })) }}
+                                    ></textarea>
+                                    <button onClick={handleComment} className='btn-save'>Save</button>
                                 </div>
                             </form>
                         </div>
@@ -112,7 +150,7 @@ const VehicleDetails = () => {
                 </div>
             </div>
             <Footer />
-
+            <ToastContainer />
         </>
     )
 }

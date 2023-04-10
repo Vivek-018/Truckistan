@@ -128,6 +128,16 @@ const Cart = () => {
                                         <TextField
                                             required
                                             id="outlined-required"
+                                            label="Date"
+                                            name='Dcity'
+                                            onChange={(e) => setaddress((prev) => ({ ...prev, Dcity: e.target.value }))}
+                                        />
+                                    </div>
+
+                                    <div className="form-group p-3 ">
+                                        <TextField
+                                            required
+                                            id="outlined-required"
                                             label="Pin code"
                                             name='Ppincode'
                                             onChange={(e) => setaddress((prev) => ({ ...prev, Ppincode: e.target.value }))}
@@ -181,7 +191,6 @@ const Cart = () => {
                                             ))}
                                         </TextField>
                                     </div>
-
                                 </div>
 
                                 <div className='formbutton text-center my-4'>
