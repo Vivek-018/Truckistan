@@ -209,3 +209,14 @@ body {
   background: transparent;
   color: #232354;
 }
+
+.carD {
+  background-color: var(--color_p2);
+  /* background-image: var("../images/BB1.jpg"); */
+  /* background-size: 800rem; */
+  color: white;
+  /* height: 20rem; */
+  /* border-radius: 2rem; */
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
