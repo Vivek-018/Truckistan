@@ -5,6 +5,8 @@ import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { useLocation, useNavigate } from 'react-router-dom';
 import driverContext from '../useContext/driverContext';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const VehicleDetails = () => {
     const context = useContext(driverContext);
@@ -20,15 +22,22 @@ const VehicleDetails = () => {
     // console.log(data._id, "vehicle")
 
     const handleDoneBookings = () => {
-        ChangeBooked(Booked, data._id)
-        alert("Vehicle Booked Successfully");
+        ChangeBooked(Booked, data?._id)
+        // alert("Vehicle Booked Successfully");
+        // console.log("durgesh")
         // navigate('/user')
+        toast("Vehicle Booked Successfully", {
+            autoClose: 1000,
+        })
     }
 
     const handleComment = (e) => {
         e.preventDefault();
         SavedComment(comment);
-        alert("Your Comment Saved Successfully ")
+        // alert("Your Comment Saved Successfully ")
+        toast("Your Comment Saved Successfully", {
+            autoClose: 1000,
+        })
     }
 
     return (
@@ -129,7 +138,7 @@ const VehicleDetails = () => {
                 </div>
             </div>
             <Footer />
-
+            <ToastContainer />
         </>
     )
 }
