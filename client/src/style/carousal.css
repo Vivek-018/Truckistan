@@ -10,9 +10,23 @@ body {
     text-align: center;
     
   }
+
+  .imgparaD {
+    display: grid;
+    grid-gap: 2.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    font-family: 'Philosopher';
+    text-align: center;
+    
+  }
   
   .Text {
     padding-top: 12rem;
+  }
+
+  .TextD {
+    padding-top: 6.5rem;
+    font-size: 1.5rem;
   }
   
   .Text .textone span {
