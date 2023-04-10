@@ -6,15 +6,26 @@ import '../style/user.css'
 import Footer from "../components/Footer"
 import Carousal from './Carousal'
 import { GoVerified } from 'react-icons/go';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const UserPage = () => {
+    AOS.init({
+        offset: 120,
+        delay: 0,
+        duration: 1700,
+    });
     const context = useContext(driverContext);
     const { alldata, getallData, getMOVERSTRUCKS,
-        moTrucks, ontruks, gettruksTrans } = context;
+        moTrucks, ontruks, setOneData, gettruksTrans } = context;
 
     const length = alldata.length;
     const len = moTrucks?.length;
     const l = ontruks?.length;
+
+    const handleSetData = (item) => {
+        setOneData(item);
+    }
 
     useEffect(() => {
         getallData();
@@ -26,9 +37,9 @@ const UserPage = () => {
         <>
             <Navbar />
             <Carousal />
-            <div className='container' >
+            <div className='container' data-aos="fade-up" >
 
-                <div className='heads' >
+                <div className='heads'>
                     <div>
                         <span>Transportation</span>
                     </div>
@@ -79,7 +90,7 @@ const UserPage = () => {
                                                     </div>
 
                                                     <div className='my-2 ' >
-                                                        <NavLink to={'/cart'} state={item} className='btn-user' exact >Book</NavLink>
+                                                        <NavLink to={'/cart'} state={item} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
                                                     </div>
                                                 </div>
                                             </div>
@@ -94,7 +105,7 @@ const UserPage = () => {
             </div>
 
 
-            <div className='container' >
+            <div className='container' data-aos="fade-up" >
                 <div className='heads' >
                     <div>
                         <span>Transportation</span>
@@ -144,7 +155,7 @@ const UserPage = () => {
                                                 </div>
 
                                                 <div className='my-2 ' >
-                                                    <NavLink to={'/cart'} state={item} className='btn-user' exact >Book</NavLink>
+                                                    <NavLink to={'/cart'} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,7 +169,7 @@ const UserPage = () => {
                 }
             </div>
 
-            <div className='container' >
+            <div className='container' data-aos="fade-up" >
                 <div className='heads' >
                     <div>
                         <span>Others</span>
@@ -208,7 +219,7 @@ const UserPage = () => {
                                                         </div>
 
                                                         <div className='my-2 ' >
-                                                            <NavLink to={'/cart'} state={item} className='btn-user' exact >Book</NavLink>
+                                                            <NavLink to={'/cart'} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>

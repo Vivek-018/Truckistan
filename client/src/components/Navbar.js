@@ -133,7 +133,10 @@ const Navbar = () => {
                             }
 
                             {
-                                (userType === 'user') ? <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> : (
+                                (userType === 'user') ?
+                                //  <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> 
+                                " "
+                                  : (
                                     <>
                                         {
                                             userType === "Driver" ? (
