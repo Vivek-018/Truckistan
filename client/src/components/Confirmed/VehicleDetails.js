@@ -21,9 +21,6 @@ const VehicleDetails = () => {
 
     const handleDoneBookings = () => {
         ChangeBooked(Booked, data?._id)
-        // alert("Vehicle Booked Successfully");
-        // console.log("durgesh")
-        // navigate('/user')
         toast("Vehicle Booked Successfully", {
             autoClose: 1000,
         })
@@ -35,10 +32,9 @@ const VehicleDetails = () => {
             alert("Plz write Something")
         } else {
             SavedComment(comment);
-            alert("Your Comment Saved Successfully ")
-             toast("Your Comment Saved Successfully", {
-            autoClose: 1000,
-        })
+            toast("Your Comment Saved Successfully", {
+                autoClose: 1000,
+            })
         }
     }
 

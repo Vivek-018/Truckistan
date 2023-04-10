@@ -253,20 +253,6 @@ const DriversData = (props) => {
     const data = await res.json();
   }
 
-  // const ChangeBooked = async (Booked, id) => {
-  //   try {
-  //     const drivers = await axios.put(`${Userhost}/ChangeVehicleStatus/${id}`, { Booked },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json"
-  //         }
-  //       })
-  //     return Promise.resolve(drivers);
-  //   } catch (error) {
-  //     return Promise.reject({ error })
-  //   }
-  // }
-
   const ChangeBooked = async (Booked, id) => {
     const res = await fetch(`${Userhost}/ChangeVehicleStatus/${id}`, {
       method: "PUT",
@@ -276,7 +262,6 @@ const DriversData = (props) => {
       body: JSON.stringify({ Booked })
     })
     const data = await res.json();
-    console.log(data)
   }
 
   return (
