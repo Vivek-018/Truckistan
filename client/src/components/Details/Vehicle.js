@@ -1,4 +1,6 @@
 import React from 'react'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Vehicle = ({ data, setData, setUploaddoc, setVehicle }) => {
 
@@ -16,13 +18,19 @@ const Vehicle = ({ data, setData, setUploaddoc, setVehicle }) => {
     const fun = (e) => {
         e.preventDefault()
         if (data.basefare === '' || data.lodingCapacity === '' || data.transName === '' || data.Vnamber === "" || data.RCnumber === "") {
-            alert("fill all details")
+            // alert("fill all details")
+            toast("fill all details", {
+                autoClose: 1000,
+            })
             setUploaddoc(false);
             setVehicle(true);
         } else {
             setUploaddoc(true);
             setVehicle(false);
-            alert("Your Data Save successfully")
+            // alert("Your Data Save successfully")
+            toast("Your Data Save successfully", {
+                autoClose: 1000,
+            })
         }
     }
 
@@ -81,6 +89,7 @@ const Vehicle = ({ data, setData, setUploaddoc, setVehicle }) => {
                 </form>
 
             </div>
+        <ToastContainer />
         </>
     )
 }
