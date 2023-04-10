@@ -1,7 +1,6 @@
 body {
   transition: all 400ms ease;
 }
-
   .imgpara {
     display: grid;
     grid-gap: 4.5rem;
@@ -69,13 +68,67 @@ body {
     width: 35rem;
   }
   
+=======
+.imgpara {
+  display: grid;
+  grid-gap: 4.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  font-family: 'Philosopher';
+  text-align: center;
 
-  /* ============= media query =============== */
+}
+
+.Text {
+  padding-top: 12rem;
+}
+
+.Text .textone span {
+  font-size: 3.0rem;
+  font-weight: 600;
+  color: #232354;
+}
+
+.Text .textsecond {
+  margin-top: -16px;
+}
+
+.Text .textsecond span {
+  font-size: 3.0rem;
+  color: #232354;
+  font-weight: 600;
+}
+
+.Text .textthird {
+  margin-top: -2px;
+}
+
+.Text .textthird small {
+  opacity: .8;
+  color: #232354;
+  font-size: 1.0rem;
+}
+
+.Text .textfourth {
+  margin-top: -1px;
+}
+
+.Text .textfourth small {
+  color: #232354;
+  opacity: .8;
+  font-size: 1.0rem;
+}
+
+.imgpara .img img {
+  width: 35rem;
+}
+
+/* ============= media query =============== */
 
 @media screen and (max-width: 1300px) {
   .imgpara {
     padding-top: 2rem;
   }
+
   .imgpara .img img {
     width: 26rem;
   }
@@ -86,7 +139,7 @@ body {
 
   .socialMediaLogo {
     width: 5%;
-    height:32%;
+    height: 32%;
   }
 }
 
@@ -129,9 +182,11 @@ body {
   .imgpara .img img {
     width: 22rem;
   }
+
   .socialMediaLogo {
     display: none;
   }
+
   .Text .textone span {
     font-size: 1.7rem;
   }
@@ -145,7 +200,7 @@ body {
   }
 
   .Text .textthird small {
-    font-size:.7rem;
+    font-size: .7rem;
   }
 
   .Text .textfourth {
@@ -163,9 +218,10 @@ body {
   .Text {
     padding-top: 3rem;
   }
+
   .PhoneIcon {
     display: none;
-  } 
+  }
 }
 
 @media screen and (max-width: 400px) {
@@ -195,18 +251,32 @@ body {
   }
 
   .imgpara {
-    grid-gap:2.8rem;
+    grid-gap: 2.8rem;
   }
 
   .Text {
     padding-top: 3rem;
   }
-  .imgpara .img img{
+
+  .imgpara .img img {
     width: 16rem;
   }
 }
 
-.carD{
+.btn-start {
+  background-color: #232354;
+  color: white;
+  margin-top: 1rem;
+  padding: .6rem 3rem;
+  border-radius: .5rem;
+}
+
+.btn-start:hover {
+  background: transparent;
+  color: #232354;
+}
+
+.carD {
   background-color: var(--color_p2);
   /* background-image: var("../images/BB1.jpg"); */
   /* background-size: 800rem; */

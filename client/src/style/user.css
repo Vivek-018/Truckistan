@@ -1,9 +1,15 @@
 .btn-user {
    color: var(--color_p2);
+   border-radius: .3rem;
+   border: 1px solid var(--color_p2);
+   background-color: var(--color_p2);
+   color: white;
+   padding: .4rem 2rem;
 }
 
 .btn-user:hover {
    color: var(--color_p2);
+   background: transparent;
 }
 
 .heads{

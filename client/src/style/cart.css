@@ -41,6 +41,10 @@
     color: var(--color_p2);
 }
 
+.headline{
+    color: var(--color_p2);
+}
+
 @media screen and (max-width:1200px) {
     .formfields form{
         width: 100%;
