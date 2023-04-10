@@ -232,6 +232,38 @@ router.post('/BookedAddress', fetchuser, async (req, res) => {
     }
 })
 
+// router.put('/ChangeVehicleStatus/:id', async (req, res) => {
+//     const { Booked } = req.body
+//      const status = Booked;
+//     try {
+//         const booked = await Booking.findByIdAndUpdate({ vehicleId: req.params.id }, { $set:status }, { new: true });
+//         console.log(booked, "id");
+//         res.status(200).json({booked});
+//     } catch (error) {
+//         console.error(error.message);
+//         res.status(500).send("Some error occured")
+//     }
+// })
+
+router.put("/ChangeVehicleStatus/:id", async (req, res) => {
+    const { Booked } = req.body;
+    const _id = req.params.id;
+    try {
+        const newData = {};
+        if (Booked) {
+            newData.status = Booked
+        }
+        console.log(newData)
+        const save = await Booking.findByIdAndUpdate({ vehicleId : _id },
+            { $set: newData }, { new: true })
+        console.log(save)
+        res.status(201).json({ status: 201, save });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Some error occured")
+    }
+})
+
 router.get('/bookedVehicles', fetchuser, async (req, res) => {
     try {
         const book = await Booking.find({ userId: req.user.id });

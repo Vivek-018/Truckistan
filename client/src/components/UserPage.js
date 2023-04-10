@@ -38,18 +38,10 @@ const UserPage = () => {
             <Navbar />
             <Carousal />
             <div className='container' data-aos="fade-up" >
-
                 <div className='heads'>
-                    <div>
-                        <span>Transportation</span>
-                    </div>
-                    <div>
-                        <span>Movers Trucks</span>
-                    </div>
+                    <span>Movers Trucks</span>
                 </div>
-
-                {
-                    len === 0 || len === undefined ? (
+                { len === 0 || len === undefined ? (
                         <div class="loader my-4 "></div>
                     ) : (
                         <div className='vehicleInfo'>
@@ -107,12 +99,7 @@ const UserPage = () => {
 
             <div className='container' data-aos="fade-up" >
                 <div className='heads' >
-                    <div>
-                        <span>Transportation</span>
-                    </div>
-                    <div>
-                        <span>ON ROAD EXPRESS</span>
-                    </div>
+                    <span>ON ROAD EXPRESS</span>
                 </div>
                 {l === 0 || l === undefined ? (
                     <div class="loader my-4 "></div>

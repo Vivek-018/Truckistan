@@ -1,19 +1,34 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { FaHandPointRight } from 'react-icons/fa';
 import { GoVerified } from 'react-icons/go';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import { useLocation, useNavigate } from 'react-router-dom';
-
+import driverContext from '../useContext/driverContext';
 
 const VehicleDetails = () => {
+    const context = useContext(driverContext);
+    const [Booked, setBooked] = useState("Booked");
+    const { SavedComment, ChangeBooked } = context;
     const navigate = useNavigate();
     const location = useLocation();
-    const data = location.state.dat;
-    const Address = location.state.Address
+    const [comment, setcomment] = useState();
+ 
+    const data = location.state?.dat;
+    const Address = location.state?.Address
+
+    // console.log(data._id, "vehicle")
+
     const handleDoneBookings = () => {
+        ChangeBooked(Booked, data._id)
         alert("Vehicle Booked Successfully");
-        navigate('/user')
+        // navigate('/user')
+    }
+
+    const handleComment = (e) => {
+        e.preventDefault();
+        SavedComment(comment);
+        alert("Your Comment Saved Successfully ")
     }
 
     return (
@@ -103,8 +118,10 @@ const VehicleDetails = () => {
                         <div className='container contact_conatiner'>
                             <form >
                                 <div className='text-center' >
-                                    <textarea name='message' rows="7" placeholder='Your Comments' required></textarea>
-                                    <button type='submit' className='btn-save'>Save</button>
+                                    <textarea name='comment' rows="7" placeholder='Your Comments' required
+                                        onChange={(e) => { setcomment((prev) => ({ ...prev, comment: e.target.value })) }}
+                                    ></textarea>
+                                    <button onClick={handleComment} className='btn-save'>Save</button>
                                 </div>
                             </form>
                         </div>
