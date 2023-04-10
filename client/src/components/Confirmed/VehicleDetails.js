@@ -13,11 +13,9 @@ const VehicleDetails = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [comment, setcomment] = useState();
- 
+
     const data = location.state?.dat;
     const Address = location.state?.Address
-
-    // console.log(data._id, "vehicle")
 
     const handleDoneBookings = () => {
         ChangeBooked(Booked, data._id)
@@ -27,8 +25,12 @@ const VehicleDetails = () => {
 
     const handleComment = (e) => {
         e.preventDefault();
-        SavedComment(comment);
-        alert("Your Comment Saved Successfully ")
+        if (comment === undefined) {
+            alert("Plz write Something")
+        } else {
+            SavedComment(comment);
+            alert("Your Comment Saved Successfully ")
+        }
     }
 
     return (
@@ -36,14 +38,11 @@ const VehicleDetails = () => {
             <Navbar />
             <div className='container'>
                 <div className='booked' >
+                    <div className='topheading text-center my-4 '>
+                        <h3 >Vehicle Details</h3>
+                    </div>
                     <div className='truckbooked' >
-                        <div className='userAdd text-center' >
-                            <img
-                                src={data?.VehicleImage}
-                                alt='images' />
-                        </div>
                         <div className='allDeatils ' >
-                            <h3 className='my-4' >Vehicle Details</h3>
                             <div className='MoreVehicale' >
                                 <div>
                                     <span className='backend' >Transportation :</span><br /><br />
@@ -66,10 +65,27 @@ const VehicleDetails = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className='userAdd text-center' >
+                            <div>
+                                <img
+                                    src={data?.driverImage}
+                                    alt='images' />
+                                <h6 className='my-2' >Driver</h6>
+                            </div>
+
+                            <div>
+                                <img
+                                    src={data?.VehicleImage}
+                                    alt='images' />
+                                <h6 className='my-2' >Vehicle</h6>
+                            </div>
+
+                        </div>
                     </div>
                     <div className='address'>
                         <div className='text-center' >
-                            <h2>Address Details</h2>
+                            <h2 style={{ color: "#e543c3" }} >Address Details</h2>
+                            <hr></hr>
                         </div>
                         <div className='addressfull' >
                             <div>
@@ -112,7 +128,7 @@ const VehicleDetails = () => {
                     </div>
 
                     <section id="contact">
-                        <div className='text-center' >
+                        <div className='text-center comment '>
                             <h2>Please Comments Something About Our Services </h2>
                         </div>
                         <div className='container contact_conatiner'>
