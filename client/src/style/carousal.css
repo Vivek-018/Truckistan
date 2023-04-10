@@ -2,74 +2,192 @@ body {
   transition: all 400ms ease;
 }
 
-::-webkit-scrollbar {
-  display: none;
+  .imgpara {
+    display: grid;
+    grid-gap: 4.5rem;
+    grid-template-columns: repeat(2, 1fr);
+    font-family: 'Philosopher';
+    text-align: center;
+    
+  }
+  
+  .Text {
+    padding-top: 12rem;
+  }
+  
+  .Text .textone span {
+    font-size: 3.0rem;
+    font-weight: 600;
+    color: #232354;
+  }
+  
+  .Text .textsecond {
+    margin-top: -16px;
+  }
+  
+  .Text .textsecond span {
+    font-size: 3.0rem;
+    color: #232354;
+    font-weight: 600;
+  }
+  
+  .Text .textthird {
+    margin-top: -2px;
+  }
+  
+  .Text .textthird small {
+    opacity: .8;
+    color: #232354;
+    font-size: 1.0rem;
+  }
+  
+  .Text .textfourth {
+    margin-top: -1px;
+  }
+  
+  .Text .textfourth small {
+    color: #232354;
+    opacity: .8;
+    font-size: 1.0rem;
+  }
+  
+  .imgpara .img img {
+    width: 35rem;
+  }
+  
+
+  /* ============= media query =============== */
+
+@media screen and (max-width: 1300px) {
+  .imgpara {
+    padding-top: 2rem;
+  }
+  .imgpara .img img {
+    width: 26rem;
+  }
+
+  .Text {
+    padding-top: 7rem;
+  }
+
+  .socialMediaLogo {
+    width: 5%;
+    height:32%;
+  }
 }
 
-.imgpara {
-  align-items: center;
-  display: grid;
-  grid-gap: 4.5rem;
-  grid-template-columns: repeat(2, 1fr);
-  font-family: 'Philosopher';
-  text-align: center;
+@media screen and (max-width: 1200px) {
+  .imgpara {
+    grid-template-columns: repeat(1, 1fr);
+    padding-top: 0rem;
+  }
 
+  .Text {
+    padding-top: 5rem;
+  }
+
+  .imgpara .img {
+    text-align: center;
+  }
+
+  .textButton a {
+    margin-top: .5rem;
+    margin-left: 10rem;
+  }
+
+  .socialMediaLogo {
+    width: 6.1%;
+  }
 }
 
-.Text {
-  padding-top: 4rem;
+@media screen and (max-width: 1024px) {
+  .textButton a {
+    margin-top: .5rem;
+    margin-left: 5rem;
+  }
+
+  .socialMediaLogo {
+    width: 8%;
+  }
 }
 
-.Text .textone span {
-  font-size: 3.5rem;
-  font-weight: 600;
-  color: #232354;
+@media screen and (max-width: 800px) {
+  .imgpara .img img {
+    width: 22rem;
+  }
+  .socialMediaLogo {
+    display: none;
+  }
+  .Text .textone span {
+    font-size: 1.7rem;
+  }
+
+  .Text .textsecond span {
+    font-size: 1.7rem;
+  }
+
+  .Text .textsecond {
+    margin-top: -10px;
+  }
+
+  .Text .textthird small {
+    font-size:.7rem;
+  }
+
+  .Text .textfourth {
+    margin-top: -12px;
+  }
+
+  .Text .textfourth small {
+    font-size: .7rem;
+  }
+
+  .imgpara {
+    grid-gap: 2.5rem;
+  }
+
+  .Text {
+    padding-top: 3rem;
+  }
+  .PhoneIcon {
+    display: none;
+  } 
 }
 
-.Text .textsecond {
-  margin-top: -16px;
-}
+@media screen and (max-width: 400px) {
 
-.Text .textsecond span {
-  font-size: 3.0rem;
-  color: #232354;
-  font-weight: 600;
-}
+  .Text .textone span {
+    font-size: 1.5rem;
+  }
 
-.Text .textthird {
-  margin-top: -2px;
-}
+  .Text .textsecond span {
+    font-size: 1.5rem;
+  }
 
-.Text .textthird small {
-  opacity: .8;
-  color: #232354;
-  font-size: 1.0rem;
-}
+  .Text .textsecond {
+    margin-top: -6px;
+  }
 
-.Text .textfourth {
-  margin-top: -1px;
-}
+  .Text .textthird small {
+    font-size: .55rem;
+  }
 
-.Text .textfourth small {
-  color: #232354;
-  opacity: .8;
-  font-size: 1.0rem;
-}
+  .Text .textfourth {
+    margin-top: -14px;
+  }
 
-.Text button {
-  border: 2px solid #232354;
-  background-color: #232354;
-  border-radius: .4rem;
-  padding: .4rem 4rem;
-  margin-top: 1rem;
-  color: white;
-}
+  .Text .textfourth small {
+    font-size: .56rem;
+  }
 
-.Text button:hover {
-  color: #232354;
-  background-color: transparent;
-}
+  .imgpara {
+    grid-gap:2.8rem;
+  }
 
-.imgpara .img img {
-  width: 38rem;
+  .Text {
+    padding-top: 3rem;
+  }
+  .imgpara .img img{
+    width: 16rem;
+  }
 }
