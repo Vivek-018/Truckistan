@@ -12,6 +12,11 @@ import EditDetails from './components/EditDetails';
 import Help from './components/Help';
 import Cart from './components/Cart';
 import ResetPassword from './components/ResetPassword';
+import Verified from './components/Verified';
+import Cities from './components/Cities';
+import BookedVehicles from './components/BookedVehicles';
+import VehicleDetails from './components/Confirmed/VehicleDetails';
+import  './style/VehicleDetails.css'
 
 function App() {
   return (
@@ -31,6 +36,10 @@ function App() {
             <Route path='/help' element={<Help/>} />
             <Route path='/cart' element={<Cart/>} />
             <Route path='/resetPassword' element={<ResetPassword/>} />
+            <Route path='/verified' element = {<Verified/>} />
+            <Route path='/cities' element = {<Cities/>} />
+            <Route path='/book' element = {<BookedVehicles/>} />
+            <Route path='/vehicledetails' element = {<VehicleDetails/>} />
           </Routes>
         </BrowserRouter>
       </DriversData>

@@ -52,7 +52,26 @@
 
 .vehicleInfo {
     display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    overflow-x: scroll;
+    gap: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.vehicleUsers {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    overflow-x: scroll;
+    gap: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.vehicleOthers{
+    display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
@@ -63,15 +82,23 @@
     border-radius: 8px;
     box-shadow: 0 0 15px 5px rgba(228, 228, 228, 0.5);
     background-color: #fff;
-    width: 75%;
-    height: 100%;
+    width: 16rem;
+    height: 21rem;
     text-align: center;
+}
+
+.vehicleInfo::-webkit-scrollbar {
+    display: none;
+}
+
+.vehicleUsers::-webkit-scrollbar {
+    display: none;
 }
 
 .card img {
     border-radius: .4rem;
     margin-top: .5rem;
-    width: 10rem;
+    width: 13rem;
 }
 
 .card:hover {
@@ -228,21 +255,21 @@ a {
     color: #8443e5;
 }
 
-.ImagesItem{
+.ImagesItem {
     display: grid;
     padding-top: 3rem;
     gap: 2rem;
     grid-template-columns: repeat(3, 1fr);
 }
 
-.ImagesUpload{
+.ImagesUpload {
     gap: 1rem;
     padding-top: 2rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 
-.save-btn{
+.save-btn {
     border: none;
     border-radius: .3rem;
     background-color: #8443e5;

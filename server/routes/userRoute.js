@@ -8,6 +8,7 @@ const fetchuser = require('../middleware/fetchuser');
 const nodemailer = require('nodemailer');
 const otpGenerator = require('otp-generator')
 const Mailgen = require("mailgen");
+const Booking = require('../schema/BookingSchema')
 
 
 //========== email config==================
@@ -102,7 +103,7 @@ router.post('/generateOTPAtSignup', async (req, res) => {
     if (email) {
         req.app.locals.OTP = await otpGenerator.generate(6, { lowerCaseAlphabets: false, upperCaseAlphabets: false, specialChars: false })
         console.log(req.app.locals.OTP)
-        res.status(201).send({ code: req.app.locals.OTP})
+        res.status(201).send({ code: req.app.locals.OTP })
     } else {
         return res.status(400).send({ error: "Email does not exist" })
     }
@@ -159,8 +160,8 @@ router.put('/resetPasword', async (req, res) => {
             const data = await User.findOneAndUpdate({ email: email }, { $set: { password: pass } }, { new: true })
             res.status(201).send({ data })
             console.log(data)
-        }else{
-            res.status(404).send({msg:"Email is not found"})
+        } else {
+            res.status(404).send({ msg: "Email is not found" })
         }
     } catch (error) {
         res.status(404).send({ msg: "Some error occured" })
@@ -173,7 +174,7 @@ router.get('/getUserData', fetchuser, async (req, res) => {
     const user = req.user;
     try {
         const data = await User.findOne({ _id: user.id });
-        res.json({data})
+        res.json({ data })
     } catch (error) {
         console.error(error.message);
         res.status(401).send("Some error occured")
@@ -201,6 +202,72 @@ router.put("/editUserProfiledata/:id", async (req, res) => {
         const save = await User.findByIdAndUpdate({ _id: req.params.id },
             { $set: newData }, { new: true })
         res.status(201).json({ status: 201, save });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Some error occured")
+    }
+})
+
+router.post('/BookedAddress', fetchuser, async (req, res) => {
+    const { Address, VehicleId } = req.body
+    try {
+        const data = new Booking({
+            userId: req.user.id,
+            pickupAddress: Address.pickupAddress,
+            PickupPincode: Address.Ppincode,
+            vehicleId: VehicleId,
+            PickupCity: Address.Pcity,
+            DropOffAddress: Address.DropOffAddress,
+            DropPincode: Address.Dpincode,
+            DropCity: Address.Dcity,
+            name: Address.name,
+            Req: Address.Req,
+            phone: Address.phone
+        })
+        const save = await data.save();
+        res.status(200).json(save);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Some error occured")
+    }
+})
+
+// router.put('/ChangeVehicleStatus/:id', async (req, res) => {
+//     const { Booked } = req.body
+//      const status = Booked;
+//     try {
+//         const booked = await Booking.findByIdAndUpdate({ vehicleId: req.params.id }, { $set:status }, { new: true });
+//         console.log(booked, "id");
+//         res.status(200).json({booked});
+//     } catch (error) {
+//         console.error(error.message);
+//         res.status(500).send("Some error occured")
+//     }
+// })
+
+router.put("/ChangeVehicleStatus/:id", async (req, res) => {
+    const { Booked } = req.body;
+    const _id = req.params.id;
+    try {
+        const newData = {};
+        if (Booked) {
+            newData.status = Booked
+        }
+        console.log(newData)
+        const save = await Booking.findByIdAndUpdate({ vehicleId : _id },
+            { $set: newData }, { new: true })
+        console.log(save)
+        res.status(201).json({ status: 201, save });
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Some error occured")
+    }
+})
+
+router.get('/bookedVehicles', fetchuser, async (req, res) => {
+    try {
+        const book = await Booking.find({ userId: req.user.id });
+        res.status(200).json(book);
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Some error occured")

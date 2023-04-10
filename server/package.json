@@ -1,3 +1,4 @@
+
 {
   "name": "transport",
   "version": "1.0.0",
@@ -19,7 +20,7 @@
     "mongoose": "^6.10.0",
     "mongoose-type-email": "^1.1.2",
     "nodemailer": "^6.9.1",
-    "nodemon": "^2.0.20",
+    "nodemon": "^2.0.22",
     "otp-generator": "^4.0.1",
     "validator": "^13.9.0"
   },
