@@ -29,7 +29,7 @@
 /* ================ Main_page-bottomNav ================= */
 
 .Main_page-bottomNav {
-   background-color: #8443e5;
+   background-color:var(--color_p1);
    padding-top: 1.5rem;
    padding-bottom: 1rem;
    color: white;

@@ -34,8 +34,8 @@ const UserPage = () => {
 
     return (
         <>
-            <EntryPage/>
-            <div className='container' data-aos="fade-up" >
+            <EntryPage />
+            {/* <div className='container' data-aos="fade-up" >
                 <div className='heads'>
                     <span>Movers Trucks</span>
                 </div>
@@ -92,10 +92,10 @@ const UserPage = () => {
                         </div>
                     )
                 }
-            </div>
+            </div> */}
 
 
-            <div className='container' data-aos="fade-up" >
+            {/* <div className='container' data-aos="fade-up" >
                 <div className='heads' >
                     <span>ON ROAD EXPRESS</span>
                 </div>
@@ -152,12 +152,12 @@ const UserPage = () => {
                     </div>
                 )
                 }
-            </div>
+            </div> */}
 
-            <div className='container' data-aos="fade-up" >
+            <div className='container' >
                 <div className='heads' >
                     <div>
-                        <span>Others</span>
+                        <span></span>
                     </div>
                 </div>
                 {length === 0 || length === undefined ? (
@@ -168,8 +168,8 @@ const UserPage = () => {
                             alldata?.map((item, index) => {
                                 return (
                                     <>
-                                        {
-                                            item.transName === "MOVERS TRUCKS" || item.transName === "ON ROAD EXPRESS" ? "" :
+                                        {/* { */}
+                                            {/* // item.transName === "MOVERS TRUCKS" || item.transName === "ON ROAD EXPRESS" ? "" : */}
 
                                                 <div key={index} className="card my-2 ">
                                                     <div className="card-body">
@@ -208,7 +208,7 @@ const UserPage = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                        }
+                                        {/* // } */}
                                     </>
                                 )
                             })

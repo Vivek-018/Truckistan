@@ -1,5 +1,5 @@
 .entry-container {
-    height: 100vh;
+    height: 70vh;
     overflow: hidden;
     font-size: 18px;
 }
@@ -12,8 +12,8 @@
 
 .entry-img {
     text-align: center;
-    width: 50%;
-    height: 10%;
+    width: 35%;
+    /* height: 10%; */
     object-fit: cover;
     object-position: center -90px;
     /* mix-blend-mode: soft-light; */
@@ -23,7 +23,7 @@
 .entry-durgesh-img {
     margin: auto;
     text-align: center;
-    margin-top: -130px;
+    margin-top: -50px;
     position: relative;
     align-items: center;
     color: black;
@@ -42,7 +42,7 @@
     text-align: center;
     width: 60%;
     padding-top: 2rem;
-    padding-left: 2rem;
+    padding-left: 1rem;
     padding-right: 2rem;
     padding-bottom: 1rem;
 }

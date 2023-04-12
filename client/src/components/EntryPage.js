@@ -46,6 +46,7 @@ const EntryPage = () => {
           </div>
           <div className='images-entry' data-aos="fade-down" >
             <img className="entry-img my-4 " src={pic} alt="img" />
+            <h2>Welcome to Loadkro</h2>
           </div>
         </div>
       </div>
