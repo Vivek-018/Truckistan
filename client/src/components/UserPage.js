@@ -7,8 +7,10 @@ import { GoVerified } from 'react-icons/go';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import EntryPage from './EntryPage'
+import Comment from './Comment'
 
 const UserPage = () => {
+    const [show, setShow] = useState(12);
     AOS.init({
         offset: 120,
         delay: 0,
@@ -24,6 +26,11 @@ const UserPage = () => {
 
     const handleSetData = (item) => {
         setOneData(item);
+    }
+
+    const handleIncrease=()=>{
+         let a = show+6;
+         setShow(a);
     }
 
     useEffect(() => {
@@ -155,10 +162,8 @@ const UserPage = () => {
             </div> */}
 
             <div className='container' >
-                <div className='heads' >
-                    <div>
-                        <span></span>
-                    </div>
+                <div className='heads text-center'>
+                    <span>Featured Vehicle <hr /> </span>
                 </div>
                 {length === 0 || length === undefined ? (
                     <div class="loader my-4 "></div>
@@ -168,9 +173,8 @@ const UserPage = () => {
                             alldata?.map((item, index) => {
                                 return (
                                     <>
-                                        {/* { */}
-                                            {/* // item.transName === "MOVERS TRUCKS" || item.transName === "ON ROAD EXPRESS" ? "" : */}
-
+                                        {
+                                            index < show ?
                                                 <div key={index} className="card my-2 ">
                                                     <div className="card-body">
                                                         <img src={item.VehicleImage} alt='img' />
@@ -203,12 +207,24 @@ const UserPage = () => {
                                                             </div>
                                                         </div>
 
-                                                        <div className='my-2 ' >
+                                                        <div className='loadCapacity d-flex justify-content-between'>
+                                                            <div>
+                                                                <small href="#" className="card-link">Driver Name</small>
+                                                            </div>
+                                                            <div>
+                                                                <small href="#" className=" mx-3 ">{item.name} {item.lname} </small>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className='my-4 ' >
                                                             <NavLink to={'/cart'} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>
-                                        {/* // } */}
+
+                                                : ""
+                                        }
+
                                     </>
                                 )
                             })
@@ -218,6 +234,11 @@ const UserPage = () => {
                 }
             </div>
 
+            <div className='showMore' >
+                <button onClick={handleIncrease} className='btn-more'>More</button>
+            </div>
+             
+             <Comment/>
             <Footer />
         </>
     )

@@ -241,9 +241,8 @@ a:hover {
 
 .web1-tagline {
   color: var(--color_p2);
-  font-size: 25px;
-  line-height: 32px;
-  opacity: .7;
+  font-size: 18px;
+  line-height: 25px;
   text-align: center;
 }
 

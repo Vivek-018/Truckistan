@@ -80,11 +80,18 @@
     margin: auto;
     align-items: center;
     border-radius: 8px;
-    box-shadow: 0 0 15px 5px rgba(228, 228, 228, 0.5);
     background-color: #fff;
-    width: 16rem;
-    height: 21rem;
+    width: 18rem;
+    height: 24rem;
     text-align: center;
+    border: none;
+    border: 1px solid var(--color_p2);
+}
+
+.card:hover{
+    box-shadow: 0 0 30px 2px rgba(228, 228, 228, 0.5);
+    margin-top: -100px;
+    border: none;
 }
 
 .vehicleInfo::-webkit-scrollbar {
@@ -99,10 +106,6 @@
     border-radius: .4rem;
     margin-top: .5rem;
     width: 13rem;
-}
-
-.card:hover {
-    background-color: #efe4ff;
 }
 
 .card .card-body {
