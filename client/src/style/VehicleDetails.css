@@ -5,9 +5,6 @@
 }
 
 .truckbooked {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center; */
     gap: 4rem;
     align-items: center;
 }
@@ -19,11 +16,9 @@
     gap: 2rem;
     flex-direction: row;
     justify-content: space-around;
-
 }
 
 .allDeatils {
-    /* border: 2px solid var(--color_p2); */
     color: black;
     padding: 3rem 6rem;
     border-radius: 1rem;
@@ -116,7 +111,9 @@
     color: var(--color_p3);
 }
 
-/* ===============================contact css ========================= */
+/* ======== contact css ======== */
+
+
 .container.contact_conatiner {
     text-align: center;
     width: 60%;

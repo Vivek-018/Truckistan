@@ -1,28 +1,21 @@
-body {
-  transition: all 400ms ease;
-}
-
 .imgpara {
   display: grid;
   grid-gap: 4.5rem;
   grid-template-columns: repeat(2, 1fr);
-  font-family: 'Philosopher';
   text-align: center;
+  align-items: center;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .Text {
-  padding-top: 12rem;
-}
-
-.TextD {
-  padding-top: 6.5rem;
-  font-size: 1.5rem;
+  padding-top: 4rem;
 }
 
 .Text .textone span {
-  font-size: 3.0rem;
+  font-size: 4rem;
   font-weight: 600;
-  color: #232354;
+  color: #402c87;
 }
 
 .Text .textsecond {
@@ -31,7 +24,7 @@ body {
 
 .Text .textsecond span {
   font-size: 3.0rem;
-  color: #232354;
+  color: #402c87;
   font-weight: 600;
 }
 
@@ -41,7 +34,7 @@ body {
 
 .Text .textthird small {
   opacity: .8;
-  color: #232354;
+  color: #402c87;
   font-size: 1.0rem;
 }
 
@@ -50,7 +43,7 @@ body {
 }
 
 .Text .textfourth small {
-  color: #232354;
+  color: #402c87;
   opacity: .8;
   font-size: 1.0rem;
 }
@@ -201,37 +194,44 @@ body {
 }
 
 .btn-start {
-  background-color: #232354;
-  color: white;
+  border: 2px solid #402c87;
+  background: transparent;
+  color: #402c87;
   margin-top: 1rem;
   padding: .6rem 3rem;
-  border-radius: .5rem;
+  border-radius: .3rem;
 }
 
 .btn-start:hover {
-  background: transparent;
-  color: #232354;
+  background: #402c87;
+  color: white;
 }
 
-.btn-know{
+.btn-know {
   border: 2px solid white;
   background: transparent;
   color: white;
   margin-top: 1rem;
-  padding: .6rem 3rem;
+  font-size: 1.2rem;
+  padding: .4rem 3rem;
   border-radius: .5rem;
 }
 
-.btn-know:hover{
+.btn-know:hover {
   background: transparent;
   color: white;
 }
 
 .imgparaD {
+  align-items: center;
   padding: 2rem 4rem;
   display: grid;
   background-color: var(--color_p2);
   grid-template-columns: repeat(2, 1fr);
   color: white;
   text-align: center;
+}
+
+.TextD p {
+  font-size: 1.4rem;
 }

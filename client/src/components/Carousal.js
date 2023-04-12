@@ -29,8 +29,9 @@ const Carousal = () => {
       </div>
 
       <div className='imgparaD' >
-          <div><img src={pic} style={{ width: "25rem" }}></img></div>
-          <div className='TextD' ><p> "We offer <b> complete solutions </b> for the transportation of goods from large
+          <div><img src={pic} style={{ width: "22rem" }}></img></div>
+          <div className='TextD'>
+          <p> "We offer <b> complete solutions </b> for the transportation of goods from large
             manufacturers or SMEs to the end customers and retailers. At<b> LoadKro </b>,
             you can find many logistics services provider who can help you transport goods at a reasonable rate."</p>
             <button className='btn-know' >Let's Know More</button>

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react'
-import Navbar from './Navbar'
 import '../style/admin.css'
 import driverContext from './useContext/driverContext'
 import { NavLink } from 'react-router-dom'
 import Search from './Search'
 import { GoVerified } from 'react-icons/go';
+import Navbar from './Navbar'
 
 
 const AdminPage = () => {

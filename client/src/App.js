@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Login from './components/Login';
+import "./style/EntryPage.css"
 import LandingPage from './components/LandingPage'
 import Signup from './components/Signup'
 import UserPage from './components/UserPage';
@@ -16,7 +17,7 @@ import Verified from './components/Verified';
 import Cities from './components/Cities';
 import BookedVehicles from './components/BookedVehicles';
 import VehicleDetails from './components/Confirmed/VehicleDetails';
-import  './style/VehicleDetails.css'
+import './style/VehicleDetails.css'
 
 function App() {
   return (
@@ -32,14 +33,14 @@ function App() {
             <Route path='/admin' element={<AdminPage />} />
             <Route path='/driverintro' element={<DriverIntro />} />
             <Route path='/viewdetails' element={<ViewDetails />} />
-            <Route path='/editdetails' element={<EditDetails/>} />
-            <Route path='/help' element={<Help/>} />
-            <Route path='/cart' element={<Cart/>} />
-            <Route path='/resetPassword' element={<ResetPassword/>} />
-            <Route path='/verified' element = {<Verified/>} />
-            <Route path='/cities' element = {<Cities/>} />
-            <Route path='/book' element = {<BookedVehicles/>} />
-            <Route path='/vehicledetails' element = {<VehicleDetails/>} />
+            <Route path='/editdetails' element={<EditDetails />} />
+            <Route path='/help' element={<Help />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/resetPassword' element={<ResetPassword />} />
+            <Route path='/verified' element={<Verified />} />
+            <Route path='/cities' element={<Cities />} />
+            <Route path='/book' element={<BookedVehicles />} />
+            <Route path='/vehicledetails' element={<VehicleDetails />} />
           </Routes>
         </BrowserRouter>
       </DriversData>

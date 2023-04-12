@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import Navbar from './Navbar'
 import driverContext from './useContext/driverContext'
 import '../style/user.css'
 import Footer from "../components/Footer"
-import Carousal from './Carousal'
 import { GoVerified } from 'react-icons/go';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import EntryPage from './EntryPage'
 
 const UserPage = () => {
     AOS.init({
@@ -35,8 +34,7 @@ const UserPage = () => {
 
     return (
         <>
-            <Navbar />
-            <Carousal />
+            <EntryPage/>
             <div className='container' data-aos="fade-up" >
                 <div className='heads'>
                     <span>Movers Trucks</span>
