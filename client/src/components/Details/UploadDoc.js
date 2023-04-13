@@ -38,7 +38,7 @@ const UploadDoc = ({ data, setData, SaveData }) => {
                 <h6>Upload Documents </h6>
                 <small>Let us know about you to suggest the best for you.</small>
 
-                <div className='uploadtab' >
+                <div className='uploadtab'>
 
                     <div className='w-75 my-4 '>
                         <label class="form-label" for="customFile">Vehicle Driver Photo </label>

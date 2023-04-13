@@ -9,7 +9,6 @@ import driverContext from './useContext/driverContext'
 const DriverPage = () => {
     const context = useContext(driverContext);
     const { getData, data } = context;
-
     useEffect(() => {
         getData();
     }, [])
@@ -17,7 +16,7 @@ const DriverPage = () => {
     return (
         <>
             <Navbar />
-            <div className='container my-2'>
+            <div className='container durgeshdriver '>
                 <Search />
                 <h6>Added Details </h6>
                 <div className='vehicleInfo'>
@@ -27,6 +26,7 @@ const DriverPage = () => {
                                 <>
                                     <div key={index} className="card my-2 ">
                                         <div className="card-body">
+                                        {/* <img src={item.driverImage} alt='img' /> */}
                                             <img src={item.VehicleImage} alt='img' />
                                             <div className='TransName' >
                                                 <small className="card-title">{item.transName}</small>
@@ -60,6 +60,10 @@ const DriverPage = () => {
                         })
                     }
                 </div>
+            </div>
+
+            <div className='showMore' >
+                <button className='btn-more'>More</button>
             </div>
         </>
     )

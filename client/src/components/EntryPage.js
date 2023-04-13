@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import pic from '../images/Logo.png'
 import { ImLocation2 } from 'react-icons/im';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-router-dom';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EntryPage = () => {
   AOS.init({
@@ -11,15 +13,16 @@ const EntryPage = () => {
     duration: 1700,
   });
 
+  const user = JSON.parse(localStorage.getItem("user"))
   const [fullnav, setfullnav] = useState(false);
 
   function openNav() {
-    if(!fullnav){
+    if (!fullnav) {
       document.getElementById("Sidenav").style.width = "100%";
       setfullnav(true);
-    }else{
+    } else {
       document.getElementById("Sidenav").style.width = "0";
-     setfullnav(false)
+      setfullnav(false)
     }
   }
 
@@ -27,6 +30,9 @@ const EntryPage = () => {
     document.querySelector("#icon").classList.toggle("change");
   }
 
+  const handleClear = () => {
+    localStorage.clear();
+  }
 
   return (
     <>
@@ -35,9 +41,11 @@ const EntryPage = () => {
         <div className="left-side col-lg-15">
           <div className="top-left d-flex align-items-center">
             <div className='text-center' data-aos="fade-right" >
-              <div class="enter-container" id='icon' onClick={() => { openNav();
-                    myFunction(); }
-                    }>
+              <div class="enter-container" id='icon' onClick={() => {
+                openNav();
+                myFunction();
+              }
+              }>
                 <div class="bar1"></div>
                 <div class="bar2"></div>
                 <div class="bar3"></div>
@@ -70,14 +78,14 @@ const EntryPage = () => {
         </div>
       </div>
 
-      <div id="Sidenav" class="fullsidenav">
+      <div id="Sidenav" class="fullsidenav text-center">
         <h2>Welcome to Loadkro</h2>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <div className=' customerHelp'>
+          <Link to="/book">Booked Vehicles</Link>
+          <Link to="/help">FAQ's & Help</Link>
+          <Link to="/login" onClick={handleClear} >Logout</Link>
+        </div>
       </div>
-
     </>
   )
 }

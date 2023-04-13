@@ -17,12 +17,9 @@ const UserPage = () => {
         duration: 1700,
     });
     const context = useContext(driverContext);
-    const { alldata, getallData, getMOVERSTRUCKS,
-        moTrucks, ontruks, setOneData, gettruksTrans } = context;
+    const { alldata, getallData, getMOVERSTRUCKS, setOneData, gettruksTrans } = context;
 
     const length = alldata.length;
-    const len = moTrucks?.length;
-    const l = ontruks?.length;
 
     const handleSetData = (item) => {
         setOneData(item);
@@ -42,125 +39,6 @@ const UserPage = () => {
     return (
         <>
             <EntryPage />
-            {/* <div className='container' data-aos="fade-up" >
-                <div className='heads'>
-                    <span>Movers Trucks</span>
-                </div>
-                { len === 0 || len === undefined ? (
-                        <div class="loader my-4 "></div>
-                    ) : (
-                        <div className='vehicleInfo'>
-                            {
-                                moTrucks?.map((item, index) => {
-                                    return (
-                                        <>
-                                            <div key={index} className="card my-2 ">
-                                                <div className="card-body">
-                                                    <img src={item.VehicleImage} alt='img' />
-                                                    <div className='TransName' >
-                                                        <small className="card-title">{item.transName}</small>
-                                                    </div>
-                                                    <div className='verified' >
-                                                        <small>{item.isVerified === true ?
-                                                            <>
-                                                                <GoVerified /> "Verified"
-                                                            </>
-                                                            :
-                                                            "Not Verified"}</small>
-                                                    </div>
-                                                    <div className='loadCapacity d-flex justify-content-between '>
-                                                        <div>
-                                                            <small href="#" className="card-link">Loading Capacity</small>
-                                                        </div>
-                                                        <div>
-                                                            <small href="#" className=" mx-3 ">{item.lodingCapacity} </small>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className='loadCapacity d-flex justify-content-between'>
-                                                        <div>
-                                                            <small href="#" className="card-link">Base Fare</small>
-                                                        </div>
-                                                        <div>
-                                                            <small href="#" className=" mx-3 ">{item.basefare} Rs/km</small>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className='my-2 ' >
-                                                        <NavLink to={'/cart'} state={item} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </>
-                                    )
-                                })
-                            }
-                        </div>
-                    )
-                }
-            </div> */}
-
-
-            {/* <div className='container' data-aos="fade-up" >
-                <div className='heads' >
-                    <span>ON ROAD EXPRESS</span>
-                </div>
-                {l === 0 || l === undefined ? (
-                    <div class="loader my-4 "></div>
-                ) : (
-                    <div className='vehicleUsers'>
-                        {
-                            ontruks?.map((item, index) => {
-                                return (
-                                    <>
-                                        <div key={index} className="card my-2 ">
-                                            <div className="card-body">
-                                                <img src={item.VehicleImage} alt='img' />
-                                                <div className='TransName' >
-                                                    <small className="card-title">{item.transName}</small>
-                                                </div>
-                                                <div className='verified' >
-                                                    <small>{item.isVerified === true ?
-                                                        <>
-                                                            <GoVerified /> "Verified"
-                                                        </>
-                                                        :
-                                                        "Not Verified"}</small>
-                                                </div>
-                                                <div className='loadCapacity d-flex justify-content-between '>
-                                                    <div>
-                                                        <small href="#" className="card-link">Loading Capacity</small>
-                                                    </div>
-                                                    <div>
-                                                        <small href="#" className=" mx-3 ">{item.lodingCapacity} </small>
-                                                    </div>
-                                                </div>
-
-                                                <div className='loadCapacity d-flex justify-content-between'>
-                                                    <div>
-                                                        <small href="#" className="card-link">Base Fare</small>
-                                                    </div>
-                                                    <div>
-                                                        <small href="#" className=" mx-3 ">{item.basefare} Rs/km</small>
-                                                    </div>
-                                                </div>
-
-                                                <div className='my-2 ' >
-                                                    <NavLink to={'/cart'} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </>
-                                )
-                            })
-                        }
-                    </div>
-                )
-                }
-            </div> */}
-
             <div className='container' >
                 <div className='heads text-center'>
                     <span>Featured Vehicle <hr /> </span>
@@ -217,14 +95,12 @@ const UserPage = () => {
                                                         </div>
 
                                                         <div className='my-4 ' >
-                                                            <NavLink to={'/cart'} onClick={() => { handleSetData(item) }} className='btn-user' exact >Book</NavLink>
+                                                            <NavLink to={'/cart'} onClick={() => { handleSetData(item) }} state={item} className='btn-user' exact >Book</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 : ""
                                         }
-
                                     </>
                                 )
                             })
@@ -237,7 +113,6 @@ const UserPage = () => {
             <div className='showMore' >
                 <button onClick={handleIncrease} className='btn-more'>More</button>
             </div>
-             
              <Comment/>
             <Footer />
         </>

@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react';
 import '../style/admin.css'
-import driverContext from './useContext/driverContext'
-import { NavLink } from 'react-router-dom'
-import Search from './Search'
+import driverContext from './useContext/driverContext';
+import { NavLink } from 'react-router-dom';
+import Search from './Search';
 import { GoVerified } from 'react-icons/go';
-import Navbar from './Navbar'
+import Navbar from './Navbar';
 
 
 const AdminPage = () => {
@@ -64,7 +64,6 @@ const AdminPage = () => {
                                                             </div>
                                                         </div>
                                                         
-
                                                         <div className='buttons text-center d-flex justify-content-between my-2 ' >
                                                             <NavLink to={'/editdetails'} state={item} className=' btn-card' exact >Edit</NavLink>
                                                             <NavLink to={'/viewdetails'} state={item} className=' btn-card' exact>View</NavLink>

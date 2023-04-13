@@ -81,13 +81,11 @@ const Vehicle = ({ data, setData, setUploaddoc, setVehicle }) => {
                             </label>
                         </div>
                     </div>
-
                     <div>
                         <button type="submit" class="btn btn-profile mx-2 my-3">Cancel</button>
                         <button type="submit" class="btn btn-profile my-3" onClick={fun} >Save</button>
                     </div>
                 </form>
-
             </div>
         <ToastContainer />
         </>
