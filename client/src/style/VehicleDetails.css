@@ -5,9 +5,6 @@
 }
 
 .truckbooked {
-    /* display: flex;
-    flex-direction: row;
-    justify-content: center; */
     gap: 4rem;
     align-items: center;
 }
@@ -19,11 +16,9 @@
     gap: 2rem;
     flex-direction: row;
     justify-content: space-around;
-
 }
 
 .allDeatils {
-    /* border: 2px solid var(--color_p2); */
     color: black;
     padding: 3rem 6rem;
     border-radius: 1rem;
@@ -91,36 +86,60 @@
 }
 
 
-.last-btn .cart-btn {
+.cart-btn {
     border: 2px solid var(--color_p2);
-    background-color: var(--color_p2);
-    color: white;
-    padding: .6rem 4rem;
+    /* background-color: var(--color_p2); */
+    background: transparent;
+    color: var(--color_p1);
+    padding: .6rem 2rem;
     border-radius: .3rem;
 }
 
 .last-btn .cart-btn:hover {
     border: 2px solid var(--color_p2);
-    color: var(--color_p2);
+    color: var(--color_p1);
     background: transparent;
 }
 
 .topheading h3 {
     padding-top: 4rem;
-    background-color: var(--color_p2);
-    color: white;
+    color: var(--color_p3);
     padding-bottom: 1rem;
+}
+
+.detailstable {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.detailstable table {
+    width: 100%;
+    margin: auto;
+}
+
+.detailstable table tr td{
+    padding-top: 1rem;
 }
 
 .comment {
     color: var(--color_p3);
 }
 
-/* ===============================contact css ========================= */
+/* ======== contact css ======== */
+
+
 .container.contact_conatiner {
     text-align: center;
     width: 60%;
 }
+
+.contact_conatiner textarea::placeholder { 
+    color:black;
+    opacity: .8;
+  }
 
 .contact_conatiner form {
     text-align: center;
@@ -143,16 +162,18 @@ textarea {
 
 .btn-save {
     border: 2px solid var(--color_p2);
-    background-color: var(--color_p2);
-    color: white;
+    background: transparent;
+    color:var(--color_p1);
     padding: .6rem 6rem;
     border-radius: .3rem;
 }
 
 .btn-save:hover {
-    border: 2px solid var(--color_p2);
-    color: var(--color_p2);
     background: transparent;
+}
+
+.textcolor{
+    color: var(--color_p1);
 }
 
 

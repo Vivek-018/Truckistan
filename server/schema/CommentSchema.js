@@ -9,7 +9,12 @@ const commentSchema = new mongoose.Schema({
     desc: {
         type: String,
         required: true
-    }
+    },
+    date: {
+        type: Date,
+        default: Date.now,
+        requird: true
+    },
 })
 
 module.exports = mongoose.model("Comments", commentSchema);

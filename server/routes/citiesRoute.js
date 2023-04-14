@@ -25,7 +25,7 @@ router.delete("/OnebyOnecities/:id", async (req, res) => {
 
 router.get("/allcities", async (req, res) => {
     try {
-        const findall = await Cities.find(req.params._id)
+        const findall = await Cities.find()
         res.status(201).json(findall);
     } catch (error) {
         console.error(error.message);

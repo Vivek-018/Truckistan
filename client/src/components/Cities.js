@@ -8,7 +8,9 @@ import driverContext from './useContext/driverContext'
 const Cities = () => {
 
   const context = useContext(driverContext);
-  const { Addcities, Deletecities, GetAllCities, GetAllCity } = context;
+  const { Addcities, Deletecities, GetAllCities,
+    GetAllCity } = context;
+
   const [city, setCity] = useState();
 
   const handleInputs = () => {
@@ -52,17 +54,17 @@ const Cities = () => {
             </tr>
 
             {GetAllCity?.map((item, index) => {
-                return (
-                  <>
-                    <tr key={index} >
-                      <td>{index+1}</td>
-                      <td >{item.city}</td>
-                      <td ><button className='btn-view'>Edit</button></td>
-                      <td ><button className='btn-view' onClick={()=>handleDeleted(item._id)}>Delete</button></td>
-                    </tr>
-                  </>
-                )
-              })
+              return (
+                <>
+                  <tr key={index} >
+                    <td>{index + 1}</td>
+                    <td >{item.city}</td>
+                    <td ><button className='btn-view'>Edit</button></td>
+                    <td ><button className='btn-view' onClick={() => handleDeleted(item._id)}>Delete</button></td>
+                  </tr>
+                </>
+              )
+            })
             }
           </table>
         </div>

@@ -30,6 +30,7 @@ const DriversData = (props) => {
   });
   const VehicleId = OneData?._id
   const [booked, setBooked] = useState();
+  const [allcities, setCities] = useState();
 
   const getData = async () => {
     const response = await fetch(`${host}/vehiclesData`, {
@@ -253,20 +254,6 @@ const DriversData = (props) => {
     const data = await res.json();
   }
 
-  // const ChangeBooked = async (Booked, id) => {
-  //   try {
-  //     const drivers = await axios.put(`${Userhost}/ChangeVehicleStatus/${id}`, { Booked },
-  //       {
-  //         headers: {
-  //           "Content-Type": "application/json"
-  //         }
-  //       })
-  //     return Promise.resolve(drivers);
-  //   } catch (error) {
-  //     return Promise.reject({ error })
-  //   }
-  // }
-
   const ChangeBooked = async (Booked, id) => {
     const res = await fetch(`${Userhost}/ChangeVehicleStatus/${id}`, {
       method: "PUT",
@@ -276,7 +263,17 @@ const DriversData = (props) => {
       body: JSON.stringify({ Booked })
     })
     const data = await res.json();
-    console.log(data)
+  }
+
+  const Allcityhandle = async () => {
+    const res = await fetch(`${citieshost}/allcities`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    const data = await res.json();
+    setCities(data)
   }
 
   return (
@@ -284,7 +281,7 @@ const DriversData = (props) => {
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
       alldata, getData, getallData, editData, GetAllCities, DeleteDrivers, SavedComment,
       generateOTP, resetPassword, ChangeIsVerified, GetAllCity, gettruksTrans,
-      ChangeBooked,
+      ChangeBooked,Allcityhandle,allcities,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
       setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked
     }} >

@@ -112,6 +112,7 @@ const Navbar = () => {
 
     return (
         <>
+           {/* <EntryPage/> */}
             <div className='Navbar'>
                 <div className='container'>
                     <div className='durgesh' >

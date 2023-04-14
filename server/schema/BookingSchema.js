@@ -54,7 +54,12 @@ const bookingSchema = new mongoose.Schema({
             "Cancel"
         ],
         default: "Selected"
-    }
+    },
+    date: {
+        type: Date,
+        default: Date.now,
+        requird: true
+    },
 })
 
 module.exports = mongoose.model("Booking", bookingSchema);

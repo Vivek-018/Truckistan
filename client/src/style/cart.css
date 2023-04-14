@@ -19,6 +19,16 @@
     grid-template-columns: repeat(2 , 1fr);
 }
 
+.inputs .form-group input{
+   padding-top: .8rem;
+   padding-bottom: .8rem;
+}
+
+.form-group input::placeholder {
+    color: black;
+    opacity: .8;
+  }
+
 .formfields form{
     padding-top: 1.5rem;
     padding-right: 2rem;
@@ -78,4 +88,11 @@
     .textarea{
         display: block;
    }
+}
+
+/* ============= select ================== */
+
+.form-group select{
+    padding-top: .8rem;
+    padding-bottom: .8rem;
 }

@@ -131,20 +131,20 @@ router.post("/sendMail", async (req, res) => {
 
     var Useremail = {
         body: {
-            intro: text || "Welcome to Vahak",
-            outro: 'Need help, or have questio? Just reply to this email'
+            intro: text || "Welcome to Loadkro",
+            outro: 'Need help, or have question? Just reply to this email'
         }
     }
     var emailBody = MailGenerator.generate(Useremail);
     let message = {
         from: " durgeshchaudhary020401@gmail.com",
         to: email,
-        subject: subject || "Signup successful",
+        subject: subject || "Signup Successfull",
         html: emailBody
     }
     transporter.sendMail(message)
         .then(() => {
-            return res.status(200).send({ msg: "You should receive an email from us. " })
+            return res.status(200).send({ msg: "You should receive an email from Us. " })
         })
 })
 

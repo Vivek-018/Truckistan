@@ -12,16 +12,29 @@
    background: transparent;
 }
 
-.heads{
+.heads {
    padding-top: 4rem;
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   color: var(--color_p2);
+   text-align: center;
+   margin: auto;
+   color: var(--color_p3);
 }
 
-.heads span{
-   font-size: 1.3rem;
+.heads span {
+   font-size: 1.6rem;
+}
+
+.showMore {
+   text-align: center;
+   padding-top: 4rem;
+   padding-bottom: 4rem;
+}
+
+.btn-more {
+   background: transparent;
+   border: 1px solid var(--color_p3);
+   border-radius: .3rem;
+   padding: .5rem 3rem;
+   color: var(--color_p3);
 }
 
 
@@ -29,7 +42,7 @@
 /* ================ Main_page-bottomNav ================= */
 
 .Main_page-bottomNav {
-   background-color: #8443e5;
+   background-color: var(--color_p1);
    padding-top: 1.5rem;
    padding-bottom: 1rem;
    color: white;
