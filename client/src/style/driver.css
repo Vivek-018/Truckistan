@@ -64,7 +64,6 @@
 .vehicleInfo {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* overflow-x: scroll; */
     gap: 2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -101,7 +100,6 @@
 
 .card:hover {
     box-shadow: 0 0 30px 2px rgba(228, 228, 228, 0.5);
-    margin-top: -100px;
     border: none;
 }
 

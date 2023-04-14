@@ -17,7 +17,8 @@ const UserPage = () => {
         duration: 1700,
     });
     const context = useContext(driverContext);
-    const { alldata, getallData, getMOVERSTRUCKS, setOneData, gettruksTrans } = context;
+    const { alldata, getallData, getMOVERSTRUCKS,
+        setOneData, gettruksTrans } = context;
 
     const length = alldata.length;
 
@@ -25,9 +26,9 @@ const UserPage = () => {
         setOneData(item);
     }
 
-    const handleIncrease=()=>{
-         let a = show+6;
-         setShow(a);
+    const handleIncrease = () => {
+        let a = show + 6;
+        setShow(a);
     }
 
     useEffect(() => {
@@ -113,7 +114,7 @@ const UserPage = () => {
             <div className='showMore' >
                 <button onClick={handleIncrease} className='btn-more'>More</button>
             </div>
-             <Comment/>
+            <Comment />
             <Footer />
         </>
     )

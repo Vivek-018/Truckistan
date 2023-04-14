@@ -150,6 +150,7 @@ const DriversData = (props) => {
     try {
       const res = await axios.get(`${adminhost}/UserDataAtAdmin/${id}`)
       setUserName(res.data);
+      // console.log(res);
       return Promise.resolve(res);
     } catch (error) {
       return Promise.reject({ error })
@@ -281,7 +282,7 @@ const DriversData = (props) => {
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
       alldata, getData, getallData, editData, GetAllCities, DeleteDrivers, SavedComment,
       generateOTP, resetPassword, ChangeIsVerified, GetAllCity, gettruksTrans,
-      ChangeBooked,Allcityhandle,allcities,
+      ChangeBooked, Allcityhandle, allcities,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
       setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked
     }} >
