@@ -1,50 +1,90 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from './Navbar'
-import Search from './Search'
 import '../style/cities.css'
-import { Button } from '@material-ui/core'
+import '../style/admin.css'
+import Search from './Search'
+import driverContext from './useContext/driverContext'
+
 const Cities = () => {
+
+  const context = useContext(driverContext);
+  const { Addcities, Deletecities, GetAllCities,
+    GetAllCity } = context;
+
+  const [city, setCity] = useState();
+
+  const handleInputs = () => {
+    document.getElementById("Modal").style.display = "block";
+  }
+
+  const CloseModal = () => {
+    document.getElementById("Modal").style.display = "none";
+  }
+
+  const handleSubmit = () => {
+    Addcities(city);
+    document.getElementById("Modal").style.display = "none";
+    window.location.reload();
+  }
+
+  const handleDeleted = (id) => {
+    Deletecities(id)
+    window.location.reload();
+  }
+
+  useEffect(() => {
+    GetAllCities();
+  }, [])
+
   return (
     <>
-      <Navbar/>
-      <div className='container2'>
-        <div className='searchbar'>
-        <input type='searchbar' className='searchinput' placeholder='sreach..'/>
-        <button  className='button3'>search</button>
-        <div className='citiesname2'>
-                         <select name="cities2">
-                         <option>Add new cities</option>
-                            <option>Jalandhar</option>
-                            <option>Ludhiana</option>
-                            <option>Amritsar</option>
-                            <option>Patiala</option>
-                            <option>Chandigarh</option>
-                            <option>Bathinda</option>
-                          </select>
-                         </div>
+      <Navbar />
+      <div className='container'>
+        <Search />
+        <div className='cities-table'>
+
+          <div className='add-cities' >
+            <button onClick={handleInputs} className='btn-cities' >Add New Cities</button>
+          </div>
+
+          <table>
+            <tr>
+              <td >S.No</td>
+              <td>cities name</td>
+            </tr>
+
+            {GetAllCity?.map((item, index) => {
+              return (
+                <>
+                  <tr key={index} >
+                    <td>{index + 1}</td>
+                    <td >{item.city}</td>
+                    <td ><button className='btn-view'>Edit</button></td>
+                    <td ><button className='btn-view' onClick={() => handleDeleted(item._id)}>Delete</button></td>
+                  </tr>
+                </>
+              )
+            })
+            }
+          </table>
         </div>
-                     
-               <div className='table3'>
-                   <table>
-                    <tr className='my-5' >
-                         <th className='tr'>S.No</th>
-                         <th className='tr2'>cities name</th>
-                         
-                    </tr>
-                    <tr>
-                          <td className='tr'>1</td>
-                          <td className='tr2'>Jalandhar</td>
-                          <td className='btr'><button className='btn-view mx-4 '>Edit</button></td>
-                          <td className='btr'><button className='btn-view mx-4 '>Delete</button></td>
-                     </tr> 
-                      <tr>
-                         <td></td>
-                         <td></td>
-                         </tr> 
-                            </table>
-                 </div>
-                  
-                        </div>               
+      </div>
+
+      {/* = ============================== */}
+      <div id="Modal" class="modal">
+        <div class="modal-content">
+          <div className='modalinput'>
+            <input type='text' placeholder='Enter City'
+              onChange={(e) => { setCity((prev) => ({ ...prev, city: e.target.value })) }}
+            />
+          </div>
+          <div className='btn-modalm my-4'>
+            <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
+            <button className='btn-view mx-4 ' onClick={handleSubmit} >Submit</button> :
+          </div>
+        </div>
+      </div>
+
     </>
   )
 }

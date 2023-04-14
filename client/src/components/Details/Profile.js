@@ -1,4 +1,6 @@
 import React from 'react'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Profile = ({ data, setData, setAddress, setProfile }) => {
     const setVal = (e) => {
@@ -15,13 +17,18 @@ const Profile = ({ data, setData, setAddress, setProfile }) => {
     const fun = (e) => {
         e.preventDefault()
         if (data.name === '' || data.lname === '' || data.phone === '' || data.email === "" || data.DOB === "" || data.AdharNumber === "" || data.PanCardNumber === "" || data.gender === "") {
-            alert("fill all details")
+            // alert("fill all details")
+            toast("Fill all details", {
+                autoClose: 1000,
+            })
             setAddress(false);
             setProfile(true);
         } else {
             setAddress(true);
             setProfile(false);
-            alert("Your Data Save successfully")
+            toast("Your Data Saved successfully", {
+                autoClose: 1000,
+            })
         }
     }
 
@@ -72,6 +79,7 @@ const Profile = ({ data, setData, setAddress, setProfile }) => {
                 </form>
 
             </div>
+        <ToastContainer />
         </>
     )
 }

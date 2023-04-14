@@ -28,6 +28,35 @@ router.get("/vehiclesData", fetchuser, async (req, res) => {
     }
 })
 
+
+router.get("/VehData", async (req, res) => {
+    try {
+        const data = await driverSchema.aggregate([
+            {
+                $match: { transName: "MOVERS TRUCKS" }
+            }
+        ])
+        res.status(200).json(data)
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Some error occured")
+    }
+})
+
+router.get("/VehNext", async (req, res) => {
+    try {
+        const data = await driverSchema.aggregate([
+            {
+                $match: { transName: "ON ROAD EXPRESS" }
+            }
+        ])
+        res.status(200).json(data)
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Some error occured")
+    }
+})
+
 // ========== API for post vehicles data to database ==============
 
 router.post('/driverData', fetchuser, async (req, res) => {

@@ -6,6 +6,8 @@ import { BsCartFill } from 'react-icons/bs';
 import { AiOutlineHome } from 'react-icons/ai';
 import { RiTruckLine } from 'react-icons/ri';
 import { AiFillSetting } from 'react-icons/ai';
+import { MdLocationCity } from 'react-icons/md';
+import { GoVerified } from 'react-icons/go';
 import { Link } from 'react-router-dom';
 import driverContext from './useContext/driverContext';
 import 'react-toastify/dist/ReactToastify.css';
@@ -110,6 +112,7 @@ const Navbar = () => {
 
     return (
         <>
+           {/* <EntryPage/> */}
             <div className='Navbar'>
                 <div className='container'>
                     <div className='durgesh' >
@@ -131,15 +134,18 @@ const Navbar = () => {
                             }
 
                             {
-                                (userType === 'user') ? <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> : (
+                                (userType === 'user') ?
+                                //  <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> 
+                                " "
+                                  : (
                                     <>
                                         {
                                             userType === "Driver" ? (
                                                 <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
                                             ) : (
                                                 <>
-                                                    <Link className='des' to='/verified' > <span><RiTruckLine /> </span></Link>
-                                                    <Link className='des' to='/cities' > <span>Cities </span></Link>
+                                                    <Link className='des' to='/verified' > <span><GoVerified/> </span></Link>
+                                                    <Link className='des' to='/cities' > <span><MdLocationCity/> </span></Link>
                                                 </>
                                             )
                                         }
@@ -158,6 +164,9 @@ const Navbar = () => {
                     <li>
                         <a style={{ cursor: "pointer" }} to="/profiledetails" onClick={handleModal} >My Profile</a>
                     </li>
+                    <li >
+                        <Link to="/book">Booked Vehicles</Link>
+                    </li>
                     <li>
                         <Link to="/help">FAQ's & Help</Link>
                     </li>
@@ -166,6 +175,7 @@ const Navbar = () => {
                     </li>
                 </ul>
             </div>
+
 
             <div className='sidenav' id="mySidenav">
                 <a className='des'><img src={navpic}></img> {name?.username}</a>
