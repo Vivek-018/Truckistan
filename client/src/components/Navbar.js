@@ -112,7 +112,7 @@ const Navbar = () => {
 
     return (
         <>
-           {/* <EntryPage/> */}
+            {/* <EntryPage/> */}
             <div className='Navbar'>
                 <div className='container'>
                     <div className='durgesh' >
@@ -135,22 +135,22 @@ const Navbar = () => {
 
                             {
                                 (userType === 'user') ?
-                                //  <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> 
-                                " "
-                                  : (
-                                    <>
-                                        {
-                                            userType === "Driver" ? (
-                                                <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
-                                            ) : (
-                                                <>
-                                                    <Link className='des' to='/verified' > <span><GoVerified/> </span></Link>
-                                                    <Link className='des' to='/cities' > <span><MdLocationCity/> </span></Link>
-                                                </>
-                                            )
-                                        }
-                                    </>
-                                )
+                                    //  <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> 
+                                    " "
+                                    : (
+                                        <>
+                                            {
+                                                userType === "Driver" ? (
+                                                    <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
+                                                ) : (
+                                                    <>
+                                                        <Link className='des' to='/verified' > <span><GoVerified /> </span></Link>
+                                                        <Link className='des' to='/cities' > <span><MdLocationCity /> </span></Link>
+                                                    </>
+                                                )
+                                            }
+                                        </>
+                                    )
                             }
                             <a className='des  name' onClick={handledropdown} ><img src={navpic}></img> {user.username ? user.username : "Not Available "}<span className='formDrop' ><IoIosArrowDown /></span></a>
                             <span className='ManuIcon' onClick={handleSideNav} ><i className="fa fa-bars"></i></span>
@@ -164,9 +164,14 @@ const Navbar = () => {
                     <li>
                         <a style={{ cursor: "pointer" }} to="/profiledetails" onClick={handleModal} >My Profile</a>
                     </li>
-                    <li >
-                        <Link to="/book">Booked Vehicles</Link>
-                    </li>
+                    
+                    {
+                        userType === "user" ?
+                            <li >
+                                <Link to="/book">Booked Vehicles</Link>
+                            </li> : ""
+                    }
+                    
                     <li>
                         <Link to="/help">FAQ's & Help</Link>
                     </li>
