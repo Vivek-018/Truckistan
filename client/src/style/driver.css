@@ -32,6 +32,10 @@
     position: absolute;
 }
 
+.selectedcity{
+    padding-top: .5rem;
+}
+
 /* ======== profile =========   */
 
 .selectedDriverCity {
@@ -296,6 +300,30 @@ a {
 @media screen and (max-width:1024px) {
     .vehicleInfo {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:900px) {
+    .driver {
+        display: none;
+    }
+    .subpages {
+        left: 10%;
+    }
+    .selectedDriverCity {
+        display: block;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .driver {
+        display: none;
+    }
+    .subpages {
+        left: 2%;
+    }
+    .uploadtab {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 

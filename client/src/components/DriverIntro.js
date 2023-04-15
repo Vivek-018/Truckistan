@@ -24,19 +24,24 @@ const DriverIntro = () => {
     state: "",
     pincode: "",
     country: "",
-    basefare:"",
-    bodysize:"",
-    lodingCapacity:"",
-    transName:"",
-    Vnamber:"",
-    DLnumber:"",
-    RCnumber:"",
-    PolutionCertificate:"",
-    driverImage:"",
-    VehicleImage:"",
-    DLImage:"",
-    RCImage:"",
+    basefare: "",
+    bodysize: "",
+    lodingCapacity: "",
+    transName: "",
+    Vnamber: "",
+    DLnumber: "",
+    RCnumber: "",
+    PolutionCertificate: "",
+    driverImage: "",
+    VehicleImage: "",
+    DLImage: "",
+    RCImage: "",
   })
+
+  const [Scity, setCity] = useState();
+
+  console.log("city", Scity);
+  console.log(allData)
 
   const handlesetPage = (e) => {
     e.preventDefault();
@@ -69,23 +74,23 @@ const DriverIntro = () => {
     setUploaddoc(true);
   }
 
-  const SaveData = async() => {
-       const data = await fetch('http://localhost:5000/driver/driverData', {
-         method:"POST",
-         headers:{
-          "Content-Type":"application/json",
-          "token": localStorage.getItem("token")
-         },
-         body: JSON.stringify(allData)
-       })
-       const res = await data.json()
-       console.log(res);
+  const SaveData = async () => {
+    const data = await fetch('http://localhost:5000/driver/driverData', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "token": localStorage.getItem("token")
+      },
+      body: JSON.stringify({allData, Scity})
+    })
+    const res = await data.json()
+    console.log(res)
   }
 
   return (
     <>
       <Navbar />
-      <div className='d-flex' >
+      <div className='d-flex'>
         <div className='driver'>
           <span className='topProfile' >Build Your Profile</span>
           <div className='pav' >
@@ -107,13 +112,13 @@ const DriverIntro = () => {
             profile ? <Profile data={allData} setData={setAllData} setAddress={setAddress} setProfile={setProfile} /> : ("")
           }
           {
-            !address ? ('') : <Address data={allData} setData={setAllData} setVehicle={setVehicle} setAddress={setAddress} />
+            !address ? ('') : <Address setCity={setCity} data={allData} setData={setAllData} setVehicle={setVehicle} setAddress={setAddress} />
           }
           {
             !vehicle ? ('') : <Vehicle data={allData} setData={setAllData} setUploaddoc={setUploaddoc} setVehicle={setVehicle} />
           }
           {
-            !uploaddoc ? ('') : <UploadDoc data={allData} setData={setAllData}  SaveData ={SaveData} />
+            !uploaddoc ? ('') : <UploadDoc data={allData} setData={setAllData} SaveData={SaveData} />
           }
         </div>
       </div>

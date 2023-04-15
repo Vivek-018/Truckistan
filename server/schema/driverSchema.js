@@ -105,6 +105,10 @@ const driverSchema = new mongoose.Schema({
       default: Date.now,
       requird: true
   },
+  Scity:{
+    type:Array,
+    requird:true
+  }
 })
 
 module.exports = mongoose.model("driver", driverSchema);

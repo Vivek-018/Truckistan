@@ -13,6 +13,10 @@ import driverContext from './useContext/driverContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import TextField from '@material-ui/core/TextField';
+// import Address from './Details/Address'
+// import Profile from './Details/Profile'
+// import UploadDoc from './Details/UploadDoc'
+// import Vehicle from './Details/Vehicle'
 
 const Navbar = () => {
     const context = useContext(driverContext)
@@ -23,6 +27,70 @@ const Navbar = () => {
     const user = JSON.parse(localStorage.getItem("user"))
     const [link, setLink] = useState({ link: "" });
     const userType = localStorage.getItem("type")
+
+
+    const [profile, setProfile] = useState(true);
+    const [address, setAddress] = useState(false);
+    const [vehicle, setVehicle] = useState(false);
+    const [uploaddoc, setUploaddoc] = useState(false);
+    const [allData, setAllData] = useState({
+        name: "",
+        lname: "",
+        gender: "",
+        DOB: "",
+        email: "",
+        phone: "",
+        PanCardNumber: "",
+        address: "",
+        city: "",
+        state: "",
+        pincode: "",
+        country: "",
+        basefare: "",
+        bodysize: "",
+        lodingCapacity: "",
+        transName: "",
+        Vnamber: "",
+        DLnumber: "",
+        RCnumber: "",
+        PolutionCertificate: "",
+        driverImage: "",
+        VehicleImage: "",
+        DLImage: "",
+        RCImage: "",
+    })
+
+    const handlesetPage = (e) => {
+        e.preventDefault();
+        setProfile(false);
+        setAddress(true);
+        setVehicle(false);
+        setUploaddoc(false);
+    }
+
+    const handleVehicle = (e) => {
+        e.preventDefault();
+        setProfile(false);
+        setAddress(false);
+        setVehicle(true);
+        setUploaddoc(false);
+    }
+
+    const handlesetProfile = (e) => {
+        e.preventDefault();
+        // setProfile(true);
+        setAddress(false);
+        setVehicle(false);
+        setUploaddoc(false);
+    }
+
+    const handleDocument = (e) => {
+        setProfile(false);
+        setAddress(false);
+        setVehicle(false);
+        setUploaddoc(true);
+    }
+
 
     const useInput = (initialValue) => {
         const [value, setValues] = useState(initialValue)
@@ -85,6 +153,19 @@ const Navbar = () => {
     const handleClear = () => {
         localStorage.clear();
     }
+
+    const SaveData = async() => {
+        const data = await fetch('http://localhost:5000/driver/driverData', {
+          method:"POST",
+          headers:{
+           "Content-Type":"application/json",
+           "token": localStorage.getItem("token")
+          },
+          body: JSON.stringify(allData)
+        })
+        const res = await data.json()
+        console.log(res);
+   }
 
 
     // ======================= fetching data according users ==================
@@ -164,14 +245,14 @@ const Navbar = () => {
                     <li>
                         <a style={{ cursor: "pointer" }} to="/profiledetails" onClick={handleModal} >My Profile</a>
                     </li>
-                    
+
                     {
                         userType === "user" ?
                             <li >
                                 <Link to="/book">Booked Vehicles</Link>
                             </li> : ""
                     }
-                    
+
                     <li>
                         <Link to="/help">FAQ's & Help</Link>
                     </li>
@@ -184,15 +265,40 @@ const Navbar = () => {
 
             <div className='sidenav' id="mySidenav">
                 <a className='des'><img src={navpic}></img> {name?.username}</a>
-                <span className='des' href=''><AiOutlineHome /></span>
+                <a className='desicon' href=''><AiOutlineHome /> Home</a>
                 {
                     (name?.type === 'user') ? <a className='des' href=''> <span><BsCartFill /> </span></a> : ("")
                 }
+
+                {(name?.type === 'Driver') ?
+                    <>
+                        <a className='driverText' onClick={handlesetProfile} >Profile Details</a>
+                        <a className='driverText' onClick={handlesetPage} >Address Details</a>
+                        <a className='driverText' onClick={handleVehicle} >Vehicle Details</a>
+                        <a className='driverText' onClick={handleDocument} >Upload Documents</a>
+                    </>
+                    : ("")
+                }
             </div>
+
+            {/* <div className='subpages'>
+                {
+                    profile ? <Profile data={allData} setData={setAllData} setAddress={setAddress} setProfile={setProfile} /> : ("")
+                }
+                {
+                    !address ? ('') : <Address data={allData} setData={setAllData} setVehicle={setVehicle} setAddress={setAddress} />
+                }
+                {
+                    !vehicle ? ('') : <Vehicle data={allData} setData={setAllData} setUploaddoc={setUploaddoc} setVehicle={setVehicle} />
+                }
+                {
+                    !uploaddoc ? ('') : <UploadDoc data={allData} setData={setAllData} SaveData={SaveData} />
+                }
+            </div> */}
 
             {/* ==================== my profile modal ============================= */}
 
-            <div id="myModal" class="modal">
+            <div div id="myModal" class="modal" >
                 <div class="modal-content my-4 ">
                     <div className='proDetails text-center '>
                         <span>Account Settings <AiFillSetting /> </span>
@@ -262,7 +368,7 @@ const Navbar = () => {
                         <button className=' myprofile-btn mx-4' onClick={handleEdits} >Save</button>
                     </div>
                 </div>
-            </div>
+            </div >
             <ToastContainer />
 
 

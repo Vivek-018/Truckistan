@@ -2,13 +2,17 @@ import React, { useContext, useEffect, useState } from 'react'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import driverContext from '../useContext/driverContext';
+import { useNavigate } from 'react-router-dom';
 
-const Address = ({ data, setData, setAddress, setVehicle }) => {
-
+const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
+    const navigate = useNavigate();
     const context = useContext(driverContext);
     const { Allcityhandle, allcities } = context;
-    const [Scity, setScity] = useState([{ cit: "" }]);
-    console.log(Scity[0].cit, "Sci");
+    const [select, setSelect] = useState([]);
+
+    function handlle(e) {
+        setSelect(prev => [...prev, { city: e.target.value }]);
+    }
 
     const setVal = (e) => {
         const { value, name } = e.target;
@@ -21,13 +25,9 @@ const Address = ({ data, setData, setAddress, setVehicle }) => {
         })
     }
 
-    var array = [];
-    // console.log(array, "array");
-
     const fun = (e) => {
         e.preventDefault()
         if (data.country === '' || data.address === '' || data.city === '' || data.state === "" || data.pincode === "") {
-            // alert("fill all details")
             toast("fill all details", {
                 autoClose: 1000,
             })
@@ -36,17 +36,16 @@ const Address = ({ data, setData, setAddress, setVehicle }) => {
         } else {
             setAddress(false);
             setVehicle(true);
-            // alert("Your Data Save successfully")
+            setCity(select);
             toast("Your Data Saved successfully", {
                 autoClose: 1000,
             })
         }
     }
 
-    // const handlese = (id, item) => {
-
-    //     console.log(id, item)
-    // }
+    const handleRelocate = () => {
+        navigate('/driver');
+    }
 
     useEffect(() => {
         Allcityhandle();
@@ -54,7 +53,7 @@ const Address = ({ data, setData, setAddress, setVehicle }) => {
 
     return (
         <>
-            <div className='profileDriver  selectedDriverCity '>
+            <div className='profileDriver selectedDriverCity '>
                 <div>
                     <h6>Address Details </h6>
                     <small>Let us know about you to suggest the best for you.</small>
@@ -77,7 +76,7 @@ const Address = ({ data, setData, setAddress, setVehicle }) => {
                         </div>
 
                         <div>
-                            <button type="submit" class="btn btn-profile mx-2 my-3">Cancel</button>
+                            <button type="submit" onClick={handleRelocate} class="btn btn-profile mx-2 my-3">Cancel</button>
                             <button type="submit" class="btn btn-profile my-3 " onClick={fun} >Save</button>
                         </div>
                     </form>
@@ -87,19 +86,29 @@ const Address = ({ data, setData, setAddress, setVehicle }) => {
                     <h6>Select Your City</h6>
                     <select class="form-select" aria-label="Default select example"
                         name='cities'
-                        onChange={(e) => { setScity((prev) => ({ ...prev, Scity: e.target.value })) }}
+                        onChange={(e) => { handlle(e) }}
                     >
                         <option selected >choose Your city</option>
                         {
                             allcities?.map((item, index) => {
                                 return (
                                     <>
-                                        <option key={index}>{item.city}</option>
+                                        <option key={index} >{item.city}</option>
                                     </>
                                 )
                             })
                         }
                     </select>
+
+                    <h6 style={{ paddingTop: "2rem" }}>Cities</h6>
+                    {select?.map((item, i) => {
+                        return (
+                            <>
+                                <span key={i} >{item.city}</span><br />
+                            </>
+                        )
+                    })
+                    }
                 </div>
             </div>
 

@@ -1,9 +1,10 @@
 import React from 'react'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import {  useNavigate } from 'react-router-dom';
 
 const UploadDoc = ({ data, setData, SaveData }) => {
-
+    const navigate =  useNavigate();
     const setVal = (e) => {
         const { value, name } = e.target;
 
@@ -30,6 +31,10 @@ const UploadDoc = ({ data, setData, SaveData }) => {
             })
         }
     }
+
+    const handleRelocate =()=>{
+        navigate('/driver')
+     }
 
     return (
         <>
@@ -62,7 +67,7 @@ const UploadDoc = ({ data, setData, SaveData }) => {
                 </div>
 
                 <div>
-                    <button type="submit" class="btn btn-profile mx-2 my-3">Cancel</button>
+                    <button type="submit" onClick={handleRelocate} class="btn btn-profile mx-2 my-3">Cancel</button>
                     <button type="submit" class="btn btn-profile my-3" onClick={fun} >Save</button>
                 </div>
             </div>
