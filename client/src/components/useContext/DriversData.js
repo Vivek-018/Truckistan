@@ -150,7 +150,6 @@ const DriversData = (props) => {
     try {
       const res = await axios.get(`${adminhost}/UserDataAtAdmin/${id}`)
       setUserName(res.data);
-      // console.log(res);
       return Promise.resolve(res);
     } catch (error) {
       return Promise.reject({ error })

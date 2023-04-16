@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { useLocation, Link } from 'react-router-dom';
+import driverContext from './useContext/driverContext';
 
 const ViewDetails = () => {
+    const context = useContext(driverContext);
+    const { UsersDataBYId, UserName } = context;
     const [profile, setProfile] = useState(true);
     const [address, setAddress] = useState(false);
     const [vehicle, setVehicle] = useState(false);
     const [uploaddoc, setUploaddoc] = useState(false);
     const location = useLocation()
+    const driverData = location.state;
 
     const handlesetPage = (e) => {
         e.preventDefault();
@@ -40,6 +44,12 @@ const ViewDetails = () => {
         setUploaddoc(true);
     }
 
+    // console.log(UserName, "user")
+
+    useEffect(() => {
+        UsersDataBYId(driverData.driverId);
+    }, [])
+
     return (
         <>
             <Navbar />
@@ -67,56 +77,68 @@ const ViewDetails = () => {
                             <span>TransName</span>
                         </div>
                         <div className='smallnav'>
-                            <small className='my-4' onClick={handlesetPage} >Profile Details</small>
-                            <small className='my-4' onClick={handlesetProfile} >Address Details</small>
-                            <small onClick={handleVehicle} className='my-4' >Vehicle Details</small>
-                            <small className='my-4' onClick={handleDocument} >Documents Details</small>
+                            <small  onClick={handlesetPage} >Profile Details</small>
+                            <small  onClick={handlesetProfile} >Address Details</small>
+                            <small onClick={handleVehicle} >Vehicle Details</small>
+                            <small onClick={handleDocument} >Documents Details</small>
                         </div>
 
-                        { profile === true ? (
-                                <>
-                                    <div className='showprofile' >
-                                        <h6 className='my-4' >Personal Details</h6>
-                                        <div className='personal' >
-                                            <div>
-                                                <span>Name</span> <br />
-                                                <small>{location.state?.name}</small>
-                                            </div>
-
-                                            <div>
-                                                <span>Last Name</span> <br />
-                                                <small>{location.state?.lname}</small>
-                                            </div>
-
-                                            <div>
-                                                <span>Date of Brith</span> <br />
-                                                <small>{location.state?.DOB}</small>
-                                            </div>
+                        {profile === true ? (
+                            <>
+                                <div className='showprofile' >
+                                    <h6 className='my-4' >Personal Details</h6>
+                                    <div className='personal' >
+                                        <div>
+                                            <span>Name</span> <br />
+                                            <small>{location.state?.name}</small>
                                         </div>
 
-                                        <div className='my-2 gender ' >
-                                            <span>Gender</span> <br />
-                                            <small>{location.state?.gender}</small>
+                                        <div>
+                                            <span>Last Name</span> <br />
+                                            <small>{location.state?.lname}</small>
                                         </div>
 
-                                        <h6 className='my-4' >Contect Details</h6>
-                                        <div className='contect' >
-                                            <div>
-                                                <span>Phone Number</span> <br />
-                                                <small>{location.state?.phone}</small>
-                                            </div>
-                                            <div>
-                                                <span>Email Id</span> <br />
-                                                <small>{location.state?.phone}</small>
-                                            </div>
+                                        <div>
+                                            <span>Date of Brith</span> <br />
+                                            <small>{location.state?.DOB}</small>
                                         </div>
                                     </div>
 
-                                    <div className='my-4 text-center ' >
-                                        <button onClick={handlesetProfile} className='save-btn'>Next</button>
+                                    <div className='my-2 gender ' >
+                                        <span>Gender</span> <br />
+                                        <small>{location.state?.gender}</small>
                                     </div>
-                                </>
-                            ) : ("")
+
+                                    <h6 className='my-4' >Contect Details</h6>
+                                    <div className='contect' >
+                                        <div>
+                                            <span>Phone Number</span> <br />
+                                            {
+                                                UserName.map((item, i) => {
+                                                    return (
+                                                        <small key={i} >{item.phone}</small>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                        <div>
+                                            <span>Email Id</span> <br />
+                                            {
+                                                UserName.map((item, i) => {
+                                                    return (
+                                                        <small>{item.email}</small>
+                                                    )
+                                                })
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='my-4 text-center ' >
+                                    <button onClick={handlesetProfile} className='save-btn'>Next</button>
+                                </div>
+                            </>
+                        ) : ("")
                         }
 
                         {
@@ -144,7 +166,18 @@ const ViewDetails = () => {
                                                 <span>Country</span> <br />
                                                 <small>{location.state?.country}</small>
                                             </div>
-
+                                        </div>
+                                        <div className='my-4' >
+                                            <span>Cities</span><br />
+                                            {
+                                                driverData?.Scity.map((item, i) => {
+                                                    return (
+                                                        <>
+                                                            <small className='mx-2' >{i + 1}  {item.city}</small>
+                                                        </>
+                                                    )
+                                                })
+                                            }
                                         </div>
                                     </div>
 

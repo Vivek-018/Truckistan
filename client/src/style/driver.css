@@ -328,6 +328,18 @@ a {
     }
 }
 
+@media screen and (max-width:800px) {
+    .vehicleimg {
+        display: none;
+        /* width: 150vh; */
+    }
+    .smallnav {
+        padding-top: .5rem;
+        grid-template-columns: repeat(2, 1fr);
+        height: 8vh;
+    }
+}
+
 @media screen and (max-width:400px) {
     .subpages {
         left: 2%;
@@ -338,6 +350,21 @@ a {
     }
     .uploadtab {
         grid-template-columns: repeat(1, 1fr);
+    }
+    .Alldetails {
+        width: 100vh;
+    }
+    .Vehicle {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .contect {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .personal {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .ImagesItem {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
