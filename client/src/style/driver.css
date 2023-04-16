@@ -228,7 +228,7 @@ a {
 .smallnav {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    height: 8vh;
+    height: 4vh;
     border-bottom: 2px solid rgba(109, 108, 108, 0.5);
     color: #8443e5;
 }
@@ -365,6 +365,13 @@ a {
     }
     .ImagesItem {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .personal .form-group{
+        padding-top: .8rem;
+    }
+
+    .contect .form-group{
+        padding-top: .8rem;
     }
 }
 
