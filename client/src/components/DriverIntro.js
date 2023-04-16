@@ -90,7 +90,7 @@ const DriverIntro = () => {
   return (
     <>
       <Navbar />
-      <div className='d-flex'>
+      <div className='driverintro'>
         <div className='driver'>
           <span className='topProfile' >Build Your Profile</span>
           <div className='pav' >

@@ -38,7 +38,7 @@ const EntryPage = () => {
     <>
 
       <div className="entry-container">
-        <div className="left-side col-lg-15">
+        <div className="left-side-entry ">
           <div className="top-left d-flex align-items-center">
             <div className='text-center' data-aos="fade-right" >
               <div class="enter-container" id='icon' onClick={() => {
@@ -54,7 +54,7 @@ const EntryPage = () => {
           </div>
           <div className='images-entry' data-aos="fade-down" >
             <img className="entry-img my-4 " src={pic} alt="img" />
-            <h2>Welcome to Loadkro</h2>
+            {/* <h2>Welcome to Loadkro</h2> */}
           </div>
         </div>
       </div>
