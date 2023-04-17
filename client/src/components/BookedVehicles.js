@@ -9,7 +9,6 @@ const BookedVehicles = () => {
     const { getbookedVehicles, booked, ChangeBooked } = context;
     const [Booked, setBooked] = useState("Cancel");
 
-
     const handleCancel = (id) => {
         ChangeBooked(Booked, id)
         alert("Your Booked Vehicle will be canceled successfully ")
@@ -35,7 +34,6 @@ const BookedVehicles = () => {
                             <td>Date</td>
                             <td>Status</td>
                         </tr>
-
                         {booked?.map((item, i) => {
                             return (
                                 <>
@@ -51,7 +49,7 @@ const BookedVehicles = () => {
                                                     <td><button className='btn-view' >abg</button> </td> */}
                                                 <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
                                             </tr>
-                                            : ("")
+                                         : ("")
                                     }
                                 </>
                             )

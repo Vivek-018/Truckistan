@@ -276,12 +276,24 @@ const DriversData = (props) => {
     setCities(data)
   }
 
+  const handleSearchVehicle = async (query) => {
+    const data = await fetch(`${host}/searchVehicle?city=${query.cityName}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const res = await data.json();
+    // console.log(res)
+    setAllData(res)
+  };
+
   return (
     <driverContext.Provider value={{
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
       alldata, getData, getallData, editData, GetAllCities, DeleteDrivers, SavedComment,
       generateOTP, resetPassword, ChangeIsVerified, GetAllCity, gettruksTrans,
-      ChangeBooked, Allcityhandle, allcities,
+      ChangeBooked, Allcityhandle, allcities, handleSearchVehicle,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
       setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked
     }} >

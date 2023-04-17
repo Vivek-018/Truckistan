@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import photo from '../images/Logo.png';
 import axios from 'axios';
 
 const ImgName = ({ data }) => {
     const adminhost = "http://localhost:5000/admin"
     const [user, setUser] = useState();
 
-    const handleUserDetails = async (id) => {
+    const handleUserDetails = async () => {
         try {
             const res = await axios.get(`${adminhost}/UserDataAtAdmin/${data}`)
             setUser(res.data)

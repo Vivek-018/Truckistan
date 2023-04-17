@@ -3,6 +3,17 @@ const driverSchema = require("../schema/driverSchema");
 const router = express.Router();
 const fetchuser = require('../middleware/fetchuser')
 
+
+// API for search data on seeker dashboard by name
+router.get("/searchVehicle", async (req, res) => {
+    console.log(req.query.city)
+    const keyword = req.query.city
+        ? { "Scity.city": { $regex: req.query.city, $options: "i" } } //case insensitive
+        : {};
+    const users = await driverSchema.find(keyword);
+    res.send(users);
+});
+
 // ============ fetching vehicles according drivers =============
 
 router.get("/allvehiclesData", async (req, res) => {
