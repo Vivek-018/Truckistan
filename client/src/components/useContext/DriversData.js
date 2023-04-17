@@ -236,10 +236,23 @@ const DriversData = (props) => {
       headers: {
         "Content-Type": "application/json",
         "token": localStorage.getItem("token")
-      },
+      }, 
     })
     const json = await response.json();
     setBooked(json);
+  }
+
+  
+  const getbookedAdminSide = async () => {
+    const response = await fetch(`${adminhost}/bookedVehiclesAdmin`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }, 
+    })
+    const json = await response.json();
+    setBooked(json);
+    console.log(json, "admin")
   }
 
   const SavedComment = async (comment) => {
@@ -284,7 +297,6 @@ const DriversData = (props) => {
       },
     });
     const res = await data.json();
-    // console.log(res)
     setAllData(res)
   };
 
@@ -293,7 +305,7 @@ const DriversData = (props) => {
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
       alldata, getData, getallData, editData, GetAllCities, DeleteDrivers, SavedComment,
       generateOTP, resetPassword, ChangeIsVerified, GetAllCity, gettruksTrans,
-      ChangeBooked, Allcityhandle, allcities, handleSearchVehicle,
+      ChangeBooked, Allcityhandle, allcities, handleSearchVehicle,getbookedAdminSide,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
       setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked
     }} >

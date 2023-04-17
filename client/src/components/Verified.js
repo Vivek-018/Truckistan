@@ -1,10 +1,11 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import Search from './Search'
 import { FaRegThumbsUp } from 'react-icons/fa';
 import { useContext } from 'react';
 import driverContext from './useContext/driverContext';
 import { NavLink } from 'react-router-dom';
+import Footer from './Footer'
 
 const Verified = () => {
     const context = useContext(driverContext)
@@ -12,8 +13,6 @@ const Verified = () => {
     const [check, setChecked] = useState(false);
     const [isVerified, setIsVerified] = useState(true);
     const [VerifyId, setVerify] = useState();
-
-    console.log(VerifyId, "verified")
 
     function handleOpenModal(num, id) {
         document.getElementById("Modal").style.display = "block";
@@ -50,8 +49,8 @@ const Verified = () => {
         <>
             <Navbar />
             <div className='container'>
-                      <Search />
-                
+                <Search placeholder={"Driver Name"} />
+
                 <div className='tableVerified'>
                     <table>
                         <tr className='my-4' >
@@ -103,6 +102,12 @@ const Verified = () => {
                     </div>
                 </div>
             </div>
+
+            <div className='showMore' >
+                <button className='btn-more'>More</button>
+            </div>
+
+            <Footer />
         </>
     )
 }

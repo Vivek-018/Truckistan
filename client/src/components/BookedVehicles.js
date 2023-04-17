@@ -6,8 +6,11 @@ import driverContext from './useContext/driverContext'
 const BookedVehicles = () => {
 
     const context = useContext(driverContext);
-    const { getbookedVehicles, booked, ChangeBooked } = context;
+    const { getbookedVehicles, booked, ChangeBooked, getbookedAdminSide } = context;
     const [Booked, setBooked] = useState("Cancel");
+    const userType = localStorage.getItem("type")
+
+    console.log(booked, "booked")
 
     const handleCancel = (id) => {
         ChangeBooked(Booked, id)
@@ -16,7 +19,11 @@ const BookedVehicles = () => {
     }
 
     useEffect(() => {
-        getbookedVehicles();
+        if (userType === "user") {
+            getbookedVehicles();
+        } else if (userType === "admin") {
+            getbookedAdminSide();
+        }
     }, [])
 
     return (
@@ -28,7 +35,6 @@ const BookedVehicles = () => {
                     <h3 className='my-4' >Your Booking Status</h3>
                     <table>
                         <tr className='my-4' >
-                            {/* <td>S.No</td> */}
                             <td>Pickup Address</td>
                             <td>DropOff Address</td>
                             <td>Date</td>
@@ -37,8 +43,7 @@ const BookedVehicles = () => {
                         {booked?.map((item, i) => {
                             return (
                                 <>
-                                    {
-                                        item.status === "Booked" || item.status === "Cancel" ?
+                                    {item.status === "Booked" || item.status === "Cancel" ?
                                             <tr key={i} className='trtd' >
                                                 {/* <td>{i + 1} </td> */}
                                                 <td>{item.pickupAddress}</td>
@@ -49,7 +54,7 @@ const BookedVehicles = () => {
                                                     <td><button className='btn-view' >abg</button> </td> */}
                                                 <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
                                             </tr>
-                                         : ("")
+                                            : ("")
                                     }
                                 </>
                             )

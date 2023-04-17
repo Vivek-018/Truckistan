@@ -4,6 +4,7 @@ import '../style/cities.css'
 import '../style/admin.css'
 import Search from './Search'
 import driverContext from './useContext/driverContext'
+import Footer from './Footer'
 
 const Cities = () => {
 
@@ -40,7 +41,7 @@ const Cities = () => {
     <>
       <Navbar />
       <div className='container'>
-        <Search />
+        <Search placeholder={"by City"} />
         <div className='cities-table'>
 
           <div className='add-cities' >
@@ -84,6 +85,12 @@ const Cities = () => {
           </div>
         </div>
       </div>
+
+      <div className='showMore' >
+        <button className='btn-more'>More</button>
+      </div>
+
+      <Footer />
 
     </>
   )

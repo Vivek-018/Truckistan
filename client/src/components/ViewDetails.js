@@ -44,8 +44,6 @@ const ViewDetails = () => {
         setUploaddoc(true);
     }
 
-    // console.log(UserName, "user")
-
     useEffect(() => {
         UsersDataBYId(driverData.driverId);
     }, [])

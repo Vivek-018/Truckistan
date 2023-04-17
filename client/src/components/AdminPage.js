@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import Search from './Search';
 import { GoVerified } from 'react-icons/go';
 import Navbar from './Navbar';
+import Footer from './Footer'
 
 
 const AdminPage = () => {
@@ -21,7 +22,7 @@ const AdminPage = () => {
         <>
             <Navbar />
             <div className='container' >
-                <Search />
+                <Search placeholder={"Transportation Name"} />
                 {
                     length === 0 ? (
                         <div class="loader my-4 "></div>
@@ -39,12 +40,12 @@ const AdminPage = () => {
                                                             <small className="card-title">{item.transName}</small>
                                                         </div>
                                                         <div className='verified' >
-                                                             <small>{item.isVerified === true?
-                                                             <>
-                                                              <GoVerified/> "Verified"
-                                                             </>
-                                                              :
-                                                              "Not Verified" }</small>
+                                                            <small>{item.isVerified === true ?
+                                                                <>
+                                                                    <GoVerified /> "Verified"
+                                                                </>
+                                                                :
+                                                                "Not Verified"}</small>
                                                         </div>
                                                         <div className='loadCapacity d-flex justify-content-between '>
                                                             <div>
@@ -63,7 +64,7 @@ const AdminPage = () => {
                                                                 <small href="#" className=" mx-3 ">{item.basefare} Rs/km</small>
                                                             </div>
                                                         </div>
-                                                        
+
                                                         <div className='buttons text-center d-flex justify-content-between my-2 ' >
                                                             <NavLink to={'/editdetails'} state={item} className=' btn-card' exact >Edit</NavLink>
                                                             <NavLink to={'/viewdetails'} state={item} className=' btn-card' exact>View</NavLink>
@@ -79,6 +80,12 @@ const AdminPage = () => {
                     )
                 }
             </div>
+
+            <div className='showMore' >
+                <button className='btn-more'>More</button>
+            </div>
+
+            <Footer />
         </>
     )
 }

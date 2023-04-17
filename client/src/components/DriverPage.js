@@ -11,7 +11,6 @@ const DriverPage = () => {
     const context = useContext(driverContext);
     const { getData, data } = context;
     var len = data.data?.length;
-    // console.log(, "current")
 
     useEffect(() => {
         getData();
@@ -21,7 +20,7 @@ const DriverPage = () => {
         <>
             <Navbar />
             <div className='container durgeshdriver '>
-                <Search />
+                <Search  placeholder ={"Search by Driver Name"} />
                 <h6>Added Details </h6>
 
                 {len === 0 || len === undefined ? (

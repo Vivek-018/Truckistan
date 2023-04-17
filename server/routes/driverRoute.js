@@ -82,7 +82,7 @@ router.post('/driverData', fetchuser, async (req, res) => {
             res.status(404).json({ error: "This Vehicle Number is Already Exist" });
         } else {
             const data = new driverSchema({
-                driverId: req.user.id, name: allData.name, lname: allData.lname, gender: allData.name,
+                driverId: req.user.id, name: allData.name, lname: allData.lname, gender: allData.gender,
                 DOB: allData.DOB, email: allData.email, phone: allData.name, PanCardNumber: allData.PanCardNumber,
                 address: allData.address, city: allData.city, state: allData.state, pincode: allData.pincode,
                 country: allData.country, basefare: allData.basefare, bodysize: allData.bodysize,

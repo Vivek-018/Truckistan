@@ -35,9 +35,9 @@ const UserPage = () => {
         handleSearchVehicle(cityName)
     }
 
-    // const scrollToTop = () => {
-    //     window.scrollTo(0, 0)
-    // }
+    const scrollToTop = () => {
+        window.scrollTo(0, 0)
+    }
 
     useEffect(() => {
         getallData();
@@ -103,7 +103,7 @@ const UserPage = () => {
                                                             </div>
                                                         </div>
                                                         <div className='my-4 ' >
-                                                            <NavLink to={'/cart'} onClick={() => { handleSetData(item)}} state={item} className='btn-user' exact >Book</NavLink>
+                                                            <NavLink to={'/cart'} onClick={() => { handleSetData(item);scrollToTop()}} state={item} className='btn-user' exact >Book</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>
