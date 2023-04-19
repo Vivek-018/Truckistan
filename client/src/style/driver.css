@@ -120,6 +120,7 @@
     border-radius: .4rem;
     margin-top: .5rem;
     width: 13rem;
+    height: 9rem;
 }
 
 .card .card-body {
@@ -212,6 +213,7 @@ a {
 
 .vehicleimg img {
     width: 20rem;
+    border-radius: 1rem;
 }
 
 .imagesText {

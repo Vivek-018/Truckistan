@@ -3,10 +3,17 @@ const driverSchema = require("../schema/driverSchema");
 const router = express.Router();
 const fetchuser = require('../middleware/fetchuser')
 
+// API for search data 
+router.get("/searchVehDriver", async (req, res) => {
+    const keyword = req.query.name
+        ? { "name": { $regex: req.query.name, $options: "i" } } //case insensitive
+        : {};
+    const users = await driverSchema.find(keyword);
+    res.send(users);
+});
 
-// API for search data on seeker dashboard by name
+// API for search data 
 router.get("/searchVehicle", async (req, res) => {
-    console.log(req.query.city)
     const keyword = req.query.city
         ? { "Scity.city": { $regex: req.query.city, $options: "i" } } //case insensitive
         : {};
@@ -83,7 +90,7 @@ router.post('/driverData', fetchuser, async (req, res) => {
         } else {
             const data = new driverSchema({
                 driverId: req.user.id, name: allData.name, lname: allData.lname, gender: allData.gender,
-                DOB: allData.DOB, email: allData.email, phone: allData.name, PanCardNumber: allData.PanCardNumber,
+                DOB: allData.DOB, email: allData.email, phone: allData.phone, PanCardNumber: allData.PanCardNumber,
                 address: allData.address, city: allData.city, state: allData.state, pincode: allData.pincode,
                 country: allData.country, basefare: allData.basefare, bodysize: allData.bodysize,
                 lodingCapacity: allData.lodingCapacity, transName: allData.transName, Vnamber: allData.Vnamber,

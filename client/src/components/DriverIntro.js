@@ -37,11 +37,9 @@ const DriverIntro = () => {
     DLImage: "",
     RCImage: "",
   })
-
   const [Scity, setCity] = useState();
 
-  console.log("city", Scity);
-  console.log(allData)
+  console.log(allData, "hjagd")
 
   const handlesetPage = (e) => {
     e.preventDefault();
@@ -84,7 +82,6 @@ const DriverIntro = () => {
       body: JSON.stringify({allData, Scity})
     })
     const res = await data.json()
-    console.log(res)
   }
 
   return (
