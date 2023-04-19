@@ -53,6 +53,9 @@ const Login = () => {
                 localStorage.setItem("token", res.token);
                 localStorage.setItem("user", JSON.stringify(res.user));
                 localStorage.setItem("type", res.user.type);
+                toast("Logged in sucessfully", {
+                    autoClose: 1000,
+                })    
             }
             if (localStorage.getItem("token")) {
                 if (localStorage.getItem("type") === "user") {
@@ -63,6 +66,9 @@ const Login = () => {
                 } else if (localStorage.getItem("type") === "admin") {
                     navigate("/admin");
                 }
+                toast("Logged in sucessfully", {
+                    autoClose: 1000,
+                }) 
             }
             else {
                 toast("Your Password is Incorrect", {
