@@ -104,18 +104,18 @@ const Login = () => {
     return (
         <>
             <div className="login-container row">
-                <div className="left-side col-5">
+                <div className="left-side">
                     <div className="top-left d-flex align-items-center">
                         <i onClick={() => { navigate("/"); }} className="fa-sharp fa-solid fa-arrow-left"></i>
                         <p className="px-3 m-0">Login</p>
                     </div>
                     <img className="login-img" src={backimg} alt="" />
                 </div>
-                <div className="right-side col-7 d-flex align-items-center justify-content-center">
+                <div className="right-side col-12 ">
                     <form
                         action=""
                         className="form-container">
-                        <div className=" logotext d-flex justify-content-center" style={{ alignItems: "center" }} >
+                        <div className=" logotext d-flex justify-content-center align-items-center ">
                             <img src={logo} alt="" className="form-logo web1-logo" />
                             <span>Loadkro</span>
                         </div>

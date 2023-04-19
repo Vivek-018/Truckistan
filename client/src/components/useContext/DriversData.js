@@ -41,7 +41,7 @@ const DriversData = (props) => {
       },
     });
     const json = await response.json();
-    setData(json);
+    setData(json.data);
   }
 
   const getallData = async () => {
@@ -242,6 +242,18 @@ const DriversData = (props) => {
     setBooked(json);
   }
 
+
+  const getbookedAdminSide = async () => {
+    const response = await fetch(`${adminhost}/bookedVehiclesAdmin`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    const json = await response.json();
+    setBooked(json);
+  }
+
   const SavedComment = async (comment) => {
     const res = await fetch(`${commenthost}/SavedComments`, {
       method: "POST",
@@ -276,12 +288,35 @@ const DriversData = (props) => {
     setCities(data)
   }
 
+  const handleSearchVehicle = async (query) => {
+    const data = await fetch(`${host}/searchVehicle?city=${query.cityName}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const res = await data.json();
+    setAllData(res)
+  };
+
+  const handleVehicleDriver = async (query) => {
+    const data = await fetch(`${host}/searchVehDriver?name=${query.driverName}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const res = await data.json();
+    setData(res)
+  };
+
   return (
     <driverContext.Provider value={{
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
       alldata, getData, getallData, editData, GetAllCities, DeleteDrivers, SavedComment,
       generateOTP, resetPassword, ChangeIsVerified, GetAllCity, gettruksTrans,
-      ChangeBooked,Allcityhandle,allcities,
+      handleVehicleDriver,
+      ChangeBooked, Allcityhandle, allcities, handleSearchVehicle, getbookedAdminSide,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
       setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked
     }} >

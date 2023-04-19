@@ -7,6 +7,8 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { RiTruckLine } from 'react-icons/ri';
 import { AiFillSetting } from 'react-icons/ai';
 import { MdLocationCity } from 'react-icons/md';
+import { BsFillBookmarkFill } from 'react-icons/bs';
+
 import { GoVerified } from 'react-icons/go';
 import { Link } from 'react-router-dom';
 import driverContext from './useContext/driverContext';
@@ -16,7 +18,9 @@ import TextField from '@material-ui/core/TextField';
 
 const Navbar = () => {
     const context = useContext(driverContext)
-    const { editUserProfiledata } = context;
+    const { editUserProfiledata, data, getData } = context;
+    const totalVehicle = data.length;
+
     const [name, setname] = useState();
     const [Nav, setNav] = useState(false);
     const [dropdown, setdropdown] = useState(false);
@@ -86,7 +90,6 @@ const Navbar = () => {
         localStorage.clear();
     }
 
-
     // ======================= fetching data according users ==================
 
     const handlelogin = async (e) => {
@@ -108,11 +111,12 @@ const Navbar = () => {
 
     useEffect(() => {
         handlelogin();
+        getData();
     }, [setname])
 
     return (
         <>
-           {/* <EntryPage/> */}
+            {/* <EntryPage/> */}
             <div className='Navbar'>
                 <div className='container'>
                     <div className='durgesh' >
@@ -135,22 +139,23 @@ const Navbar = () => {
 
                             {
                                 (userType === 'user') ?
-                                //  <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> 
-                                " "
-                                  : (
-                                    <>
-                                        {
-                                            userType === "Driver" ? (
-                                                <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
-                                            ) : (
-                                                <>
-                                                    <Link className='des' to='/verified' > <span><GoVerified/> </span></Link>
-                                                    <Link className='des' to='/cities' > <span><MdLocationCity/> </span></Link>
-                                                </>
-                                            )
-                                        }
-                                    </>
-                                )
+                                    //  <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> 
+                                    " "
+                                    : (
+                                        <>
+                                            {
+                                                userType === "Driver" ? (
+                                                    <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
+                                                ) : (
+                                                    <>
+                                                        <Link className='des' to='/verified' > <span><GoVerified /> </span></Link>
+                                                        <Link className='des' to='/cities' > <span><MdLocationCity /> </span></Link>
+                                                        <Link className='des' to='/book' > <span><BsFillBookmarkFill /> </span></Link>
+                                                    </>
+                                                )
+                                            }
+                                        </>
+                                    )
                             }
                             <a className='des  name' onClick={handledropdown} ><img src={navpic}></img> {user.username ? user.username : "Not Available "}<span className='formDrop' ><IoIosArrowDown /></span></a>
                             <span className='ManuIcon' onClick={handleSideNav} ><i className="fa fa-bars"></i></span>
@@ -164,9 +169,14 @@ const Navbar = () => {
                     <li>
                         <a style={{ cursor: "pointer" }} to="/profiledetails" onClick={handleModal} >My Profile</a>
                     </li>
-                    <li >
-                        <Link to="/book">Booked Vehicles</Link>
-                    </li>
+
+                    {
+                        userType === "user" ?
+                            <li >
+                                <Link to="/book">Booked Vehicles</Link>
+                            </li> : ""
+                    }
+
                     <li>
                         <Link to="/help">FAQ's & Help</Link>
                     </li>
@@ -179,7 +189,7 @@ const Navbar = () => {
 
             <div className='sidenav' id="mySidenav">
                 <a className='des'><img src={navpic}></img> {name?.username}</a>
-                <span className='des' href=''><AiOutlineHome /></span>
+                <a className='desicon' href=''><AiOutlineHome /> Home</a>
                 {
                     (name?.type === 'user') ? <a className='des' href=''> <span><BsCartFill /> </span></a> : ("")
                 }
@@ -187,7 +197,7 @@ const Navbar = () => {
 
             {/* ==================== my profile modal ============================= */}
 
-            <div id="myModal" class="modal">
+            <div div id="myModal" class="modal" >
                 <div class="modal-content my-4 ">
                     <div className='proDetails text-center '>
                         <span>Account Settings <AiFillSetting /> </span>
@@ -210,7 +220,7 @@ const Navbar = () => {
                                     name?.type === 'user' || name?.type === "admin" ? "" : (
                                         <div className='num' >
                                             <h6>Total Vehicles</h6>
-                                            <span> 8 </span>
+                                            <span> {totalVehicle} </span>
                                         </div>
                                     )
                                 }
@@ -257,7 +267,7 @@ const Navbar = () => {
                         <button className=' myprofile-btn mx-4' onClick={handleEdits} >Save</button>
                     </div>
                 </div>
-            </div>
+            </div >
             <ToastContainer />
 
 

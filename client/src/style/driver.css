@@ -1,3 +1,4 @@
+
 .driver {
     background-color: var(--color_p1);
     width: 300px;
@@ -32,6 +33,10 @@
     position: absolute;
 }
 
+.selectedcity{
+    padding-top: .5rem;
+}
+
 /* ======== profile =========   */
 
 .selectedDriverCity {
@@ -64,7 +69,6 @@
 .vehicleInfo {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* overflow-x: scroll; */
     gap: 2rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -101,7 +105,6 @@
 
 .card:hover {
     box-shadow: 0 0 30px 2px rgba(228, 228, 228, 0.5);
-    margin-top: -100px;
     border: none;
 }
 
@@ -117,6 +120,7 @@
     border-radius: .4rem;
     margin-top: .5rem;
     width: 13rem;
+    height: 9rem;
 }
 
 .card .card-body {
@@ -209,6 +213,7 @@ a {
 
 .vehicleimg img {
     width: 20rem;
+    border-radius: 1rem;
 }
 
 .imagesText {
@@ -225,7 +230,7 @@ a {
 .smallnav {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    height: 8vh;
+    height: 4vh;
     border-bottom: 2px solid rgba(109, 108, 108, 0.5);
     color: #8443e5;
 }
@@ -298,6 +303,77 @@ a {
 @media screen and (max-width:1024px) {
     .vehicleInfo {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:900px) {
+    .driver {
+        width:100%;
+        display: flex;
+        min-height: 2vh;
+        padding: 1rem;
+    }
+    
+    .driver .topProfile {
+        display: none;
+    }
+    .driver .pav {
+        padding-left: 1rem;
+    }
+    
+    .subpages {
+        left: 10%;
+        top: 24%;
+    }
+    .selectedDriverCity {
+        display: block;
+    }
+}
+
+@media screen and (max-width:800px) {
+    .vehicleimg {
+        display: none;
+        /* width: 150vh; */
+    }
+    .smallnav {
+        padding-top: .5rem;
+        grid-template-columns: repeat(2, 1fr);
+        height: 8vh;
+    }
+}
+
+@media screen and (max-width:400px) {
+    .subpages {
+        left: 2%;
+    }
+    .subpages {
+        left: 10%;
+        top: 26%;
+    }
+    .uploadtab {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .Alldetails {
+        width: 100vh;
+    }
+    .Vehicle {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .contect {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .personal {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .ImagesItem {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .personal .form-group{
+        padding-top: .8rem;
+    }
+
+    .contect .form-group{
+        padding-top: .8rem;
     }
 }
 

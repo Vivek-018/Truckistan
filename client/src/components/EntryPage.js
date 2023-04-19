@@ -6,7 +6,8 @@ import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
-const EntryPage = () => {
+const EntryPage = ({ handleSearch, setcityName }) => {
+
   AOS.init({
     offset: 120,
     delay: 0,
@@ -38,7 +39,7 @@ const EntryPage = () => {
     <>
 
       <div className="entry-container">
-        <div className="left-side col-lg-15">
+        <div className="left-side-entry ">
           <div className="top-left d-flex align-items-center">
             <div className='text-center' data-aos="fade-right" >
               <div class="enter-container" id='icon' onClick={() => {
@@ -54,7 +55,6 @@ const EntryPage = () => {
           </div>
           <div className='images-entry' data-aos="fade-down" >
             <img className="entry-img my-4 " src={pic} alt="img" />
-            <h2>Welcome to Loadkro</h2>
           </div>
         </div>
       </div>
@@ -71,8 +71,11 @@ const EntryPage = () => {
 
           <div className='entry-input' >
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder=" Search By City Name" aria-label="Recipient's username" aria-describedby="basic-addon2" />
-              <button class="input-group-text entry-btn" id="basic-addon2">Search</button>
+              <input type="text" class="form-control" name='cityName' placeholder=" Search By City Name"
+                aria-label="Recipient's username" aria-describedby="basic-addon2"
+                onChange={(e) => { setcityName((prev) => ({ ...prev, cityName: e.target.value })) }}
+              />
+              <button onClick={handleSearch} class="input-group-text entry-btn" id="basic-addon2">Search</button>
             </div>
           </div>
         </div>

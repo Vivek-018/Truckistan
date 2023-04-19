@@ -3,6 +3,24 @@ const driverSchema = require("../schema/driverSchema");
 const router = express.Router();
 const fetchuser = require('../middleware/fetchuser')
 
+// API for search data 
+router.get("/searchVehDriver", async (req, res) => {
+    const keyword = req.query.name
+        ? { "name": { $regex: req.query.name, $options: "i" } } //case insensitive
+        : {};
+    const users = await driverSchema.find(keyword);
+    res.send(users);
+});
+
+// API for search data 
+router.get("/searchVehicle", async (req, res) => {
+    const keyword = req.query.city
+        ? { "Scity.city": { $regex: req.query.city, $options: "i" } } //case insensitive
+        : {};
+    const users = await driverSchema.find(keyword);
+    res.send(users);
+});
+
 // ============ fetching vehicles according drivers =============
 
 router.get("/allvehiclesData", async (req, res) => {
@@ -60,24 +78,25 @@ router.get("/VehNext", async (req, res) => {
 // ========== API for post vehicles data to database ==============
 
 router.post('/driverData', fetchuser, async (req, res) => {
-    const { name, lname, gender, DOB, email, phone, PanCardNumber, address,
-        city, state, pincode, country, basefare, bodysize, lodingCapacity,
-        transName, Vnamber, DLnumber, RCnumber, PolutionCertificate, driverImage,
-        VehicleImage, DLImage, RCImage, } = req.body;
-    if (!Vnamber === '') {
+    const { allData, Scity } = req.body;
+    if (!{ Vnamber: allData.Vnamber } === '') {
         res.status(404).send("Vehicle Number is Not found");
     }
     try {
 
-        const checkVehicleNumber = await driverSchema.findOne({ Vnamber: Vnamber });
+        const checkVehicleNumber = await driverSchema.findOne({ Vnamber: allData.Vnamber });
         if (checkVehicleNumber) {
             res.status(404).json({ error: "This Vehicle Number is Already Exist" });
         } else {
             const data = new driverSchema({
-                driverId: req.user.id, name, lname, gender, DOB, email, phone, PanCardNumber,
-                address, city, state, pincode, country, basefare, bodysize, lodingCapacity,
-                transName, Vnamber, DLnumber, RCnumber, PolutionCertificate, driverImage,
-                VehicleImage, DLImage, RCImage,
+                driverId: req.user.id, name: allData.name, lname: allData.lname, gender: allData.gender,
+                DOB: allData.DOB, email: allData.email, phone: allData.phone, PanCardNumber: allData.PanCardNumber,
+                address: allData.address, city: allData.city, state: allData.state, pincode: allData.pincode,
+                country: allData.country, basefare: allData.basefare, bodysize: allData.bodysize,
+                lodingCapacity: allData.lodingCapacity, transName: allData.transName, Vnamber: allData.Vnamber,
+                DLnumber: allData.DLnumber, RCnumber: allData.RCnumber, PolutionCertificate: allData.PolutionCertificate,
+                driverImage: allData.driverImage, VehicleImage: allData.VehicleImage, DLImage: allData.DLImage,
+                RCImage: allData.RCImage, Scity
             })
             const saveddata = await data.save()
             // return the backend status to frontend

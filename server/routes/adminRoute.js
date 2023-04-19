@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Driver = require("../schema/driverSchema");
 const User = require("../schema/userSchema")
+const Booking = require('../schema/BookingSchema')
 
 router.put("/changeIsVerified/:id", (req, res) => {
     Driver.findOneAndUpdate({ _id: req.params.id }, { $set: { isVerified: req.body.isVerified } })
@@ -17,6 +18,7 @@ router.get("/UserDataAtAdmin/:id", (req, res) => {
     User.find({ _id: req.params.id })
         .then((response) => {
             res.json(response);
+            // console.log(response)
         })
         .catch((err) => {
             res.status(400).json(err);
@@ -30,6 +32,16 @@ router.delete("/driversAndTrucks/:id", async (req, res) => {
     } catch (error) {
         console.error(error.message);
         res.status(401).send("Some error occured")
+    }
+})
+
+router.get('/bookedVehiclesAdmin', async (req, res) => {
+    try {
+        const book = await Booking.find();
+        res.status(200).json(book);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Some error occured")
     }
 })
 

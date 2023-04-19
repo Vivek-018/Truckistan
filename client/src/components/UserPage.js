@@ -10,6 +10,7 @@ import EntryPage from './EntryPage'
 import Comment from './Comment'
 
 const UserPage = () => {
+    const [cityName, setcityName] = useState();
     const [show, setShow] = useState(12);
     AOS.init({
         offset: 120,
@@ -17,17 +18,25 @@ const UserPage = () => {
         duration: 1700,
     });
     const context = useContext(driverContext);
-    const { alldata, getallData, getMOVERSTRUCKS, setOneData, gettruksTrans } = context;
-
+    const { alldata, getallData, getMOVERSTRUCKS,
+        setOneData, gettruksTrans, handleSearchVehicle } = context;
     const length = alldata.length;
 
     const handleSetData = (item) => {
         setOneData(item);
     }
 
-    const handleIncrease=()=>{
-         let a = show+6;
-         setShow(a);
+    const handleIncrease = () => {
+        let a = show + 6;
+        setShow(a);
+    }
+
+    const handleSearch = () => {
+        handleSearchVehicle(cityName)
+    }
+
+    const scrollToTop = () => {
+        window.scrollTo(0, 0)
     }
 
     useEffect(() => {
@@ -38,7 +47,7 @@ const UserPage = () => {
 
     return (
         <>
-            <EntryPage />
+            <EntryPage handleSearch={handleSearch} setcityName={setcityName} />
             <div className='container' >
                 <div className='heads text-center'>
                     <span>Featured Vehicle <hr /> </span>
@@ -93,13 +102,12 @@ const UserPage = () => {
                                                                 <small href="#" className=" mx-3 ">{item.name} {item.lname} </small>
                                                             </div>
                                                         </div>
-
                                                         <div className='my-4 ' >
-                                                            <NavLink to={'/cart'} onClick={() => { handleSetData(item) }} state={item} className='btn-user' exact >Book</NavLink>
+                                                            <NavLink to={'/cart'} onClick={() => { handleSetData(item);scrollToTop()}} state={item} className='btn-user' exact >Book</NavLink>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                : ""
+                                                : ("")
                                         }
                                     </>
                                 )
@@ -113,7 +121,7 @@ const UserPage = () => {
             <div className='showMore' >
                 <button onClick={handleIncrease} className='btn-more'>More</button>
             </div>
-             <Comment/>
+            <Comment />
             <Footer />
         </>
     )

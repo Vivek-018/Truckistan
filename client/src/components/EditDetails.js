@@ -153,14 +153,14 @@ const EditDetails = () => {
             </div>
           </div>
           <div className='Alldetails' >
-            <div className='transName'>
-              <span>TransName</span>
+            <div className='transName my-2 '>
+              <span>{location.state?.transName}</span>
             </div>
             <div className='smallnav'>
-              <small className='my-4' onClick={handlesetPage} >Profile Details</small>
-              <small className='my-4' onClick={handlesetProfile} >Address Details</small>
-              <small onClick={handleVehicle} className='my-4' >Vehicle Details</small>
-              <small className='my-4' onClick={handleDocument} >Documents Details</small>
+              <small  onClick={handlesetPage} >Profile Details</small>
+              <small onClick={handlesetProfile} >Address Details</small>
+              <small onClick={handleVehicle} >Vehicle Details</small>
+              <small onClick={handleDocument} >Documents Details</small>
             </div>
 
             {
@@ -294,10 +294,10 @@ const EditDetails = () => {
                       </div>
                     </div>
 
-                    <div>
+                    {/* <div>
                       <span>Polution Certificate</span><br />
                       <small>{location.state?.PolutionCertificate ? "Yes" : "No"}</small>
-                    </div>
+                    </div> */}
                   </div>
 
                   <div className='my-4 text-center ' >
