@@ -12,7 +12,10 @@ const BookedVehicles = () => {
 
     const handleCancel = (id) => {
         ChangeBooked(Booked, id)
-        alert("Your Booked Vehicle will be canceled successfully ")
+        // alert("Your Booked Vehicle will be canceled successfully ")
+        toast("Your Booked Vehicle will be canceled successfully", {
+            autoClose: 1000,
+        })
         window.location.reload();
     }
 

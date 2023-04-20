@@ -21,11 +21,20 @@ const Login = () => {
         e.preventDefault();
         const { password, Rpassword } = values;
         if (password === null) {
-            alert("Password is not blank");
+            // alert("Password is not blank");
+            toast("Password is not blank", {
+                autoClose: 1000,
+            })
         } else if (password !== Rpassword) {
-            alert("Password Not match");
+            // alert("Password Not match");
+            toast("Password Not match", {
+                autoClose: 1000,
+            })
         } else if (Rpassword === null) {
-            alert("Confirm Password is not blank");
+            // alert("Confirm Password is not blank");
+            toast("Confirm Password is not blank", {
+                autoClose: 1000,
+            })
         } else {
             resetPassword(email.email, password)
             toast("Password Updated successfully", {

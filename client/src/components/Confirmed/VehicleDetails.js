@@ -26,7 +26,10 @@ const VehicleDetails = () => {
     const handleComment = (e) => {
         e.preventDefault();
         if (comment === undefined) {
-            alert("Plz write Something")
+            // alert("Plz write Something")/
+            toast("Plz write Something", {
+                autoClose: 1000,
+            })
         } else {
             SavedComment(comment);
             toast("Your Comment Saved Successfully", {
