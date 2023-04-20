@@ -98,7 +98,9 @@ const Login = () => {
                 // localStorage.setItem("user", JSON.stringify(UpcomingOtp.user));
                 // localStorage.setItem("type", UpcomingOtp.user.type);
             } else {
-                console.log("no")
+                toast("Fill the correct details", {
+                    autoClose: 1000,
+                })
             }
         }
     };
