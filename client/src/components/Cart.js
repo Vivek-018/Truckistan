@@ -6,7 +6,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import driverContext from './useContext/driverContext';
 
 const Cart = () => {
-
     const context = useContext(driverContext);
     const { Address, setaddress, AddAddress } = context;
     const navigate = useNavigate();

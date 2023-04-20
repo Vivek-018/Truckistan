@@ -25,6 +25,10 @@ const driverSchema = new mongoose.Schema({
       type: String,
       required: true,
    },
+   email: {
+      type: String,
+      required: true,
+   },
    PanCardNumber: {
       type: String,
       required: true,
@@ -96,19 +100,19 @@ const driverSchema = new mongoose.Schema({
       type: String,
       required: true,
    },
-   isVerified:{
-      type:Boolean,
-      default:false
+   isVerified: {
+      type: Boolean,
+      default: false
    },
    date: {
       type: Date,
       default: Date.now,
       requird: true
-  },
-  Scity:{
-    type:Array,
-    requird:true
-  }
+   },
+   Scity: {
+      type: Array,
+      requird: true
+   }
 })
 
 module.exports = mongoose.model("driver", driverSchema);

@@ -18,7 +18,9 @@ import TextField from '@material-ui/core/TextField';
 
 const Navbar = () => {
     const context = useContext(driverContext)
-    const { editUserProfiledata } = context;
+    const { editUserProfiledata, data, getData } = context;
+    const totalVehicle = data.length;
+
     const [name, setname] = useState();
     const [Nav, setNav] = useState(false);
     const [dropdown, setdropdown] = useState(false);
@@ -109,6 +111,7 @@ const Navbar = () => {
 
     useEffect(() => {
         handlelogin();
+        getData();
     }, [setname])
 
     return (
@@ -217,7 +220,7 @@ const Navbar = () => {
                                     name?.type === 'user' || name?.type === "admin" ? "" : (
                                         <div className='num' >
                                             <h6>Total Vehicles</h6>
-                                            <span> 8 </span>
+                                            <span> {totalVehicle} </span>
                                         </div>
                                     )
                                 }

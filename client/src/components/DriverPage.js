@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../style/driver.css'
 import Navbar from './Navbar'
 import Search from './Search'
@@ -9,8 +9,13 @@ import { GoVerified } from 'react-icons/go';
 
 const DriverPage = () => {
     const context = useContext(driverContext);
-    const { getData, data } = context;
-    var len = data.data?.length;
+    const { getData, handleVehicleDriver, data } = context;
+    const [driverName, setcityName] = useState();
+    var len = data?.length;
+
+    const handleSearch = () => {
+        handleVehicleDriver(driverName);
+    }
 
     useEffect(() => {
         getData();
@@ -20,26 +25,25 @@ const DriverPage = () => {
         <>
             <Navbar />
             <div className='container durgeshdriver '>
-                <Search  placeholder ={"Search by Driver Name"} />
+                <Search handleSearch={handleSearch} setcityName={setcityName} placeholder={"Search by Driver Name"} />
                 <h6>Added Details </h6>
 
                 {len === 0 || len === undefined ? (
                     <>
                         <div class="loader my-4 "></div>
                         <div className='text-center' >
-                            <h5> Currently Loading Your Data </h5>
+                            <h5> Currently Loading Your Data Plz Wait <br /> Or Add new Data</h5>
                         </div>
                     </>
                 ) : (
 
                     <div className='vehicleInfo'>
                         {
-                            data.data?.map((item, index) => {
+                            data?.map((item, index) => {
                                 return (
                                     <>
                                         <div key={index} className="card my-2 ">
                                             <div className="card-body">
-                                                {/* <img src={item.driverImage} alt='img' /> */}
                                                 <img src={item.VehicleImage} alt='img' />
                                                 <div className='TransName' >
                                                     <small className="card-title">{item.transName}</small>

@@ -124,7 +124,7 @@ const ViewDetails = () => {
                                             {
                                                 UserName.map((item, i) => {
                                                     return (
-                                                        <small>{item.email}</small>
+                                                        <small key={i} >{item.email}</small>
                                                     )
                                                 })
                                             }
