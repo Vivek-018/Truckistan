@@ -75,8 +75,8 @@ const ViewDetails = () => {
                             <span>TransName</span>
                         </div>
                         <div className='smallnav'>
-                            <small  onClick={handlesetPage} >Profile Details</small>
-                            <small  onClick={handlesetProfile} >Address Details</small>
+                            <small onClick={handlesetPage} >Profile Details</small>
+                            <small onClick={handlesetProfile} >Address Details</small>
                             <small onClick={handleVehicle} >Vehicle Details</small>
                             <small onClick={handleDocument} >Documents Details</small>
                         </div>
@@ -111,23 +111,11 @@ const ViewDetails = () => {
                                     <div className='contect' >
                                         <div>
                                             <span>Phone Number</span> <br />
-                                            {
-                                                UserName.map((item, i) => {
-                                                    return (
-                                                        <small key={i} >{item.phone}</small>
-                                                    )
-                                                })
-                                            }
+                                            <small>{location.state?.phone}</small>
                                         </div>
                                         <div>
                                             <span>Email Id</span> <br />
-                                            {
-                                                UserName.map((item, i) => {
-                                                    return (
-                                                        <small key={i} >{item.email}</small>
-                                                    )
-                                                })
-                                            }
+                                            <small>{location.state?.email}</small>
                                         </div>
                                     </div>
                                 </div>

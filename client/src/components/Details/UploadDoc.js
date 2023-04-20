@@ -25,10 +25,11 @@ const UploadDoc = ({ data, setData, SaveData }) => {
             })
         } else {
             SaveData();
-            // alert("Your Data Save successfully")
-            toast("Your Data Saved successfully", {
-                autoClose: 1000,
-            })
+            alert("Your Data Saved successfully")
+            // toast("Your Data Saved successfully", {
+            //     autoClose: 1000,
+            // })
+            navigate('/driver')
         }
     }
 
