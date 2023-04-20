@@ -54,18 +54,21 @@ const Cities = () => {
               <td>cities name</td>
             </tr>
 
-            {GetAllCity?.map((item, index) => {
-              return (
-                <>
-                  <tr key={index} >
-                    <td>{index + 1}</td>
-                    <td >{item.city}</td>
-                    <td ><button className='btn-view'>Edit</button></td>
-                    <td ><button className='btn-view' onClick={() => handleDeleted(item._id)}>Delete</button></td>
-                  </tr>
-                </>
-              )
-            })
+            {
+              GetAllCity?.length === 0 || GetAllCity === undefined ?
+                <div class="loader my-4 "></div> :
+                GetAllCity?.map((item, index) => {
+                  return (
+                    <>
+                      <tr key={index} >
+                        <td>{index + 1}</td>
+                        <td >{item.city}</td>
+                        <td ><button className='btn-view'>Edit</button></td>
+                        <td ><button className='btn-view' onClick={() => handleDeleted(item._id)}>Delete</button></td>
+                      </tr>
+                    </>
+                  )
+                })
             }
           </table>
         </div>

@@ -13,10 +13,10 @@ const Booking = require('../schema/BookingSchema')
 //     res.send(users);
 // });
 
-router.get('/bookedVehiclesDriver',fetchuser,  async (req, res) => {
+router.get('/bookedVehiclesDriver', fetchuser, async (req, res) => {
     const user = req.user;
     try {
-        const book = await Booking.find({driverId : user.id});
+        const book = await Booking.find({ driverId: user.id });
         res.status(200).json(book);
     } catch (error) {
         console.error(error.message);
@@ -67,34 +67,46 @@ router.get("/vehiclesData", fetchuser, async (req, res) => {
     }
 })
 
+// fetching vehicle data using _id 
 
-router.get("/VehData", async (req, res) => {
+router.get('/Vehicleby_id/:id', async (req, res) => {
     try {
-        const data = await driverSchema.aggregate([
-            {
-                $match: { transName: "MOVERS TRUCKS" }
-            }
-        ])
-        res.status(200).json(data)
+        const data = await driverSchema.findById({ _id: req.params.id });
+        res.status(200).json(data);
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Some error occured")
     }
 })
 
-router.get("/VehNext", async (req, res) => {
-    try {
-        const data = await driverSchema.aggregate([
-            {
-                $match: { transName: "ON ROAD EXPRESS" }
-            }
-        ])
-        res.status(200).json(data)
-    } catch (error) {
-        console.error(error.message);
-        res.status(500).send("Some error occured")
-    }
-})
+
+// router.get("/VehData", async (req, res) => {
+//     try {
+//         const data = await driverSchema.aggregate([
+//             {
+//                 $match: { transName: "MOVERS TRUCKS" }
+//             }
+//         ])
+//         res.status(200).json(data)
+//     } catch (error) {
+//         console.error(error.message);
+//         res.status(500).send("Some error occured")
+//     }
+// })
+
+// router.get("/VehNext", async (req, res) => {
+//     try {
+//         const data = await driverSchema.aggregate([
+//             {
+//                 $match: { transName: "ON ROAD EXPRESS" }
+//             }
+//         ])
+//         res.status(200).json(data)
+//     } catch (error) {
+//         console.error(error.message);
+//         res.status(500).send("Some error occured")
+//     }
+// })
 
 // ========== API for post vehicles data to database ==============
 

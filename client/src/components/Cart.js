@@ -4,6 +4,7 @@ import '../style/cart.css'
 import Footer from './Footer';
 import { useLocation, useNavigate } from 'react-router-dom';
 import driverContext from './useContext/driverContext';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Cart = () => {
     const context = useContext(driverContext);

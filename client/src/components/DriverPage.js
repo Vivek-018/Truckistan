@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
 import driverContext from './useContext/driverContext'
 import { GoVerified } from 'react-icons/go';
+import Footer from './Footer'
 
 const DriverPage = () => {
     const context = useContext(driverContext);
@@ -103,6 +104,8 @@ const DriverPage = () => {
             <div className='showMore' >
                 <button className='btn-more'>More</button>
             </div>
+
+            <Footer/>
         </>
     )
 }

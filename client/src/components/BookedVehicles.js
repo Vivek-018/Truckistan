@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import driverContext from './useContext/driverContext'
+import { toast } from 'react-toastify';
+import VehicleDriver from './VehicleDriver';
+import '../style/admin.css'
 
 const BookedVehicles = () => {
     const context = useContext(driverContext);
@@ -12,7 +15,6 @@ const BookedVehicles = () => {
 
     const handleCancel = (id) => {
         ChangeBooked(Booked, id)
-        // alert("Your Booked Vehicle will be canceled successfully ")
         toast("Your Booked Vehicle will be canceled successfully", {
             autoClose: 1000,
         })
@@ -37,28 +39,46 @@ const BookedVehicles = () => {
                     <h3 className='my-4' >Your Booking Status</h3>
                     <table>
                         <tr className='my-4' >
-                            <td>S.No</td>
                             {
                                 userType === 'admin' ?
                                     <>
-                                        <td>Driver Name</td>
-                                        <td>Vehicle Number</td>
+                                        <td>S.No</td>
                                     </> : ("")
                             }
+                            <td>Driver Name</td>
+                            <td>Vehicle Number</td>
                             <td>Pickup Address</td>
                             <td>DropOff Address</td>
                             <td>Date</td>
                             <td>Status</td>
                         </tr>
 
-                        {booked?.map((item, i) => {
-                            return (
-                                <>
-                                    {
-                                        userType === "user" || userType === "Driver" ?
-                                            item.status === "Booked" || item.status === "Cancel" ?
+                        {booked?.length === 0 || booked === undefined ?
+                            <div class="loader my-4 "></div> :
+
+                            booked?.map((item, i) => {
+                                return (
+                                    <>
+                                        {
+                                            userType === "user" || userType === "Driver" ?
+                                                item.status === "Booked" || item.status === "Cancel" ?
+                                                    <tr key={i} className='trtd' >
+                                                        {/* <td>{i + 1} </td> */}
+                                                        <VehicleDriver item={item.vehicleId} />
+                                                        <td>{item.pickupAddress}</td>
+                                                        <td>{item.DropOffAddress}</td>
+                                                        <td>{item.date.slice(0, 10)}</td>
+                                                        <td>{item.status}</td>
+                                                        {/* <td><NavLink to={'/viewdetails'} className='btn-view'>View</NavLink></td>
+                                                    <td><button className='btn-view' >abg</button> </td> */}
+                                                        <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
+                                                    </tr>
+                                                    : ("")
+                                                :
                                                 <tr key={i} className='trtd' >
-                                                    {/* <td>{i + 1} </td> */}
+                                                    <td>{i + 1} </td>
+                                                    <td>md edlem</td>
+                                                    <td>keckemewmkew</td>
                                                     <td>{item.pickupAddress}</td>
                                                     <td>{item.DropOffAddress}</td>
                                                     <td>{item.date.slice(0, 10)}</td>
@@ -67,24 +87,10 @@ const BookedVehicles = () => {
                                                     <td><button className='btn-view' >abg</button> </td> */}
                                                     <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
                                                 </tr>
-                                                : ("")
-                                            :
-                                            <tr key={i} className='trtd' >
-                                                <td>{i + 1} </td>
-                                                <td>md edlem</td>
-                                                <td>keckemewmkew</td>
-                                                <td>{item.pickupAddress}</td>
-                                                <td>{item.DropOffAddress}</td>
-                                                <td>{item.date.slice(0, 10)}</td>
-                                                <td>{item.status}</td>
-                                                {/* <td><NavLink to={'/viewdetails'} className='btn-view'>View</NavLink></td>
-                                                    <td><button className='btn-view' >abg</button> </td> */}
-                                                <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
-                                            </tr>
-                                    }
-                                </>
-                            )
-                        })
+                                        }
+                                    </>
+                                )
+                            })
                         }
                     </table>
                 </div>

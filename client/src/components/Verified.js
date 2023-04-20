@@ -58,8 +58,8 @@ const Verified = () => {
                             <td>Driver Name</td>
                             <td>Vehicle Number</td>
                         </tr>
-                        {
-                            alldata.length === 0 | alldata === undefined ?
+                        
+                        {alldata.length === 0 | alldata === undefined ?
                                 <div class="loader my-4 "></div> :
                                 alldata.map((item, index) => {
                                     return (

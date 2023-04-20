@@ -11,7 +11,7 @@
 
 .tableVerified table {
   margin: auto;
-  width: 90%;
+  width: 100%;
 }
 
 .btn-view {
@@ -84,4 +84,34 @@
 
 .verified {
   color: var(--color_p3);
+}
+
+@media screen and (max-width:1200px) {
+  .tableVerified{
+    overflow-x: auto;
+  }
+  .tableVerified table {
+    width: 100%;
+  }
+  .tableVerified table tr td {
+    font-size: .7rem;
+  }
+  .tableVerified::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media screen and (max-width:900px) {
+  .tableVerified{
+    overflow-x: auto;
+  }
+  .tableVerified table {
+    width: 150%;
+  }
+}
+
+@media screen and (max-width:700px) {
+  .tableVerified table {
+    width:200%;
+  }
 }

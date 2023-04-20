@@ -322,8 +322,18 @@ const DriversData = (props) => {
       },
     })
     const json = await response.json();
-    console.log(json, "hasdhsahdgsa")
     setBooked(json);
+  }
+
+  const [getveh_id , setGetVeh] = useState();
+  const GetVehicleBy_id = async (id) => {
+    try {
+      const veh = await axios.get(`${host}/Vehicleby_id/${id}`)
+      setGetVeh(veh.data);
+      return Promise.resolve(veh);
+    } catch (error) {
+      return Promise.reject({ error })
+    }
   }
 
   return (
@@ -331,10 +341,11 @@ const DriversData = (props) => {
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
       alldata, getData, getallData, editData, GetAllCities, DeleteDrivers,
       SavedComment, generateOTP, resetPassword, ChangeIsVerified, GetAllCity,
-      gettruksTrans, handleVehicleDriver, getbookedDriverSide,
+      gettruksTrans, handleVehicleDriver, getbookedDriverSide,GetVehicleBy_id,
       ChangeBooked, Allcityhandle, allcities, handleSearchVehicle, getbookedAdminSide,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
       setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked
+      , getveh_id
     }} >
       {props.children}
     </driverContext.Provider>
