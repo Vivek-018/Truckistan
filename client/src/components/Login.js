@@ -82,8 +82,12 @@ const Login = () => {
     const SendOtp = (e) => {
         e.preventDefault();
         const { email } = values;
-        generateOTP(email)
-        setEnterOTP(true)
+        if(email === ''){
+            alert("enter email");
+        }else{
+            generateOTP(email);
+            setEnterOTP(true);
+        }
     }
 
     const checkOtp = (e) => {
