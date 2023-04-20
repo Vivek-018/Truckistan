@@ -4,14 +4,11 @@ import Footer from './Footer'
 import driverContext from './useContext/driverContext'
 
 const BookedVehicles = () => {
-
     const context = useContext(driverContext);
     const { getbookedVehicles, booked, ChangeBooked,
         getbookedAdminSide } = context;
     const [Booked, setBooked] = useState("Cancel");
     const userType = localStorage.getItem("type")
-
-    // console.log(booked, "booked")
 
     const handleCancel = (id) => {
         ChangeBooked(Booked, id)
@@ -35,11 +32,20 @@ const BookedVehicles = () => {
                     <h3 className='my-4' >Your Booking Status</h3>
                     <table>
                         <tr className='my-4' >
+                            <td>S.No</td>
+                            {
+                                userType === 'admin' ?
+                                    <>
+                                        <td>Driver Name</td>
+                                        <td>Vehicle Number</td>
+                                    </> : ("")
+                            }
                             <td>Pickup Address</td>
                             <td>DropOff Address</td>
                             <td>Date</td>
                             <td>Status</td>
                         </tr>
+
                         {booked?.map((item, i) => {
                             return (
                                 <>
@@ -59,7 +65,9 @@ const BookedVehicles = () => {
                                                 : ("")
                                             :
                                             <tr key={i} className='trtd' >
-                                                {/* <td>{i + 1} </td> */}
+                                                <td>{i + 1} </td>
+                                                <td>md edlem</td>
+                                                <td>keckemewmkew</td>
                                                 <td>{item.pickupAddress}</td>
                                                 <td>{item.DropOffAddress}</td>
                                                 <td>{item.date.slice(0, 10)}</td>
