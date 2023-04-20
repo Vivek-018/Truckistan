@@ -83,7 +83,10 @@ const Login = () => {
         e.preventDefault();
         const { email } = values;
         if(email === ''){
-            alert("enter email");
+            // alert("enter email");
+            toast("enter email", {
+                autoClose: 1000,
+            })
         }else{
             generateOTP(email);
             setEnterOTP(true);
