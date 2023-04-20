@@ -9,6 +9,10 @@ const bookingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    driverId: {
+        type: String,
+        requird: true
+    },
     PickupPincode: {
         type: String,
         required: true

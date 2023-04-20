@@ -6,7 +6,7 @@ import driverContext from './useContext/driverContext'
 const BookedVehicles = () => {
     const context = useContext(driverContext);
     const { getbookedVehicles, booked, ChangeBooked,
-        getbookedAdminSide } = context;
+        getbookedAdminSide, getbookedDriverSide } = context;
     const [Booked, setBooked] = useState("Cancel");
     const userType = localStorage.getItem("type")
 
@@ -21,6 +21,8 @@ const BookedVehicles = () => {
             getbookedVehicles();
         } else if (userType === "admin") {
             getbookedAdminSide();
+        } else {
+            getbookedDriverSide();
         }
     }, [])
 

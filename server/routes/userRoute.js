@@ -209,9 +209,10 @@ router.put("/editUserProfiledata/:id", async (req, res) => {
 })
 
 router.post('/BookedAddress', fetchuser, async (req, res) => {
-    const { Address, VehicleId } = req.body
+    const { Address, VehicleId, driverId } = req.body
     try {
         const data = new Booking({
+            driverId: driverId,
             userId: req.user.id,
             pickupAddress: Address.pickupAddress,
             PickupPincode: Address.Ppincode,

@@ -11,11 +11,13 @@ const Cart = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const dat = location.state;
+    // console.log(dat, "dad")
 
     const handleSaved = () => {
         const { pickupAddress,
             Ppincode,
             Pcity,
+            driverId,
             DropOffAddress,
             Dpincode,
             Dcity,

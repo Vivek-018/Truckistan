@@ -246,10 +246,13 @@ body {
 }
 
 .infoProfile span {
-    margin-top: 4rem;
     border: 1px solid black;
-    padding: .5rem 1.6rem;
+    padding: 0rem 2rem;
     border-radius: .3rem;
+}
+
+.totalvehicle{
+    font-size: .2rem;
 }
 
 .myprofile-btn {

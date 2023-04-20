@@ -24,11 +24,14 @@ const DriversData = (props) => {
     DropOffAddress: "",
     Dpincode: "",
     Dcity: "",
+    driverId: "",
     name: "",
     Req: "",
     phone: ""
   });
-  const VehicleId = OneData?._id
+  const VehicleId = OneData?._id;
+  const driverId = OneData?.driverId;
+
   const [booked, setBooked] = useState();
   const [allcities, setCities] = useState();
 
@@ -217,7 +220,7 @@ const DriversData = (props) => {
 
   const AddAddress = async () => {
     try {
-      const addressData = await axios.post(`${Userhost}/BookedAddress`, { Address, VehicleId },
+      const addressData = await axios.post(`${Userhost}/BookedAddress`, { Address, VehicleId, driverId },
         {
           headers: {
             "token": localStorage.getItem("token")
@@ -310,12 +313,25 @@ const DriversData = (props) => {
     setData(res)
   };
 
+  const getbookedDriverSide = async () => {
+    const response = await fetch(`${host}/bookedVehiclesDriver`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "token": localStorage.getItem("token")
+      },
+    })
+    const json = await response.json();
+    console.log(json, "hasdhsahdgsa")
+    setBooked(json);
+  }
+
   return (
     <driverContext.Provider value={{
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
-      alldata, getData, getallData, editData, GetAllCities, DeleteDrivers, SavedComment,
-      generateOTP, resetPassword, ChangeIsVerified, GetAllCity, gettruksTrans,
-      handleVehicleDriver,
+      alldata, getData, getallData, editData, GetAllCities, DeleteDrivers,
+      SavedComment, generateOTP, resetPassword, ChangeIsVerified, GetAllCity,
+      gettruksTrans, handleVehicleDriver, getbookedDriverSide,
       ChangeBooked, Allcityhandle, allcities, handleSearchVehicle, getbookedAdminSide,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
       setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked

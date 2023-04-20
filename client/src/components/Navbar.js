@@ -145,7 +145,10 @@ const Navbar = () => {
                                         <>
                                             {
                                                 userType === "Driver" ? (
-                                                    <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
+                                                    <>
+                                                        <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
+                                                        <Link className='des' to='/book' > <span><BsFillBookmarkFill /> </span></Link>
+                                                    </>
                                                 ) : (
                                                     <>
                                                         <Link className='des' to='/verified' > <span><GoVerified /> </span></Link>
@@ -204,26 +207,9 @@ const Navbar = () => {
                     </div>
 
                     <div className='uploadImg' >
-                        <div class="w-50 text-center ">
-                            <label for="formFile" class="form-label">Upload Image</label>
-                            <input class="form-control" value={link.link} name='link' type="file" id="formFile"
-                                onChange={(event) => {
-                                    setLink((prev) => ({ ...prev, link: event.target.value }));
-                                }}
-                            />
-                        </div>
-
 
                         <div>
                             <div className='infoProfile' >
-                                {
-                                    name?.type === 'user' || name?.type === "admin" ? "" : (
-                                        <div className='num' >
-                                            <h6>Total Vehicles</h6>
-                                            <span> {totalVehicle} </span>
-                                        </div>
-                                    )
-                                }
                                 <div className='' >
                                     <TextField
                                         id="standard-password-input"
@@ -248,6 +234,14 @@ const Navbar = () => {
                                     />
                                 </div>
 
+                                {
+                                    name?.type === 'user' || name?.type === "admin" ? "" : (
+                                        <div className='num' >
+                                            <h6>Total Vehicles</h6>
+                                            <span className='totalvehicle' > {totalVehicle} </span>
+                                        </div>
+                                    )
+                                }
                                 <div className='my-2'>
                                     <TextField
                                         id="standard-password-input"
@@ -260,6 +254,15 @@ const Navbar = () => {
                                     />
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="w-50 text-center ">
+                            <label for="formFile" class="form-label">Upload Image</label>
+                            <input class="form-control" value={link.link} name='link' type="file" id="formFile"
+                                onChange={(event) => {
+                                    setLink((prev) => ({ ...prev, link: event.target.value }));
+                                }}
+                            />
                         </div>
                     </div>
                     <div className='text-center my-4' >

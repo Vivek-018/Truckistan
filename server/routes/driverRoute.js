@@ -2,6 +2,7 @@ const express = require('express');
 const driverSchema = require("../schema/driverSchema");
 const router = express.Router();
 const fetchuser = require('../middleware/fetchuser')
+const Booking = require('../schema/BookingSchema')
 
 // // API for search data 
 // router.get("/searchVehDriver", async (req, res) => {
@@ -11,6 +12,17 @@ const fetchuser = require('../middleware/fetchuser')
 //     const users = await driverSchema.find(keyword);
 //     res.send(users);
 // });
+
+router.get('/bookedVehiclesDriver',fetchuser,  async (req, res) => {
+    const user = req.user;
+    try {
+        const book = await Booking.find({driverId : user.id});
+        res.status(200).json(book);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send("Some error occured")
+    }
+})
 
 // API for search data 
 router.get("/searchVehDriver", async (req, res) => {

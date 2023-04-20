@@ -129,7 +129,7 @@ const EditDetails = () => {
     // alert("saved data")
     toast("Your data edited successfully", {
       autoClose: 1000,
-  })
+    })
   }
 
   return (
@@ -157,7 +157,7 @@ const EditDetails = () => {
               <span>{location.state?.transName}</span>
             </div>
             <div className='smallnav'>
-              <small  onClick={handlesetPage} >Profile Details</small>
+              <small onClick={handlesetPage} >Profile Details</small>
               <small onClick={handlesetProfile} >Address Details</small>
               <small onClick={handleVehicle} >Vehicle Details</small>
               <small onClick={handleDocument} >Documents Details</small>
