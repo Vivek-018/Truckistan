@@ -22,6 +22,7 @@
 
 .comment-arrow {
     font-size: 3rem;
+    cursor: pointer;
 }
 
 .comments-text {

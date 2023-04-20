@@ -15,14 +15,12 @@ const Comment = () => {
             seta(a);
         }
     }
-
     const handledecrease = () => {
         if (a <= comment.length - 1 && a > 0) {
             a = a - 1;
             seta(a);
         }
     }
-
     const Comments = async () => {
         const resd = await fetch(`${commenthost}/allcomments`, {
             method: "GET",
@@ -64,7 +62,7 @@ const Comment = () => {
                                     </> : ""}
                             </>
                         )
-                    })
+                      })
                     }
 
                     <div onClick={handleIncrease} className='comment-arrow'>
