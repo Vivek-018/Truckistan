@@ -25,39 +25,43 @@ const Cart = () => {
             date,
             phone } = Address
         if (pickupAddress === '') {
-
-            toast("plz fill address", {
+            // alert("plz fill address")
+            toast("Please fill the Address", {
                 autoClose: 1000,
             })
         } else if (DropOffAddress === '') {
-            toast("plz fill DropOff Address", {
+            // alert("plz fill DropOff Address")
+            toast("Please fill DropOff Address", {
                 autoClose: 1000,
             })
         } else if (Pcity === '') {
-
-            toast("plz fill City Name", {
+            // alert("plz fill City Name")
+            toast("Please fill City Name", {
                 autoClose: 1000,
             })
         } else if (Dcity === '') {
-
-            toast("plz fill city", {
+            // alert("plz fill city")
+            toast("Please fill City Name", {
                 autoClose: 1000,
             })
         } else if (Ppincode === '') {
-
-            toast("plz fill Pin Code", {
+            // alert("plz fill Pin Code")
+            toast("Please fill Pin Code", {
                 autoClose: 1000,
             })
         } else if (Dpincode === '') {
-            toast("plz fill Pin Code", {
+            // alert("plz fill Pin Code")
+            toast("Please fill Pin Code", {
                 autoClose: 1000,
             })
         } else if (phone === '') {
-            toast("plz fill city", {
+            // alert("plz fill city")
+            toast("Please fill City Name", {
                 autoClose: 1000,
             })
         } else if (Req === '') {
-            toast("plz fill city", {
+            // alert("plz fill city")
+            toast("Please fill City Name", {
                 autoClose: 1000,
             })
         } else if (date === '') {

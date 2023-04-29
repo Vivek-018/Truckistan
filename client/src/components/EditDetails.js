@@ -127,7 +127,7 @@ const EditDetails = () => {
       VehicleImage.value, DLImage.value, RCImage.value)
     // console.log("ghfd")
     // alert("saved data")
-    toast("Your data edited successfully", {
+    toast("Your Data Edited Successfully", {
       autoClose: 1000,
     })
   }

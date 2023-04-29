@@ -22,17 +22,17 @@ const Login = () => {
         const { password, Rpassword } = values;
         if (password === null) {
             // alert("Password is not blank");
-            toast("Password is not blank", {
+            toast("Please Fill New Password ", {
                 autoClose: 1000,
             })
         } else if (password !== Rpassword) {
             // alert("Password Not match");
-            toast("Password Not match", {
+            toast("The Passwords entered don't match. Please try again", {
                 autoClose: 1000,
             })
         } else if (Rpassword === null) {
             // alert("Confirm Password is not blank");
-            toast("Confirm Password is not blank", {
+            toast("Please Fill Confirm Password ", {
                 autoClose: 1000,
             })
         } else {

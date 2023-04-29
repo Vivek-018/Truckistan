@@ -28,7 +28,7 @@ const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
     const fun = (e) => {
         e.preventDefault()
         if (data.country === '' || data.address === '' || data.city === '' || data.state === "" || data.pincode === "") {
-            toast("fill all details", {
+            toast("Please fill all the Details", {
                 autoClose: 1000,
             })
             setAddress(true);
@@ -37,7 +37,7 @@ const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
             setAddress(false);
             setVehicle(true);
             setCity(select);
-            toast("Your Data Saved successfully", {
+            toast("Your Data Saved Successfully", {
                 autoClose: 1000,
             })
         }

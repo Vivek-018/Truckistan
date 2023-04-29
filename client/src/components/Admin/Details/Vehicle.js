@@ -19,7 +19,7 @@ const Vehicle = ({ data, setData, setUploaddoc, setVehicle }) => {
         e.preventDefault()
         if (data.basefare === '' || data.lodingCapacity === '' || data.transName === '' || data.Vnamber === "" || data.RCnumber === "") {
             // alert("fill all details")
-            toast("fill all details", {
+            toast("Please Fill all the Details", {
                 autoClose: 1000,
             })
             setUploaddoc(false);
@@ -28,7 +28,7 @@ const Vehicle = ({ data, setData, setUploaddoc, setVehicle }) => {
             setUploaddoc(true);
             setVehicle(false);
             // alert("Your Data Save successfully")
-            toast("Your Data Save successfully", {
+            toast("Your Data Saved Successfully", {
                 autoClose: 1000,
             })
         }
