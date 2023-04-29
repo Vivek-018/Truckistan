@@ -222,8 +222,9 @@ router.post('/BookedAddress', fetchuser, async (req, res) => {
             DropPincode: Address.Dpincode,
             DropCity: Address.Dcity,
             name: Address.name,
-            Req: Address.Req,
-            phone: Address.phone
+            Requirement: Address.Req,
+            phone: Address.phone,
+            date:Address.date
         })
         const save = await data.save();
         res.status(200).json(save);

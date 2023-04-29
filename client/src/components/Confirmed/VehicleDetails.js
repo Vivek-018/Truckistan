@@ -2,12 +2,13 @@ import React, { useContext, useState } from 'react'
 import { GoVerified } from 'react-icons/go';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import driverContext from '../useContext/driverContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 const VehicleDetails = () => {
+    const navigate = useNavigate();
     const context = useContext(driverContext);
     const [Booked, setBooked] = useState("Booked");
     const { SavedComment, ChangeBooked } = context;
@@ -18,9 +19,10 @@ const VehicleDetails = () => {
 
     const handleDoneBookings = () => {
         ChangeBooked(Booked, data?._id)
-        toast("Vehicle Booked Successfully", {
+        toast("Your Vehicle Booked Successfully", {
             autoClose: 1000,
         })
+        navigate('/user')
     }
 
     const handleComment = (e) => {
@@ -61,7 +63,9 @@ const VehicleDetails = () => {
 
                             <tr>
                                 <td>Verified</td>
-                                <td className='textcolor' ><span><GoVerified />{data?.isVerified}</span></td>
+                                <td className='textcolor' ><span>{
+                                    data?.isVerified ? <GoVerified /> : "Not Verified"
+                                }</span></td>
                             </tr>
                             <tr>
                                 <td>Body Size</td>
@@ -70,12 +74,12 @@ const VehicleDetails = () => {
 
                             <tr>
                                 <td>Fair Price</td>
-                                <td className='textcolor' >{data?.basefare}</td>
+                                <td className='textcolor' >{data?.basefare} Rs/Km</td>
                             </tr>
 
                             <tr>
                                 <td>Loading capacity</td>
-                                <td className='textcolor' >{data?.lodingCapacity}</td>
+                                <td className='textcolor' >{data?.lodingCapacity} Ton</td>
                             </tr>
                         </table>
                         <table>

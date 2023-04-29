@@ -11,7 +11,12 @@
 
 .tableVerified table {
   margin: auto;
-  width: 100%;
+  width: 90%;
+}
+
+.verified table {
+  width: 70%;
+  margin: auto;
 }
 
 .btn-view {

@@ -278,6 +278,7 @@ const DriversData = (props) => {
       body: JSON.stringify({ Booked })
     })
     const data = await res.json();
+    console.log(data)
   }
 
   const Allcityhandle = async () => {
@@ -303,6 +304,7 @@ const DriversData = (props) => {
   };
 
   const handleVehicleDriver = async (query) => {
+      console.log(query.driverName, "query")
     const data = await fetch(`${host}/searchVehDriver?name=${query.driverName}`, {
       method: "GET",
       headers: {
@@ -311,6 +313,7 @@ const DriversData = (props) => {
     });
     const res = await data.json();
     setData(res)
+    setAllData(res);
   };
 
   const getbookedDriverSide = async () => {
@@ -325,7 +328,7 @@ const DriversData = (props) => {
     setBooked(json);
   }
 
-  const [getveh_id , setGetVeh] = useState();
+  const [getveh_id, setGetVeh] = useState();
   const GetVehicleBy_id = async (id) => {
     try {
       const veh = await axios.get(`${host}/Vehicleby_id/${id}`)
@@ -336,16 +339,36 @@ const DriversData = (props) => {
     }
   }
 
+  const SearchByTransName = async (query) => {
+    try {
+      const data = await axios.get(`${adminhost}/BytransName?transName=${query.driverName}`)
+      setAllData(data.data)
+      return Promise.resolve(data);
+    } catch (error) {
+      return Promise.reject({ error })
+    }
+  }
+
+  const SearchByCity = async (query) => {
+    try {
+      const data = await axios.get(`${adminhost}/ByCityName?city=${query.driverName}`)
+      setgetAllcity(data.data)
+      return Promise.resolve(data);
+    } catch (error) {
+      return Promise.reject({ error })
+    }
+  }
+
   return (
     <driverContext.Provider value={{
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
       alldata, getData, getallData, editData, GetAllCities, DeleteDrivers,
       SavedComment, generateOTP, resetPassword, ChangeIsVerified, GetAllCity,
-      gettruksTrans, handleVehicleDriver, getbookedDriverSide,GetVehicleBy_id,
+      gettruksTrans, handleVehicleDriver, getbookedDriverSide, GetVehicleBy_id,
       ChangeBooked, Allcityhandle, allcities, handleSearchVehicle, getbookedAdminSide,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
       setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked
-      , getveh_id
+      , getveh_id, SearchByTransName,SearchByCity
     }} >
       {props.children}
     </driverContext.Provider>

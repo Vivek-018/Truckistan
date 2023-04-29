@@ -55,7 +55,7 @@ const Login = () => {
                 localStorage.setItem("type", res.user.type);
                 toast("Logged in Sucessfully", {
                     autoClose: 1000,
-                })    
+                })
             }
             if (localStorage.getItem("token")) {
                 if (localStorage.getItem("type") === "user") {
@@ -66,9 +66,6 @@ const Login = () => {
                 } else if (localStorage.getItem("type") === "admin") {
                     navigate("/admin");
                 }
-                toast("Logged in Sucessfully", {
-                    autoClose: 1000,
-                }) 
             }
             else {
                 toast(" Password is Incorrect", {
@@ -82,12 +79,12 @@ const Login = () => {
     const SendOtp = (e) => {
         e.preventDefault();
         const { email } = values;
-        if(email === ''){
+        if (email === '') {
             // alert("enter email");
             toast("enter email", {
                 autoClose: 1000,
             })
-        }else{
+        } else {
             generateOTP(email);
             setEnterOTP(true);
         }

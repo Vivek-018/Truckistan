@@ -45,7 +45,7 @@ const bookingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Req: {
+    Requirement: {
         type: String,
         required: true
     },
@@ -60,9 +60,12 @@ const bookingSchema = new mongoose.Schema({
         default: "Selected"
     },
     date: {
-        type: Date,
-        default: Date.now,
+        type: String,
         requird: true
+    },
+    state: {
+        type: String,
+        default: "Punjab"
     },
 })
 

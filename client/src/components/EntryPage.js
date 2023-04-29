@@ -5,6 +5,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
+import navpic from '../images/user_web-1598433228.svg'
 
 const EntryPage = ({ handleSearch, setcityName }) => {
 
@@ -82,6 +83,11 @@ const EntryPage = ({ handleSearch, setcityName }) => {
       </div>
 
       <div id="Sidenav" class="fullsidenav text-center">
+        {/* <div className='DataName' > */}
+        <h5 style={{ color: "white", alignItems: "center" }}>
+          <a lassName='des'><img src={navpic}></img> {user.username} </a>
+        </h5>
+        {/* </div> */}
         <h2>Welcome to Loadkro</h2>
         <div className=' customerHelp'>
           <Link to="/book">Booked Vehicles</Link>

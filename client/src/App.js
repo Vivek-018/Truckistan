@@ -18,6 +18,7 @@ import Cities from './components/Cities';
 import BookedVehicles from './components/BookedVehicles';
 import VehicleDetails from './components/Confirmed/VehicleDetails';
 import './style/VehicleDetails.css'
+import { ToastContainer} from 'react-toastify';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
             <Route path='/book' element={<BookedVehicles />} />
             <Route path='/vehicledetails' element={<VehicleDetails />} />
           </Routes>
+          <ToastContainer/>
         </BrowserRouter>
       </DriversData>
     </>

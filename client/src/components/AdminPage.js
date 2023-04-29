@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import '../style/admin.css'
 import driverContext from './useContext/driverContext';
 import { NavLink } from 'react-router-dom';
@@ -7,12 +7,16 @@ import { GoVerified } from 'react-icons/go';
 import Navbar from './Navbar';
 import Footer from './Footer'
 
-
 const AdminPage = () => {
     const context = useContext(driverContext);
-    const { alldata, getallData } = context;
+    const [transName, setcityName] = useState();
+    const { alldata, getallData, SearchByTransName } = context;
 
     const length = alldata.length;
+
+    const handleSearch = () => {
+        SearchByTransName(transName);
+    }
 
     useEffect(() => {
         getallData();
@@ -22,7 +26,7 @@ const AdminPage = () => {
         <>
             <Navbar />
             <div className='container' >
-                <Search placeholder={"Transportation Name"} />
+                <Search placeholder={"Transportation Name"} setcityName={setcityName} handleSearch={handleSearch} />
                 {
                     length === 0 ? (
                         <div class="loader my-4 "></div>
@@ -62,6 +66,15 @@ const AdminPage = () => {
                                                             </div>
                                                             <div>
                                                                 <small href="#" className=" mx-3 ">{item.basefare} Rs/km</small>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className='loadCapacity d-flex justify-content-between'>
+                                                            <div>
+                                                                <small href="#" className="card-link">Driver Name</small>
+                                                            </div>
+                                                            <div>
+                                                                <small href="#" className=" mx-3 ">{item.name} {item.lname} </small>
                                                             </div>
                                                         </div>
 

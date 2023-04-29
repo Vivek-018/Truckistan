@@ -10,8 +10,8 @@ const Cities = () => {
 
   const context = useContext(driverContext);
   const { Addcities, Deletecities, GetAllCities,
-    GetAllCity } = context;
-
+    GetAllCity, SearchByCity } = context;
+  const [cityName, setcityName] = useState();
   const [city, setCity] = useState();
 
   const handleInputs = () => {
@@ -20,6 +20,10 @@ const Cities = () => {
 
   const CloseModal = () => {
     document.getElementById("Modal").style.display = "none";
+  }
+
+  const handleSearch = () => {
+    SearchByCity(cityName);
   }
 
   const handleSubmit = () => {
@@ -41,7 +45,7 @@ const Cities = () => {
     <>
       <Navbar />
       <div className='container'>
-        <Search placeholder={"by City"} />
+        <Search placeholder={"by City"} setcityName={setcityName} handleSearch={handleSearch} />
         <div className='cities-table'>
 
           <div className='add-cities' >

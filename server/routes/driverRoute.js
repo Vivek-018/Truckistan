@@ -4,14 +4,6 @@ const router = express.Router();
 const fetchuser = require('../middleware/fetchuser')
 const Booking = require('../schema/BookingSchema')
 
-// // API for search data 
-// router.get("/searchVehDriver", async (req, res) => {
-//     const keyword = req.query.transName
-//         ? { "transName": { $regex: req.query.transName, $options: "i" } } //case insensitive
-//         : {};
-//     const users = await driverSchema.find(keyword);
-//     res.send(users);
-// });
 
 router.get('/bookedVehiclesDriver', fetchuser, async (req, res) => {
     const user = req.user;

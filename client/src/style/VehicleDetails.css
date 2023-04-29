@@ -89,8 +89,8 @@
 .cart-btn {
     border: 2px solid var(--color_p2);
     /* background-color: var(--color_p2); */
-    background: transparent;
-    color: var(--color_p1);
+    background:var(--color_p2);
+    color:white;
     padding: .6rem 2rem;
     border-radius: .3rem;
 }
@@ -169,7 +169,8 @@ textarea {
 }
 
 .btn-save:hover {
-    background: transparent;
+   background-color: var(--color_p2);
+   color: white;
 }
 
 .textcolor {
