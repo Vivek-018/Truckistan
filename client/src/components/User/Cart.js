@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import Navbar from './Navbar'
-import '../style/cart.css'
+import Navbar from '../Navbar'
+import '../../style/cart.css'
 import Footer from './Footer';
 import { useLocation, useNavigate } from 'react-router-dom';
-import driverContext from './useContext/driverContext';
+import driverContext from '../useContext/driverContext';
 import {toast } from 'react-toastify';
 
 const Cart = () => {
@@ -25,42 +25,34 @@ const Cart = () => {
             date,
             phone } = Address
         if (pickupAddress === '') {
-            // alert("plz fill address")
             toast("Please fill the Address", {
                 autoClose: 1000,
             })
         } else if (DropOffAddress === '') {
-            // alert("plz fill DropOff Address")
             toast("Please fill DropOff Address", {
                 autoClose: 1000,
             })
         } else if (Pcity === '') {
-            // alert("plz fill City Name")
             toast("Please fill City Name", {
                 autoClose: 1000,
             })
         } else if (Dcity === '') {
-            // alert("plz fill city")
             toast("Please fill City Name", {
                 autoClose: 1000,
             })
         } else if (Ppincode === '') {
-            // alert("plz fill Pin Code")
             toast("Please fill Pin Code", {
                 autoClose: 1000,
             })
         } else if (Dpincode === '') {
-            // alert("plz fill Pin Code")
             toast("Please fill Pin Code", {
                 autoClose: 1000,
             })
         } else if (phone === '') {
-            // alert("plz fill city")
             toast("Please fill City Name", {
                 autoClose: 1000,
             })
         } else if (Req === '') {
-            // alert("plz fill city")
             toast("Please fill City Name", {
                 autoClose: 1000,
             })

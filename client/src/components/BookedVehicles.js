@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Navbar from './Navbar'
-import Footer from './Footer'
+import Footer from './User/Footer'
 import driverContext from './useContext/driverContext'
 import { toast } from 'react-toastify';
 import '../style/admin.css'

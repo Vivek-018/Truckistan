@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { GoVerified } from 'react-icons/go';
 import Navbar from '../Navbar';
-import Footer from '../Footer';
+import Footer from './Footer';
 import { useLocation, useNavigate } from 'react-router-dom';
 import driverContext from '../useContext/driverContext';
 import 'react-toastify/dist/ReactToastify.css';

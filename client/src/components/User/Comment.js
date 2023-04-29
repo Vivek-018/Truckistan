@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
-import "../style/comments.css"
+import "../../style/comments.css"
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import ImgName from './ImgName';
+import ImgName from '../ImgName';
 
 
 const Comment = () => {

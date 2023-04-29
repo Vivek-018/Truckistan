@@ -4,7 +4,7 @@ import '../../style/cities.css'
 import '../../style/admin.css'
 import Search from '../Search'
 import driverContext from '../useContext/driverContext'
-import Footer from '../Footer'
+import Footer from '../User/Footer'
 
 const Cities = () => {
 

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import Search from '../Search';
 import { GoVerified } from 'react-icons/go';
 import Navbar from '../Navbar';
-import Footer from '../Footer'
+import Footer from '../User/Footer'
 
 const AdminPage = () => {
     const context = useContext(driverContext);

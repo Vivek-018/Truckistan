@@ -3,20 +3,20 @@ import Login from './components/Login';
 import "./style/EntryPage.css"
 import LandingPage from './components/LandingPage'
 import Signup from './components/Signup'
-import UserPage from './components/UserPage';
-import DriverPage from './components/DriverPage';
+import UserPage from './components/User/UserPage';
+import DriverPage from './components/Driver/DriverPage';
 import AdminPage from './components/Admin/AdminPage';
 import DriverIntro from './components/Admin/DriverIntro';
-import ViewDetails from './components/ViewDetails';
+import ViewDetails from './components/Driver/ViewDetails';
 import DriversData from './components/useContext/DriversData';
-import EditDetails from './components/EditDetails';
+import EditDetails from './components/Driver/EditDetails';
 import Help from './components/Help';
-import Cart from './components/Cart';
+import Cart from './components/User/Cart';
 import ResetPassword from './components/ResetPassword';
 import Verified from './components/Admin/Verified';
 import Cities from './components/Admin/Cities';
 import BookedVehicles from './components/BookedVehicles';
-import VehicleDetails from './components/Confirmed/VehicleDetails';
+import VehicleDetails from './components/User/VehicleDetails';
 import './style/VehicleDetails.css'
 import { ToastContainer} from 'react-toastify';
 

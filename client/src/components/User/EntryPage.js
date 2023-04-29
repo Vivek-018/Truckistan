@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import pic from '../images/Logo.png'
+import pic from '../../images/Logo.png'
 import { ImLocation2 } from 'react-icons/im';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import navpic from '../images/user_web-1598433228.svg'
+import navpic from '../../images/user_web-1598433228.svg'
 
 const EntryPage = ({ handleSearch, setcityName }) => {
 

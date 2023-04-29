@@ -50,7 +50,7 @@ const Login = () => {
                 autoClose: 1000,
             })
         } else if (password !== Rpassword) {
-            toast("The Passwords entered don't match.Please try again", {
+            toast("The Passwords entered don't match. Please try again", {
                 autoClose: 1000,
             })
         } else if (phone.length <= 12) {

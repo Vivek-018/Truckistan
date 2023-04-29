@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
 import { useContext } from 'react';
-import driverContext from './useContext/driverContext';
+import driverContext from '../useContext/driverContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -125,8 +125,6 @@ const EditDetails = () => {
       country.value, basefare.value, bodysize.value, lodingCapacity.value, transName.value,
       RCnumber.value, DLnumber.value, PolutionCertificate.value, driverImage.value,
       VehicleImage.value, DLImage.value, RCImage.value)
-    // console.log("ghfd")
-    // alert("saved data")
     toast("Your Data Edited Successfully", {
       autoClose: 1000,
     })

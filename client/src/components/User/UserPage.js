@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import driverContext from './useContext/driverContext'
-import '../style/user.css'
-import Footer from "../components/Footer"
+import driverContext from '../useContext/driverContext'
+import '../../style/user.css'
+import Footer from "./Footer"
 import { GoVerified } from 'react-icons/go';
 import AOS from 'aos';
 import 'aos/dist/aos.css';

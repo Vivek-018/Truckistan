@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import '../style/driver.css'
-import Navbar from './Navbar'
-import Search from './Search'
+import '../../style/driver.css'
+import Navbar from '../Navbar'
+import Search from '../Search'
 import { NavLink } from 'react-router-dom'
 import { useContext } from 'react'
-import driverContext from './useContext/driverContext'
+import driverContext from '../useContext/driverContext'
 import { GoVerified } from 'react-icons/go';
-import Footer from './Footer'
+import Footer from '../User/Footer'
 
 const DriverPage = () => {
     const context = useContext(driverContext);

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
 import { useLocation, Link } from 'react-router-dom';
-import driverContext from './useContext/driverContext';
+import driverContext from '../useContext/driverContext';
 
 const ViewDetails = () => {
     const context = useContext(driverContext);

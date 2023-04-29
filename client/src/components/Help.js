@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from './Navbar'
-import Footer from "./Footer"
+import Footer from "./User/Footer"
 import "../style/help.css";
 import { BsInstagram } from 'react-icons/bs'
 import { MdOutlineEmail } from 'react-icons/md'
