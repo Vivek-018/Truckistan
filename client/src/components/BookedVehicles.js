@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import driverContext from './useContext/driverContext'
 import { toast } from 'react-toastify';
-import VehicleDriver from './VehicleDriver';
+// import VehicleDriver from './VehicleDriver';
 import '../style/admin.css'
 
 const BookedVehicles = () => {
@@ -45,8 +45,8 @@ const BookedVehicles = () => {
                                         <td>S.No</td>
                                     </> : ("")
                             }
-                            <td>Driver Name</td>
-                            <td>Vehicle Number</td>
+                            {/* <td>Driver Name</td>
+                            <td>Vehicle Number</td> */}
                             <td>Pickup Address</td>
                             <td>DropOff Address</td>
                             <td>Date</td>
@@ -55,16 +55,14 @@ const BookedVehicles = () => {
 
                         {booked?.length === 0 || booked === undefined ?
                             <div class="loader my-4 "></div> :
-
                             booked?.map((item, i) => {
                                 return (
                                     <>
-                                        {
-                                            userType === "user" || userType === "Driver" ?
+                                        {userType === "user" || userType === "Driver" ?
                                                 item.status === "Booked" || item.status === "Cancel" ?
                                                     <tr key={i} className='trtd' >
                                                         {/* <td>{i + 1} </td> */}
-                                                        <VehicleDriver item={item.vehicleId} />
+                                                        {/* <VehicleDriver item={item} /> */}
                                                         <td>{item.pickupAddress}</td>
                                                         <td>{item.DropOffAddress}</td>
                                                         <td>{item.date.slice(0, 10)}</td>
@@ -77,8 +75,7 @@ const BookedVehicles = () => {
                                                 :
                                                 <tr key={i} className='trtd' >
                                                     <td>{i + 1} </td>
-                                                    <td>md edlem</td>
-                                                    <td>keckemewmkew</td>
+                                                    {/* <VehicleDriver item={item.vehicleId} /> */}
                                                     <td>{item.pickupAddress}</td>
                                                     <td>{item.DropOffAddress}</td>
                                                     <td>{item.date.slice(0, 10)}</td>
@@ -95,7 +92,6 @@ const BookedVehicles = () => {
                     </table>
                 </div>
             </div>
-
             <Footer />
         </>
     )

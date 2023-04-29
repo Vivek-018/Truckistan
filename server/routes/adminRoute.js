@@ -2,7 +2,28 @@ const express = require('express');
 const router = express.Router();
 const Driver = require("../schema/driverSchema");
 const User = require("../schema/userSchema")
-const Booking = require('../schema/BookingSchema')
+const Booking = require('../schema/BookingSchema');
+const City = require('../schema/CitiesSchema');
+
+
+// // API for search data 
+router.get("/ByCityName", async (req, res) => {
+    const keyword = req.query.city
+        ? { "city": { $regex: req.query.city, $options: "i" } } //case insensitive
+        : {};
+    const users = await City.find(keyword);
+    res.send(users);
+});
+
+// // API for search data 
+router.get("/BytransName", async (req, res) => {
+    const keyword = req.query.transName
+        ? { "transName": { $regex: req.query.transName, $options: "i" } } //case insensitive
+        : {};
+    const users = await Driver.find(keyword);
+    res.send(users);
+});
+
 
 router.put("/changeIsVerified/:id", (req, res) => {
     Driver.findOneAndUpdate({ _id: req.params.id }, { $set: { isVerified: req.body.isVerified } })

@@ -112,7 +112,17 @@ const driverSchema = new mongoose.Schema({
    Scity: {
       type: Array,
       requird: true
-   }
+   },
+   status: {
+      type: String,
+      enum: [
+         "Selected",
+         "applied",
+         "Booked",
+         "Cancel"
+      ],
+      default: "Selected"
+   },
 })
 
 module.exports = mongoose.model("driver", driverSchema);

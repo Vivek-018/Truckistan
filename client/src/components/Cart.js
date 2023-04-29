@@ -12,8 +12,7 @@ const Cart = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const dat = location.state;
-    // console.log(dat, "dad")
-
+  
     const handleSaved = () => {
         const { pickupAddress,
             Ppincode,
@@ -26,48 +25,44 @@ const Cart = () => {
             Req,
             phone } = Address
         if (pickupAddress === '') {
-            // alert("plz fill address")
+
             toast("plz fill address", {
                 autoClose: 1000,
             })
         } else if (DropOffAddress === '') {
-            // alert("plz fill DropOff Address")
+         
             toast("plz fill DropOff Address", {
                 autoClose: 1000,
             })
         } else if (Pcity === '') {
-            // alert("plz fill City Name")
+        
             toast("plz fill City Name", {
                 autoClose: 1000,
             })
         } else if (Dcity === '') {
-            // alert("plz fill city")
+          
             toast("plz fill city", {
                 autoClose: 1000,
             })
         } else if (Ppincode === '') {
-            // alert("plz fill Pin Code")
+          
             toast("plz fill Pin Code", {
                 autoClose: 1000,
             })
         } else if (Dpincode === '') {
-            // alert("plz fill Pin Code")
             toast("plz fill Pin Code", {
                 autoClose: 1000,
             })
         } else if (phone === '') {
-            // alert("plz fill city")
             toast("plz fill city", {
                 autoClose: 1000,
             })
         } else if (Req === '') {
-            // alert("plz fill city")
             toast("plz fill city", {
                 autoClose: 1000,
             })
         } else {
             AddAddress();
-            // alert("Your Data Saved Successfully")
             toast("Your Data Saved Successfully", {
                 autoClose: 1000,
             })

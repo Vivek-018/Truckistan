@@ -9,7 +9,9 @@ import Footer from './Footer'
 
 const Verified = () => {
     const context = useContext(driverContext)
-    const { ChangeIsVerified, alldata, getallData, DeleteDrivers } = context;
+    const { ChangeIsVerified, alldata, getallData,
+        DeleteDrivers, handleVehicleDriver } = context;
+    const [name, setcityName] = useState();
     const [check, setChecked] = useState(false);
     const [isVerified, setIsVerified] = useState(true);
     const [VerifyId, setVerify] = useState();
@@ -23,6 +25,10 @@ const Verified = () => {
             setChecked(true)
             setVerify(id)
         }
+    }
+
+    const handleSearch = () => {
+        handleVehicleDriver(name);
     }
 
     function CloseModal() {
@@ -49,34 +55,34 @@ const Verified = () => {
         <>
             <Navbar />
             <div className='container'>
-                <Search placeholder={"Driver Name"} />
-
-                <div className='tableVerified'>
+                <Search placeholder={"Driver Name"} handleSearch={handleSearch} setcityName={setcityName} />
+              
+                <div className='tableVerified verified'>
                     <table>
                         <tr className='my-4' >
                             <td>S.No</td>
                             <td>Driver Name</td>
                             <td>Vehicle Number</td>
                         </tr>
-                        
+
                         {alldata.length === 0 | alldata === undefined ?
-                                <div class="loader my-4 "></div> :
-                                alldata.map((item, index) => {
-                                    return (
-                                        <tr key={index} className='trtd' >
-                                            <td>{index + 1}</td>
-                                            <td>{item.name}</td>
-                                            <td>{item.Vnamber}</td>
-                                            <td><NavLink to={'/viewdetails'} state={item} className='btn-view'>View</NavLink></td>
-                                            <td>
-                                                <button className='btn-view' onClick={() => { handleOpenModal(1, item._id) }}>
-                                                    {item.isVerified === true ? "Verifeid" : "Verify"}
-                                                </button>
-                                            </td>
-                                            <td><button className='btn-delete' onClick={() => { handleOpenModal(2, item._id) }} >Delete</button></td>
-                                        </tr>
-                                    )
-                                })
+                            <div class="loader my-4 "></div> :
+                            alldata.map((item, index) => {
+                                return (
+                                    <tr key={index} className='trtd' >
+                                        <td>{index + 1}</td>
+                                        <td>{item.name}</td>
+                                        <td>{item.Vnamber}</td>
+                                        <td><NavLink to={'/viewdetails'} state={item} className='btn-view'>View</NavLink></td>
+                                        <td>
+                                            <button className='btn-view' onClick={() => { handleOpenModal(1, item._id) }}>
+                                                {item.isVerified === true ? "Verifeid" : "Verify"}
+                                            </button>
+                                        </td>
+                                        <td><button className='btn-delete' onClick={() => { handleOpenModal(2, item._id) }} >Delete</button></td>
+                                    </tr>
+                                )
+                            })
                         }
                     </table>
                 </div>

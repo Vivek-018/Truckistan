@@ -82,7 +82,7 @@ const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
                     </form>
                 </div>
 
-                <div className='selectedcity'>
+                <div className='selectedcity'> 
                     <h6>Select Your City</h6>
                     <select class="form-select" aria-label="Default select example"
                         name='cities'
