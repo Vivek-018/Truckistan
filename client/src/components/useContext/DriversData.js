@@ -278,6 +278,7 @@ const DriversData = (props) => {
       body: JSON.stringify({ Booked })
     })
     const data = await res.json();
+    console.log(data)
   }
 
   const Allcityhandle = async () => {

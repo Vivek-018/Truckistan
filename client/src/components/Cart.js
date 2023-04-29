@@ -4,7 +4,7 @@ import '../style/cart.css'
 import Footer from './Footer';
 import { useLocation, useNavigate } from 'react-router-dom';
 import driverContext from './useContext/driverContext';
-import { ToastContainer, toast } from 'react-toastify';
+import {toast } from 'react-toastify';
 
 const Cart = () => {
     const context = useContext(driverContext);
@@ -12,10 +12,9 @@ const Cart = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const dat = location.state;
-  
+
     const handleSaved = () => {
-        const { pickupAddress,
-            Ppincode,
+        const { pickupAddress, Ppincode,
             Pcity,
             driverId,
             DropOffAddress,
@@ -23,6 +22,7 @@ const Cart = () => {
             Dcity,
             name,
             Req,
+            date,
             phone } = Address
         if (pickupAddress === '') {
 
@@ -30,22 +30,21 @@ const Cart = () => {
                 autoClose: 1000,
             })
         } else if (DropOffAddress === '') {
-         
             toast("plz fill DropOff Address", {
                 autoClose: 1000,
             })
         } else if (Pcity === '') {
-        
+
             toast("plz fill City Name", {
                 autoClose: 1000,
             })
         } else if (Dcity === '') {
-          
+
             toast("plz fill city", {
                 autoClose: 1000,
             })
         } else if (Ppincode === '') {
-          
+
             toast("plz fill Pin Code", {
                 autoClose: 1000,
             })
@@ -59,6 +58,10 @@ const Cart = () => {
             })
         } else if (Req === '') {
             toast("plz fill city", {
+                autoClose: 1000,
+            })
+        } else if (date === '') {
+            toast("plz fill Date", {
                 autoClose: 1000,
             })
         } else {
@@ -112,21 +115,21 @@ const Cart = () => {
                                 </div>
 
                                 <div className="form-group p-3 ">
-                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Date"
+                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Pickup Date"
                                         name='date'
                                         onChange={(e) => setaddress((prev) => ({ ...prev, date: e.target.value }))}
                                     />
                                 </div>
 
                                 <div className="form-group p-3 ">
-                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Pin code"
+                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="DropOff Address Pin code"
                                         name='Ppincode'
                                         onChange={(e) => setaddress((prev) => ({ ...prev, Ppincode: e.target.value }))}
                                     />
                                 </div>
 
                                 <div className="form-group p-3 ">
-                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Pin code"
+                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Pickup Address Pin code"
                                         name='Dpincode'
                                         onChange={(e) => setaddress((prev) => ({ ...prev, Dpincode: e.target.value }))}
                                     />
@@ -151,8 +154,8 @@ const Cart = () => {
                                         onChange={(e) => setaddress((prev) => ({ ...prev, Req: e.target.value }))}
                                     >
                                         <option selected>Choose</option>
-                                        <option value="1">Personal</option>
-                                        <option value="2">business</option>
+                                        <option value="Personal">Personal</option>
+                                        <option value="Business">Business</option>
                                     </select>
                                 </div>
                             </div>
