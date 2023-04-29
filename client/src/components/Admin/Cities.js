@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Navbar from './Navbar'
-import '../style/cities.css'
-import '../style/admin.css'
-import Search from './Search'
-import driverContext from './useContext/driverContext'
-import Footer from './Footer'
+import Navbar from '../Navbar'
+import '../../style/cities.css'
+import '../../style/admin.css'
+import Search from '../Search'
+import driverContext from '../useContext/driverContext'
+import Footer from '../Footer'
 
 const Cities = () => {
 

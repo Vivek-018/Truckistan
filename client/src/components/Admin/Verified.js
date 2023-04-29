@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from './Navbar'
-import Search from './Search'
+import Navbar from '../Navbar'
+import Search from '../Search'
 import { FaRegThumbsUp } from 'react-icons/fa';
 import { useContext } from 'react';
-import driverContext from './useContext/driverContext';
+import driverContext from '../useContext/driverContext';
 import { NavLink } from 'react-router-dom';
-import Footer from './Footer'
+import Footer from '../Footer'
 
 const Verified = () => {
     const context = useContext(driverContext)

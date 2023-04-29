@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-import driverContext from '../useContext/driverContext';
+import driverContext from '../../useContext/driverContext';
 import { useNavigate } from 'react-router-dom';
 
 const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {

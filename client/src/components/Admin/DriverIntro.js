@@ -3,7 +3,7 @@ import Address from './Details/Address'
 import Profile from './Details/Profile'
 import UploadDoc from './Details/UploadDoc'
 import Vehicle from './Details/Vehicle'
-import Navbar from './Navbar'
+import Navbar from '../Navbar'
 
 const DriverIntro = () => {
 

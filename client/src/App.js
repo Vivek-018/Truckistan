@@ -5,16 +5,16 @@ import LandingPage from './components/LandingPage'
 import Signup from './components/Signup'
 import UserPage from './components/UserPage';
 import DriverPage from './components/DriverPage';
-import AdminPage from './components/AdminPage';
-import DriverIntro from './components/DriverIntro';
+import AdminPage from './components/Admin/AdminPage';
+import DriverIntro from './components/Admin/DriverIntro';
 import ViewDetails from './components/ViewDetails';
 import DriversData from './components/useContext/DriversData';
 import EditDetails from './components/EditDetails';
 import Help from './components/Help';
 import Cart from './components/Cart';
 import ResetPassword from './components/ResetPassword';
-import Verified from './components/Verified';
-import Cities from './components/Cities';
+import Verified from './components/Admin/Verified';
+import Cities from './components/Admin/Cities';
 import BookedVehicles from './components/BookedVehicles';
 import VehicleDetails from './components/Confirmed/VehicleDetails';
 import './style/VehicleDetails.css'

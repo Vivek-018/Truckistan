@@ -3,7 +3,6 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import driverContext from './useContext/driverContext'
 import { toast } from 'react-toastify';
-// import VehicleDriver from './VehicleDriver';
 import '../style/admin.css'
 import { FaRegThumbsUp } from 'react-icons/fa';
 
