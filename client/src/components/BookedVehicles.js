@@ -103,6 +103,7 @@ const BookedVehicles = () => {
                                                 <td>{item.pickupAddress}</td>
                                                 <td>{item.DropOffAddress}</td>
                                                 <td>{item.date.slice(0, 10)}</td>
+                                                <td>{item.phone}</td>
                                                 <td>{item.status}</td>
                                                 {/* <td><NavLink to={'/viewdetails'} className='btn-view'>View</NavLink></td>
                                                     <td><button className='btn-view' >abg</button> </td> */}
