@@ -20,12 +20,12 @@ const UploadDoc = ({ data, setData, SaveData }) => {
         e.preventDefault()
         if (data.driverImage === '' || data.VehicleImage === '' || data.DLImage === '' || data.RCImage === "") {
             // alert("fill all details")
-            toast("fill all details", {
+            toast("Please Fill all the Details", {
                 autoClose: 1000,
             })
         } else {
             SaveData();
-            alert("Your Data Saved successfully")
+            alert("Your Data Saved Successfully")
             // toast("Your Data Saved successfully", {
             //     autoClose: 1000,
             // })

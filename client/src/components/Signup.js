@@ -30,31 +30,31 @@ const Login = () => {
         e.preventDefault();
         const { username, email, password, type, Rpassword } = values
         if (username === "") {
-            toast("Please Enter the Name", {
+            toast("Please Enter your Name", {
                 autoClose: 1000,
             })
         } else if (email === "") {
-            toast("Please Enter the email", {
+            toast("Please Enter your Email", {
                 autoClose: 1000,
             })
         } else if (password === "") {
-            toast("Please Enter your password", {
+            toast("Please Enter the Password", {
                 autoClose: 1000,
             })
         } else if (password.length < 4) {
-            toast("Password must be 6 char", {
+            toast("Password must be atleast 6 characters", {
                 autoClose: 1000,
             })
         } else if (Rpassword === '') {
-            toast("Password must be 6 char", {
+            toast("Password must be atleast 6 characters", {
                 autoClose: 1000,
             })
         } else if (password !== Rpassword) {
-            toast("Password do not Match", {
+            toast("The Passwords entered don't match.Please try again", {
                 autoClose: 1000,
             })
         } else if (phone.length <= 12) {
-            toast("Plz Enter correct phone number ", {
+            toast("Please Enter correct Phone Number ", {
                 autoClose: 1000,
             })
         } else {
@@ -98,7 +98,7 @@ const Login = () => {
                 // localStorage.setItem("user", JSON.stringify(UpcomingOtp.user));
                 // localStorage.setItem("type", UpcomingOtp.user.type);
             } else {
-                toast("Fill the correct details", {
+                toast("Please fill correct details", {
                     autoClose: 1000,
                 })
             }

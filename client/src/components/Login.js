@@ -30,11 +30,11 @@ const Login = () => {
         e.preventDefault();
         const { email, password } = values;
         if (email === "") {
-            toast("Please Enter the email", {
+            toast("Please Enter your Email", {
                 autoClose: 1000,
             })
         } else if (password === "") {
-            toast("Please Enter your password", {
+            toast("Please Enter your Password", {
                 autoClose: 1000,
             })
         } else {
@@ -53,7 +53,7 @@ const Login = () => {
                 localStorage.setItem("token", res.token);
                 localStorage.setItem("user", JSON.stringify(res.user));
                 localStorage.setItem("type", res.user.type);
-                toast("Logged in sucessfully", {
+                toast("Logged in Sucessfully", {
                     autoClose: 1000,
                 })    
             }
@@ -66,12 +66,12 @@ const Login = () => {
                 } else if (localStorage.getItem("type") === "admin") {
                     navigate("/admin");
                 }
-                toast("Logged in sucessfully", {
+                toast("Logged in Sucessfully", {
                     autoClose: 1000,
                 }) 
             }
             else {
-                toast("Your Password is Incorrect", {
+                toast(" Password is Incorrect", {
                     autoClose: 1000,
                 })
             }

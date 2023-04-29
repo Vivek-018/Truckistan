@@ -18,7 +18,7 @@ const Profile = ({ data, setData, setAddress, setProfile }) => {
         e.preventDefault()
         if (data.name === '' || data.lname === '' || data.phone === '' || data.email === "" || data.DOB === "" || data.AdharNumber === "" || data.PanCardNumber === "" || data.gender === "") {
             // alert("fill all details")
-            toast("Fill all details", {
+            toast("Please fill all the Details", {
                 autoClose: 1000,
             })
             setAddress(false);
@@ -26,7 +26,7 @@ const Profile = ({ data, setData, setAddress, setProfile }) => {
         } else {
             setAddress(true);
             setProfile(false);
-            toast("Your Data Saved successfully", {
+            toast("Your Data Saved Successfully", {
                 autoClose: 1000,
             })
         }

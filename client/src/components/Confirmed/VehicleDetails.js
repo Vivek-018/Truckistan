@@ -27,7 +27,7 @@ const VehicleDetails = () => {
         e.preventDefault();
         if (comment === undefined) {
             // alert("Plz write Something")/
-            toast("Plz write Something", {
+            toast("Please write Something", {
                 autoClose: 1000,
             })
         } else {
