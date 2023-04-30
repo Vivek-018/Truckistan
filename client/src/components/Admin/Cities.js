@@ -34,7 +34,7 @@ const Cities = () => {
 
   const handleDeleted = (id) => {
     Deletecities(id)
-    window.location.reload();
+    GetAllCities();
   }
 
   useEffect(() => {
@@ -79,6 +79,7 @@ const Cities = () => {
       </div>
 
       {/* = ============================== */}
+
       <div id="Modal" class="modal">
         <div class="modal-content">
           <div className='modalinput'>
@@ -98,7 +99,6 @@ const Cities = () => {
       </div>
 
       <Footer />
-
     </>
   )
 }

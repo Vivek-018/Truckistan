@@ -5,7 +5,7 @@ import LandingPage from './components/LandingPage'
 import Signup from './components/Signup'
 import UserPage from './components/User/UserPage';
 import DriverPage from './components/Driver/DriverPage';
-import AdminPage from './components/Driver/DriverPage';
+// import AdminPage from './components/Driver/DriverPage';
 import DriverIntro from './components/Driver/DriverIntro';
 import ViewDetails from './components/Driver/ViewDetails';
 import DriversData from './components/useContext/DriversData';
@@ -19,6 +19,7 @@ import BookedVehicles from './components/BookedVehicles';
 import VehicleDetails from './components/User/VehicleDetails';
 import './style/VehicleDetails.css'
 import { ToastContainer} from 'react-toastify';
+import Pages from './components/Pages';
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/user' element={<UserPage />} />
             <Route path='/driver' element={<DriverPage />} />
-            <Route path='/admin' element={<AdminPage />} />
+            <Route path='/admin' element={<Pages/>} />
             <Route path='/driverintro' element={<DriverIntro />} />
             <Route path='/viewdetails' element={<ViewDetails />} />
             <Route path='/editdetails' element={<EditDetails />} />

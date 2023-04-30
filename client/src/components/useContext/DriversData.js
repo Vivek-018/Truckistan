@@ -55,6 +55,7 @@ const DriversData = (props) => {
       },
     })
     const json = await response.json();
+    console.log(json.data, "dksldsdsddkdkdkd")
     setAllData(json.data);
   }
 
@@ -340,7 +341,6 @@ const DriversData = (props) => {
   }
 
   const SearchByTransName = async (query) => {
-    // console.log(query)
     try {
       const data = await axios.get(`${adminhost}/BytransName?transName=${query.driverName}`)
       setAllData(data.data)

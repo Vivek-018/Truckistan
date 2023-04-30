@@ -11,6 +11,7 @@ const Verified = () => {
     const context = useContext(driverContext)
     const { ChangeIsVerified, alldata, getallData,
         DeleteDrivers, handleVehicleDriver } = context;
+
     const [name, setcityName] = useState();
     const [check, setChecked] = useState(false);
     const [isVerified, setIsVerified] = useState(true);
@@ -38,7 +39,7 @@ const Verified = () => {
     const handleVerified = () => {
         ChangeIsVerified(isVerified, VerifyId)
         document.getElementById("Modal").style.display = "none";
-        window.location.reload()
+        getallData()
     }
 
     const handleDelete = () => {
@@ -76,7 +77,7 @@ const Verified = () => {
                                         <td><NavLink to={'/viewdetails'} state={item} className='btn-view'>View</NavLink></td>
                                         <td>
                                             <button className='btn-view' onClick={() => { handleOpenModal(1, item._id) }}>
-                                                {item.isVerified === true ? "Verifeid" : "Verify"}
+                                                {item.isVerified === true ? "Verified" : "Verify"}
                                             </button>
                                         </td>
                                         <td><button className='btn-delete' onClick={() => { handleOpenModal(2, item._id) }} >Delete</button></td>
