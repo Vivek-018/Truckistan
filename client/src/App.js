@@ -15,7 +15,7 @@ import Cart from './components/User/Cart';
 import ResetPassword from './components/ResetPassword';
 import Verified from './components/Admin/Verified';
 import Cities from './components/Admin/Cities';
-import BookedVehicles from './components/Driver/BookedVehicles';
+import BookedVehicles from './components/BookedVehicles';
 import VehicleDetails from './components/User/VehicleDetails';
 import './style/VehicleDetails.css'
 import { ToastContainer} from 'react-toastify';

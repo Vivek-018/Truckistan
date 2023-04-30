@@ -13,6 +13,7 @@ const Help = () => {
         <div className='container contact_conatiner'>
           <h5>Get In Touch</h5>
           <h2>Contact Me</h2>
+
           <div className='contact_options'>
             <article className='contact_option'>
               <MdOutlineEmail className='contact_option-icon' />
@@ -27,6 +28,7 @@ const Help = () => {
               <h5>Any Quary</h5>
               <a href='https://www.instagram.com/_durgesh.chaudhary/' target="_blank">Send a message</a>
             </article>
+
           </div>
         </div>
       </section>

@@ -11,6 +11,7 @@ const DriverIntro = () => {
   const [address, setAddress] = useState(false);
   const [vehicle, setVehicle] = useState(false);
   const [uploaddoc, setUploaddoc] = useState(false);
+
   const [allData, setAllData] = useState({
     name: "",
     lname: "",
@@ -38,8 +39,6 @@ const DriverIntro = () => {
     RCImage: "",
   })
   const [Scity, setCity] = useState();
-
-  console.log(allData, "hjagd")
 
   const handlesetPage = (e) => {
     e.preventDefault();
@@ -89,9 +88,9 @@ const DriverIntro = () => {
       <Navbar />
       <div className='driverintro'>
         <div className='driver'>
-          <span className='topProfile' >Build Your Profile</span>
+          <span className='topProfile'>Build Your Profile</span>
           <div className='pav' >
-            <span onClick={handlesetProfile} id='profile' >Profile Details</span>
+            <span onClick={handlesetProfile} id='profile'>Profile Details</span>
           </div>
           <div className='pav' id='address' >
             <span onClick={handlesetPage}>Address Details</span>

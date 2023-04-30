@@ -8,6 +8,7 @@ const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
     const navigate = useNavigate();
     const context = useContext(driverContext);
     const { Allcityhandle, allcities } = context;
+
     const [select, setSelect] = useState([]);
 
     function handlle(e) {
@@ -59,17 +60,17 @@ const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
                     <small>Let us know about you to suggest the best for you.</small>
                     <form>
                         <div class="form-group">
-                            <textarea type="address" name='address' value={data.address} class="form-control" id="adress" aria-describedby="emailHelp" placeholder="Address" onChange={setVal} />
+                            <textarea type="address" name='address' value={data.address} class="form-control" id="adress"  placeholder="Address" onChange={setVal} />
                         </div>
                         <div class="form-group">
                             <input type="city" name='city' value={data.city} class="form-control" id="city" placeholder="City" onChange={setVal} />
                         </div>
                         <div class="form-group">
-                            <input type="state" name='state' value={data.state} class="form-control" id="state" aria-describedby="emailHelp" placeholder="State" onChange={setVal} />
+                            <input type="state" name='state' value={data.state} class="form-control" id="state" placeholder="State" onChange={setVal} />
                         </div>
 
                         <div class="form-group">
-                            <input type="pincode" name='pincode' value={data.pincode} class="form-control" id="pincode" aria-describedby="emailHelp" placeholder="Pin Code" onChange={setVal} />
+                            <input type="pincode" name='pincode' value={data.pincode} class="form-control" id="pincode" placeholder="Pin Code" onChange={setVal} />
                         </div>
                         <div class="form-group">
                             <input type="country" name='country' value={data.country} class="form-control" id="country" placeholder="Country" onChange={setVal} />
@@ -89,11 +90,10 @@ const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
                         onChange={(e) => { handlle(e) }}
                     >
                         <option selected >choose Your city</option>
-                        {
-                            allcities?.map((item, index) => {
+                        {allcities?.map((item, index) => {
                                 return (
                                     <>
-                                        <option key={index} >{item.city}</option>
+                                        <option key={index}>{item.city}</option>
                                     </>
                                 )
                             })
@@ -111,7 +111,6 @@ const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
                     }
                 </div>
             </div>
-
             <ToastContainer />
         </>
     )

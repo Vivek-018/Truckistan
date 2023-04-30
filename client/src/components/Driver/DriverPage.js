@@ -32,9 +32,9 @@ const DriverPage = () => {
                 {len === 0 || len === undefined ? (
                     <>
                         <div class="loader my-4 "></div>
-                        <div className='text-center' >
+                        {/* <div className='text-center' >
                             <h5> Currently Loading Your Data Plz Wait <br /> Or Add new Data</h5>
-                        </div>
+                        </div> */}
                     </>
                 ) : (
 
@@ -61,28 +61,28 @@ const DriverPage = () => {
 
                                                 <div className='loadCapacity d-flex justify-content-between '>
                                                     <div>
-                                                        <small href="#" className="card-link">Loading Capacity</small>
+                                                        <small  className="card-link">Loading Capacity</small>
                                                     </div>
                                                     <div>
-                                                        <small href="#" className=" mx-3 ">{item.lodingCapacity} </small>
-                                                    </div>
-                                                </div>
-
-                                                <div className='loadCapacity d-flex justify-content-between'>
-                                                    <div>
-                                                        <small href="#" className="card-link">Base Fare</small>
-                                                    </div>
-                                                    <div>
-                                                        <small href="#" className=" mx-3 ">{item.basefare} Rs/km</small>
+                                                        <small  className=" mx-3 ">{item.lodingCapacity} Ton </small>
                                                     </div>
                                                 </div>
 
                                                 <div className='loadCapacity d-flex justify-content-between'>
                                                     <div>
-                                                        <small href="#" className="card-link">Driver Name</small>
+                                                        <small  className="card-link">Base Fare</small>
                                                     </div>
                                                     <div>
-                                                        <small href="#" className=" mx-3 ">{item.name} {item.lname} </small>
+                                                        <small  className=" mx-3 ">{item.basefare} Rs/km</small>
+                                                    </div>
+                                                </div>
+
+                                                <div className='loadCapacity d-flex justify-content-between'>
+                                                    <div>
+                                                        <small className="card-link">Driver Name</small>
+                                                    </div>
+                                                    <div>
+                                                        <small  className=" mx-3 ">{item.name} {item.lname} </small>
                                                     </div>
                                                 </div>
 

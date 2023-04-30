@@ -12,7 +12,7 @@ const BottomNav = () => {
             <ul className='nav_item-list'>
                <li><a href='#'>Home</a></li>
                <li><a href='#about'>About</a></li>
-               <li><a href='#experiance'>Experiance</a></li>
+               <li><a href='#experiance'>Experience</a></li>
                <li><a href='#contact'>Contact</a></li>
             </ul>
 

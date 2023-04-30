@@ -121,6 +121,7 @@ const UserPage = () => {
             <div className='showMore' >
                 <button onClick={handleIncrease} className='btn-more'>More</button>
             </div>
+            
             <Comment />
             <Footer />
         </>

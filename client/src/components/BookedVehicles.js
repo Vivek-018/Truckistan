@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Navbar from '../Navbar'
-import Footer from '../User/Footer'
-import driverContext from '../useContext/driverContext'
+import Navbar from './Navbar'
+import Footer from './User/Footer'
+import driverContext from './useContext/driverContext'
 import { toast } from 'react-toastify';
-import '../../style/admin.css'
+import '../style/admin.css'
 import { FaRegThumbsUp } from 'react-icons/fa';
 
 const BookedVehicles = () => {
+
     const context = useContext(driverContext);
     const { getbookedVehicles, booked, ChangeBooked,
         getbookedAdminSide, getbookedDriverSide } = context;
+
     const [Booked, setBooked] = useState("Cancel");
     const userType = localStorage.getItem("type")
     const [id, setId] = useState();
@@ -55,7 +57,7 @@ const BookedVehicles = () => {
                 <div className='tableVerified'>
                     <h3 className='my-4' >Your Booking Status</h3>
                     <table>
-                        <tr className='my-4' >
+                        <tr className='my-4'>
                             {
                                 userType === 'admin' ?
                                     <>
@@ -107,8 +109,7 @@ const BookedVehicles = () => {
                                                 {/* <td><NavLink to={'/viewdetails'} className='btn-view'>View</NavLink></td>
                                                     <td><button className='btn-view' >abg</button> </td> */}
 
-                                                {
-                                                    item.status !== "Cancel" ?
+                                                {item.status !== "Cancel" ?
                                                         <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
                                                         : ("")
                                                 }

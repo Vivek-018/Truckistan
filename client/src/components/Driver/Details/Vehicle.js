@@ -1,6 +1,7 @@
 import React from 'react'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const Vehicle = ({ data, setData, setUploaddoc, setVehicle }) => {
 
@@ -10,7 +11,7 @@ const Vehicle = ({ data, setData, setUploaddoc, setVehicle }) => {
         setData(() => {
             return {
                 ...data,
-                [name]: value
+                [name]: value 
             }
         })
     }
@@ -82,12 +83,12 @@ const Vehicle = ({ data, setData, setUploaddoc, setVehicle }) => {
                         </div>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-profile mx-2 my-3">Cancel</button>
+                        <Link type="submit" to={'/driver'} class="btn btn-profile mx-2 my-3">Cancel</Link>
                         <button type="submit" class="btn btn-profile my-3" onClick={fun} >Save</button>
                     </div>
                 </form>
             </div>
-        <ToastContainer />
+            <ToastContainer />
         </>
     )
 }
