@@ -256,14 +256,14 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        <div class="w-50 text-center ">
+                        {/* <div class="w-50 text-center ">
                             <label for="formFile" class="form-label">Upload Image</label>
                             <input class="form-control" value={link.link} name='link' type="file" id="formFile"
                                 onChange={(event) => {
                                     setLink((prev) => ({ ...prev, link: event.target.value }));
                                 }}
                             />
-                        </div>
+                        </div> */}
                     </div>
                     <div className='text-center my-4' >
                         <button onClick={handleOpen} className=' myprofile-btn ' >close</button>

@@ -17,6 +17,7 @@ router.get("/ByCityName", async (req, res) => {
 
 // // API for search data 
 router.get("/BytransName", async (req, res) => {
+    console.log(req.query.transName)
     const keyword = req.query.transName
         ? { "transName": { $regex: req.query.transName, $options: "i" } } //case insensitive
         : {};

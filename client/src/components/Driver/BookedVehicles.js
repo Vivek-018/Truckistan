@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Navbar from './Navbar'
-import Footer from './User/Footer'
-import driverContext from './useContext/driverContext'
+import Navbar from '../Navbar'
+import Footer from '../User/Footer'
+import driverContext from '../useContext/driverContext'
 import { toast } from 'react-toastify';
-import '../style/admin.css'
+import '../../style/admin.css'
 import { FaRegThumbsUp } from 'react-icons/fa';
 
 const BookedVehicles = () => {

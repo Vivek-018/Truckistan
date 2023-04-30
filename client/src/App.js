@@ -5,17 +5,17 @@ import LandingPage from './components/LandingPage'
 import Signup from './components/Signup'
 import UserPage from './components/User/UserPage';
 import DriverPage from './components/Driver/DriverPage';
-import AdminPage from './components/Admin/AdminPage';
-import DriverIntro from './components/Admin/DriverIntro';
+import AdminPage from './components/Driver/DriverPage';
+import DriverIntro from './components/Driver/DriverIntro';
 import ViewDetails from './components/Driver/ViewDetails';
 import DriversData from './components/useContext/DriversData';
-import EditDetails from './components/Driver/EditDetails';
+import EditDetails from './components/Admin/EditDetails';
 import Help from './components/Help';
 import Cart from './components/User/Cart';
 import ResetPassword from './components/ResetPassword';
 import Verified from './components/Admin/Verified';
 import Cities from './components/Admin/Cities';
-import BookedVehicles from './components/BookedVehicles';
+import BookedVehicles from './components/Driver/BookedVehicles';
 import VehicleDetails from './components/User/VehicleDetails';
 import './style/VehicleDetails.css'
 import { ToastContainer} from 'react-toastify';
