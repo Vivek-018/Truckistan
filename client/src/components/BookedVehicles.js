@@ -5,12 +5,15 @@ import driverContext from './useContext/driverContext'
 import { toast } from 'react-toastify';
 import '../style/admin.css'
 import { FaRegThumbsUp } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
+
 
 const BookedVehicles = () => {
 
     const context = useContext(driverContext);
     const { getbookedVehicles, booked, ChangeBooked,
-        getbookedAdminSide, getbookedDriverSide } = context;
+        getbookedAdminSide,ChangeBookState,
+        getbookedDriverSide } = context;
 
     const [Booked, setBooked] = useState("Cancel");
     const userType = localStorage.getItem("type")
@@ -37,6 +40,7 @@ const BookedVehicles = () => {
 
     const handleVerified = () => {
         ChangeBooked(Booked, id)
+        ChangeBookState(Booked, id)
         document.getElementById("Modal").style.display = "none";
         toast("Canceled successfully", {
             autoClose: 1500,
@@ -95,6 +99,7 @@ const BookedVehicles = () => {
                                                             <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
                                                             : ("")
                                                     }
+                                                    <td><NavLink to={'/viewdetails'} className='btn-view'>View</NavLink></td>
                                                 </tr>
                                                 : ("")
                                             :
@@ -110,8 +115,8 @@ const BookedVehicles = () => {
                                                     <td><button className='btn-view' >abg</button> </td> */}
 
                                                 {item.status !== "Cancel" ?
-                                                        <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
-                                                        : ("")
+                                                    <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
+                                                    : ("")
                                                 }
                                             </tr>
                                         }
