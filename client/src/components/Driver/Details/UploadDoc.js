@@ -5,6 +5,7 @@ import {  useNavigate } from 'react-router-dom';
 
 const UploadDoc = ({ data, setData, SaveData }) => {
     const navigate =  useNavigate();
+    
     const setVal = (e) => {
         const { value, name } = e.target;
 

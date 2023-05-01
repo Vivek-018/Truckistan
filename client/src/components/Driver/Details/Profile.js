@@ -7,7 +7,6 @@ const Profile = ({ data, setData, setAddress, setProfile }) => {
     
     const setVal = (e) => {
         const { value, name } = e.target;
-
         setData(() => {
             return {
                 ...data,
@@ -41,7 +40,7 @@ const Profile = ({ data, setData, setAddress, setProfile }) => {
 
                 <form>
                     <div class="form-group">
-                        <input type="name" class="form-control" id="name" name='name' value={data.name} aria-describedby="emailHelp" placeholder="First Name" onChange={setVal} required />
+                        <input type="name" class="form-control"  name='name' value={data.name}  placeholder="First Name" onChange={setVal} required />
                     </div>
                     <div class="form-group">
                         <input type="lname" name='lname' value={data.lname} class="form-control" id="lname" placeholder="Last Name" onChange={setVal} />
@@ -56,18 +55,18 @@ const Profile = ({ data, setData, setAddress, setProfile }) => {
                     </div>
 
                     <div class="form-group">
-                        <input type="DOB" name='DOB' value={data.DOB} class="form-control" id="email" aria-describedby="emailHelp" placeholder="Date of Brith" onChange={setVal} />
+                        <input type="DOB" name='DOB' value={data.DOB} class="form-control" id="email" placeholder="Date of Brith" onChange={setVal} />
                     </div>
 
                     <div class="form-group">
-                        <input type="email" name='email' value={data.email} class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" onChange={setVal} />
+                        <input type="email" name='email' value={data.email} class="form-control" id="email"  placeholder="Email" onChange={setVal} />
                     </div>
                     <div class="form-group">
                         <input type="phone" name='phone' value={data.phone} class="form-control" id="phone" placeholder="Phone Number" onChange={setVal} />
                     </div>
 
                     <div class="form-group">
-                        <input type="AdharNumber" name='AdharNumber' value={data.AdharNumber} class="form-control" id="AdharNumber" aria-describedby="emailHelp" placeholder="Adhar Card Number" onChange={setVal} />
+                        <input type="AdharNumber" name='AdharNumber' value={data.AdharNumber} class="form-control" id="AdharNumber"  placeholder="Adhar Card Number" onChange={setVal} />
                     </div>
                     <div class="form-group">
                         <input type="pcNumber" name='PanCardNumber' value={data.PanCardNumber} class="form-control" id="PanCardNumber" placeholder="Pan Card Number" onChange={setVal} />

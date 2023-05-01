@@ -279,7 +279,6 @@ const DriversData = (props) => {
       body: JSON.stringify({ Booked })
     })
     const data = await res.json();
-    console.log(data)
   }
 
   const Allcityhandle = async () => {
@@ -361,6 +360,18 @@ const DriversData = (props) => {
     }
   }
 
+  const ChangeBookState = async (Booked, id) => {
+    const res = await fetch(`${host}/ChangeVehicleState/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ Booked })
+    })
+    const data = await res.json();
+    console.log(data, "kmlk")
+  }
+
   return (
     <driverContext.Provider value={{
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
@@ -370,7 +381,7 @@ const DriversData = (props) => {
       ChangeBooked, Allcityhandle, allcities, handleSearchVehicle, getbookedAdminSide,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
       setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked
-      , getveh_id, SearchByTransName,SearchByCity
+      , getveh_id, SearchByTransName,SearchByCity,ChangeBookState
     }} >
       {props.children}
     </driverContext.Provider>

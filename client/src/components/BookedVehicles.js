@@ -5,14 +5,13 @@ import driverContext from './useContext/driverContext'
 import { toast } from 'react-toastify';
 import '../style/admin.css'
 import { FaRegThumbsUp } from 'react-icons/fa';
-import { NavLink } from 'react-router-dom';
 
 
 const BookedVehicles = () => {
 
     const context = useContext(driverContext);
     const { getbookedVehicles, booked, ChangeBooked,
-        getbookedAdminSide,ChangeBookState,
+        getbookedAdminSide, ChangeBookState,
         getbookedDriverSide } = context;
 
     const [Booked, setBooked] = useState("Cancel");
@@ -36,6 +35,10 @@ const BookedVehicles = () => {
 
     function CloseModal() {
         document.getElementById("Modal").style.display = "none";
+    }
+
+    const handledetails = () => {
+
     }
 
     const handleVerified = () => {
@@ -99,7 +102,7 @@ const BookedVehicles = () => {
                                                             <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
                                                             : ("")
                                                     }
-                                                    <td><NavLink to={'/viewdetails'} className='btn-view'>View</NavLink></td>
+                                                    <td><button onClick={() => { handledetails(item) }} className='btn-view'>View</button></td>
                                                 </tr>
                                                 : ("")
                                             :
@@ -111,13 +114,13 @@ const BookedVehicles = () => {
                                                 <td>{item.date.slice(0, 10)}</td>
                                                 <td>{item.phone}</td>
                                                 <td>{item.status}</td>
-                                                {/* <td><NavLink to={'/viewdetails'} className='btn-view'>View</NavLink></td>
-                                                    <td><button className='btn-view' >abg</button> </td> */}
+                                                <td><button className='btn-view' >abg</button> </td>
 
                                                 {item.status !== "Cancel" ?
                                                     <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
                                                     : ("")
                                                 }
+                                                <td><button onClick={() => { handledetails(item) }} className='btn-view'>View</button></td>
                                             </tr>
                                         }
                                     </>

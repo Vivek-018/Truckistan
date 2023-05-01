@@ -11,7 +11,7 @@ const VehicleDetails = () => {
     const navigate = useNavigate();
     const context = useContext(driverContext);
     const [Booked, setBooked] = useState("Booked");
-    const { SavedComment, ChangeBooked } = context;
+    const { SavedComment,  ChangeBookState, ChangeBooked } = context;
     const location = useLocation();
     const [comment, setcomment] = useState();
     const data = location.state?.dat;
@@ -43,6 +43,7 @@ const VehicleDetails = () => {
 
     const handleVerified = () => {
         ChangeBooked(Booked, data?._id)
+        ChangeBookState(Booked, data?._id)
         toast("Your Vehicle Booked Successfully", {
             autoClose: 1000,
         })
