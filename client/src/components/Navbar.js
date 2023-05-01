@@ -8,18 +8,20 @@ import { RiTruckLine } from 'react-icons/ri';
 import { AiFillSetting } from 'react-icons/ai';
 import { MdLocationCity } from 'react-icons/md';
 import { BsFillBookmarkFill } from 'react-icons/bs';
-
+import { FaRegThumbsUp } from 'react-icons/fa';
 import { GoVerified } from 'react-icons/go';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import driverContext from './useContext/driverContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import TextField from '@material-ui/core/TextField';
 
+
 const Navbar = () => {
     const context = useContext(driverContext)
     const { editUserProfiledata, data, getData } = context;
     const totalVehicle = data.length;
+    const navigate =  useNavigate();
 
     const [name, setname] = useState();
     const [Nav, setNav] = useState(false);
@@ -63,10 +65,16 @@ const Navbar = () => {
         if (dropdown === false) {
             document.getElementById("profileOption").style.height = "fit-content";
             setdropdown(true);
-        } else {
-            document.getElementById("profileOption").style.height = "0px";
-            setdropdown(false);
+            // } else {
+            //     document.getElementById("profileOption").style.height = "0px";
+            //     setdropdown(false);
+            // }
         }
+    }
+
+    function handledropdown2() {
+        document.getElementById("profileOption").style.height = "0px";
+        setdropdown(false);
     }
 
     const handleEdits = () => {
@@ -86,8 +94,8 @@ const Navbar = () => {
         modal.style.display = "none";
     }
 
-    const handleClear = () => {
-        localStorage.clear();
+    const handleClearLogout = () => {
+        document.getElementById("NavModal").style.display = "block";
     }
 
     // ======================= fetching data according users ==================
@@ -108,6 +116,20 @@ const Navbar = () => {
             phone.onSet(res.data?.phone)
         }
     };
+
+
+    function CloseModal() {
+        document.getElementById("NavModal").style.display = "none";
+    }
+
+    const handleVerified = () => {
+        document.getElementById("NavModal").style.display = "none";
+        localStorage.clear();
+        navigate('/login')
+        toast("Logout Successfully", {
+            autoClose: 1000,
+        })
+    }
 
     useEffect(() => {
         handlelogin();
@@ -160,14 +182,14 @@ const Navbar = () => {
                                         </>
                                     )
                             }
-                            <a className='des  name' onClick={handledropdown} ><img src={navpic}></img> {user.username ? user.username : "Not Available "}<span className='formDrop' ><IoIosArrowDown /></span></a>
+                            <a className='des  name' onMouseEnter={handledropdown} onClick={handledropdown2} ><img src={navpic}></img> {user.username ? user.username : "Not Available "}<span className='formDrop' ><IoIosArrowDown /></span></a>
                             <span className='ManuIcon' onClick={handleSideNav} ><i className="fa fa-bars"></i></span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div className="profile-options" id="profileOption">
+            <div onMouseLeave={handledropdown2} className="profile-options" id="profileOption">
                 <ul>
                     <li>
                         <a style={{ cursor: "pointer" }} to="/profiledetails" onClick={handleModal} >My Profile</a>
@@ -184,7 +206,7 @@ const Navbar = () => {
                         <Link to="/help">FAQ's & Help</Link>
                     </li>
                     <li >
-                        <Link to="/login" onClick={handleClear} >Logout</Link>
+                        <Link style={{ cursor: "pointer" }} onClick={handleClearLogout} >Logout</Link>
                     </li>
                 </ul>
             </div>
@@ -271,9 +293,20 @@ const Navbar = () => {
                     </div>
                 </div>
             </div >
+
+            <div id="NavModal" className="modal">
+                <div className="modal-content">
+                    <span><FaRegThumbsUp /></span>
+                    <h2>Your Are sure to Logout!</h2>
+
+                    <div className='btn-modal my-4'>
+                        <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
+                        <button className='btn-view mx-4 ' onClick={handleVerified} >Confirmed</button>
+                    </div>
+                </div>
+            </div>
+
             <ToastContainer />
-
-
         </>
     )
 }

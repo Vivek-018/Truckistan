@@ -68,7 +68,7 @@ const BookedVehicles = () => {
                             <td>Vehicle Number</td> */}
                             <td>Pickup Address</td>
                             <td>DropOff Address</td>
-                            <td>Date</td>
+                            <td>Booked Date</td>
                             <td>Phone Number</td>
                             <td>Status</td>
                         </tr>

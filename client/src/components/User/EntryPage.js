@@ -1,14 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import pic from '../../images/Logo.png'
 import { ImLocation2 } from 'react-icons/im';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import navpic from '../../images/user_web-1598433228.svg'
+import { FaRegThumbsUp } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const EntryPage = ({ handleSearch, setcityName }) => {
-
+  const navigate = useNavigate()
   AOS.init({
     offset: 120,
     delay: 0,
@@ -32,8 +34,21 @@ const EntryPage = ({ handleSearch, setcityName }) => {
     document.querySelector("#icon").classList.toggle("change");
   }
 
-  const handleClear = () => {
+  function CloseModal() {
+    document.getElementById("Modal").style.display = "none";
+  }
+
+  const handleVerified = () => {
+    CloseModal()
     localStorage.clear();
+    toast("Logout Successfully", {
+      autoClose: 1200,
+    })
+    navigate('/login')
+  }
+
+  const handleClear = () => {
+    document.getElementById("Modal").style.display = "block";
   }
 
   return (
@@ -83,16 +98,27 @@ const EntryPage = ({ handleSearch, setcityName }) => {
       </div>
 
       <div id="Sidenav" class="fullsidenav text-center">
-        {/* <div className='DataName' > */}
         <h5 style={{ color: "white", alignItems: "center" }}>
           <a lassName='des'><img src={navpic}></img> {user.username} </a>
         </h5>
-        {/* </div> */}
+
         <h2>Welcome to Loadkro</h2>
         <div className=' customerHelp'>
           <Link to="/book">Booked Vehicles</Link>
           <Link to="/help">FAQ's & Help</Link>
-          <Link to="/login" onClick={handleClear} >Logout</Link>
+          <Link onClick={handleClear} >Logout</Link>
+        </div>
+      </div>
+
+      <div id="Modal" className="modal">
+        <div className="modal-content">
+          <span><FaRegThumbsUp /></span>
+          <h2>Your Are sure to Logout!</h2>
+          <div className='btn-modalm my-4'>
+            <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
+            <button className='btn-view mx-4 ' onClick={handleVerified} >Confirmed</button>
+          </div>
+
         </div>
       </div>
     </>

@@ -19,7 +19,6 @@ const Profile = ({ data, setData, setAddress, setProfile }) => {
     const fun = (e) => {
         e.preventDefault()
         if (data.name === '' || data.lname === '' || data.phone === '' || data.email === "" || data.DOB === "" || data.AdharNumber === "" || data.PanCardNumber === "" || data.gender === "") {
-            // alert("fill all details")
             toast("Please fill all the Details", {
                 autoClose: 1000,
             })

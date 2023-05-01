@@ -4,8 +4,8 @@ import Navbar from '../Navbar';
 import Footer from './Footer';
 import { useLocation, useNavigate } from 'react-router-dom';
 import driverContext from '../useContext/driverContext';
-import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
+import { FaRegThumbsUp } from 'react-icons/fa';
 
 const VehicleDetails = () => {
     const navigate = useNavigate();
@@ -16,19 +16,15 @@ const VehicleDetails = () => {
     const [comment, setcomment] = useState();
     const data = location.state?.dat;
     const Address = location.state?.Address
+    const [itr, setItr] = useState();
 
     const handleDoneBookings = () => {
-        ChangeBooked(Booked, data?._id)
-        toast("Your Vehicle Booked Successfully", {
-            autoClose: 1000,
-        })
-        navigate('/user')
-    }
+        document.getElementById("bookModal").style.display = "block";
+    }  
 
     const handleComment = (e) => {
         e.preventDefault();
         if (comment === undefined) {
-            // alert("Plz write Something")/
             toast("Please write Something", {
                 autoClose: 1000,
             })
@@ -39,6 +35,21 @@ const VehicleDetails = () => {
             })
         }
     }
+
+
+    function CloseModal() {
+        document.getElementById("bookModal").style.display = "none";
+    }
+
+    const handleVerified = () => {
+        ChangeBooked(Booked, data?._id)
+        toast("Your Vehicle Booked Successfully", {
+            autoClose: 1000,
+        })
+        document.getElementById("bookModal").style.display = "none";
+        navigate('/user')
+    }
+
 
     return (
         <>
@@ -122,7 +133,7 @@ const VehicleDetails = () => {
 
                     <section id="contact">
                         <div className='text-center comment '>
-                            <h2>Comment</h2>
+                            <h2>How is Loadkro helpful for me ?</h2>
                         </div>
                         <div className='container contact_conatiner'>
                             <form >
@@ -137,6 +148,18 @@ const VehicleDetails = () => {
                     </section>
                 </div>
             </div>
+
+            <div id="bookModal" className="modal">
+                <div className="modal-content">
+                    <span><FaRegThumbsUp /></span>
+                    <h2>Your Are sure to Book this vehicle!</h2> 
+                    <div className='btn-modalm my-4'>
+                        <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
+                        <button className='btn-view mx-4 ' onClick={handleVerified} >Submit</button>
+                    </div>
+                </div>
+            </div>
+
             <Footer />
             <ToastContainer />
         </>

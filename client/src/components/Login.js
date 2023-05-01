@@ -54,7 +54,7 @@ const Login = () => {
                 localStorage.setItem("user", JSON.stringify(res.user));
                 localStorage.setItem("type", res.user.type);
                 toast("Logged in Sucessfully", {
-                    autoClose: 1000,
+                    autoClose: 1500,
                 })
             }
             if (localStorage.getItem("token")) {
@@ -80,8 +80,7 @@ const Login = () => {
         e.preventDefault();
         const { email } = values;
         if (email === '') {
-            // alert("enter email");
-            toast("enter email", {
+            toast("Enter Email", {
                 autoClose: 1000,
             })
         } else {

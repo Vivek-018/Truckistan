@@ -5,16 +5,21 @@ import '../../style/admin.css'
 import Search from '../Search'
 import driverContext from '../useContext/driverContext'
 import Footer from '../User/Footer'
+import { FaRegThumbsUp } from 'react-icons/fa';
 
 const Cities = () => {
 
   const context = useContext(driverContext);
   const { Addcities, Deletecities, GetAllCities,
     GetAllCity, SearchByCity } = context;
+
   const [cityName, setcityName] = useState();
   const [city, setCity] = useState();
+  const [id, setId] = useState();
+  const [del, setDel] = useState();
 
   const handleInputs = () => {
+    setDel();
     document.getElementById("Modal").style.display = "block";
   }
 
@@ -27,14 +32,24 @@ const Cities = () => {
   }
 
   const handleSubmit = () => {
-    Addcities(city);
-    document.getElementById("Modal").style.display = "none";
-    window.location.reload();
+    if (del === 2) {
+      Deletecities(id)
+      CloseModal();
+      GetAllCities();
+      setDel()
+    } else {
+      Addcities(city);
+      CloseModal();
+      GetAllCities();
+    }
   }
 
-  const handleDeleted = (id) => {
-    Deletecities(id)
-    GetAllCities();
+  const handleDeleted = (id, num) => {
+    setDel(num)
+    console.log(num);
+    setId(id);
+    document.getElementById("Modal").style.display = "block";
+    GetAllCities()
   }
 
   useEffect(() => {
@@ -49,7 +64,7 @@ const Cities = () => {
         <div className='cities-table'>
 
           <div className='add-cities' >
-            <button onClick={handleInputs} className='btn-cities' >Add New Cities</button>
+            <button onClick={() => handleInputs(1)} className='btn-cities' >Add New Cities</button>
           </div>
 
           <table>
@@ -57,36 +72,41 @@ const Cities = () => {
               <td >S.No</td>
               <td>cities name</td>
             </tr>
-
-            {
-              GetAllCity?.length === 0 || GetAllCity === undefined ?
-                <div class="loader my-4 "></div> :
-                GetAllCity?.map((item, index) => {
-                  return (
-                    <>
-                      <tr key={index} >
-                        <td>{index + 1}</td>
-                        <td >{item.city}</td>
-                        <td ><button className='btn-view'>Edit</button></td>
-                        <td ><button className='btn-view' onClick={() => handleDeleted(item._id)}>Delete</button></td>
-                      </tr>
-                    </>
-                  )
-                })
+            {GetAllCity?.length === 0 || GetAllCity === undefined ?
+              <div class="loader my-4 "></div> :
+              GetAllCity?.map((item, index) => {
+                return (
+                  <>
+                    <tr key={index} >
+                      <td>{index + 1}</td>
+                      <td >{item.city}</td>
+                      <td ><button className='btn-view'>Edit</button></td>
+                      <td ><button className='btn-view' onClick={() => handleDeleted(item._id, 2)}>Delete</button></td>
+                    </tr>
+                  </>
+                )
+              })
             }
           </table>
         </div>
       </div>
 
-      {/* = ============================== */}
+      {/* = =============== modal =============== */}
 
       <div id="Modal" class="modal">
         <div class="modal-content">
           <div className='modalinput'>
-            <input type='text' placeholder='Enter City'
-              onChange={(e) => { setCity((prev) => ({ ...prev, city: e.target.value })) }}
-            />
+            {del === 2 ?
+              <>
+                <span><FaRegThumbsUp /></span>
+                <h2>Your Are sure to Delete It !</h2>
+              </> :
+              <input type='text' placeholder='Enter City'
+                onChange={(e) => { setCity((prev) => ({ ...prev, city: e.target.value })) }}
+              />
+            }
           </div>
+          
           <div className='btn-modalm my-4'>
             <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
             <button className='btn-view mx-4 ' onClick={handleSubmit} >Submit</button> :
