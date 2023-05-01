@@ -5,10 +5,11 @@ import driverContext from './useContext/driverContext'
 import { toast } from 'react-toastify';
 import '../style/admin.css'
 import { FaRegThumbsUp } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 
 const BookedVehicles = () => {
-
+   const navigate =useNavigate();
     const context = useContext(driverContext);
     const { getbookedVehicles, booked, ChangeBooked,
         getbookedAdminSide, ChangeBookState,
@@ -37,8 +38,8 @@ const BookedVehicles = () => {
         document.getElementById("Modal").style.display = "none";
     }
 
-    const handledetails = () => {
-
+    const handledetails = (item) => {
+        navigate('/userbook', {state:{item}})
     }
 
     const handleVerified = () => {

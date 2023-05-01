@@ -55,7 +55,6 @@ const DriversData = (props) => {
       },
     })
     const json = await response.json();
-    console.log(json.data, "dksldsdsddkdkdkd")
     setAllData(json.data);
   }
 
@@ -304,7 +303,6 @@ const DriversData = (props) => {
   };
 
   const handleVehicleDriver = async (query) => {
-      console.log(query.driverName, "query")
     const data = await fetch(`${host}/searchVehDriver?name=${query.driverName}`, {
       method: "GET",
       headers: {
@@ -369,7 +367,6 @@ const DriversData = (props) => {
       body: JSON.stringify({ Booked })
     })
     const data = await res.json();
-    console.log(data, "kmlk")
   }
 
   return (
