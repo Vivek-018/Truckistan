@@ -115,7 +115,7 @@ const BookedVehicles = () => {
                                                 <td>{item.date.slice(0, 10)}</td>
                                                 <td>{item.phone}</td>
                                                 <td>{item.status}</td>
-                                                <td><button className='btn-view' >abg</button> </td>
+                                                {/* <td><button className='btn-view' >abg</button> </td> */}
 
                                                 {item.status !== "Cancel" ?
                                                     <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
