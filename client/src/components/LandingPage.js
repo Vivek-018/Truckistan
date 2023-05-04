@@ -49,7 +49,7 @@ const Login = () => {
                             <div className="alternate-option mt-5 text-center">
                                 Already have an account{" "}
                                 <Link to="/login">
-                                    <b>
+                                    <b style={{cursor:"pointer"}} >
                                         <u>Login</u>
                                     </b>
                                 </Link>

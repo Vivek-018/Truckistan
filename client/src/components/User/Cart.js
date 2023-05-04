@@ -4,7 +4,8 @@ import '../../style/cart.css'
 import Footer from './Footer';
 import { useLocation, useNavigate } from 'react-router-dom';
 import driverContext from '../useContext/driverContext';
-import {toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import { FaRegThumbsUp } from 'react-icons/fa';
 
 const Cart = () => {
     const context = useContext(driverContext);
@@ -14,6 +15,15 @@ const Cart = () => {
     const dat = location.state;
 
     const handleSaved = () => {
+        document.getElementById("saveModal").style.display = "block";
+    }
+
+
+    function CloseModal() {
+        document.getElementById("saveModal").style.display = "none";
+    }
+
+    const handleVerified = () => {
         const { pickupAddress, Ppincode,
             Pcity,
             driverId,
@@ -58,16 +68,18 @@ const Cart = () => {
             })
         } else if (date === '') {
             toast("plz fill Date", {
-                autoClose: 1000,
+                autoClose: 1500,
             })
         } else {
             AddAddress();
             toast("Your Data Saved Successfully", {
-                autoClose: 1000,
+                autoClose: 1500,
             })
             navigate('/vehicledetails', { state: { dat, Address } })
+            document.getElementById("saveModal").style.display = "none";
         }
     }
+
     return (
         <>
             <Navbar />
@@ -111,23 +123,23 @@ const Cart = () => {
                                 </div>
 
                                 <div className="form-group p-3 ">
-                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Pickup Date"
-                                        name='date'
-                                        onChange={(e) => setaddress((prev) => ({ ...prev, date: e.target.value }))}
-                                    />
-                                </div>
-
-                                <div className="form-group p-3 ">
-                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="DropOff Address Pin code"
+                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Pickup Address Pin code"
                                         name='Ppincode'
                                         onChange={(e) => setaddress((prev) => ({ ...prev, Ppincode: e.target.value }))}
                                     />
                                 </div>
 
                                 <div className="form-group p-3 ">
-                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Pickup Address Pin code"
+                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="DropOff Address Pin code "
                                         name='Dpincode'
                                         onChange={(e) => setaddress((prev) => ({ ...prev, Dpincode: e.target.value }))}
+                                    />
+                                </div>
+
+                                <div className="form-group p-3 ">
+                                    <input type="date" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Pickup Date"
+                                        name='date'
+                                        onChange={(e) => setaddress((prev) => ({ ...prev, date: e.target.value }))}
                                     />
                                 </div>
 
@@ -163,6 +175,18 @@ const Cart = () => {
                     </div>
                 </div>
             </div>
+
+            <div id="saveModal" className="modal">
+                <div className="modal-content">
+                    <span><FaRegThumbsUp /></span>
+                    <h2>Your Are sure to Save It !</h2>
+                    <div className='btn-modalm my-4'>
+                        <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
+                        <button className='btn-view mx-4 ' onClick={handleVerified} >Submit</button>
+                    </div>
+                </div>
+            </div>
+
             <Footer />
         </>
     )

@@ -4,6 +4,24 @@ const router = express.Router();
 const fetchuser = require('../middleware/fetchuser')
 const Booking = require('../schema/BookingSchema')
 
+router.put("/ChangeVehicleState/:id", (req, res) => {
+    const { Booked } = req.body;
+    driverSchema.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+            $set:
+            {
+                status: Booked
+            },
+        }
+    )
+        .then((response) => {
+            res.json(response);
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        });
+});
 
 router.get('/bookedVehiclesDriver', fetchuser, async (req, res) => {
     const user = req.user;
@@ -34,7 +52,7 @@ router.get("/searchVehicle", async (req, res) => {
     res.send(users);
 });
 
-// ============ fetching vehicles according drivers =============
+// fetching vehicles according drivers
 
 router.get("/allvehiclesData", async (req, res) => {
     try {
@@ -46,7 +64,7 @@ router.get("/allvehiclesData", async (req, res) => {
     }
 })
 
-// ============ fetching vehicles according drivers =============
+//fetching vehicles according drivers
 
 router.get("/vehiclesData", fetchuser, async (req, res) => {
     const user = req.user;
@@ -72,35 +90,7 @@ router.get('/Vehicleby_id/:id', async (req, res) => {
 })
 
 
-// router.get("/VehData", async (req, res) => {
-//     try {
-//         const data = await driverSchema.aggregate([
-//             {
-//                 $match: { transName: "MOVERS TRUCKS" }
-//             }
-//         ])
-//         res.status(200).json(data)
-//     } catch (error) {
-//         console.error(error.message);
-//         res.status(500).send("Some error occured")
-//     }
-// })
-
-// router.get("/VehNext", async (req, res) => {
-//     try {
-//         const data = await driverSchema.aggregate([
-//             {
-//                 $match: { transName: "ON ROAD EXPRESS" }
-//             }
-//         ])
-//         res.status(200).json(data)
-//     } catch (error) {
-//         console.error(error.message);
-//         res.status(500).send("Some error occured")
-//     }
-// })
-
-// ========== API for post vehicles data to database ==============
+//API for post vehicles data to database
 
 router.post('/driverData', fetchuser, async (req, res) => {
     const { allData, Scity } = req.body;
@@ -133,7 +123,7 @@ router.post('/driverData', fetchuser, async (req, res) => {
     }
 })
 
-// ========= put request API for edited data save ==============
+//put request API for edited data save 
 
 router.put("/editedData/:id", async (req, res) => {
     const { name, lname, gender, DOB, email, phone,

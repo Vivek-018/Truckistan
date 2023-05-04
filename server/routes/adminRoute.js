@@ -40,7 +40,6 @@ router.get("/UserDataAtAdmin/:id", (req, res) => {
     User.find({ _id: req.params.id })
         .then((response) => {
             res.json(response);
-            // console.log(response)
         })
         .catch((err) => {
             res.status(400).json(err);

@@ -278,7 +278,6 @@ const DriversData = (props) => {
       body: JSON.stringify({ Booked })
     })
     const data = await res.json();
-    console.log(data)
   }
 
   const Allcityhandle = async () => {
@@ -304,7 +303,6 @@ const DriversData = (props) => {
   };
 
   const handleVehicleDriver = async (query) => {
-      console.log(query.driverName, "query")
     const data = await fetch(`${host}/searchVehDriver?name=${query.driverName}`, {
       method: "GET",
       headers: {
@@ -329,6 +327,7 @@ const DriversData = (props) => {
   }
 
   const [getveh_id, setGetVeh] = useState();
+  
   const GetVehicleBy_id = async (id) => {
     try {
       const veh = await axios.get(`${host}/Vehicleby_id/${id}`)
@@ -340,7 +339,6 @@ const DriversData = (props) => {
   }
 
   const SearchByTransName = async (query) => {
-    // console.log(query)
     try {
       const data = await axios.get(`${adminhost}/BytransName?transName=${query.driverName}`)
       setAllData(data.data)
@@ -360,6 +358,17 @@ const DriversData = (props) => {
     }
   }
 
+  const ChangeBookState = async (Booked, id) => {
+    const res = await fetch(`${host}/ChangeVehicleState/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ Booked })
+    })
+    const data = await res.json();
+  }
+
   return (
     <driverContext.Provider value={{
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
@@ -369,7 +378,7 @@ const DriversData = (props) => {
       ChangeBooked, Allcityhandle, allcities, handleSearchVehicle, getbookedAdminSide,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
       setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked
-      , getveh_id, SearchByTransName,SearchByCity
+      , getveh_id, SearchByTransName,SearchByCity,ChangeBookState
     }} >
       {props.children}
     </driverContext.Provider>

@@ -11,6 +11,7 @@ const Verified = () => {
     const context = useContext(driverContext)
     const { ChangeIsVerified, alldata, getallData,
         DeleteDrivers, handleVehicleDriver } = context;
+
     const [name, setcityName] = useState();
     const [check, setChecked] = useState(false);
     const [isVerified, setIsVerified] = useState(true);
@@ -38,13 +39,13 @@ const Verified = () => {
     const handleVerified = () => {
         ChangeIsVerified(isVerified, VerifyId)
         document.getElementById("Modal").style.display = "none";
-        window.location.reload()
+        getallData()
     }
 
     const handleDelete = () => {
         DeleteDrivers(VerifyId)
         document.getElementById("Modal").style.display = "none";
-        window.location.reload()
+        getallData()
     }
 
     useEffect(() => {
@@ -56,7 +57,7 @@ const Verified = () => {
             <Navbar />
             <div className='container'>
                 <Search placeholder={"Driver Name"} handleSearch={handleSearch} setcityName={setcityName} />
-              
+
                 <div className='tableVerified verified'>
                     <table>
                         <tr className='my-4' >
@@ -75,9 +76,13 @@ const Verified = () => {
                                         <td>{item.Vnamber}</td>
                                         <td><NavLink to={'/viewdetails'} state={item} className='btn-view'>View</NavLink></td>
                                         <td>
-                                            <button className='btn-view' onClick={() => { handleOpenModal(1, item._id) }}>
-                                                {item.isVerified === true ? "Verifeid" : "Verify"}
-                                            </button>
+    
+                                            {item.isVerified === true ?
+                                                <button className='btn-view' onClick={() => { handleOpenModal(1, item._id) }}>
+                                                    Verify
+                                                </button>
+                                                : "Verified"
+                                            }
                                         </td>
                                         <td><button className='btn-delete' onClick={() => { handleOpenModal(2, item._id) }} >Delete</button></td>
                                     </tr>

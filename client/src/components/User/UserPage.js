@@ -60,8 +60,7 @@ const UserPage = () => {
                             alldata?.map((item, index) => {
                                 return (
                                     <>
-                                        {
-                                            index < show ?
+                                        {index < show && item.status !== "Booked" ?
                                                 <div key={index} className="card my-2 ">
                                                     <div className="card-body">
                                                         <img src={item.VehicleImage} alt='img' />
@@ -81,7 +80,7 @@ const UserPage = () => {
                                                                 <small href="#" className="card-link">Loading Capacity</small>
                                                             </div>
                                                             <div>
-                                                                <small href="#" className=" mx-3 ">{item.lodingCapacity} </small>
+                                                                <small href="#" className=" mx-3 ">{item.lodingCapacity} Ton</small>
                                                             </div>
                                                         </div>
 

@@ -60,7 +60,6 @@ const Login = () => {
         } else {
             setcheck(true)
             generateOTPAtSignup(email);
-            console.log(email, email)
             const { otp } = Otp;
             const code = localStorage.getItem('code');
             if (code === otp) {
