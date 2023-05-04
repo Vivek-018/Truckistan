@@ -11,8 +11,8 @@ const UserBook = () => {
     const data = location.state?.item;
 
     useEffect(() => {
-        GetVehicleBy_id(data?.vehicleId)
-    }, [data])
+        GetVehicleBy_id(data)
+    }, [])
 
     return (
         <>
@@ -37,16 +37,16 @@ const UserBook = () => {
                     </div>
                     <div>
                         <span>Loding Capacity</span><br />
-                        <small>{getveh_id?.lodingCapacity}</small>
+                        <small>{getveh_id?.lodingCapacity} Ton</small>
                     </div>
                     <div>
                         <span>Fare Base</span><br />
-                        <small>{getveh_id?.basefare}</small>
+                        <small>{getveh_id?.basefare} Rs/km</small>
                     </div>
                 </div>
             </div>
 
-            <Footer />
+            <Footer/>
         </>
     )
 }

@@ -46,7 +46,6 @@ const Cities = () => {
 
   const handleDeleted = (id, num) => {
     setDel(num)
-    console.log(num);
     setId(id);
     document.getElementById("Modal").style.display = "block";
     GetAllCities()
@@ -109,7 +108,7 @@ const Cities = () => {
           
           <div className='btn-modalm my-4'>
             <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
-            <button className='btn-view mx-4 ' onClick={handleSubmit} >Submit</button> :
+            <button className='btn-view mx-4 ' onClick={handleSubmit} >Submit</button>
           </div>
         </div>
       </div>

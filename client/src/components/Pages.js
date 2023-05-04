@@ -54,7 +54,7 @@ const AdminPage = () => {
                                                             <small href="#" className="card-link">Loading Capacity</small>
                                                         </div>
                                                         <div>
-                                                            <small href="#" className=" mx-3 ">{item.lodingCapacity} </small>
+                                                            <small href="#" className=" mx-3 ">{item.lodingCapacity} Ton</small>
                                                         </div>
                                                     </div>
 

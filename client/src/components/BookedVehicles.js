@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const BookedVehicles = () => {
-   const navigate =useNavigate();
+    const navigate = useNavigate();
     const context = useContext(driverContext);
     const { getbookedVehicles, booked, ChangeBooked,
         getbookedAdminSide, ChangeBookState,
@@ -39,14 +39,14 @@ const BookedVehicles = () => {
     }
 
     const handledetails = (item) => {
-        navigate('/userbook', {state:{item}})
+        navigate('/userbook', { state: { item } })
     }
 
     const handleVerified = () => {
         ChangeBooked(Booked, id)
         ChangeBookState(Booked, id)
         document.getElementById("Modal").style.display = "none";
-        toast("Canceled successfully", {
+        toast("Cancelled successfully", {
             autoClose: 1500,
         })
         if (userType === "user") {
@@ -72,8 +72,6 @@ const BookedVehicles = () => {
                                         <td>S.No</td>
                                     </> : ("")
                             }
-                            {/* <td>Driver Name</td>
-                            <td>Vehicle Number</td> */}
                             <td>Pickup Address</td>
                             <td>DropOff Address</td>
                             <td>Booked Date</td>
@@ -89,39 +87,31 @@ const BookedVehicles = () => {
                                         {userType === "user" || userType === "Driver" ?
                                             item.status === "Booked" || item.status === "Cancel" ?
                                                 <tr key={i} className='trtd' >
-                                                    {/* <td>{i + 1} </td> */}
-                                                    {/* <VehicleDriver item={item} /> */}
                                                     <td>{item.pickupAddress}</td>
                                                     <td>{item.DropOffAddress}</td>
                                                     <td>{item.date.slice(0, 10)}</td>
                                                     <td>{item.phone}</td>
                                                     <td>{item.status}</td>
-                                                    {/* <td><NavLink to={'/viewdetails'} className='btn-view'>View</NavLink></td>
-                                                    <td><button className='btn-view' >abg</button> </td> */}
+                                                    <td><button onClick={() => { handledetails(item?.vehicleId) }} className='btn-view'>View</button></td>
                                                     {
                                                         item.status !== "Cancel" ?
                                                             <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
                                                             : ("")
                                                     }
-                                                    <td><button onClick={() => { handledetails(item) }} className='btn-view'>View</button></td>
                                                 </tr>
                                                 : ("")
                                             :
                                             <tr key={i} className='trtd' >
                                                 <td>{i + 1} </td>
-                                                {/* <VehicleDriver item={item.vehicleId} /> */}
                                                 <td>{item.pickupAddress}</td>
                                                 <td>{item.DropOffAddress}</td>
                                                 <td>{item.date.slice(0, 10)}</td>
                                                 <td>{item.phone}</td>
                                                 <td>{item.status}</td>
-                                                {/* <td><button className='btn-view' >abg</button> </td> */}
-
+                                                <td><button onClick={() => { handledetails(item?.vehicleId) }} className='btn-view'>View</button></td>
                                                 {item.status !== "Cancel" ?
                                                     <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
-                                                    : ("")
-                                                }
-                                                <td><button onClick={() => { handledetails(item) }} className='btn-view'>View</button></td>
+                                                    : ""}
                                             </tr>
                                         }
                                     </>
