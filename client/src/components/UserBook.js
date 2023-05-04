@@ -47,11 +47,11 @@ const UserBook = () => {
                 </div>
             </div>
 
-            <div className='container' >
-                <h5>Note</h5>
-                <div className='notesforuser' >
-                    <span> <small className='handicon'><FaRegHandPointRight /></small>The Fare Base of Vehicle is Calculated using kilo metre multiply with Fare Base example: 300 km * 110 Rs/km = 33,000 Rs. </span><br />
-                    <span> <small className='handicon'><FaRegHandPointRight /> </small> Please</span><br />
+            <div className='container' style={{fontSize:"1rem", paddingBottom:"4rem"}} >
+                <h5 className='handicon'>Note</h5>
+                <div className='notesforuser'>
+                    <span> <small className='handicon' style={{fontSize:"1.5rem",}}><FaRegHandPointRight /></small> As a transportation service providers, we do not oversee the payment process. It is the responsibility of the driver and the user to communicate with each other and agree upon the payment method, including timing and cash on delivery options. </span><br />
+                    <span> <small className='handicon' style={{fontSize:"1.5rem",}} ><FaRegHandPointRight /> </small>The Total Fare Base for your trip will be determined by multiplying the number of kilometers traveled by the vehicle with the Fare Base per kilometer.</span><br />
                 </div>
             </div>
 
