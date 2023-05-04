@@ -50,8 +50,8 @@ const UserBook = () => {
             <div className='container' >
                 <h5>Note</h5>
                 <div className='notesforuser' >
-                    <span> <small className='handicon'  ><FaRegHandPointRight /> </small></span><br />
-                    <span> <small className='handicon'  ><FaRegHandPointRight /> </small> Hii this is jefjsdklllll </span><br />
+                    <span> <small className='handicon'><FaRegHandPointRight /></small>The Fare Base of Vehicle is Calculated using kilo metre multiply with Fare Base example: 300 km * 110 Rs/km = 33,000 Rs. </span><br />
+                    <span> <small className='handicon'><FaRegHandPointRight /> </small> Please</span><br />
                 </div>
             </div>
 

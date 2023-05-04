@@ -12,9 +12,9 @@ const BottomNav = () => {
             <h2>Loadkro</h2>
             <ul className='nav_item-list'>
                <li><a href='#'>Home</a></li>
-               {/* <li><a href="https://okcredit.in/blog/how-does-transportation-industry-work/">About</a></li> */}
-               <li><Link to="/book">About</Link></li>
-               <li><a href="https://www.instagram.com/_durgesh.chaudhary/">Experience</a></li>
+               <li><a href="https://okcredit.in/blog/how-does-transportation-industry-work/" target="_blank">About</a></li>
+               {/* <li><Link to="/book">About</Link></li> */}
+               <li><a href="https://www.instagram.com/_durgesh.chaudhary/" target="_blank">Experience</a></li>
                <li><Link to="/help">Contact</Link></li>
             </ul>
 
