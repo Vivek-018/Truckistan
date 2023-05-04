@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import Footer from './User/Footer'
 import { useLocation } from 'react-router-dom'
 import driverContext from './useContext/driverContext'
+import { FaRegHandPointRight } from 'react-icons/fa';
 
 const UserBook = () => {
     const context = useContext(driverContext)
@@ -46,7 +47,15 @@ const UserBook = () => {
                 </div>
             </div>
 
-            <Footer/>
+            <div className='container' >
+                <h5>Note</h5>
+                <div className='notesforuser' >
+                    <span> <small className='handicon'  ><FaRegHandPointRight /> </small></span><br />
+                    <span> <small className='handicon'  ><FaRegHandPointRight /> </small> Hii this is jefjsdklllll </span><br />
+                </div>
+            </div>
+
+            <Footer />
         </>
     )
 }
