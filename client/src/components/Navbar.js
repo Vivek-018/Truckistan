@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useState } from 'react'
 import '../style/navbar.css'
 import navpic from '../images/user_web-1598433228.svg'
 import { IoIosArrowDown } from 'react-icons/io';
-import { BsCartFill } from 'react-icons/bs';
+import { CgProfile } from 'react-icons/cg';
 import { AiOutlineHome } from 'react-icons/ai';
 import { RiTruckLine } from 'react-icons/ri';
 import { AiFillSetting } from 'react-icons/ai';
-import { MdLocationCity } from 'react-icons/md';
+import { MdLocationCity, MdOutlineLogout } from 'react-icons/md';
 import { BsFillBookmarkFill } from 'react-icons/bs';
 import { FaRegThumbsUp } from 'react-icons/fa';
 import { GoVerified } from 'react-icons/go';
@@ -21,7 +21,7 @@ const Navbar = () => {
     const context = useContext(driverContext)
     const { editUserProfiledata, data, getData } = context;
     const totalVehicle = data.length;
-    const navigate =  useNavigate();
+    const navigate = useNavigate();
 
     const [name, setname] = useState();
     const [Nav, setNav] = useState(false);
@@ -214,10 +214,49 @@ const Navbar = () => {
 
             <div className='sidenav' id="mySidenav">
                 <a className='des'><img src={navpic}></img> {name?.username}</a>
-                <a className='desicon' href=''><AiOutlineHome /> Home</a>
+
                 {
-                    (name?.type === 'user') ? <a className='des' href=''> <span><BsCartFill /> </span></a> : ("")
+                    (userType === 'user') ?
+                        <>
+                            <Link className='desicon' to={'/user'} ><AiOutlineHome /> Home</Link>
+                            <Link to="/book" style={{ fontSize: "1rem" }}> <BsFillBookmarkFill /> Booked Vehicles</Link>
+                            <Link style={{ cursor: "pointer", fontSize: "1rem" }} to="/profiledetails" onClick={handleModal} > <CgProfile/> My Profile</Link>
+                        </>
+                        : (
+                            <>
+                                {
+                                    userType === 'Driver' ? (
+                                        <Link to='/driver' className='des home '> <AiOutlineHome /> Home</Link>
+                                    ) : (<Link to='/admin' className='des home '> <AiOutlineHome /> Home</Link>)
+                                }
+                            </>
+                        )
                 }
+
+                {
+                    (userType === 'user') ?
+                        //  <Link className='des' to='/cart'> <span><BsCartFill /> </span></Link> 
+                        " "
+                        : (
+                            <>
+                                {
+                                    userType === "Driver" ? (
+                                        <>
+                                            <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> Add Details </span></Link>
+                                            <Link className='des' to='/book' > <span><BsFillBookmarkFill /> Booked Vehicles </span></Link>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Link className='des' to='/verified' > <span><GoVerified /> Verify </span></Link>
+                                            <Link className='des' to='/cities' > <span><MdLocationCity /> Add City </span></Link>
+                                            <Link className='des' to='/book' > <span><BsFillBookmarkFill /> Booked Vehicles </span></Link>
+                                        </>
+                                    )
+                                }
+                            </>
+                        )
+                }
+                <Link style={{ cursor: "pointer", fontSize: "1rem" }} onClick={handleClearLogout}><MdOutlineLogout /> Logout</Link>
             </div>
 
             {/* ==================== my profile modal ============================= */}
