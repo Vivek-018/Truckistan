@@ -21,6 +21,7 @@ import { ToastContainer} from 'react-toastify';
 import Pages from './components/Pages';
 import 'react-toastify/dist/ReactToastify.css';
 import UserBook from './components/UserBook';
+import DelVehicle from './components/User/DelVehicle';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path='/book' element={<BookedVehicles />} />
             <Route path='/vehicledetails' element={<VehicleDetails />} />
             <Route path='/userbook' element={<UserBook/>} />
+            <Route path='/delvehicle' element={<DelVehicle/>} />
           </Routes>
           <ToastContainer/>
         </BrowserRouter>

@@ -151,7 +151,7 @@ const Cart = () => {
                                 </div>
 
                                 <div className="form-group p-3 ">
-                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Phone Number" name='phone'
+                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Phone Number (Optional) " name='phone'
                                         onChange={(e) => setaddress((prev) => ({ ...prev, phone: e.target.value }))}
                                     />
                                 </div>

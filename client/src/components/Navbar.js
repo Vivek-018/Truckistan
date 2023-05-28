@@ -5,7 +5,7 @@ import { IoIosArrowDown } from 'react-icons/io';
 import { CgProfile } from 'react-icons/cg';
 import { AiOutlineHome } from 'react-icons/ai';
 import { RiTruckLine } from 'react-icons/ri';
-import { AiFillSetting } from 'react-icons/ai';
+import { AiFillSetting, AiFillDelete } from 'react-icons/ai';
 import { MdLocationCity, MdOutlineLogout } from 'react-icons/md';
 import { BsFillBookmarkFill } from 'react-icons/bs';
 import { FaRegThumbsUp } from 'react-icons/fa';
@@ -169,6 +169,7 @@ const Navbar = () => {
                                                 userType === "Driver" ? (
                                                     <>
                                                         <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> </span></Link>
+                                                        <Link className='des' to='/delvehicle' > <span><AiFillDelete/> </span></Link>
                                                         <Link className='des' to='/book' > <span><BsFillBookmarkFill /> </span></Link>
                                                     </>
                                                 ) : (
@@ -243,7 +244,8 @@ const Navbar = () => {
                                     userType === "Driver" ? (
                                         <>
                                             <Link className='des' to='/driverintro' state={0} > <span><RiTruckLine /> Add Details </span></Link>
-                                            <Link className='des' to='/book' > <span><BsFillBookmarkFill /> Booked Vehicles </span></Link>
+                                            <Link className='des' to='/book' > <span><BsFillBookmarkFill /> Booked Vehicles </span></Link> 
+
                                         </>
                                     ) : (
                                         <>
