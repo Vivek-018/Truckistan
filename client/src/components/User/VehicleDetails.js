@@ -11,12 +11,12 @@ const VehicleDetails = () => {
     const navigate = useNavigate();
     const context = useContext(driverContext);
     const [Booked, setBooked] = useState("Booked");
-    const { SavedComment,  ChangeBookState, ChangeBooked } = context;
+    const { SavedComment,  ChangeBookState, ChangeBooked, sendNotification } = context;
     const location = useLocation();
     const [comment, setcomment] = useState();
     const data = location.state?.dat;
     const Address = location.state?.Address
-    const [itr, setItr] = useState();
+    console.log( Address)
 
     const handleDoneBookings = () => {
         document.getElementById("bookModal").style.display = "block";
@@ -44,13 +44,14 @@ const VehicleDetails = () => {
     const handleVerified = () => {
         ChangeBooked(Booked, data?._id)
         ChangeBookState(Booked, data?._id)
+        sendNotification({email:data.email, Address});
+        console.log(data.email, Address)
         toast("Your Vehicle Booked Successfully", {
             autoClose: 1000,
         })
         document.getElementById("bookModal").style.display = "none";
         navigate('/user')
     }
-
 
     return (
         <>

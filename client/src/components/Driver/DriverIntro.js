@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Address from './Details/Address'
 import Profile from './Details/Profile'
 import UploadDoc from './Details/UploadDoc'
@@ -10,7 +10,7 @@ const DriverIntro = () => {
   const [profile, setProfile] = useState(true);
   const [address, setAddress] = useState(false);
   const [vehicle, setVehicle] = useState(false);
-  const [uploaddoc, setUploaddoc] = useState(false);
+  const [uploaddoc, setUploaddoc] = useState(false)
 
   const [allData, setAllData] = useState({
     name: "",
@@ -78,10 +78,42 @@ const DriverIntro = () => {
         "Content-Type": "application/json",
         "token": localStorage.getItem("token")
       },
-      body: JSON.stringify({allData, Scity})
+      body: JSON.stringify({ allData, Scity })
     })
     const res = await data.json()
   }
+
+  useEffect(() => {
+    if (profile === true) {
+      document.getElementById('profile').style.color = 'white';
+    }else if(profile !== true){
+      document.getElementById('profile').style.color = '';
+    }
+  }, [profile])
+
+  useEffect(() => {
+    if (address === true) {
+      document.getElementById('address').style.color = 'white';
+    }else if(address !== true){
+      document.getElementById('address').style.color = '';
+    }
+  }, [address])
+
+  useEffect(() => {
+    if (vehicle === true) {
+      document.getElementById('vehicle').style.color = 'white';
+    }else if(vehicle !== true){
+      document.getElementById('vehicle').style.color = '';
+    }
+  }, [vehicle])
+
+  useEffect(() => {
+    if (uploaddoc === true) {
+      document.getElementById('doc').style.color = 'white';
+    }else if(uploaddoc !== true){
+      document.getElementById('doc').style.color = '';
+    }
+  }, [uploaddoc])
 
   return (
     <>
@@ -92,14 +124,14 @@ const DriverIntro = () => {
           <div className='pav' >
             <span onClick={handlesetProfile} id='profile'>Profile Details</span>
           </div>
-          <div className='pav' id='address' >
-            <span onClick={handlesetPage}>Address Details</span>
+          <div className='pav' >
+            <span onClick={handlesetPage} id='address' >Address Details</span>
           </div>
           <div className='pav' >
-            <span onClick={handleVehicle} >Vehicle Details</span>
+            <span onClick={handleVehicle} id='vehicle' >Vehicle Details</span>
           </div>
           <div className='pav' >
-            <span onClick={handleDocument} >Upload Documents</span>
+            <span onClick={handleDocument} id='doc' >Upload Documents</span>
           </div>
         </div>
 

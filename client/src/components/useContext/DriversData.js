@@ -327,7 +327,7 @@ const DriversData = (props) => {
   }
 
   const [getveh_id, setGetVeh] = useState();
-  
+
   const GetVehicleBy_id = async (id) => {
     try {
       const veh = await axios.get(`${host}/Vehicleby_id/${id}`)
@@ -369,6 +369,24 @@ const DriversData = (props) => {
     const data = await res.json();
   }
 
+  const sendNotification = async ({ email, Address }) => {
+    console.log(email, Address, "context")
+    let pickupAddress = Address.pickupAddress
+    let pickupCity = Address.Pcity
+    let DropOffAddress = Address.DropOffAddress
+    let DropOffCity = Address.Dcity
+    let BookingDate = Address.date
+    try {
+      let text = ` Your Vehicle booked successfully 
+              Details :
+              pickupAddress: ${pickupAddress}, pickupCity: ${pickupCity}, DropOffAddress: ${DropOffAddress}, DropOffCity: ${DropOffCity}, BookingDate: ${BookingDate}`;
+      let data = await axios.post(`${Userhost}/sendMailnotification`, { email, Address, text, subject: "Vehicle Details" })
+      return Promise.resolve(data);
+    } catch (error) {
+      return Promise.reject({ error })
+    }
+  }
+
   return (
     <driverContext.Provider value={{
       UpcomingOtp, data, generateOTPAtSignup, Deletecities, getMOVERSTRUCKS,
@@ -378,7 +396,7 @@ const DriversData = (props) => {
       ChangeBooked, Allcityhandle, allcities, handleSearchVehicle, getbookedAdminSide,
       editUserProfiledata, UsersDataBYId, UserName, Addcities, moTrucks, ontruks,
       setOneData, Address, setaddress, OneData, AddAddress, getbookedVehicles, booked
-      , getveh_id, SearchByTransName,SearchByCity,ChangeBookState
+      , getveh_id, SearchByTransName, SearchByCity, ChangeBookState, sendNotification
     }} >
       {props.children}
     </driverContext.Provider>

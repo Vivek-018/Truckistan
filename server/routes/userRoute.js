@@ -13,7 +13,7 @@ const Mailgen = require("mailgen");
 const Booking = require('../schema/BookingSchema')
 
 
-//========== email config==================
+// email config
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -125,6 +125,29 @@ router.post("/sendMail", async (req, res) => {
     var Useremail = {
         body: {
             intro: text || "Welcome to Loadkro",
+            outro: 'Need help, or have question? Just reply to this email'
+        }
+    }
+    var emailBody = MailGenerator.generate(Useremail);
+    let message = {
+        from: " durgeshchaudhary020401@gmail.com",
+        to: email,
+        subject: subject || "Signup Successfull",
+        html: emailBody
+    }
+    transporter.sendMail(message)
+        .then(() => {
+            return res.status(200).send({ msg: "You should receive an email from Us. " })
+        })
+})
+
+// send Notification
+
+router.post("/sendMailnotification", async (req, res) => {
+    const { email, subject, text } = req.body;
+    var Useremail = {
+        body: {
+            intro: text|| "Welcome to Loadkro",
             outro: 'Need help, or have question? Just reply to this email'
         }
     }
