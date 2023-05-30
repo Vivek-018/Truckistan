@@ -261,7 +261,7 @@ const Navbar = () => {
                 <Link style={{ cursor: "pointer", fontSize: "1rem" }} onClick={handleClearLogout}><MdOutlineLogout /> Logout</Link>
             </div>
 
-            {/* ==================== my profile modal ============================= */}
+            {/* my profile modal  */}
 
             <div div id="myModal" class="modal" >
                 <div class="modal-content my-4 ">

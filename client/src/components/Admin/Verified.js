@@ -93,7 +93,7 @@ const Verified = () => {
                 </div>
             </div>
 
-            {/*======================== modal ======================== */}
+            {/* modal  */}
 
             <div id="Modal" className="modal">
                 <div className="modal-content">

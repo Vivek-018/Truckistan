@@ -38,6 +38,10 @@ const BookedVehicles = () => {
         document.getElementById("Modal").style.display = "none";
     }
 
+    const handledelete =()=>{
+
+    }
+
     const handledetails = (item) => {
         navigate('/userbook', { state: { item } })
     }
@@ -63,7 +67,7 @@ const BookedVehicles = () => {
             <Navbar />
             <div className='container'>
                 <div className='tableVerified'>
-                    <h3 className='my-4' >Your Booking Status</h3>
+                    <h3 className='my-4' >Vehicles Booking Status</h3>
                     <table>
                         <tr className='my-4'>
                             {
@@ -109,8 +113,9 @@ const BookedVehicles = () => {
                                                 <td>{item.phone}</td>
                                                 <td>{item.status}</td>
                                                 <td><button onClick={() => { handledetails(item?.vehicleId) }} className='btn-view'>View</button></td>
+                                                <td><button onClick={() => { handledelete(item?._id) }} className='btn-delete'>Delete</button></td>    
                                                 {item.status !== "Cancel" ?
-                                                    <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
+                                                    <td><button className='btn-view' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
                                                     : ""}
                                             </tr>
                                         }
