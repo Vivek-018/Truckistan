@@ -21,9 +21,8 @@ const Login = () => {
         email: "",
         password: "",
         Rpassword: "",
-        type: ""
+        type: "Driver"
     });
-
     localStorage.setItem("code", UpcomingOtp?.code)
 
     const handleSignup = async (e) => {
@@ -60,49 +59,59 @@ const Login = () => {
         } else {
             setcheck(true)
             generateOTPAtSignup(email);
-            const { otp } = Otp;
-            const code = localStorage.getItem('code');
-            if (code === otp) {
-                const data = await fetch(`http://localhost:5000/user/signup`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        username: username,
-                        email: email,
-                        password: password,
-                        phone: phone,
-                        type: type,
-                    })
-                });
-                const res = await data.json();
-                if (res.status === 201) {
-                    localStorage.setItem("token", res.token);
-                    localStorage.setItem("user", JSON.stringify(res.user));
-                    localStorage.setItem("type", res.user.type);
-                }
-                if (localStorage.getItem("token")) {
-                    if (localStorage.getItem("type") === "user") {
-                        navigate("/user");
-                    }
-                    else if (localStorage.getItem("type") === "Driver") {
-                        navigate("/driver");
-                    } else if (localStorage.getItem("type") === "admin") {
-                        navigate("/admin");
-                    }
-                }
-                else { navigate("/"); }
-                // navigate('/resetPassword')
-                // localStorage.setItem("user", JSON.stringify(UpcomingOtp.user));
-                // localStorage.setItem("type", UpcomingOtp.user.type);
-            } else {
-                toast("Please fill correct details", {
-                    autoClose: 1000,
-                })
-            }
+            toast("OTP Send Successfully ", {
+                autoClose: 1000,
+            })
         }
     };
+
+    const handleSaveData = async (e) => {
+        e.preventDefault();
+        const { username, email, password, type } = values
+        const { otp } = Otp;
+        const code = localStorage.getItem('code');
+        if (code === otp) {
+            const data = await fetch(`http://localhost:5000/user/signup`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password,
+                    phone: phone,
+                    type: type,
+                })
+            });
+            const res = await data.json();
+            if (res.status === 201) {
+                localStorage.setItem("token", res.token);
+                localStorage.setItem("user", JSON.stringify(res.user));
+                localStorage.setItem("type", res.user.type);
+            }
+            if (localStorage.getItem("token")) {
+                if (localStorage.getItem("type") === "user") {
+                    navigate("/user");
+                    toast("Signup Sucessfully", {
+                        autoClose: 1500,
+                    })
+                }
+                else if (localStorage.getItem("type") === "Driver") {
+                    navigate("/driver");
+                    toast("Signup Sucessfully", {
+                        autoClose: 1500,
+                    })
+                } else if (localStorage.getItem("type") === "admin") {
+                    navigate("/admin");
+                    toast("Signup Sucessfully", {
+                        autoClose: 1500,
+                    })
+                }
+            }
+            else { navigate("/"); }
+        }
+    }
 
     return (
         <>
@@ -116,7 +125,7 @@ const Login = () => {
                 </div>
                 <div className="right-side col-7 d-flex align-items-center justify-content-center">
                     {/* Signup Form */}
-                    <form onSubmit={handleSignup} className="form-container" id="signup-form">
+                    <form className="form-container" id="signup-form">
                         <div className=" logotext d-flex justify-content-center" style={{ alignItems: "center" }} >
                             <img src={logo} alt="" className="form-logo web1-logo" />
                             <span>Loadkro</span>
@@ -173,7 +182,6 @@ const Login = () => {
                                                 setValues((prev) => ({ ...prev, type: event.target.value }));
                                             }}
                                         >
-                                            <option value="" selected >Type</option>
                                             <option value="Driver" >Driver</option>
                                             <option value="user">User</option>
                                         </select>
@@ -191,7 +199,7 @@ const Login = () => {
                                             <i className="fa-solid fa-chevron-down"></i>
                                         </div>
                                     </div>
-                                    <input type="submit" className="submit-btn btn btn-lg btn-block my-2" value="Signup" />
+                                    <input type="submit" onClick={handleSignup} className="submit-btn btn btn-lg btn-block my-2" value="Signup" />
                                 </>
 
                             ) : (
@@ -206,7 +214,7 @@ const Login = () => {
                                         name="otp"
                                         onChange={(e) => { setotp((prev) => ({ ...prev, otp: e.target.value })) }}
                                     />
-                                    <input type="submit" className="submit-btn btn btn-lg btn-block my-2" value="Verify Email" />
+                                    <input type="submit" onClick={handleSaveData} className="submit-btn btn btn-lg btn-block my-2" value="Verify Email" />
                                 </>
                             )
                         }

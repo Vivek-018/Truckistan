@@ -6,7 +6,7 @@ import { CgProfile } from 'react-icons/cg';
 import { AiOutlineHome } from 'react-icons/ai';
 import { RiTruckLine } from 'react-icons/ri';
 import { AiFillSetting, AiFillDelete } from 'react-icons/ai';
-import { MdLocationCity, MdOutlineLogout } from 'react-icons/md';
+import { MdLocationOn, MdOutlineLogout } from 'react-icons/md';
 import { BsFillBookmarkFill } from 'react-icons/bs';
 import { FaRegThumbsUp } from 'react-icons/fa';
 import { GoVerified } from 'react-icons/go';
@@ -98,7 +98,7 @@ const Navbar = () => {
         document.getElementById("NavModal").style.display = "block";
     }
 
-    // ======================= fetching data according users ==================
+    //  fetching data according users 
 
     const handlelogin = async (e) => {
         const data = await fetch(`http://localhost:5000/user/getUserData`, {
@@ -175,7 +175,7 @@ const Navbar = () => {
                                                 ) : (
                                                     <>
                                                         <Link className='des' to='/verified' > <span><GoVerified /> </span></Link>
-                                                        <Link className='des' to='/cities' > <span><MdLocationCity /> </span></Link>
+                                                        <Link className='des' to='/cities' > <span><MdLocationOn /> </span></Link>
                                                         <Link className='des' to='/book' > <span><BsFillBookmarkFill /> </span></Link>
                                                     </>
                                                 )
@@ -250,7 +250,7 @@ const Navbar = () => {
                                     ) : (
                                         <>
                                             <Link className='des' to='/verified' > <span><GoVerified /> Verify </span></Link>
-                                            <Link className='des' to='/cities' > <span><MdLocationCity /> Add City </span></Link>
+                                            <Link className='des' to='/cities' > <span><MdLocationOn /> Add City </span></Link>
                                             <Link className='des' to='/book' > <span><BsFillBookmarkFill /> Booked Vehicles </span></Link>
                                         </>
                                     )

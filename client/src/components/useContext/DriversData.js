@@ -117,7 +117,7 @@ const DriversData = (props) => {
     const json = await response.json();
     setOtp(json)
     if (json.code) {
-      let text = ` Your Password OTP is ${json.code} . Verify and recover your password.`;
+      let text = ` Your OTP is ${json.code} . for email verification.`;
       await axios.post(`${Userhost}/sendMail`, { email, text, subject: "For Signup" })
       return Promise.resolve(json.code);
     } else {
@@ -162,6 +162,8 @@ const DriversData = (props) => {
   const ChangeIsVerified = async (isVerified, id) => {
     try {
       const data = await axios.put(`${adminhost}/changeisVerified/${id}`, { isVerified })
+      getallData();
+      console.log(data.data)
       return Promise.resolve(data.data)
     } catch (error) {
       return Promise.reject({ error })
@@ -219,6 +221,7 @@ const DriversData = (props) => {
   const DeleteDrivers = async (id) => {
     try {
       const drivers = await axios.delete(`${adminhost}/driversAndTrucks/${id}`)
+      getallData();
       return Promise.resolve(drivers);
     } catch (error) {
       return Promise.reject({ error })
@@ -316,6 +319,9 @@ const DriversData = (props) => {
       body: JSON.stringify({ Booked })
     })
     const data = await res.json();
+    getbookedAdminSide();
+    // setBooked(data)
+    // console.log(data, "on cancel");
   }
 
   // Get all cities 

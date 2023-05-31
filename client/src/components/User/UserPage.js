@@ -18,8 +18,8 @@ const UserPage = () => {
         duration: 1700,
     });
     const context = useContext(driverContext);
-    const { alldata, getallData, getMOVERSTRUCKS,
-        setOneData, gettruksTrans, handleSearchVehicle } = context;
+    const { alldata, getallData, 
+        setOneData,  handleSearchVehicle } = context;
     const length = alldata.length;
 
     const handleSetData = (item) => {
@@ -41,8 +41,8 @@ const UserPage = () => {
 
     useEffect(() => {
         getallData();
-        getMOVERSTRUCKS();
-        gettruksTrans();
+        // getMOVERSTRUCKS();
+        // gettruksTrans();
     }, [])
 
     return (

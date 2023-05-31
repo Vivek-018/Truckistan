@@ -121,7 +121,7 @@ router.post('/generateOTP', async (req, res) => {
 
 router.post("/sendMail", async (req, res) => {
     const { email, text, subject } = req.body;
-
+    console.log(req.body)
     var Useremail = {
         body: {
             intro: text || "Welcome to Loadkro",
@@ -147,7 +147,7 @@ router.post("/sendMailnotification", async (req, res) => {
     const { email, subject, text } = req.body;
     var Useremail = {
         body: {
-            intro: text|| "Welcome to Loadkro",
+            intro: text || "Welcome to Loadkro",
             outro: 'Need help, or have question? Just reply to this email'
         }
     }

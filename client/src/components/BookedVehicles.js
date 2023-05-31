@@ -15,6 +15,8 @@ const BookedVehicles = () => {
         getbookedAdminSide, ChangeBookState,
         getbookedDriverSide } = context;
 
+        // console.log(booked, "booked")
+
     const [Booked, setBooked] = useState("Cancel");
     const userType = localStorage.getItem("type")
     const [id, setId] = useState();
@@ -46,20 +48,20 @@ const BookedVehicles = () => {
         navigate('/userbook', { state: { item } })
     }
 
-    const handleVerified = () => {
+    const handleSubmit = () => {
         ChangeBooked(Booked, id)
         ChangeBookState(Booked, id)
         document.getElementById("Modal").style.display = "none";
         toast("Cancelled successfully", {
             autoClose: 1500,
         })
-        if (userType === "user") {
-            getbookedVehicles();
-        } else if (userType === "admin") {
-            getbookedAdminSide();
-        } else {
-            getbookedDriverSide();
-        }
+        // if (userType === "user") {
+        //     getbookedVehicles();
+        // } else if (userType === "admin") {
+        //     getbookedAdminSide();
+        // } else {
+        //     getbookedDriverSide();
+        // }
     }
 
     return (
@@ -133,11 +135,10 @@ const BookedVehicles = () => {
                     <h2>Your Are sure to Cancel It !</h2>
                     <div className='btn-modalm my-4'>
                         <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
-                        <button className='btn-view mx-4 ' onClick={handleVerified} >Submit</button> :
+                        <button className='btn-view mx-4 ' onClick={handleSubmit} >Submit</button> :
                     </div>
                 </div>
             </div>
-
             <Footer />
         </>
     )
