@@ -1,7 +1,8 @@
 const mongooose = require('mongoose')
 mongooose.set('strictQuery', false)
+require("dotenv").config();
 
-const db = "mongodb+srv://Durgesh:Durgesh%402022@cluster0.69wye6c.mongodb.net/transport";
+const db = process.env.MONGODB_KEY;
 
 mongooose.connect(db, {
     useUnifiedTopology: true,
