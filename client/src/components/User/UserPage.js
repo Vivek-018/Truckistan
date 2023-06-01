@@ -41,9 +41,7 @@ const UserPage = () => {
 
     useEffect(() => {
         getallData();
-        // getMOVERSTRUCKS();
-        // gettruksTrans();
-    }, [])
+    }, [alldata])
 
     return (
         <>

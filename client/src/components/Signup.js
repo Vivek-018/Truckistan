@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import { Link, useNavigate } from "react-router-dom";
 import "react-phone-number-input/style.css";
@@ -27,7 +27,7 @@ const Login = () => {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        const { username, email, password, type, Rpassword } = values
+        const { username, email, password, Rpassword } = values
         if (username === "") {
             toast("Please Enter your Name", {
                 autoClose: 1000,
@@ -227,7 +227,7 @@ const Login = () => {
                     <div id="recaptcha-container"></div>
                 </div>
             </div>
-
+            
             <ToastContainer />
         </>
     );
