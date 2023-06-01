@@ -25,6 +25,7 @@ const Cities = () => {
 
   const CloseModal = () => {
     document.getElementById("Modal").style.display = "none";
+    document.getElementById("inputModal").style.display = "none";
   }
 
   const handleSearch = () => {
@@ -43,6 +44,35 @@ const Cities = () => {
       GetAllCities();
     }
   }
+
+  const useInputs = (initialValue) => {
+    const [value, setValue] = useState(initialValue);
+    const handleChange = (e) => {
+      setValue(e.target.value);
+    };
+
+    const changeValue = (v) => {
+      setValue(v);
+    }
+
+    return {
+      value,
+      onchange: handleChange,
+      onSet: changeValue
+    }
+  }
+
+  const newCity = useInputs('');
+
+  const handleEdit = (item) => {
+    document.getElementById("inputModal").style.display = "block";
+    newCity.onSet(item.city);
+  }
+
+  const handleSave = () => {
+    document.getElementById("inputModal").style.display = "none";
+  }
+
 
   const handleDeleted = (id, num) => {
     setDel(num)
@@ -79,7 +109,7 @@ const Cities = () => {
                     <tr key={index} >
                       <td>{index + 1}</td>
                       <td >{item.city}</td>
-                      <td ><button className='btn-view'>Edit</button></td>
+                      <td ><button className='btn-view' onClick={() => handleEdit(item)} >Edit</button></td>
                       <td ><button className='btn-view' onClick={() => handleDeleted(item._id, 2)}>Delete</button></td>
                     </tr>
                   </>
@@ -105,10 +135,26 @@ const Cities = () => {
               />
             }
           </div>
-          
+
           <div className='btn-modalm my-4'>
             <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
             <button className='btn-view mx-4 ' onClick={handleSubmit} >Submit</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="inputModal" class="modal">
+        <div class="modal-content">
+          <div className='modalinput'>
+            <input type='text' placeholder='Enter City'
+              value={newCity.value}
+              onChange={newCity.onchange}
+            />
+          </div>
+
+          <div className='btn-modalm my-4'>
+            <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
+            <button className='btn-view mx-4 ' onClick={handleSave} >Save</button>
           </div>
         </div>
       </div>

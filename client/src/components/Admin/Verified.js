@@ -39,18 +39,20 @@ const Verified = () => {
     const handleVerified = () => {
         ChangeIsVerified(isVerified, VerifyId)
         document.getElementById("Modal").style.display = "none";
-        getallData()
     }
 
     const handleDelete = () => {
         DeleteDrivers(VerifyId)
         document.getElementById("Modal").style.display = "none";
-        getallData()
     }
 
     useEffect(() => {
         getallData()
     }, [])
+
+    //    useEffect(()=>{  
+    //       document.getElementById("very").style.color ="#e543c3";
+    //    }, [isVerified])
 
     return (
         <>
@@ -76,12 +78,12 @@ const Verified = () => {
                                         <td>{item.Vnamber}</td>
                                         <td><NavLink to={'/viewdetails'} state={item} className='btn-view'>View</NavLink></td>
                                         <td>
-    
                                             {item.isVerified === true ?
+                                                <span id='very' >Verified</span>
+                                                :
                                                 <button className='btn-view' onClick={() => { handleOpenModal(1, item._id) }}>
                                                     Verify
                                                 </button>
-                                                : "Verified"
                                             }
                                         </td>
                                         <td><button className='btn-delete' onClick={() => { handleOpenModal(2, item._id) }} >Delete</button></td>
@@ -93,7 +95,7 @@ const Verified = () => {
                 </div>
             </div>
 
-            {/*======================== modal ======================== */}
+            {/* modal  */}
 
             <div id="Modal" className="modal">
                 <div className="modal-content">

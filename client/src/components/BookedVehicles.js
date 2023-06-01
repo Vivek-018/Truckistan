@@ -15,6 +15,8 @@ const BookedVehicles = () => {
         getbookedAdminSide, ChangeBookState,
         getbookedDriverSide } = context;
 
+        // console.log(booked, "booked")
+
     const [Booked, setBooked] = useState("Cancel");
     const userType = localStorage.getItem("type")
     const [id, setId] = useState();
@@ -38,24 +40,28 @@ const BookedVehicles = () => {
         document.getElementById("Modal").style.display = "none";
     }
 
+    const handledelete =()=>{
+
+    }
+
     const handledetails = (item) => {
         navigate('/userbook', { state: { item } })
     }
 
-    const handleVerified = () => {
+    const handleSubmit = () => {
         ChangeBooked(Booked, id)
         ChangeBookState(Booked, id)
         document.getElementById("Modal").style.display = "none";
         toast("Cancelled successfully", {
             autoClose: 1500,
         })
-        if (userType === "user") {
-            getbookedVehicles();
-        } else if (userType === "admin") {
-            getbookedAdminSide();
-        } else {
-            getbookedDriverSide();
-        }
+        // if (userType === "user") {
+        //     getbookedVehicles();
+        // } else if (userType === "admin") {
+        //     getbookedAdminSide();
+        // } else {
+        //     getbookedDriverSide();
+        // }
     }
 
     return (
@@ -63,7 +69,7 @@ const BookedVehicles = () => {
             <Navbar />
             <div className='container'>
                 <div className='tableVerified'>
-                    <h3 className='my-4' >Your Booking Status</h3>
+                    <h3 className='my-4' >Vehicles Booking Status</h3>
                     <table>
                         <tr className='my-4'>
                             {
@@ -109,8 +115,9 @@ const BookedVehicles = () => {
                                                 <td>{item.phone}</td>
                                                 <td>{item.status}</td>
                                                 <td><button onClick={() => { handledetails(item?.vehicleId) }} className='btn-view'>View</button></td>
+                                                <td><button onClick={() => { handledelete(item?._id) }} className='btn-delete'>Delete</button></td>    
                                                 {item.status !== "Cancel" ?
-                                                    <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
+                                                    <td><button className='btn-view' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
                                                     : ""}
                                             </tr>
                                         }
@@ -128,11 +135,10 @@ const BookedVehicles = () => {
                     <h2>Your Are sure to Cancel It !</h2>
                     <div className='btn-modalm my-4'>
                         <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
-                        <button className='btn-view mx-4 ' onClick={handleVerified} >Submit</button> :
+                        <button className='btn-view mx-4 ' onClick={handleSubmit} >Submit</button> :
                     </div>
                 </div>
             </div>
-
             <Footer />
         </>
     )
