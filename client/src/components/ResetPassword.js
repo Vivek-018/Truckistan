@@ -70,7 +70,7 @@ const Login = () => {
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="Rpassword" value={values.Rpassword} name='Rpassword' className="form-control my-2 " id="lname" placeholder="Confirm Password"
+                                    <input type="password" value={values.Rpassword} name='Rpassword' className="form-control my-2 " id="lname" placeholder="Confirm Password"
                                         onChange={(e) => { setValues((prev) => ({ ...prev, Rpassword: e.target.value })) }}
                                     />
                                 </div>
