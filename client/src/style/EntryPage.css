@@ -56,7 +56,6 @@
 
 .entry-input input {
     border-radius: .3rem;
-    /* width: 100%; */
     font-size: 1rem;
     color: black;
 }
@@ -123,6 +122,7 @@
     color: var(--color_p3);
     font-size: 1rem;
 }
+
 .location-entry{
     display: flex ;
     flex-direction: row;
@@ -140,6 +140,31 @@
     justify-content: center;
     padding-top: 1rem;
 }
+
+.entry-img {
+    -webkit-animation: mover 2s infinite alternate;
+    animation: mover 2s infinite alternate;
+  }
+  
+  @-webkit-keyframes mover {
+    0% {
+      transform: translateY(0);
+    }
+  
+    100% {
+      transform: translateY(-16px);
+    }
+  }
+  
+  @keyframes mover {
+    0% {
+      transform: translateY(0);
+    }
+  
+    100% {
+      transform: translateY(-16px);
+    }
+  }
 
 @media screen and (max-width: 1400px) {
     .entry-durgesh-img {
@@ -234,7 +259,6 @@
     .customerHelp{
        display: block;
     }
-    
 }
 
 @media screen and (max-width: 400px) {
@@ -251,7 +275,25 @@
         width: 350px;
         padding: 0.5rem;
     }
+    .entry-input{
+        width: 100%;
+    }
+
+    .entry-input input {
+        font-size: .9rem;
+    }
+
+    .seleted-entry small{
+        font-size: .8rem;
+    }
     
+    .seleted-entry h6{
+        font-size: .8rem;
+    }
+    .seleted-entry {
+        text-align: center;
+        align-items: center;
+    }
 }
 
 

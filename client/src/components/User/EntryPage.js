@@ -58,11 +58,7 @@ const EntryPage = ({ handleSearch, setcityName }) => {
         <div className="left-side-entry ">
           <div className="top-left d-flex align-items-center">
             <div className='text-center' data-aos="fade-right" >
-              <div class="enter-container" id='icon' onClick={() => {
-                openNav();
-                myFunction();
-              }
-              }>
+              <div class="enter-container" id='icon' onClick={() => {openNav(); myFunction();}}>
                 <div class="bar1"></div>
                 <div class="bar2"></div>
                 <div class="bar3"></div>
@@ -97,7 +93,7 @@ const EntryPage = ({ handleSearch, setcityName }) => {
         </div>
       </div>
 
-      <div id="Sidenav" class="fullsidenav text-center">
+      <div id="Sidenav" className="fullsidenav text-center">
         <h5 style={{ color: "white", alignItems: "center" }}>
           <a lassName='des'><img src={navpic}></img> {user.username} </a>
         </h5>

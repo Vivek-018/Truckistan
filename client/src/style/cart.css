@@ -31,8 +31,8 @@
 
 .formfields form {
     padding-top: 1.5rem;
-    padding-right: 2rem;
-    padding-left: 2rem;
+    padding-right: .5rem;
+    padding-left: .5rem;
     width: 70%;
     border-radius: 1rem;
     margin-bottom: 4rem;
