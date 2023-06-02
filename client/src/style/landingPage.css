@@ -220,6 +220,7 @@ a:hover {
 .web1-signin {
   position: relative;
   padding: 30px;
+  width: 10rem;
   margin-right: 25px;
   background-color: #fff;
   height: calc(100vh - 100px);
@@ -389,5 +390,12 @@ a:hover {
   }
   .col{
     margin: auto;
+  }
+}
+
+@media screen and (max-width:450px) {
+  .web1-signin{
+    width: 21rem;
+    margin-left: -3rem;
   }
 }

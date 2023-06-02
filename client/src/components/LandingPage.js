@@ -24,7 +24,7 @@ const Login = () => {
         <>
             <div className="web1">
                 <div className="row">
-                    <div className="col-4 col">
+                    <div className="col-4 ">
                         <div className="web1-signin">
                             <div className="menu">
                                 <div className="Rectangle-1"></div>
