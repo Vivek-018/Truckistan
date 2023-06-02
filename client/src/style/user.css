@@ -123,6 +123,13 @@
 }
 
 
+@media screen and (max-width:600px) {
+   .nav_item-list {
+      text-align: center;
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
 /* ============ LOADER CSS ======= */
 
 .loader {

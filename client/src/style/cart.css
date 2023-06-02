@@ -6,7 +6,7 @@
     padding-top: 4rem;
 }
 
-.formfields{
+.formfields {
     margin-top: 1rem;
     display: flex;
     flex-direction: row;
@@ -14,22 +14,22 @@
     padding-bottom: 2rem;
 }
 
-.inputs{
+.inputs {
     display: grid;
-    grid-template-columns: repeat(2 , 1fr);
+    grid-template-columns: repeat(2, 1fr);
 }
 
-.inputs .form-group input{
-   padding-top: .8rem;
-   padding-bottom: .8rem;
+.inputs .form-group input {
+    padding-top: .8rem;
+    padding-bottom: .8rem;
 }
 
 .form-group input::placeholder {
     color: black;
     opacity: .8;
-  }
+}
 
-.formfields form{
+.formfields form {
     padding-top: 1.5rem;
     padding-right: 2rem;
     padding-left: 2rem;
@@ -38,7 +38,7 @@
     margin-bottom: 4rem;
 }
 
-.btn-sub{
+.btn-sub {
     border: 2px solid var(--color_p2);
     background-color: var(--color_p2);
     color: white;
@@ -46,53 +46,66 @@
     border-radius: .3rem;
 }
 
-.btn-sub:hover{
+.btn-sub:hover {
     background-color: transparent;
     color: var(--color_p2);
 }
 
-.headline{
+.headline {
+    text-align: center;
     color: var(--color_p2);
 }
 
 @media screen and (max-width:1200px) {
-    .formfields form{
+    .formfields form {
         width: 100%;
     }
 }
 
 @media screen and (max-width:1024px) {
-    .formfields form{
+    .formfields form {
         width: 100%;
     }
 }
 
 @media screen and (max-width:800px) {
-    .inputs{
+    .inputs {
         display: grid;
-        grid-template-columns: repeat(2 , 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
-    .formfields form{
+
+    .formfields form {
         width: 100%;
     }
 }
 
 @media screen and (max-width:500px) {
-    .inputs{
+    .inputs {
         display: grid;
-        grid-template-columns: repeat(1 , 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
-    .formfields form{
+
+    .formfields form {
         width: 100%;
     }
-    .textarea{
+
+    .textarea {
         display: block;
-   }
+    }
+
+    .btn-sub {
+        padding: .6rem 3rem;
+    }
+    .headline h2 {
+        font-size: 1.2rem;
+        text-align: center;
+        width:90%;
+    }
 }
 
-/* ============= select ================== */
+/*select  */
 
-.form-group select{
+.form-group select {
     padding-top: .8rem;
     padding-bottom: .8rem;
 }

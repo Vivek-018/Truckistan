@@ -109,14 +109,14 @@ const Cart = () => {
                                 </div>
 
                                 <div className="form-group p-3 ">
-                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="City"
+                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="Pickup City Name"
                                         name='Pcity'
                                         onChange={(e) => setaddress((prev) => ({ ...prev, Pcity: e.target.value }))}
                                     />
                                 </div>
 
                                 <div className="form-group p-3 ">
-                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="City"
+                                    <input type="AIQRank" className="form-control" id="AIQRank" aria-describedby="emailHelp" placeholder="DropOff City Name"
                                         name='Dcity'
                                         onChange={(e) => setaddress((prev) => ({ ...prev, Dcity: e.target.value }))}
                                     />
