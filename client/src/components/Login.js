@@ -6,6 +6,7 @@ import { useNavigate, Link } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import driverContext from "./useContext/driverContext";
+import { serverhost } from "../host";
 
 const Login = () => {
     const context = useContext(driverContext)
@@ -38,7 +39,7 @@ const Login = () => {
                 autoClose: 1000,
             })
         } else {
-            const data = await fetch(`http://localhost:5000/user/login`, {
+            const data = await fetch(`${serverhost}/user/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

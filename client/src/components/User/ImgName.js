@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { serverhost } from '../../host';
 
 const ImgName = ({ data }) => {
-    const adminhost = "http://localhost:5000/admin"
+    const adminhost = `${serverhost}/admin`
     const [user, setUser] = useState();
 
     const handleUserDetails = async () => {

@@ -8,6 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import driverContext from "./useContext/driverContext";
 import TextField from '@material-ui/core/TextField';
+import { serverhost } from "../host";
+
 
 const Login = () => {
     const navigate = useNavigate();
@@ -71,7 +73,7 @@ const Login = () => {
         const { otp } = Otp;
         const code = localStorage.getItem('code');
         if (code === otp) {
-            const data = await fetch(`http://localhost:5000/user/signup`, {
+            const data = await fetch(`${serverhost}/user/signup`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import driverContext from './driverContext'
 import axios from 'axios'
+import { serverhost } from '../../host'
 
 const DriversData = (props) => {
-
-  const host = "http://localhost:5000/driver"
-  const Userhost = "http://localhost:5000/user"
-  const adminhost = "http://localhost:5000/admin"
-  const citieshost = "http://localhost:5000/city"
-  const commenthost = "http://localhost:5000/comment"
+  
+  const host = `${serverhost}/driver`
+  const Userhost = `${serverhost}/user`
+  const adminhost = `${serverhost}/admin`
+  const citieshost = `${serverhost}/city`
+  const commenthost = `${serverhost}/comment`
 
   const [data, setData] = useState([]);
   const [alldata, setAllData] = useState([]);

@@ -15,6 +15,8 @@ import driverContext from './useContext/driverContext';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import TextField from '@material-ui/core/TextField';
+import { serverhost } from '../host';
+
 
 
 const Navbar = () => {
@@ -101,7 +103,7 @@ const Navbar = () => {
     //  fetching data according users 
 
     const handlelogin = async (e) => {
-        const data = await fetch(`http://localhost:5000/user/getUserData`, {
+        const data = await fetch(`${serverhost}/user/getUserData`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",

@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import "../../style/comments.css"
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
 import ImgName from './ImgName';
+import { serverhost } from '../../host';
+
 
 
 const Comment = () => {
-    const commenthost = "http://localhost:5000/comment"
+    const commenthost = `${serverhost}/comment`
     var [a, seta] = useState(0);
     const [comment, setComments] = useState([]);
 

@@ -4,6 +4,8 @@ import Profile from './Details/Profile'
 import UploadDoc from './Details/UploadDoc'
 import Vehicle from './Details/Vehicle'
 import Navbar from '../Navbar'
+import { serverhost } from '../../host'
+
 
 const DriverIntro = () => {
 
@@ -72,7 +74,7 @@ const DriverIntro = () => {
   }
 
   const SaveData = async () => {
-    const data = await fetch('http://localhost:5000/driver/driverData', {
+    const data = await fetch(`${serverhost}/driver/driverData`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
