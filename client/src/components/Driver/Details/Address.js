@@ -61,7 +61,7 @@ const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
                     <small>Let us know about you to suggest the best for you.</small>
                     <form>
                         <div class="form-group">
-                            <textarea type="address" name='address' value={data.address} class="form-control" id="adress"  placeholder="Address" onChange={setVal} />
+                            <textarea type="address" name='address' value={data.address} class="form-control" id="adress" placeholder="Address" onChange={setVal} />
                         </div>
                         <div class="form-group">
                             <input type="city" name='city' value={data.city} class="form-control" id="city" placeholder="City" onChange={setVal} />
@@ -77,14 +77,14 @@ const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
                             <input type="country" name='country' value={data.country} class="form-control" id="country" placeholder="Country" onChange={setVal} />
                         </div>
 
-                        <div>
+                        <div className='address-save' >
                             <button type="submit" onClick={handleRelocate} class="btn btn-profile mx-2 my-3">Cancel</button>
                             <button type="submit" class="btn btn-profile my-3 " onClick={fun} >Save</button>
                         </div>
                     </form>
                 </div>
 
-                <div className='selectedcity'> 
+                <div className='selectedcity'>
                     <h6>Select Your City</h6>
                     <select class="form-select" aria-label="Default select example"
                         name='cities'
@@ -92,12 +92,12 @@ const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
                     >
                         <option selected >choose Your city</option>
                         {allcities?.map((item, index) => {
-                                return (
-                                    <>
-                                        <option key={index}>{item.city}</option>
-                                    </>
-                                )
-                            })
+                            return (
+                                <>
+                                    <option key={index}>{item.city}</option>
+                                </>
+                            )
+                        })
                         }
                     </select>
 
@@ -110,6 +110,11 @@ const Address = ({ data, setData, setCity, setAddress, setVehicle }) => {
                         )
                     })
                     }
+                </div>
+
+                <div className='text-center address-save-sec my-4 ' >
+                    <button type="submit" onClick={handleRelocate} class="btn btn-profile mx-2 my-3">Cancel</button>
+                    <button type="submit" class="btn btn-profile my-3 " onClick={fun} >Save</button>
                 </div>
             </div>
         </>
