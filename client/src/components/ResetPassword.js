@@ -11,6 +11,7 @@ const Login = () => {
     const context = useContext(driverContext)
     const { resetPassword } = context;
     const email = JSON.parse(localStorage.getItem("user"));
+    
     const navigate = useNavigate();
     const [values, setValues] = useState({
         password: "",
@@ -25,15 +26,19 @@ const Login = () => {
                 autoClose: 1000,
             })
         } else if (password !== Rpassword) {
-            toast("The Passwords entered don't match. Please try again", {
+            toast("The Passwords don't match. Please try again", {
                 autoClose: 1000,
             })
         } else if (Rpassword === null) {
             toast("Please Fill Confirm Password ", {
                 autoClose: 1000,
             })
+        } else if (email === null) {
+            toast("Email is not found ", {
+                autoClose: 1000,
+            })
         } else {
-            resetPassword(email.email, password)
+            resetPassword(email?.email, password)
             toast("Password Updated successfully", {
                 autoClose: 1500,
             })
