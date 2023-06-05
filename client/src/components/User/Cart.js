@@ -15,15 +15,6 @@ const Cart = () => {
     const dat = location.state;
 
     const handleSaved = () => {
-        document.getElementById("saveModal").style.display = "block";
-    }
-
-
-    function CloseModal() {
-        document.getElementById("saveModal").style.display = "none";
-    }
-
-    const handleVerified = () => {
         const { pickupAddress, Ppincode,
             Pcity,
             driverId,
@@ -34,20 +25,29 @@ const Cart = () => {
             Req,
             date,
             phone } = Address
+        var letters = /^[A-Za-z]+$/;
         if (pickupAddress === '') {
             toast("Please fill the Address", {
                 autoClose: 1000,
             })
-        } else if (DropOffAddress === '') {
+        }else if (DropOffAddress === '') {
             toast("Please fill DropOff Address", {
                 autoClose: 1000,
             })
-        } else if (Pcity === '') {
+        }else if (Pcity === '') {
             toast("Please fill City Name", {
+                autoClose: 1000,
+            })
+        } else if (!Pcity?.match(letters)) {
+            toast("Please enter text only", {
                 autoClose: 1000,
             })
         } else if (Dcity === '') {
             toast("Please fill City Name", {
+                autoClose: 1000,
+            })
+        } else if (!Dcity?.match(letters)) {
+            toast("Please enter text only", {
                 autoClose: 1000,
             })
         } else if (Ppincode === '') {
@@ -71,13 +71,22 @@ const Cart = () => {
                 autoClose: 1500,
             })
         } else {
-            AddAddress();
-            toast("Your Data Saved Successfully", {
-                autoClose: 1500,
-            })
-            navigate('/vehicledetails', { state: { dat, Address } })
-            document.getElementById("saveModal").style.display = "none";
+            document.getElementById("saveModal").style.display = "block";
         }
+    }
+
+
+    function CloseModal() {
+        document.getElementById("saveModal").style.display = "none";
+    }
+
+    const handleVerified = () => {
+        AddAddress();
+        toast("Your Data Saved Successfully", {
+            autoClose: 1500,
+        })
+        navigate('/vehicledetails', { state: { dat, Address } })
+        CloseModal()
     }
 
     return (

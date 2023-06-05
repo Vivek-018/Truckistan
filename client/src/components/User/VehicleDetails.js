@@ -16,7 +16,7 @@ const VehicleDetails = () => {
     const [comment, setcomment] = useState();
     const data = location.state?.dat;
     const Address = location.state?.Address
-    console.log( Address)
+    // console.log( Address)
 
     const handleDoneBookings = () => {
         document.getElementById("bookModal").style.display = "block";
@@ -36,7 +36,6 @@ const VehicleDetails = () => {
         }
     }
 
-
     function CloseModal() {
         document.getElementById("bookModal").style.display = "none";
     }
@@ -49,7 +48,8 @@ const VehicleDetails = () => {
         toast("Your Vehicle Booked Successfully", {
             autoClose: 1000,
         })
-        document.getElementById("bookModal").style.display = "none";
+        // document.getElementById("bookModal").style.display = "none";
+        CloseModal()
         navigate('/user')
     }
 

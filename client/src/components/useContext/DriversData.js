@@ -4,7 +4,7 @@ import axios from 'axios'
 import { serverhost } from '../../host'
 
 const DriversData = (props) => {
-  
+
   const host = `${serverhost}/driver`
   const Userhost = `${serverhost}/user`
   const adminhost = `${serverhost}/admin`
@@ -194,7 +194,7 @@ const DriversData = (props) => {
     }
   }
 
-   // delete cities from database
+  // delete cities from database
 
   const Deletecities = async (id) => {
     try {
@@ -205,7 +205,7 @@ const DriversData = (props) => {
     }
   }
 
-   // Get all cities from database
+  // Get all cities from database
 
   const GetAllCities = async () => {
     try {
@@ -217,7 +217,7 @@ const DriversData = (props) => {
     }
   }
 
-   // delete cities from database
+  // delete cities from database
 
   const DeleteDrivers = async (id) => {
     try {
@@ -251,7 +251,7 @@ const DriversData = (props) => {
   //   setOntrucks(json);
   // }
 
-// booking user data add to database
+  // booking user data add to database
 
   const AddAddress = async () => {
     try {
@@ -282,7 +282,7 @@ const DriversData = (props) => {
     setBooked(json);
   }
 
-// get all booked vehicles data  
+  // get all booked vehicles data  
 
   const getbookedAdminSide = async () => {
     const response = await fetch(`${adminhost}/bookedVehiclesAdmin`, {
@@ -309,7 +309,7 @@ const DriversData = (props) => {
     const data = await res.json();
   }
 
-// change vehicle status to booked
+  // change vehicle status to booked
 
   const ChangeBooked = async (Booked, id) => {
     const res = await fetch(`${Userhost}/ChangeVehicleStatus/${id}`, {
@@ -440,8 +440,21 @@ const DriversData = (props) => {
       let text = ` Your Vehicle booked successfully 
               Details :
               pickupAddress: ${pickupAddress}, pickupCity: ${pickupCity}, DropOffAddress: ${DropOffAddress}, DropOffCity: ${DropOffCity}, BookingDate: ${BookingDate}`;
-      let data = await axios.post(`${Userhost}/sendMailnotification`, { email, Address, text, subject: "Vehicle Details" })
+      let data = await axios.post(`${Userhost}/sendMail`, { email, Address, text, subject: "Vehicle Details" })
       return Promise.resolve(data);
+    } catch (error) {
+      return Promise.reject({ error })
+    }
+  }
+
+  // delete cities from database
+
+  const DeleteBookedVehicles = async (id) => {
+    try {
+      const drivers = await axios.delete(`${adminhost}/deleteBookedVehicles/${id}`)
+      getbookedAdminSide();
+      console.log(drivers)
+      return Promise.resolve(drivers);
     } catch (error) {
       return Promise.reject({ error })
     }
@@ -449,12 +462,12 @@ const DriversData = (props) => {
 
   return (
     <driverContext.Provider value={{
-      UpcomingOtp, data, generateOTPAtSignup, Deletecities,
+      UpcomingOtp, data, generateOTPAtSignup, Deletecities, DeleteBookedVehicles,
       alldata, getData, getallData, editData, GetAllCities, DeleteDrivers,
       SavedComment, generateOTP, resetPassword, ChangeIsVerified, GetAllCity,
-       handleVehicleDriver, getbookedDriverSide, GetVehicleBy_id,
+      handleVehicleDriver, getbookedDriverSide, GetVehicleBy_id,
       ChangeBooked, Allcityhandle, allcities, handleSearchVehicle, getbookedAdminSide,
-      editUserProfiledata, UsersDataBYId, UserName, Addcities,setOneData, Address, 
+      editUserProfiledata, UsersDataBYId, UserName, Addcities, setOneData, Address,
       setaddress, OneData, AddAddress, getbookedVehicles, booked
       , getveh_id, SearchByTransName, SearchByCity, ChangeBookState, sendNotification
     }} >
