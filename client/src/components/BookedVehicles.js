@@ -61,70 +61,74 @@ const BookedVehicles = () => {
         })
     }
 
-    console.log(booked, booked?.length, "length")
-
     return (
         <>
             <Navbar />
             <div className='mx-3'>
                 <div className='tableVerified'>
-                    <h3 className='my-4' >Vehicles Booking Status</h3>
                     {booked === undefined ?
-                        <div class="loader my-4 "></div> : booked?.length === 0 ? <NotFound /> :
-                            <table>
-                                <tr className='my-4'>
-                                    {
-                                        userType === 'admin' ?
-                                            <>
-                                                <td>S.No</td>
-                                            </> : ("")
-                                    }
-                                    <td>Pickup Address</td>
-                                    <td>DropOff Address</td>
-                                    <td>Booked Date</td>
-                                    <td>Phone Number</td>
-                                    <td>Status</td>
-                                </tr>
+                        <div class="loader my-4 "></div>
+                        :
+                        booked?.length === 0 ?
+                            <NotFound />
+                            :
+                            <>
+                                <h3 className='my-4' >Vehicles Booking Status</h3>
+                                <table>
+                                    <tr className='my-4'>
+                                        {
+                                            userType === 'admin' ?
+                                                <>
+                                                    <td>S.No</td>
+                                                </> : ("")
+                                        }
+                                        <td>Pickup Address</td>
+                                        <td>DropOff Address</td>
+                                        <td>Booked Date</td>
+                                        <td>Phone Number</td>
+                                        <td>Status</td>
+                                    </tr>
 
-                                {booked?.map((item, i) => {
-                                    return (
-                                        <>
-                                            {userType === "user" || userType === "Driver" ?
-                                                item.status === "Booked" || item.status === "Cancel" ?
+                                    {booked?.map((item, i) => {
+                                        return (
+                                            <>
+                                                {userType === "user" || userType === "Driver" ?
+                                                    item.status === "Booked" || item.status === "Cancel" ?
+                                                        <tr key={i} className='trtd' >
+                                                            <td>{item.pickupAddress}, {item.PickupCity}, {item.PickupPincode} </td>
+                                                            <td>{item.DropOffAddress}, {item.DropCity}, {item.DropPincode}  </td>
+                                                            <td>{item.date ? item.date?.slice(0, 10) : "Not available"}</td>
+                                                            <td>{item.phone}</td>
+                                                            <td>{item.status}</td>
+                                                            <td><button onClick={() => { handledetails(item?.vehicleId) }} className='btn-view'>View</button></td>
+                                                            {
+                                                                item.status !== "Cancel" ?
+                                                                    <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
+                                                                    : ("")
+                                                            }
+                                                        </tr>
+                                                        : ("")
+                                                    :
                                                     <tr key={i} className='trtd' >
+                                                        <td>{i + 1} </td>
                                                         <td>{item.pickupAddress}, {item.PickupCity}, {item.PickupPincode} </td>
                                                         <td>{item.DropOffAddress}, {item.DropCity}, {item.DropPincode}  </td>
                                                         <td>{item.date ? item.date?.slice(0, 10) : "Not available"}</td>
                                                         <td>{item.phone}</td>
                                                         <td>{item.status}</td>
                                                         <td><button onClick={() => { handledetails(item?.vehicleId) }} className='btn-view'>View</button></td>
-                                                        {
-                                                            item.status !== "Cancel" ?
-                                                                <td><button className='btn-delete' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
-                                                                : ("")
-                                                        }
+                                                        <td><button onClick={() => { handledelete(item?._id) }} className='btn-delete'>Delete</button></td>
+                                                        {item.status !== "Cancel" ?
+                                                            <td><button className='btn-view' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
+                                                            : ""}
                                                     </tr>
-                                                    : ("")
-                                                :
-                                                <tr key={i} className='trtd' >
-                                                    <td>{i + 1} </td>
-                                                    <td>{item.pickupAddress}, {item.PickupCity}, {item.PickupPincode} </td>
-                                                    <td>{item.DropOffAddress}, {item.DropCity}, {item.DropPincode}  </td>
-                                                    <td>{item.date ? item.date?.slice(0, 10) : "Not available"}</td>
-                                                    <td>{item.phone}</td>
-                                                    <td>{item.status}</td>
-                                                    <td><button onClick={() => { handledetails(item?.vehicleId) }} className='btn-view'>View</button></td>
-                                                    <td><button onClick={() => { handledelete(item?._id) }} className='btn-delete'>Delete</button></td>
-                                                    {item.status !== "Cancel" ?
-                                                        <td><button className='btn-view' onClick={() => handleCancel(item.vehicleId)} >Cancel</button></td>
-                                                        : ""}
-                                                </tr>
-                                            }
-                                        </>
-                                    )
-                                }
-                                )}
-                            </table>
+                                                }
+                                            </>
+                                        )
+                                    }
+                                    )}
+                                </table>
+                            </>
                     }
                 </div>
             </div>

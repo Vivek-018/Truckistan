@@ -7,7 +7,7 @@ const bookingSchema = new mongoose.Schema({
     },
     userId: {
         type: String,
-        required: true
+        required: false
     },
     driverId: {
         type: String,
