@@ -42,6 +42,8 @@ const DriverIntro = () => {
   })
   const [Scity, setCity] = useState();
 
+   console.log(allData , "all data ")
+
   const handlesetPage = (e) => {
     e.preventDefault();
     setProfile(false);

@@ -62,7 +62,7 @@ const Login = () => {
                         className="form-container">
                         <div className=" logotext d-flex justify-content-center" style={{ alignItems: "center" }} >
                             <img src={logo} alt="" className="form-logo web1-logo" />
-                            <span>Loadkro</span>
+                            <span>Truckistan</span>
                         </div>
 
                         <div className='Details' >

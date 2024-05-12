@@ -94,6 +94,8 @@ router.get('/Vehicleby_id/:id', async (req, res) => {
 
 router.post('/driverData', fetchuser, async (req, res) => {
     const { allData, Scity } = req.body;
+
+    console.log(req.body, "body req")
     if (!{ Vnamber: allData.Vnamber } === '') {
         res.status(404).send("Vehicle Number is Not found");
     }

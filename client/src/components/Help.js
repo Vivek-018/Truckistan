@@ -18,15 +18,15 @@ const Help = () => {
             <article className='contact_option'>
               <MdOutlineEmail className='contact_option-icon' />
               <h4>Email</h4>
-              <h6>dc035534@gmail.com</h6>
-              <a href="mailto:dc035534@gmail.com" target="_blank">Send a message</a>
+              <h6>vr7064300@gmail.com</h6>
+              <a href="vr7064300@gmail.com" target="_blank">Send a message</a>
             </article>
 
             <article className='contact_option'>
               <BsInstagram className='contact_option-icon' />
               <h4>Instagram</h4>
               <h5>Any Quary</h5>
-              <a href='https://www.instagram.com/_durgesh.chaudhary/' target="_blank">Send a message</a>
+              <a href='https://youtube.com/@PlayWithTechnologyOfficial?si=ggVc45R2Fse0zno_' target="_blank">Send a message</a>
             </article>
 
           </div>

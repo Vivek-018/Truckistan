@@ -145,7 +145,7 @@ const Navbar = () => {
                 <div className='container'>
                     <div className='durgesh' >
                         <div className='navLeft'>
-                            <span>Loadkro</span>
+                            <span>Truckistan</span>
                         </div>
 
                         <div className='navRight'>
@@ -344,7 +344,7 @@ const Navbar = () => {
 
                     <div className='btn-modal my-4'>
                         <button className='btn-view mx-4 ' onClick={CloseModal} >Close</button>
-                        <button className='btn-view mx-4 ' onClick={handleVerified} >Confirmed</button>
+                        <button className='btn-view mx-4 ' onClick={handleVerified} >Confirm</button>
                     </div>
                 </div>
             </div>

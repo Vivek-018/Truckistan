@@ -98,7 +98,7 @@ const EntryPage = ({ handleSearch, setcityName }) => {
           <a lassName='des'><img src={navpic}></img> {user.username} </a>
         </h5>
 
-        <h2>Welcome to Loadkro</h2>
+        <h2>Welcome to Truckistan</h2>
         <div className=' customerHelp'>
           <Link to="/book">Booked Vehicles</Link>
           <Link to="/help">FAQ's & Help</Link>

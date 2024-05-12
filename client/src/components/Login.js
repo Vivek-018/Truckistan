@@ -121,7 +121,7 @@ const Login = () => {
                         className="form-container">
                         <div className=" logotext d-flex justify-content-center align-items-center ">
                             <img src={logo} alt="" className="form-logo web1-logo" />
-                            <span>Loadkro</span>
+                            <span>Truckistan</span>
                         </div>
                         {
                             (!enterOTP) ? (

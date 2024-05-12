@@ -35,7 +35,7 @@ const Login = () => {
                                 <img
                                     src={logo}
                                     alt="" className="web1-logo" />
-                                <span>Loadkro</span>
+                                <span>Truckistan</span>
                             </div>
                             <div className="web1-tagline my-4">Providing easy and efficient access to transportation services</div>
                             <div className="web1-buttons d-flex flex-column my-4 ">

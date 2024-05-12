@@ -135,7 +135,7 @@ const VehicleDetails = () => {
 
                     <section id="contact">
                         <div className='text-center comment '>
-                            <h2>How is Loadkro helpful for me ?</h2>
+                            <h2>How is Truckistan helpful for me ?</h2>
                         </div>
                         <div className='container contact_conatiner'>
                             <form >
