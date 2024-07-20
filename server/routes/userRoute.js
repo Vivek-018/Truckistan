@@ -3,7 +3,7 @@ const User = require('../schema/userSchema');
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 
-const keysecret = "durgeshchaudharydurgeshchaudhary"
+const keysecret = "vivekkumarvivekkumar"
 
 const bcrypt = require('bcryptjs');
 const fetchuser = require('../middleware/fetchuser');
@@ -17,8 +17,8 @@ const Booking = require('../schema/BookingSchema')
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: "durgeshchaudhary020401@gmail.com",
-        pass: "lqfxwpogsaocehjc"
+        user: "vr7064300@gmail.com",
+        pass: "ppjp tush edwl gsky"
     }
 })
 
@@ -130,7 +130,7 @@ router.post("/sendMail", async (req, res) => {
     }
     var emailBody = MailGenerator.generate(Useremail);
     let message = {
-        from: " durgeshchaudhary020401@gmail.com",
+        from: "vr7064300@gmail.com",
         to: email,
         subject: subject || "Successfull done",
         html: emailBody

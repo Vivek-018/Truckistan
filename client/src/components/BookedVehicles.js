@@ -89,7 +89,7 @@ const BookedVehicles = () => {
                                         <td>Status</td>
                                     </tr>
 
-                                    {booked?.map((item, i) => {
+                                    {Array.isArray(booked) && booked.map((item, i)=> {
                                         return (
                                             <>
                                                 {userType === "user" || userType === "Driver" ?
